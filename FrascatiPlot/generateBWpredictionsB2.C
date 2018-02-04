@@ -218,7 +218,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   // correspond to the thermal model expectation based on a fixed d/p or 3He/p ratio.
   //
   const Double_t dOverPthermal = 0.00294824; // GSI-Heidelberg at 156 MeV
-  const Double_t He3OverPthermal = 0.00294824 / 330.; // GSI-Heidelberg at 156 MeV --- FIX ME
+  const Double_t He3OverPthermal =  8.68733e-06; // GSI-Heidelberg at 156 MeV --- (only 4% difference wrt to old value of 0.00294824/330.)
   const Double_t mProton = 0.938;
 
   //Sed deuteron mass

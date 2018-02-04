@@ -2,7 +2,7 @@
    17.01.2018 - The Frascati plot
 */
 #include "TMath.h"
-#include "/Users/fbellini/alice/nucleiB2/theFrascatiProject/FrascatiPlot/generateBWpredictionsB2.C" //ADAPT ME
+#include "./generateBWpredictionsB2.C" //ADAPT ME
 
 TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 3.2);
 TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.75);
