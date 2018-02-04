@@ -1,0 +1,19 @@
+void GetThermalModelValues() {
+
+  ifstream ifile;
+  ifile.open("InputFilesOtherAnalyses/ThermalModelPlot/FromAnton_ratios2pi_T.txt");
+  Float_t temp[30], k2pi[30], p2pi[30], lambda2pi[30];
+  Float_t ksi2pi[30], omega2pi[30], d2pi[30], he2pi[30];
+  Float_t he2d[30], he2p[30];
+  int i=0;
+  while(ifile) {
+    ifile>>temp[i]>>k2pi[i]>>p2pi[i]>>lambda2pi[i]>>ksi2pi[i]>>omega2pi[i]>>d2pi[i]>>he2pi[i];
+    if(ifile.eof()) break;
+    //
+    he2d[i] = he2pi[i]/d2pi[i];
+    he2p[i] = he2pi[i]/p2pi[i];
+    //
+    i++;
+  }
+
+}
