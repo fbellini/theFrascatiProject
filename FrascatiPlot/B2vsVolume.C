@@ -124,7 +124,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //make up options
   Int_t Fill_Style = 1001;
   Int_t Line_Style = 1;
-  Int_t Line_Width = 1;
+  Int_t Line_Style_Blast = 2;
+  Int_t Line_Width = 3;
   Float_t Marker_Size = 1.3;
 
   enum EPlotEntries { kPP7, kPPB502, kPBPB276, kPBPB502,
@@ -154,10 +155,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   MakeUp(gB2vsR_PbPb5TeV_sys, color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
   MakeUp(gB2vsR_PbPb5TeV    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
 
-  MakeUp(gBlastB2vsR_pp7TeV    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
-  MakeUp(gBlastB2vsR_pPb502TeV    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb502TeV    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
+  MakeUp(gBlastB2vsR_pp7TeV    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+  MakeUp(gBlastB2vsR_pPb502TeV    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
+  MakeUp(gBlastB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
+  MakeUp(gBlastB2vsR_PbPb502TeV    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
 
   MakeUp(gB3vsR_pp7TeV_sys, color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
   MakeUp(gB3vsR_pp7TeV    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
@@ -168,7 +169,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   MakeUp(gB3vsR_PbPb5TeV_sys, color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
   MakeUp(gB3vsR_PbPb5TeV    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
 
-  MakeUp(gBlastB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
+  MakeUp(gBlastB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
   
   //display
   TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
@@ -203,10 +204,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2->AddEntry(gB2vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB2->AddEntry(gB2vsR_pPb5TeV_sys, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB2->AddEntry(gB2vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
-  legB2->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "pf");
-  legB2->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
-  legB2->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "pf");
-  legB2->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV, BW + GSI (T = 156 MeV)", "pf");
+  legB2->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV, BW + GSI (T = 156 MeV)", "l");
   
   nl = 8;
   TLegend * legB3;
@@ -223,8 +224,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
-  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
-  legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
 
   cb2->Divide(2,1);
 
@@ -243,10 +244,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb5TeV->Draw("samep");
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb502TeV->Draw("samep");
-  gBlastB2vsR_pPb502TeV->Draw("samep");
-  gBlastB2vsR_pp7TeV->Draw("samep");
+  gBlastB2vsR_PbPb276TeV->Draw("samel");
+  gBlastB2vsR_PbPb502TeV->Draw("samel");
+  gBlastB2vsR_pPb502TeV->Draw("samel");
+  gBlastB2vsR_pp7TeV->Draw("samel");
   legB2->Draw();
 
   //plot B3
@@ -265,8 +266,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3vsR_pp7TeV->Draw("samep");
   gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   gB3LambdavsR_PbPb276TeV->Draw("samep");
-  gBlastB3vsR_PbPb276TeV->Draw("samep");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samep");
+  gBlastB3vsR_PbPb276TeV->Draw("samel");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
   legB3->Draw();
 
   //--------------------
@@ -287,10 +288,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2blast->SetFillStyle(0);
   legB2blast->SetTextSize(0.035);
   legB2blast->SetBorderSize(0);
-  legB2blast->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
-  legB2blast->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  legB2blast->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
-  legB2blast->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV", "pf");
+  legB2blast->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV", "l");
   
   nl = 3;
   TLegend * legB2coal = new TLegend(0.1, 0.40-nl*0.04, 0.45, 0.40, "Coalescence");
@@ -321,10 +322,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb5TeV->Draw("samep");
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb502TeV->Draw("samep");
-  gBlastB2vsR_pPb502TeV->Draw("samep");
-  gBlastB2vsR_pp7TeV->Draw("samep");
+  gBlastB2vsR_PbPb276TeV->Draw("samel");
+  gBlastB2vsR_PbPb502TeV->Draw("samel");
+  gBlastB2vsR_pPb502TeV->Draw("samel");
+  gBlastB2vsR_pp7TeV->Draw("samel");
 
   cb2opta->cd(2);
   legB2data->Draw();
@@ -349,8 +350,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3blast->SetFillStyle(0);
   legB3blast->SetTextSize(0.035);
   legB3blast->SetBorderSize(0);
-  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
 
   nl = 4;
   TLegend * legB3coal = new TLegend(0.1, 0.4-nl*0.04, 0.45, 0.4, "Coalescence");
@@ -383,8 +384,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3vsR_pp7TeV->Draw("samep");
   gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   gB3LambdavsR_PbPb276TeV->Draw("samep");
-  gBlastB3vsR_PbPb276TeV->Draw("samep");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samep");
+  gBlastB3vsR_PbPb276TeV->Draw("samel");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
 
 
   cb3opta->cd(2);
@@ -785,6 +786,8 @@ TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
 }
 
@@ -805,6 +808,8 @@ TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys, Double_t pToA)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
   
 }
@@ -826,6 +831,8 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys, Double_t pToA)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
   
 }
@@ -847,6 +854,8 @@ TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
   
 }
@@ -869,6 +878,8 @@ TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
   
 }
@@ -890,6 +901,8 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(24);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
   return graph;
   
 }
