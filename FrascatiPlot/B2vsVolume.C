@@ -23,6 +23,7 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.7
 TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
 
 TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733);
+TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0);
 
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
@@ -68,6 +69,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   TGraphAsymmErrors* gBlastB2vsR_pp7TeV = (TGraphAsymmErrors *)  getBlastB2_pp7TeV(kFALSE, pToA);
 
   TGraphAsymmErrors* gBlastB3vsR_PbPb276TeV = (TGraphAsymmErrors *)  getBlastB3_PbPb276TeV(kFALSE, pToAb3);
+  TGraphAsymmErrors* gBlastB3LambdavsR_PbPb276TeV = (TGraphAsymmErrors *)  getBlastB3Lambda_PbPb276TeV(kFALSE, pToAb3);
   
   //--------------------
   //theory - coalescence
@@ -130,7 +132,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		      kB3_PP7, kB3_PPB502, kB3_PBPB276, kB3_PBPB502,
 		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast};
   
-  Color_t color[]      = { kRed-2, kRed-7, kRed+1, kRed+2,
+  Color_t color[]      = {kRed-2, kRed-7, kRed+1, kRed+2,
 			   kBlue-5, kBlue-7, kBlue, kBlue+2,
 			   kGreen+4, kSpring+4, kSpring-1, kGreen+2,
 			   kBlue-5, kBlue-7, kBlue, kBlue+2};
@@ -221,7 +223,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
-  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
+  legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
 
   cb2->Divide(2,1);
 
@@ -263,6 +266,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   gB3LambdavsR_PbPb276TeV->Draw("samep");
   gBlastB3vsR_PbPb276TeV->Draw("samep");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samep");
   legB3->Draw();
 
   //--------------------
@@ -345,7 +349,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3blast->SetFillStyle(0);
   legB3blast->SetTextSize(0.035);
   legB3blast->SetBorderSize(0);
-  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
 
   nl = 4;
   TLegend * legB3coal = new TLegend(0.1, 0.4-nl*0.04, 0.45, 0.4, "Coalescence");
@@ -379,6 +384,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   gB3LambdavsR_PbPb276TeV->Draw("samep");
   gBlastB3vsR_PbPb276TeV->Draw("samep");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samep");
+
 
   cb3opta->cd(2);
   legB3data->Draw();
@@ -862,6 +869,27 @@ TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
+  return graph;
+  
+}
+
+//---------------------- Blast wave + thermal PbPb 2.76 TeV -- Hypertriton
+TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
+{
+  // Published proton yield from Phys. Rev. C 88 (2013) 044910
+  // Blast wave params from π,K,p published
+  // 3He/p from thermal model T = 156 MeV
+  // s3 from hyper-triton paper
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "hyper-triton", pToAb3);
+  convertMultiToRadius(graph);
+  
+  graph->SetMarkerColor(kAzure+1);
+  graph->SetLineColor(kAzure+1);
+  graph->SetFillColorAlpha(kAzure+1, 0.3);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(24);
   return graph;
   
 }

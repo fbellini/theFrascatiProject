@@ -125,7 +125,7 @@ void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Doub
   return;
 }
 
-void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr)
+void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *lambdadNdy, Double_t *lambdadNdyErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -150,6 +150,10 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyProt[10]    = {  33,   28,  21.1,  14.5,  9.7,    6.2,   3.7,   2.0,   0.9, 0.36};
   Double_t dNdyErrProt[10] = {   3,    2,   1.8,   1.2,  0.8,    0.5,   0.3,   0.2,  0.08, 0.04};
 
+  // table 23 of http://hepdata.cedar.ac.uk/view/ins1243863 --> TODO: deal with different binning by interpolation
+  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 0., 0., 0., 0., 0., 0., 0.};
+  Double_t dNdyErrLambda[10] = { 0.72,  0.62,  0.50, 0., 0., 0., 0., 0., 0., 0.};
+
 
   for (Int_t j=0; j<10; j++){
     parT[j] = bt[j];
@@ -162,6 +166,8 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
     dNdetaerr[j] = multierr[j];
     protdNdy[j] = dNdyProt[j];
     protdNdyErr[j] = dNdyErrProt[j];
+    lambdadNdy[j] = dNdyLambda[j];
+    lambdadNdyErr[j] = dNdyErrLambda[j];
   }
   return;
 }
@@ -219,7 +225,9 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   //
   const Double_t dOverPthermal = 0.00294824; // GSI-Heidelberg at 156 MeV
   const Double_t He3OverPthermal =  8.68733e-06; // GSI-Heidelberg at 156 MeV --- (only 4% difference wrt to old value of 0.00294824/330.)
+  const Double_t s3thermal = 0.55; // TODO: this is just read off figure 7 og hyper-triton paper.
   const Double_t mProton = 0.938;
+  const Double_t mLambda = 1.115; // FIXME: use proper mass value
 
   //Sed deuteron mass
   Double_t m = 0.0;
@@ -228,6 +236,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   if (particle.Contains("deuteron")) m = 1.875612928; //CODATA, https://physics.nist.gov/cgi-bin/cuu/Value?mdc2mev
   if (particle.Contains("triton")) m = 2.808921112; //triton mass 
   if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
+  if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
 
   //centrality bin
   Int_t cb = -1;
@@ -250,12 +259,14 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   Double_t protYield[10];
   Double_t protYieldErr[10];
 
+  Double_t lambdaYield[10];
+  Double_t lambdaYieldErr[10];
   //-------------------------------
   //arrays defined above are filled here usig the proper function and depending on the content of the string 'system'
   //-------------------------------
 
   if (system.Contains("PbPb276TeV"))
-    GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr);
+    GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("PbPb502TeV"))
     GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr);
@@ -293,6 +304,13 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     Double_t Iproton = fProton->Integral(0.,30.);
     if (Iproton>0) fProton->SetParameter(1, protYield[j]/Iproton); // normalisation to match yields
 
+    TF1 * fLambda = new TF1(Form("BlastWaveLambda-%s", mclass[j]), x_blast, 0., 10., 5);
+    fLambda->SetParameters(mLambda, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
+    fLambda->SetLineColor(color[j]);
+    Double_t Ilambda = fLambda->Integral(0.,30.);
+    if (Ilambda>0) fLambda->SetParameter(1, protYield[j]*(lambdaYield[0]/protYield[0])/Ilambda); // normalisation to match yields // FIXME --> proper LambdaYield
+
+
     //-----------------------------------
     // Construct Blast-Wave model nuclei
     //-----------------------------------
@@ -302,6 +320,11 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     Double_t Inucleus = fNucleus->Integral(0.,30.); //don't we want here only up to 10 GeV/c? effect of tail seen in Manuel's results
     if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, protYield[j]*dOverPthermal/Inucleus); // normalisation to match yields
     if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, protYield[j]*He3OverPthermal/Inucleus); // normalisation to match yields
+    if (Inucleus>0 && particle.Contains("hyper-triton")) {
+      Double_t he3Yield = protYield[j]*He3OverPthermal;
+      Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[0]/protYield[0]); // FIXME --> ALL CENTRALITIES FOR LAMBDA!!!!!!!
+      fNucleus->SetParameter(1, hyperTritonYield/Inucleus); // normalisation to match yields
+    }
 
     
     // Printf(Form("-------------------------------------\nV0M multiplicity class: %s (cb = %i)", mclass[j], j));
@@ -312,11 +335,12 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     //-----------------------------------
     Int_t A = (particle.Contains("deuteron")? 2 : 3); // deuteron case TODO: also implement A = 3
     Double_t invYieldProton = fProton->Eval(pToA)/(2*TMath::Pi()*pToA);
+    Double_t invYieldLambda = fLambda->Eval(pToA)/(2*TMath::Pi()*pToA);
     Double_t invYieldNucleus = fNucleus->Eval(pToA*A)/(2*TMath::Pi()*pToA*2);
 
     if (particle.Contains("deuteron")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton);
     if (particle.Contains("He3")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton * invYieldProton);
-    //   if (particle.Contains("hyper-triton")) B2blastW[j] = invYieldNucleus / (invYieldLambda * invYieldProton * invYieldProton);
+    if (particle.Contains("hyper-triton")) B2blastW[j] = invYieldNucleus / (invYieldLambda * invYieldProton * invYieldProton);
     binCounter++;
 
   }
