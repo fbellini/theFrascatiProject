@@ -29,7 +29,7 @@ void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fil
 
 
   
-Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.)
+Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.)
 {
   
   //--------------------
@@ -175,16 +175,26 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   cb2->SetLeftMargin(0.15);
   cb2->SetRightMargin(0.02);
   TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; radius (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0., 10., 2000, 1.e-4, 0.1);
+  hframe->GetXaxis()->SetTitleSize(0.05);
+  hframe->GetYaxis()->SetTitleSize(0.05);
+  if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
   TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; radius (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0., 10., 2000, 1.e-9, 1.e-1);
-
+  hframe3->GetXaxis()->SetTitleSize(0.05);
+  hframe3->GetYaxis()->SetTitleSize(0.05);
+  if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
+  
   //Legends
   int nl = 10;
-  TLegend * legB2 = new TLegend(0.2, 0.15, 0.55, 0.15+nl*0.03);
+  TLegend * legB2;
+  if (plotLinX) legB2 = new TLegend(0.35, 0.95-nl*0.03, 0.6, 0.95);
+  else legB2 = new TLegend(0.2, 0.15, 0.55, 0.15+nl*0.03);
   legB2->SetFillStyle(0);
   legB2->SetTextSize(0.035);
   legB2->SetBorderSize(0);
   legB2->SetTextSize(0.025);
-
+  
   legB2->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
   legB2->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r}(d) = 0 (point-like)", "l");
   legB2->AddEntry(gB2vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
@@ -195,9 +205,11 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   legB2->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
   legB2->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "pf");
   legB2->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV, BW + GSI (T = 156 MeV)", "pf");
-
+  
   nl = 8;
-  TLegend * legB3 = new TLegend(0.2, 0.15, 0.55, 0.15+nl*0.04);
+  TLegend * legB3;
+  if (plotLinX) legB3 = new TLegend(0.35, 0.95-nl*0.03, 0.6, 0.95);
+  else legB3 = new TLegend(0.2, 0.15, 0.55, 0.15+nl*0.03);
   legB3->SetFillStyle(0);
   legB3->SetTextSize(0.035);
   legB3->SetBorderSize(0);
@@ -209,14 +221,14 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
-  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "Blast-Wave + GSI (T = 156 MeV)", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "pf");
 
   cb2->Divide(2,1);
 
   //plot B2
   cb2->cd(1);
   gPad->SetLogy();
-  gPad->SetLogx();
+  if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
@@ -237,7 +249,7 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   //plot B3
   cb2->cd(2);
   gPad->SetLogy();
-  gPad->SetLogx();
+  if (!plotLinX) gPad->SetLogx();
   hframe3->Draw();
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
@@ -293,7 +305,7 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   cb2opta->Divide(2,1);
   cb2opta->cd(1);
   gPad->SetLogy();
-  gPad->SetLogx();
+  if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
@@ -353,7 +365,7 @@ Int_t B2vsVolume(Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3p
   cb3opta->Divide(2,1);
   cb3opta->cd(1);
   gPad->SetLogy();
-  gPad->SetLogx();
+  if (!plotLinX)  gPad->SetLogx();
   hframe3->Draw();
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
