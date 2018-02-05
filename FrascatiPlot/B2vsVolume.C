@@ -393,6 +393,28 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3coal->Draw();
   legB3blast->Draw();
 
+  TCanvas * cb3optaLambda = new TCanvas("cb3optaLambda", "Frascati plot B3 Lambda", 1000, 600);
+  cb3optaLambda->SetBottomMargin(0.02);
+  cb3optaLambda->SetTopMargin(0.05);
+  cb3optaLambda->SetLeftMargin(0.15);
+  cb3optaLambda->SetRightMargin(0.02);
+  
+  cb3optaLambda->Divide(2,1);
+  cb3optaLambda->cd(1);
+  gPad->SetLogy();
+  if (!plotLinX)  gPad->SetLogx();
+  hframe3->DrawCopy();
+  hB3L_coalescence->Draw("lsame");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
+  gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
+  gB3LambdavsR_PbPb276TeV->Draw("samep");
+
+
+  cb3optaLambda->cd(2);
+  legB3data->Draw();
+  legB3coal->Draw();
+  legB3blast->Draw();
+
   
   return 0;  
 }
