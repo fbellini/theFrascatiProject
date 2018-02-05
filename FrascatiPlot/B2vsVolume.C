@@ -432,7 +432,7 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius)
   //
   // NEW VERSION (5th February 2018):
   // We assume 0.85fm for pp as Kfir (at dNdeta 6.01)
-  // We assume R=4.5fm based on arXiv:1012.4035 (figure 2)
+  // We assume R=4.5fm for central Pb-Pb based on arXiv:1012.4035 (figure 2)
   // We interpolate linearly and take the highest kT bin, because
   // a pT/A of 0.8 GeV/c corresponds to mT=1.23GeV which is a kT of pions of 1.2GeV
   //
