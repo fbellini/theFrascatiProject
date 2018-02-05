@@ -92,14 +92,14 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
   TGraphErrors* hB3_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT);
   hB3_coalescence->SetMarkerStyle(20);
-  hB3_coalescence->SetMarkerColor(kOrange+3);
-  hB3_coalescence->SetLineColor(kOrange+3);
+  hB3_coalescence->SetMarkerColor(kBlack);
+  hB3_coalescence->SetLineColor(kBlack);
   hB3_coalescence->SetLineWidth(3);
 
   TGraphErrors* hB3_coalescence_pointlike = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 0.0);
   hB3_coalescence_pointlike->SetMarkerStyle(24);
-  hB3_coalescence_pointlike->SetMarkerColor(kOrange);
-  hB3_coalescence_pointlike->SetLineColor(kOrange);
+  hB3_coalescence_pointlike->SetMarkerColor(kGray);
+  hB3_coalescence_pointlike->SetLineColor(kGray);
   hB3_coalescence_pointlike->SetMarkerSize(0.4);
   hB3_coalescence_pointlike->SetLineWidth(3);
 
@@ -125,7 +125,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   Int_t Fill_Style = 1001;
   Int_t Line_Style = 1;
   Int_t Line_Style_Blast = 2;
-  Int_t Line_Width = 3;
+  Int_t Line_Width = 5;
   Float_t Marker_Size = 1.3;
 
   enum EPlotEntries { kPP7, kPPB502, kPBPB276, kPBPB502,
@@ -133,10 +133,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		      kB3_PP7, kB3_PPB502, kB3_PBPB276, kB3_PBPB502,
 		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast};
   
-  Color_t color[]      = {kRed-2, kRed-7, kRed+1, kRed+2,
-			   kBlue-5, kBlue-7, kBlue, kBlue+2,
-			   kGreen+4, kSpring+4, kSpring-1, kGreen+2,
-			   kBlue-5, kBlue-7, kBlue, kBlue+2};
+  Color_t color[]      = {kGreen+2, kBlue+2, kRed+1, kRed+2,
+			   kGreen+2, kBlue+2, kRed+1, kRed+2,
+			   kGreen+4, kSpring+4, kRed+1, kRed+2,
+			   kBlue-5, kBlue-7, kRed+1, kRed+2};
   
   Int_t Marker_Style[] = { 34, 22, 21, 20,
 			   28, 26, 25, 24,
@@ -236,6 +236,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
+  gBlastB2vsR_PbPb276TeV->Draw("samel");
+  gBlastB2vsR_PbPb502TeV->Draw("samel");
+  gBlastB2vsR_pPb502TeV->Draw("samel");
+  gBlastB2vsR_pp7TeV->Draw("samel");
   gB2vsR_pp7TeV_sys->Draw("p3");
   gB2vsR_pp7TeV->Draw("samep");
   gB2vsR_pPb5TeV_sys->Draw("p3");
@@ -244,10 +248,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb5TeV->Draw("samep");
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb276TeV->Draw("samel");
-  gBlastB2vsR_PbPb502TeV->Draw("samel");
-  gBlastB2vsR_pPb502TeV->Draw("samel");
-  gBlastB2vsR_pp7TeV->Draw("samel");
   legB2->Draw();
 
   //plot B3
@@ -314,6 +314,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
+  gBlastB2vsR_PbPb276TeV->Draw("samel");
+  gBlastB2vsR_PbPb502TeV->Draw("samel");
+  gBlastB2vsR_pPb502TeV->Draw("samel");
+  gBlastB2vsR_pp7TeV->Draw("samel");
   gB2vsR_pp7TeV_sys->Draw("p3");
   gB2vsR_pp7TeV->Draw("samep");
   gB2vsR_pPb5TeV_sys->Draw("p3");
@@ -322,10 +326,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb5TeV->Draw("samep");
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
-  gBlastB2vsR_PbPb276TeV->Draw("samel");
-  gBlastB2vsR_PbPb502TeV->Draw("samel");
-  gBlastB2vsR_pPb502TeV->Draw("samel");
-  gBlastB2vsR_pp7TeV->Draw("samel");
 
   cb2opta->cd(2);
   legB2data->Draw();
@@ -376,6 +376,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
   hB3L_coalescence->Draw("lsame");
+  gBlastB3vsR_PbPb276TeV->Draw("samel");
+  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
   gB3vsR_PbPb5TeV_sys->Draw("p3");
   gB3vsR_PbPb5TeV->Draw("samep");
   gB3vsR_PbPb276TeV_sys->Draw("samep3");
@@ -384,8 +386,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3vsR_pp7TeV->Draw("samep");
   gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   gB3LambdavsR_PbPb276TeV->Draw("samep");
-  gBlastB3vsR_PbPb276TeV->Draw("samel");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
 
 
   cb3opta->cd(2);
@@ -584,7 +584,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA)
 
   graph->SetMarkerColor(kGreen+2);
   graph->SetLineColor(kGreen+2);
-  graph->SetFillColorAlpha(kGreen+2, 0.3);
+  graph->SetFillColorAlpha(kGreen+2, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -611,7 +611,7 @@ TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA)
 
   graph->SetMarkerColor(kBlue);
   graph->SetLineColor(kBlue);
-  graph->SetFillColorAlpha(kBlue, 0.3);
+  graph->SetFillColorAlpha(kBlue, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -639,7 +639,7 @@ TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA)
 
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
-  graph->SetFillColorAlpha(kRed, 0.3);
+  graph->SetFillColorAlpha(kRed, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -667,7 +667,7 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
 
   graph->SetMarkerColor(kRed+2);
   graph->SetLineColor(kRed+2);
-  graph->SetFillColorAlpha(kRed+2, 0.3);  
+  graph->SetFillColorAlpha(kRed+2, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -696,7 +696,7 @@ TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp)
 
   graph->SetMarkerColor(kTeal-5);
   graph->SetLineColor(kTeal-5);
-  graph->SetFillColorAlpha(kTeal-5, 0.3);
+  graph->SetFillColorAlpha(kTeal-5, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -724,7 +724,7 @@ TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3)
 
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
-  graph->SetFillColorAlpha(kRed, 0.3);
+  graph->SetFillColorAlpha(kRed, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);
@@ -777,7 +777,7 @@ TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda
 
   graph->SetMarkerColor(kAzure-7);
   graph->SetLineColor(kAzure-7);
-  graph->SetFillColorAlpha(kAzure-7, 0.3);  
+  graph->SetFillColorAlpha(kAzure-7, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(34);
@@ -799,7 +799,7 @@ TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
   
   graph->SetMarkerColor(kMagenta+2);
   graph->SetLineColor(kMagenta+2);
-  graph->SetFillColorAlpha(kMagenta+2, 0.3);  
+  graph->SetFillColorAlpha(kMagenta+2, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
@@ -821,7 +821,7 @@ TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys, Double_t pToA)
   
   graph->SetMarkerColor(kMagenta+2);
   graph->SetLineColor(kMagenta+2);
-  graph->SetFillColorAlpha(kMagenta+2, 0.3);  
+  graph->SetFillColorAlpha(kMagenta+2, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
@@ -844,7 +844,7 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys, Double_t pToA)
   
   graph->SetMarkerColor(kMagenta);
   graph->SetLineColor(kMagenta);
-  graph->SetFillColorAlpha(kMagenta, 0.3);  
+  graph->SetFillColorAlpha(kMagenta, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
@@ -867,7 +867,7 @@ TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA)
   
   graph->SetMarkerColor(kMagenta-2);
   graph->SetLineColor(kMagenta-2);
-  graph->SetFillColorAlpha(kMagenta-2, 0.3);  
+  graph->SetFillColorAlpha(kMagenta-2, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
@@ -891,11 +891,11 @@ TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   
   graph->SetMarkerColor(kMagenta+1);
   graph->SetLineColor(kMagenta+1);
-  graph->SetFillColorAlpha(kMagenta+1, 0.3);  
+  graph->SetFillColorAlpha(kMagenta+1, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(33);
-  graph->SetLineWidth(3);
+  graph->SetLineWidth(5);
   graph->SetLineStyle(2);
   return graph;
   
@@ -914,11 +914,11 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   
   graph->SetMarkerColor(kAzure+1);
   graph->SetLineColor(kAzure+1);
-  graph->SetFillColorAlpha(kAzure+1, 0.3);  
+  graph->SetFillColorAlpha(kAzure+1, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(24);
-  graph->SetLineWidth(3);
+  graph->SetLineWidth(5);
   graph->SetLineStyle(2);
   return graph;
   
@@ -934,7 +934,7 @@ void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fil
   obj->SetLineColor(color);
   obj->SetFillColor(Fill_Color);
   obj->SetFillStyle(Fill_Style);
-  obj->SetFillColorAlpha(Fill_Color, 0.3);
+  obj->SetFillColorAlpha(Fill_Color, 0.2);
   obj->SetLineStyle(Line_Style);
   obj->SetLineWidth(Line_Width);
   obj->SetMarkerColor(color);
@@ -950,7 +950,7 @@ void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Sty
   obj->SetLineColor(color);
   obj->SetFillColor(Fill_Color);
   obj->SetFillStyle(Fill_Style);
-  obj->SetFillColorAlpha(Fill_Color, 0.3);
+  obj->SetFillColorAlpha(Fill_Color, 0.2);
   obj->SetLineStyle(Line_Style);
   obj->SetLineWidth(Line_Width);
   obj->SetMarkerColor(color);
