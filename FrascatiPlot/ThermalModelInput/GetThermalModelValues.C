@@ -16,7 +16,7 @@ void GetThermalModelValues() {
     d2p[i] = d2pi[i]/p2pi[i];
     he2p[i] = he2pi[i]/p2pi[i];
     //
-    cout << temp[i] << " / " << d2p[i] << " / " << he2p[i] << endl;
+    cout << " " << temp[i] << " | d/p: " << d2p[i] << " | d/pi: "  <<  d2pi[i] << " |||| 3He/p: " << he2p[i] << " | 3He/pi: " << he2pi[i] << endl;
     //
     i++;
   }
