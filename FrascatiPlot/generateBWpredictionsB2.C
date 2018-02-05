@@ -44,7 +44,7 @@ void get_average(Double_t &bt, Double_t &bn, Double_t &bb)
   return;
 }
 
-void GetParams_pp7TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr)
+void GetParams_pp7TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *piondNdy, Double_t *piondNdyErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -69,6 +69,11 @@ void GetParams_pp7TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_
   //(p+pabar)/2
   Double_t dNdyProt[10]    = {0.5488, 0.4369, 0.3599, 0.3106, 0.2741, 0.2316, 0.1860, 0.1491, 0.1070, 0.05856};
   Double_t dNdyErrProt[10] = {0.0393, 0.0301, 0.0246, 0.0210, 0.0185, 0.0156, 0.0125, 0.0101, 0.0080, 0.00532};
+
+  // (pion+ + pion-)/2. --> values from the famous long paper
+  Double_t dNdyPion[10]    = {10.035, 7.878, 6.459, 5.554, 4.982, 4.138, 3.326, 2.699, 1.989, 1.210}; //HERE-I-STOP
+  Double_t dNdyErrPion[10] = {0.519,  0.377, 0.306, 0.261, 0.228, 0.192, 0.153, 0.125, 0.103, 0.086};
+
   
   for (Int_t j=0; j<10; j++){
     parT[j] = bt[j];
@@ -81,12 +86,14 @@ void GetParams_pp7TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_
     dNdetaerr[j] = multierr[j];
     protdNdy[j] = dNdyProt[j];
     protdNdyErr[j] = dNdyErrProt[j];
+    piondNdy[j] = dNdyPion[j];
+    piondNdyErr[j] = dNdyErrPion[j];
   }
   return;
 }
 
 
-void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr)
+void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *piondNdy, Double_t *piondNdyErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -108,6 +115,13 @@ void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Doub
   //p+pbar
   Double_t dNdyProt[7]    = {2.280446, 1.853576, 1.577375, 1.221875, 0.8621290, 0.5341445, 0.2307767};
   Double_t dNdyErrProt[7] = {1.585968e-01, 1.284426e-01, 1.084793e-01, 8.190972e-02, 5.608663e-02, 3.408551e-02, 1.450569e-02};
+
+  // pions
+  Double_t dNdyPion[7]     = {4.080698e+01, 3.308405e+01, 2.805619e+01, 2.174798e+01, 1.529001e+01, 9.455217e+00, 4.313766e+00};
+  Double_t dNdyErrPion[7]  = {1.985452e+00, 1.586469e+00, 1.329896e+00, 1.010231e+00, 7.081661e-01, 4.401432e-01, 1.950208e-01};
+
+
+
    
   for (Int_t j=0; j<7; j++){
     parT[j] = bt[j];
@@ -121,11 +135,14 @@ void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Doub
     //return (p+pbar)/2
     protdNdy[j] = dNdyProt[j]/2.;
     protdNdyErr[j] = dNdyErrProt[j]/2.;
+    //return (pi+ + pi-)/2
+    piondNdy[j] = dNdyPion[j]/2.;
+    piondNdyErr[j] = dNdyErrPion[j]/2.;
   }
   return;
 }
 
-void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *lambdadNdy, Double_t *lambdadNdyErr)
+void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *piondNdy, Double_t *piondNdyErr, Double_t *lambdadNdy, Double_t *lambdadNdyErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -150,9 +167,14 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyProt[10]    = {  33,   28,  21.1,  14.5,  9.7,    6.2,   3.7,   2.0,   0.9, 0.36};
   Double_t dNdyErrProt[10] = {   3,    2,   1.8,   1.2,  0.8,    0.5,   0.3,   0.2,  0.08, 0.04};
 
+  // pions
+  Double_t dNdyPion[10]     = {733., 606., 455., 307., 201., 124., 71., 37., 17.1, 6.6};
+  Double_t dNdyErrPion[10]  = { 54.,  42.,  31.,  20.,  13.,   8.,  5.,  2.,  1.1, 0.4};
+
   // table 23 of http://hepdata.cedar.ac.uk/view/ins1243863 --> TODO: deal with different binning by interpolation
   Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 0., 0., 0., 0., 0., 0., 0.};
   Double_t dNdyErrLambda[10] = { 0.72,  0.62,  0.50, 0., 0., 0., 0., 0., 0., 0.};
+
 
 
   for (Int_t j=0; j<10; j++){
@@ -166,6 +188,8 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
     dNdetaerr[j] = multierr[j];
     protdNdy[j] = dNdyProt[j];
     protdNdyErr[j] = dNdyErrProt[j];
+    piondNdy[j] = dNdyPion[j];
+    piondNdyErr[j] = dNdyErrPion[j];
     lambdadNdy[j] = dNdyLambda[j];
     lambdadNdyErr[j] = dNdyErrLambda[j];
   }
@@ -173,7 +197,7 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
 }
 
 
-void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr , Double_t *protdNdy, Double_t *protdNdyErr)
+void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr , Double_t *protdNdy, Double_t *protdNdyErr,  Double_t *piondNdy, Double_t *piondNdyErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -200,6 +224,12 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyProt[10]    = {74.5852, 61.2207, 47.2026, 33.0090, 22.3932, 14.3862, 8.6260, 4.7102, 2.2640, 0.8936};
   Double_t dNdyErrProt[10] = { 5.0590,  3.8429,  3.0289,  2.0477,  1.3414,  0.8648, 0.5221, 0.3186, 0.1516, 0.0651};
 
+  //pi+  + pi- 
+  Double_t dNdyPion[10]    = {1702.3, 1376.59, 1037.78, 710.13, 466.401, 291.383, 170.758, 88.6999, 41.6013, 16.2665};
+  Double_t dNdyErrPion[10] = {87.4099, 71.5484, 51.191, 32.7179, 21.4739, 13.3082, 8.10989, 4.42991, 2.05458, 0.840404};
+
+
+
   for (Int_t j=0; j<10; j++){
     parT[j] = bt[j];
     parTerr[j] = bterr[j];
@@ -212,6 +242,9 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
     //return (p+pbar)/2
     protdNdy[j] = dNdyProt[j]/2.;
     protdNdyErr[j] = dNdyErrProt[j]/2.;  
+    //return (pi+ + pi-)/2
+    piondNdy[j] = dNdyPion[j]/2.;
+    piondNdyErr[j] = dNdyErrPion[j]/2.;  
   }
   return;
 }
@@ -224,6 +257,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   // correspond to the thermal model expectation based on a fixed d/p or 3He/p ratio.
   //
   const Double_t dOverPthermal = 0.00294824; // GSI-Heidelberg at 156 MeV
+  const Double_t dOverPiThermal = 0.0001817; // GSI-Heidelberg at 156 MeV
+  const Double_t He3OverPiThermal = 5.354e-07; // GSI-Heidelberg at 156 MeV
   const Double_t He3OverPthermal =  8.68733e-06; // GSI-Heidelberg at 156 MeV --- (only 4% difference wrt to old value of 0.00294824/330.)
   const Double_t s3thermal = 0.55; // TODO: this is just read off figure 7 og hyper-triton paper.
   const Double_t mProton = 0.938;
@@ -259,6 +294,9 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   Double_t protYield[10];
   Double_t protYieldErr[10];
 
+  Double_t pionYield[10];
+  Double_t pionYieldErr[10];
+
   Double_t lambdaYield[10];
   Double_t lambdaYieldErr[10];
   //-------------------------------
@@ -266,16 +304,16 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   //-------------------------------
 
   if (system.Contains("PbPb276TeV"))
-    GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, lambdaYield, lambdaYieldErr);
+    GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("PbPb502TeV"))
-    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr);
+    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
   
   if (system.Contains("pPb502TeV"))
-    GetParams_pPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr);
+    GetParams_pPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
 
   if (system.Contains("pp7TeV"))
-    GetParams_pp7TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr);
+    GetParams_pp7TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
 
   //-------------------------------
   // coalescence parameter values
@@ -318,10 +356,13 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     fNucleus->SetParameters(m, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
     fNucleus->SetLineColor(color[j]);
     Double_t Inucleus = fNucleus->Integral(0.,30.); //don't we want here only up to 10 GeV/c? effect of tail seen in Manuel's results
-    if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, protYield[j]*dOverPthermal/Inucleus); // normalisation to match yields
-    if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, protYield[j]*He3OverPthermal/Inucleus); // normalisation to match yields
+    //if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, protYield[j]*dOverPthermal/Inucleus); // normalisation to match yields
+    //if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, protYield[j]*He3OverPthermal/Inucleus); // normalisation to match yields
+    if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, pionYield[j]*dOverPiThermal/Inucleus); // normalisation to match yields
+    if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, pionYield[j]*He3OverPiThermal/Inucleus); // normalisation to match yields
     if (Inucleus>0 && particle.Contains("hyper-triton")) {
-      Double_t he3Yield = protYield[j]*He3OverPthermal;
+      //Double_t he3Yield = protYield[j]*He3OverPthermal;
+      Double_t he3Yield = pionYield[j]*He3OverPiThermal;
       Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[0]/protYield[0]); // FIXME --> ALL CENTRALITIES FOR LAMBDA!!!!!!!
       fNucleus->SetParameter(1, hyperTritonYield/Inucleus); // normalisation to match yields
     }
