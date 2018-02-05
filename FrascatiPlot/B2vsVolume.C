@@ -177,12 +177,12 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   cb2->SetTopMargin(0.02);
   cb2->SetLeftMargin(0.15);
   cb2->SetRightMargin(0.02);
-  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; radius (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0., 10., 2000, 1.e-4, 0.1);
+  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; radius (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.05);
   hframe->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
-  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; radius (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0., 10., 2000, 1.e-9, 1.e-1);
+  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; radius (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.05);
   hframe3->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
