@@ -125,7 +125,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   Int_t Fill_Style = 1001;
   Int_t Line_Style = 1;
   Int_t Line_Style_Blast = 2;
-  Int_t Line_Width = 5;
+  Int_t Line_Width = 1;
+  Int_t Line_Width_Blast = 5;
   Float_t Marker_Size = 1.3;
 
   enum EPlotEntries { kPP7, kPPB502, kPBPB276, kPBPB502,
@@ -135,13 +136,13 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   Color_t color[]      = {kGreen+2, kBlue+2, kRed+1, kRed+2,
 			   kGreen+2, kBlue+2, kRed+1, kRed+2,
-			   kGreen+4, kSpring+4, kRed+1, kRed+2,
+			   kGreen+2, kSpring+4, kRed+1, kRed+2,
 			   kBlue-5, kBlue-7, kRed+1, kRed+2};
   
-  Int_t Marker_Style[] = { 34, 22, 21, 20,
-			   28, 26, 25, 24,
-			   34, 22, 21, 20,
-			   28, 26, 25, 24};
+  Int_t Marker_Style[] = { 21, 22, 24, 20,
+			   21, 22, 24, 20,
+			   21, 22, 24, 20,
+			   21, 22, 24, 20};
   
   MakeUp(gB2vsR_pp7TeV_sys, color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
   MakeUp(gB2vsR_pp7TeV    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
@@ -155,10 +156,11 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   MakeUp(gB2vsR_PbPb5TeV_sys, color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
   MakeUp(gB2vsR_PbPb5TeV    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
 
-  MakeUp(gBlastB2vsR_pp7TeV    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
-  MakeUp(gBlastB2vsR_pPb502TeV    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb502TeV    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
+  
+  MakeUp(gBlastB2vsR_pp7TeV    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+  MakeUp(gBlastB2vsR_pPb502TeV    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
+  MakeUp(gBlastB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
+  MakeUp(gBlastB2vsR_PbPb502TeV    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
 
   MakeUp(gB3vsR_pp7TeV_sys, color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
   MakeUp(gB3vsR_pp7TeV    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
@@ -169,7 +171,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   MakeUp(gB3vsR_PbPb5TeV_sys, color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
   MakeUp(gB3vsR_PbPb5TeV    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
 
-  MakeUp(gBlastB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
+  MakeUp(gBlastB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
   
   //display
   TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
@@ -345,7 +347,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3data->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3data->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
 
-  nl = 2;
+  nl = 3;
   TLegend * legB3blast = new TLegend(0.1, 0.55-nl*0.04, 0.45, 0.55, "Blast-Wave (#pi,K,p) + GSI-Heid. (T = 156 MeV)");
   legB3blast->SetFillStyle(0);
   legB3blast->SetTextSize(0.035);
@@ -802,7 +804,7 @@ TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda
   graph->SetFillColorAlpha(kAzure-7, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
-  graph->SetMarkerStyle(34);
+  graph->SetMarkerStyle(21);
   return graph;
   
 }
@@ -934,9 +936,9 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "hyper-triton", pToAb3);
   convertMultiToRadius(graph);
   
-  graph->SetMarkerColor(kAzure+1);
-  graph->SetLineColor(kAzure+1);
-  graph->SetFillColorAlpha(kAzure+1, 0.1);  
+  graph->SetMarkerColor(kAzure-7);
+  graph->SetLineColor(kAzure-7);
+  graph->SetFillColorAlpha(kAzure-7, 0.1);  
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.5);
   graph->SetMarkerStyle(24);
