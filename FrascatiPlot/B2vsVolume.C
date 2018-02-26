@@ -189,11 +189,29 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hframe3->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
-  
+
+  TPaveText * pavept = new TPaveText(0.55, 0.55, 0.95, 0.6, "NDC");
+  pavept->SetFillStyle(0);
+  pavept->SetTextFont(42);
+  pavept->SetBorderSize(0);
+  pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+
+  TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
+  paveptB3->SetFillStyle(0);
+  paveptB3->SetTextFont(42);
+  paveptB3->SetBorderSize(0);
+  paveptB3->AddText(Form("#it{B}_{3}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
+
+  TPaveText * paveptB3L = new TPaveText(0.55, 0.55, 0.95, 0.6, "NDC");
+  paveptB3L->SetFillStyle(0);
+  paveptB3L->SetBorderSize(0);
+  paveptB3L->SetTextFont(42);
+  paveptB3L->AddText(Form("#it{B}_{3,#Lambda}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
+
   //Legends
   int nl = 10;
   TLegend * legB2;
-  if (plotLinX) legB2 = new TLegend(0.35, 0.95-nl*0.03, 0.6, 0.95);
+  if (plotLinX) legB2 = new TLegend(0.42, 0.95-nl*0.03, 0.6, 0.95);
   else legB2 = new TLegend(0.2, 0.15, 0.55, 0.15+nl*0.03);
   legB2->SetFillStyle(0);
   legB2->SetTextSize(0.035);
@@ -221,12 +239,12 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->SetTextSize(0.025);
   legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
   legB3->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
-  legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
   legB3->AddEntry(gB3vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
-  legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
   legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
+  legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
   legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
 
   cb2->Divide(2,1);
@@ -251,6 +269,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
   legB2->Draw();
+  pavept->Draw();
 
   //plot B3
   cb2->cd(2);
@@ -271,6 +290,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gBlastB3vsR_PbPb276TeV->Draw("samel");
   gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
   legB3->Draw();
+  paveptB3->Draw();
+  paveptB3L->Draw();
 
   //--------------------
   //Alternative plotting with legends on the side -- B2
@@ -312,10 +333,12 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   cb2opta->Divide(2,1);
   cb2opta->cd(1);
   gPad->SetLogy();
+  pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
+  
   gBlastB2vsR_PbPb276TeV->Draw("samel");
   gBlastB2vsR_PbPb502TeV->Draw("samel");
   gBlastB2vsR_pPb502TeV->Draw("samel");
@@ -328,7 +351,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB2vsR_PbPb5TeV->Draw("samep");
   gB2vsR_PbPb276TeV_sys->Draw("p3");
   gB2vsR_PbPb276TeV->Draw("samep");
-
+  pavept->Draw();
   cb2opta->cd(2);
   legB2data->Draw();
   legB2coal->Draw();
@@ -372,22 +395,25 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   cb3opta->Divide(2,1);
   cb3opta->cd(1);
+  paveptB3->Draw();
+
   gPad->SetLogy();
   if (!plotLinX)  gPad->SetLogx();
   hframe3->Draw();
+  paveptB3->Draw();
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
-  hB3L_coalescence->Draw("lsame");
+  //hB3L_coalescence->Draw("lsame");
   gBlastB3vsR_PbPb276TeV->Draw("samel");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
+  //gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
   gB3vsR_PbPb5TeV_sys->Draw("p3");
   gB3vsR_PbPb5TeV->Draw("samep");
   gB3vsR_PbPb276TeV_sys->Draw("samep3");
   gB3vsR_PbPb276TeV->Draw("samep");
   gB3vsR_pp7TeV_sys->Draw("samep2");
   gB3vsR_pp7TeV->Draw("samep");
-  gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
-  gB3LambdavsR_PbPb276TeV->Draw("samep");
+  // gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
+  // gB3LambdavsR_PbPb276TeV->Draw("samep");
 
 
   cb3opta->cd(2);
