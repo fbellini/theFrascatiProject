@@ -1,0 +1,92 @@
+\RequirePackage{ifpdf}
+
+%\documentclass[a4paper,11pt]{scrartcl} % scrartcl scrreprt
+\documentclass[a4paper,11pt]{scrartcl} % scrartcl scrreprt
+
+\usepackage[margin=2.cm]{geometry}
+
+
+\ifpdf
+  \usepackage[pdftex]{graphicx}
+\else
+  \usepackage[dvips]{graphicx}
+\fi
+
+
+%\usepackage[utf8]{inputenc}
+
+
+\usepackage[T1]{fontenc}
+
+
+\usepackage{amsmath}
+\usepackage[amssymb]{SIunits}
+\usepackage{hyperref}
+
+
+
+
+\usepackage{lineno}
+\linenumbers
+
+
+%
+% DOCUMENT STARTS HERE
+%
+\input{./commands.tex}
+
+
+\begin{document}
+\begin{center}
+{\Large {\bf Nuclei coalescence}}
+
+\medskip
+
+F. Bellini and A. Kalweit
+
+\medskip
+
+26th of February 2018
+\end{center}
+
+\bigskip
+
+%
+% Introduction 
+%
+
+
+
+
+\paragraph{Introduction.} 
+The measured abundances of hadrons produced in heavy-ion collisions have been successfully described by statistical hadronization models over a wide range of energies~\cite{Andronic:2011yq,Cleymans:1998fq,Andronic:2005yp}. Thermal-statistical model calculations for central ultra-relativistic heavy-ion collisions are typically carried out in the grand-canonical ensemble. However, a grand-canonical description of particle production is only applicable if the volume $V=R^{3}$ of the system is large enough and as a rule of thumb one needs $VT^{3} > 1$ for a grand-canonical description to hold \cite{Hagedorn:1984uy,Rafelski:1980gk}. It must be noted, that this condition must be fulfilled for each conserved charge separately.
+Several attempts were made to extend the picture of statistical hadronization to smaller systems such as pp or even e$^{+}$e$^{-}$ collisions~\cite{Redlich:2009xx,Becattini:1996gy,Kraus:2008fh}. While particle ratios of non-strange particles are observed to be very similar in small and large systems, the production of strangeness appears to be significantly suppressed in smaller systems. The data presented in~\cite{Adam:2016emw} shows for the first time, that there is a continuous increase of strangeness production with increasing event multiplicity across various collision systems. In the strangeness canonical approach, it is assumed that the total amount of strange hadrons in the volume is small with respect to non-strange hadrons. Thus the conservation of strangeness is guaranteed explicitly and not only on average while the bulk of the particles is still described in the grand-canonical ensemble. For further details on the this approach, we refer for instance to~\cite{BraunMunzinger:2003zd,BraunMunzinger:2001as,Hamieh:2000tk,Cleymans:2004bf,Kraus:2007hf}. The study presented here utilises the implementation in the THERMUS code~\cite{Wheaton:2004qb}. 
+
+
+
+
+%%%%% acknowledgements
+\newenvironment{acknowledgement}{\relax}{\relax}
+\begin{acknowledgement}
+\section*{Acknowledgements}
+
+The authors would like to thank themselves for the auto-critics.
+
+\end{acknowledgement}
+
+
+
+
+\bibliographystyle{utphys} 	
+\bibliography{NucleiB2}
+
+
+
+
+\end{document}
+
+
+
+
+%%
+%% End of file.
