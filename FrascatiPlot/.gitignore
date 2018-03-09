@@ -1,0 +1,9 @@
+./Paper/*.aux
+./Paper/*.log
+./Paper/*.out
+./Paper/*.synctex.gz
+./Paper/*.bbl
+./Paper/*.blg
+./Paper/*.lof
+./Paper/*.toc
+
