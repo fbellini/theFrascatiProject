@@ -4,7 +4,8 @@
 \documentclass[a4paper,11pt]{scrartcl} % scrartcl scrreprt
 
 \usepackage[margin=2.cm]{geometry}
-
+\usepackage{multirow}
+\usepackage{tabularx} 
 
 \ifpdf
   \usepackage[pdftex]{graphicx}
@@ -32,7 +33,7 @@
 
 \begin{document}
 \begin{center}
-{\Large {\bf Testing coalescence and statistical-thermal production scenarios for (anti-)(hyper-)nuclei at LHC energies with recent and future Run 3 and 4 data}}
+{\Large \textbf{Testing coalescence and statistical-thermal production scenarios for (anti-)(hyper-)nuclei at LHC energies with recent and future Run 3 and 4 data}}
 
 \medskip
 
@@ -59,55 +60,116 @@ F. Bellini and A. Kalweit
 
 %%Table of contents - to be removed for submission%%
 \tableofcontents
+\newpage
 
 \section{Introduction} 
 The formation of light anti- and hyper- nuclei in highly energetic proton-proton, proton-nucleus and nucleus-nucleus collisions provides unique observables for the study of the system created in these collisions. 
-In this context, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons, because their size is comparable to a fraction or the whole system created in the collision \cite{}. 
+In this context, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons, because their size is comparable to a fraction or the whole system created in the collision \cite{}. The relevant properties of the objects under study are summarised in Table \ref{tab:nucleusradii}
 As quantum-mechanical objects, their size is typically defined as the rms of their wave function, which ranges from \textcolor{red}{xx fm for the 3He up to yy fm for the hyper-triton}. 
 Halo nuclei as 6He would be ideal for such studies, but they remain out of the experimental reach in high-energy experiments. 
 
 Surprisingly, thermal-statistical models have been successful at describing not only light-flavour particle production, but also that of light (anti-)(hyper-)nuclei across a wide range of energies in nucleus-nucleus collisions \cite{Andronic:2017, Andronic:2010qu}. 
-In this approach, particles are produced from a fireball in thermal and kinetic equilibrium with temperatures of the order of $T_{chem}$ = 156 MeV (near the temperature at the QCD phase transition boundary, as predicted by lattice QCD calculations \cite{T from lattice}. Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that can affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. Once the particle density of the system is so low that the mean free path for elastic collisions is larger than the size of the system, the fireball freezes-out kinetically. This is seen to occur when the system has reached temperatures of the order of $T_{kin} \approx$ 90 MeV. 
+In this approach, particles are produced from a fireball in thermal and kinetic equilibrium with temperatures of the order of $T_{chem}$ = 156 MeV (near the temperature at the QCD phase transition boundary, as predicted by lattice QCD calculations \cite{Bazavov:2014pvz}. Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that can affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. Once the particle density of the system is so low that the mean free path for elastic collisions is larger than the size of the system, the fireball freezes-out kinetically. This is seen to occur when the system has reached temperatures of the order of $T_{kin} \approx$ 90 MeV. 
 In such a dense and hot environment, composite objects with binding energies that are small with respect to the temperature of the system, appear as ``fragile'' objects. For instance, the binding energy of the deuteron is $E_{B, d}$ = 2.2 MeV $\ll T_{chem}, T_{kin}$.
-As a matter of fact, the cross-section for pion-induced deuteron breakup is significantly larger than the typical (pseudo)-elastic cross-sections for the re-scattering of hadronic resonance decay products (check statement and refer to Juergen's QM proceedings) \cite{Garcilazo:1982yc, Bass:1998ca}. Similarly, the elastic cross-section which drives the deuteron spectra to kinetic equilibration in central heavy-ion collisions \cite{Acharya:2017dmc} is \textcolor{red}{smaller than the breakup cross-section} \cite{Schukraft:2017nbn}.   
-Based on this, the deuterons produced at chemical freeze-out would be expected not to survive the hadronic phase of the medium expansion, yet they're production is measured to be consistent to the predictions from statistical-thermal models and they develop also a non-zero elliptic flow which is consistent with a common radial expansion together with the non-composite hadrons \cite{Acharya:2017dmc}. \textcolor{Do similar estimates as Karel in Frascati}. In addition, it was recently shown that the assumption of realistic eigenvolumina for light nuclei would lead to instabilities of the statistical/thermal model predictions \cite{Vovchenko:2016mwg}.
+As a matter of fact, the cross-section for pion-induced deuteron breakup is significantly larger than the typical (pseudo)-elastic cross-sections for the re-scattering of hadronic resonance decay products (check statement and refer to Juergen's QM proceedings) \cite{Garcilazo:1982yc, Bass:1998ca}. 
+Similarly, the elastic cross-section which drives the deuteron spectra to kinetic equilibration in central heavy-ion collisions \cite{Acharya:2017dmc} is \textcolor{red}{smaller than the breakup cross-section} \cite{Schukraft:2017nbn}.   
+Based on this, the deuterons produced at chemical freeze-out would be expected not to survive the hadronic phase of the medium expansion, yet their production is measured to be consistent to the predictions from statistical-thermal models and they develop also a non-zero elliptic flow which is consistent with a common radial expansion together with the non-composite hadrons \cite{Acharya:2017dmc}. 
+\textcolor{red}{Do similar estimates as Karel in Frascati}. In addition, it was recently shown that the assumption of realistic eigenvolumina for light nuclei would lead to instabilities of the statistical/thermal model predictions \cite{Vovchenko:2016mwg}.
 Several solutions have been proposed to solve this ``light (anti-)nuclei puzzle'': (a.) a sudden freeze-out at the QGP-hadron phase boundary, (b.) the thermal production of these objects a compact quark bags \cite{Andronic:2017}, and (c.) the coincidence of coalescence mechanism with that of thermal production \cite{Scheibl:1998tk}.
 Data from rescattering of short-lived hadronic resonances indicate that the system undergoes a long-lasting hadronic phase before decoupling \cite{}, thus strongly disfavouring hypothesis (a.). 
 While hypothesis (b.) cannot presently be tested beyond the agreement of measured (anti-)nuclei production yields with statistical-thermal model predictions, hypothesis (c.) is scrutinised in the present work.
 
-To this purpose, we compare to models the existing data from the Large Hadron Collider which for the first time allow for the systematic study of the light (anti-)(hyper-)nuclei production as a function of the system and object size. 
-In the nucleon-coalescence approach, nuclei are formed at kinetic freeze-out by coalescence of nucleons that are nearby in space and have similar velocities. 
+\begin{table}[b]
 
-- coalescence approaches
+\centering
+\begin{tabularx}{\textwidth}{cccccc}
+\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} \\ \hline
+A = 2                           & d                           & pn                              & 2.2                                          & 3.2                                                 &                           \\ \hline
+\multirow{3}{*}{A = 3}  & \tritium 	         & pnn                            &                                                &                                                     &                           \\
+                                   & \hethree                & ppn                            &                                                &                                                     &                           \\
+                                   & \hthreelambda      & p$\Lambda$n       &                                                &                                                     &                           \\ \hline
+\multirow{4}{*}{A = 4}  & \hefour                  & ppnn                                    &                                                &                                                     &                           \\
+                                   & \hfourlambda        & p$\Lambda$nn          &                                              &                                                     &                           \\
+                                   & \hfourtwolambda  &  p$\Lambda\Lambda$n                                   &                                              &                                                     &                           \\
+                                   & \hefourlambda      & pp$\Lambda$n                                    &                                              &                                                     &                           \\ \hline
+\end{tabularx}
+\caption{Properties of nuclei and hyper-nuclei. $B_{E}$ is the binding energy per nucleon in MeV and the radius is given in terms of the rms radius of the wavefunction. References are given in the last column.}
+\label{tab:nucleusradii}
+\end{table}
 
-- first time we see a plot where we compare directly the two main approaches with data
+To this purpose, we compare to models the existing data from the Large Hadron Collider. For the first time, these data allow for the systematic study of the light (anti-)(hyper-)nuclei production as a function of the system and object size. 
+In the nucleon-coalescence approach, nuclei are formed at kinetic freeze-out by coalescence of nucleons that are nearby in space and have similar velocities. The coalescence model is reviewed in Section \ref{sec:coalescence}, starting from its simplest form (uncorrelated nucleon emission from a point-like source) to the full space-time evolution picture as discussed in \cite{Scheibl:1998tk}. In section \ref{sec:thermal}, a blast-wave parameterisation for particle transverse momentum spectra in combination with predictions from the statistical-thermal model for the yields is used as alternative approach. 
+The direct comparison of the two approaches and the comparison with data are discussed in section \ref{sec:comparison}.
+We find that a systematic study of the coalescence parameter \bA~exhibits a large discrimination power between the two approaches. In section \ref{sec:projections} we propose that \bA~is systematically measured in all collision systems by exploiting the large statistics sample that will be available with the LHC Run 3 and 4, in order to rule out or support the aforementioned scenarios. As a matter of fact, the upcoming years of LHC data taking provide a unique opportunity to for the final understanding of (anti-)(hyper-)nuclei production.
+Setting a final word on the production mechanisms is not only in the interest of the heavy-ion community, but has a broader application in astrophysics and dark-matter searches, by representing an essential input for the measurement of (anti-)nuclei in space with ongoing \cite{Alcaraz:2000ss} and future \cite{AMS100, Aramaki:2015laa} experiments. 
 
-- B2 as the observable for Run 3 and 4 where to learn the most 
+\section{Coalescence approach} \label{sec:coalescence}
 
-- content of the paper
+\subsection{Simple coalescence}
+- nucleons close in phase space \cite{Butler}
 
+- at LHC energies at midrapidity same number of protons and neutrons and muB = 0: cite alice pp, PbPb, baryon-antibaryon papers
 
+- give formula of BA
 
-\section{Coalescence approach}
+- BA independent of pt, object size with respect to the source size
+
+- naive expectation is that if number of nucleons increases (as it does with multiplicity), the number of nuclei also increases 
+
+- ALICE observations in PbPb: B2 decreases with centrality in PbPb collisions, which is in contrast with the simplest coalescence 
+
+\subsection{Full coalescence}
+
+- summary of Uli's paper in understandable words
+
+- how does Uli's paper relates to the Wigner formalism
+
+- add two formulas from Uli on the quantum mechanical coefficient dependence on object and source size and BA
+
+- plot of Cd vs radius, B2 for point-like objects and realistic wavefunctions
+
+- add formula from Kfir for B3 and write how it relates to Uli's (or it is derived from it)
+
+\begin{figure}[htbp]
+\begin{center}
+%\epsfile{file=,scale=0.8}
+\caption{{Cd vs radius, B2 for point-like objects and realistic wavefunctions}}
+\label{fig:cd}
+\end{center}
+\end{figure}
 
 \subsection{Source volume}
+- describe what ALICE actually measures for multiplicity and say it is known that system size increases with multiplicity (linearly or approx.)
 
-\section{Statistical-thermal approach and Blast-wave}
+- assumption 1: parameterisation we propose, which is found to describe the deuteron data
 
-\section{Comparison with experimental data}
+- plot our parameterisation vs the HBT results
+
+\begin{figure}[htbp]
+\begin{center}
+%\epsfile{file=,scale=0.8}
+\caption{Parameterisation of the dependence of the source radius on multiplicity assumed in this paper, compared to HBT data.}
+\label{fig:cd}
+\end{center}
+\end{figure}
+
+
+\section{Statistical-thermal approach and blast-wave}\label{sec:thermal}
+- 
+
+\section{Comparison with experimental data}\label{sec:comparison}
 
 \subsection{(Anti-)nuclei with $A$ = 2, 3, 4}
-
 \subsection{(Anti-)hyper-nuclei}
 
-\section{Projections for the LHC Run 3 and 4}
+\section{Projections for the LHC Run 3 and 4}\label{sec:projections}
 
 \section{Summary and conclusions}
 
 We conclude that (c.) appears unlikely, thus leaving (b.) as a viable option, at least with our present knowledge of the hypertriton size.
 
 %%%%% acknowledgements
-\newenvironment{acknowledgement}{\relax}{\relax}
+\newenvironment{acknowledgement}{\relax}{\relax
 \begin{acknowledgement}
 \section*{Acknowledgements}
 
