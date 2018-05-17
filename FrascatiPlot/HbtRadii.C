@@ -182,7 +182,7 @@ TGraphErrors * GetPPbHbtRadius0887KT() {
   //
   // Rout and dN/deta
   double p8772_d8x1y1_xval[] = { 2.53, 2.87, 3.27 };
-  double p8772_d8x1y1_xerrminus[] = { 0.0, 0.0, 0.0 };
+  double p8772_d8x1y1_xerrminus[] = { TMath::Power(2.53, -2./3.)*0.4/3, TMath::Power(2.87,-2./3.)*0.5/3., TMath::Power(3.27,-2./3.)*0.8/3. };
   double p8772_d8x1y1_xerrplus[] = { 0.0, 0.0, 0.0 };
   double p8772_d8x1y1_yval[] = { 0.68, 0.77, 0.94 };
   double p8772_d8x1y1_yerrminus[] = { 0.17, 0.18, 0.23 };
@@ -215,7 +215,7 @@ TGraphErrors * GetPPbHbtRadius0887KT() {
   //
   for (Int_t iP =0; iP <3; iP++) {
     xP[iP] = p8772_d8x1y1_xval[iP];
-    xPerr[iP] = p8772_d8x1y1_xerrplus[iP];
+    xPerr[iP] = p8772_d8x1y1_xerrminus[iP];
     yP[iP] = TMath::Power(p8772_d8x1y3_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
     Double_t errSyst = TMath::Power(p8772_d8x1y3_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
     Double_t errStat = TMath::Power(p8772_d8x1y3_ystatplus[iP]*p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y1_ystatplus[iP], 1./3.);
