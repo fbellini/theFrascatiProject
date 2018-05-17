@@ -10,8 +10,31 @@ void HbtRadii() {
   // small macro to plot HBT radii versus multiplicity to compare
   // them to the parameterisation
   //
+  gStyle->SetOptStat(0);
+  gStyle->SetOptTitle(0);
+  gStyle->SetOptFit(0);
+  gStyle->SetLineWidth(1);
+  gStyle->SetOptTitle(0);
+  gStyle->SetTitleOffset(0.8,"y");
+  gStyle->SetPadTickX(1);
+  gStyle->SetPadTickY(1);
+  TGaxis::SetMaxDigits(4);
+  gStyle->SetPadLeftMargin(0.15);
+  gStyle->SetPadRightMargin(0.05);
+  gStyle->SetPadBottomMargin(0.15);
+  gStyle->SetPadTopMargin(0.05);
+
   TCanvas * canvHbtPlot = new TCanvas("canvHbtPlot","canvHbtPlot");
-  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{N}/d#it{#eta}#GT^{1/3}; R (fm)",200,0.0,13.0,200,0.0,6.0);
+  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{#it{N}_{ch}}/d#it{#eta}#GT^{1/3}; #it{R} (fm)",200,0.0,13.0,200,0.0,6.0);
+  histFrame->GetXaxis()->SetTitleSize(0.06);
+  histFrame->GetXaxis()->SetLabelSize(0.045);
+  histFrame->GetXaxis()->SetTitleOffset(1.1);
+  histFrame->GetYaxis()->SetTitleOffset(1.2);
+  histFrame->GetYaxis()->SetTitleSize(0.06);
+  histFrame->GetYaxis()->SetLabelOffset(0.01);
+  histFrame->GetYaxis()->SetLabelSize(0.045);
+
+  histFrame->GetYaxis()->SetTitleOffset(1.);
   histFrame->Draw();
   //
   const Long_t nPoints = 500;
@@ -26,24 +49,32 @@ void HbtRadii() {
     //
   }
   //
-  TGraph * grRadiusVsMult = new TGraph(nPoints, xP, yP);
-  grRadiusVsMult->SetMarkerStyle(20);
-  grRadiusVsMult->SetMarkerColor(kAzure-7);
-  grRadiusVsMult->SetLineColor(kAzure-7);
-  grRadiusVsMult->SetLineWidth(3);
-  grRadiusVsMult->SetLineStyle(9);
+  // TGraph * grRadiusVsMult = new TGraph(nPoints, xP, yP);
+  // grRadiusVsMult->SetMarkerColor(kBlack);
+  // grRadiusVsMult->SetLineColor(kBlack);
+  // grRadiusVsMult->SetLineWidth(3);
+  // grRadiusVsMult->SetLineStyle(9);
   //
-  grRadiusVsMult->Draw("L");
+  //grRadiusVsMult->Draw("L");
   //
+
   // add PPB points
   //
   TGraphErrors * grHbtRadiusPPB = GetPPbHbtRadius0887KT();
-  grHbtRadiusPPB->Draw("P");
+  grHbtRadiusPPB->SetMarkerStyle(21);
+  grHbtRadiusPPB->SetMarkerSize(1.);
+  grHbtRadiusPPB->SetLineWidth(1);
+  grHbtRadiusPPB->SetLineStyle(1);
+  grHbtRadiusPPB->SetLineColor(kBlue);
   //
   // add PbPb points
   //
   TGraphErrors * grHbtRadiusPBPB = GetPbPbHbtRadius0887KT();
-  grHbtRadiusPBPB->Draw("P");
+  grHbtRadiusPBPB->SetMarkerStyle(20);
+  grHbtRadiusPBPB->SetMarkerSize(1.0);
+  grHbtRadiusPBPB->SetLineWidth(1);
+  grHbtRadiusPBPB->SetLineStyle(1);
+  grHbtRadiusPBPB->SetLineColor(kRed);
   //
   // add a pp point
   //http://aliceinfo.cern.ch/ArtSubmission/node/1885, value is from Kfir
@@ -52,12 +83,53 @@ void HbtRadii() {
   grHbtRadiusPP->SetPointError(0, TMath::Power(5.98,-2./3.)*0.09/3., 0.3);
   grHbtRadiusPP->SetLineColor(kGreen+1);
   grHbtRadiusPP->SetMarkerColor(kGreen+1);
-  grHbtRadiusPP->SetMarkerStyle(20);
-  grHbtRadiusPP->Draw("P");
-  //
-  
-  canvHbtPlot->BuildLegend();
+  grHbtRadiusPP->SetMarkerStyle(22);
 
+    //canvHbtPlot->BuildLegend()
+  TF1 * poly1 = new TF1("poly1", "[0]*x + [1]", 0., 13.);
+  poly1->SetMarkerColor(kBlack);
+  poly1->SetLineColor(kBlack);
+  poly1->SetLineWidth(3);
+  poly1->SetLineStyle(9);
+  poly1->SetParameter(1, 0.0);
+
+  TMultiGraph * multig = new TMultiGraph("multig", "multigraph");
+  multig->Add(grHbtRadiusPP);
+  multig->Add(grHbtRadiusPPB);
+  multig->Add(grHbtRadiusPBPB);
+  multig->Fit(poly1, "RS");
+  multig->Draw("PZ");
+
+  grHbtRadiusPP->Draw("PZ");
+  grHbtRadiusPPB->Draw("PZ");
+  grHbtRadiusPBPB->Draw("PZ");
+
+  TLegend * leg1 = new TLegend(0.2, 0.82, 0.5, 0.92, "Our parameterisation:");
+  leg1->SetBorderSize(0);
+  leg1->SetFillStyle(0);
+  leg1->SetTextSize(0.04);
+  leg1->AddEntry(poly1, "#it{R} = #it{a} #times #LTd#it{#it{N}_{ch}}/d#it{#eta}#GT^{1/3} + #it{b}", "l");
+  leg1->Draw();
+  TLegend * leg = new TLegend(0.2, 0.6, 0.5, 0.8, "ALICE, #it{k}_{T} = 0.887 GeV/#it{c}");
+  leg->SetBorderSize(0);
+  leg->SetFillStyle(0);
+  leg->SetTextSize(0.04);
+  leg->AddEntry(grHbtRadiusPP,"pp, #sqrt{s} = 7 TeV", "p");
+  leg->AddEntry(grHbtRadiusPPB,"p-Pb, #sqrt{s_{NN}} = 5.02 TeV", "p");
+  leg->AddEntry(grHbtRadiusPBPB, "Pb-Pb, #sqrt{s_{NN}} = 2.76 TeV", "p");
+  leg->Draw();
+  
+  TString text="Uncertainties: #sqrt{stat.^{2} + sys.^{2}}";
+  TPaveText * pave = new TPaveText(0.2,0.53,0.5,0.58,"brNDC");
+  pave->SetBorderSize(0);
+  pave->SetFillColor(kWhite);
+  pave->SetTextColor(kBlack);
+  pave->SetTextFont(42);
+  pave->SetTextSize(0.04);
+  pave->InsertText(text.Data());
+  pave->Draw();
+
+  canvHbtPlot->Print("HbtRadiusParam.eps");
 }
 
 TGraphErrors * GetPbPbHbtRadius0887KT() {
@@ -98,12 +170,12 @@ TGraphErrors * GetPbPbHbtRadius0887KT() {
   Double_t xPerr[7];
   Double_t yPerr[7];
   //
-  for (Int_t iP =0; iP <7; iP++) {
+  for (Int_t iP = 0; iP <7; iP++) {
     xP[iP] = TMath::Power(p8772_d8x1y1_xval[iP], 1./3.);
     xPerr[iP] =  TMath::Power(p8772_d8x1y1_xval[iP], -2./3.) * p8772_d8x1y1_xerrplus[iP]/3.;
-    yP[iP] = TMath::Power(p8772_d8x1y3_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
-    Double_t errSyst = TMath::Power(p8772_d8x1y3_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
-    Double_t errStat = TMath::Power(p8772_d8x1y3_ystatplus[iP]*p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y1_ystatplus[iP], 1./3.);
+    yP[iP] = TMath::Power(p8772_d8x1y2_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
+    Double_t errSyst = TMath::Power(p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
+    Double_t errStat = TMath::Power(p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y1_ystatplus[iP], 1./3.);
     yPerr[iP] = TMath::Sqrt(errSyst*errSyst + errStat*errStat);;
   }
   TGraphErrors * grHbtRadiusPBPB = new TGraphErrors(7, xP, yP, xPerr, yPerr);
@@ -164,8 +236,8 @@ TGraphErrors * GetPPbHbtRadius025KT() {
   for (Int_t iP =0; iP <4; iP++) {
     xP[iP] = p8772_d8x1y1_xval[iP];
     xPerr[iP] = p8772_d8x1y1_xerrplus[iP];
-    yP[iP] = TMath::Power(p8772_d8x1y3_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
-    yPerr[iP] = TMath::Power(p8772_d8x1y3_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
+    yP[iP] = TMath::Power(p8772_d8x1y2_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
+    yPerr[iP] = TMath::Power(p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
   }
   TGraphErrors * grHbtRadiusPPB = new TGraphErrors(4, xP, yP, xPerr, yPerr);
   grHbtRadiusPPB->SetName("grHbtRadiusPPB");
@@ -216,9 +288,9 @@ TGraphErrors * GetPPbHbtRadius0887KT() {
   for (Int_t iP =0; iP <3; iP++) {
     xP[iP] = p8772_d8x1y1_xval[iP];
     xPerr[iP] = p8772_d8x1y1_xerrminus[iP];
-    yP[iP] = TMath::Power(p8772_d8x1y3_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
-    Double_t errSyst = TMath::Power(p8772_d8x1y3_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
-    Double_t errStat = TMath::Power(p8772_d8x1y3_ystatplus[iP]*p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y1_ystatplus[iP], 1./3.);
+    yP[iP] = TMath::Power(p8772_d8x1y2_yval[iP]*p8772_d8x1y2_yval[iP]*p8772_d8x1y1_yval[iP], 1./3.);
+    Double_t errSyst = TMath::Power(p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y2_yerrplus[iP]*p8772_d8x1y1_yerrplus[iP], 1./3.);
+    Double_t errStat = TMath::Power(p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y2_ystatplus[iP]*p8772_d8x1y1_ystatplus[iP], 1./3.);
     yPerr[iP] = TMath::Sqrt(errSyst*errSyst + errStat*errStat);;
   }
   TGraphErrors * grHbtRadiusPPB = new TGraphErrors(3, xP, yP, xPerr, yPerr);

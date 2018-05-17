@@ -210,7 +210,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2_coal->Draw();
 
   coalcanv->Print("theory_coalescence_Cd_B2.eps");
-  return 0;
+  //return 0;
   //------------------------------
   // PLOT FRASCATI PLOT
   //------------------------------
@@ -552,13 +552,18 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius)
   //
   // Here is the crucial mapping between HBT radii and multi^(1/3)
   //
-  // NEW VERSION (5th February 2018):
+  // VERSION (5th February 2018):
   // We assume 0.85fm for pp as Kfir (at dNdeta 6.01)
   // We assume R=4.5fm for central Pb-Pb based on arXiv:1012.4035 (figure 2)
   // We interpolate linearly and take the highest kT bin, because
   // a pT/A of 0.8 GeV/c corresponds to mT=1.23GeV which is a kT of pions of 1.2GeV
   //
-  Double_t radiusVal = 0.177825 + 0.36733 * multi3; 
+  //Double_t radiusVal = 0.177825 + 0.36733 * multi3;
+
+  // VERSION (17th May 2018):
+  // We fit linearly the ALICE data at the kT = 0.887
+
+  Double_t radiusVal = 0.128 + 0.339 * multi3; 
   //
   //
   // OLD versions:

@@ -6,6 +6,7 @@
 \usepackage[margin=2.cm]{geometry}
 \usepackage{multirow}
 \usepackage{tabularx} 
+\usepackage{appendix} 
 
 \ifpdf
   \usepackage[pdftex]{graphicx}
@@ -135,7 +136,7 @@ In this naive expectation, the number of nuclei produced by coalescence increase
 While this picture is found to be approximately valid in pp and \pPb~collisions \cite{ALICE:nucleipp2017, ALICE:nucleipPb2018}, it breaks down in \PbPb~collisions, that exhibit a strong decrease of $B_{A}$ with the centrality of the collision \cite{ALICE:deuteronppPbPb2015}. 
 In addition, the elliptic flow of deuteron cannot be explained by simple coalescence \cite{ALICE:deuteronflow2017}. 
 
-\subsection{Full coalescence}
+\subsection{Full coalescence}{sec:coalescence}
 In contrast to the simple approach described in the previous section, a more advanced coalescence model takes into account the size of the particle emission source, as the coalescence probability naturally decreases for two nucleons with similar momenta that are produced far apart in configuration space. While there are several approaches to address this effect~\cite{PapersWithWignerCitedinUli}, we rely in our study on the formalism proposed in~\cite{Scheibl:1998tk}. \textcolor{red}{Consider mentioning the approximations done by Uli in his paper, if there is time and how Uli's paper relates to the Wigner formalism.}
 In this approach, the quantum mechanical nature of the coalescence products is explicitly accounted for by means of an average quantum mechanical correction factor, $\langle C_{A} \rangle$. In the case of the deuteron, the quantum mechanical correction factor $\langle C_{d} \rangle$ has been approximated as 
 
@@ -206,35 +207,30 @@ In particular, for the case of \hethree~with $A=3$ and $J=1/2$, Eq. \ref{eq:BA_g
 
 \subsection{Source volume}
 As in \cite{Scheibl:1998tk}, we identify the source volume as the effective sub-volume of the whole system which is governed by the homogeneity length of the interacting nucleons. In addition, the same authors claim that this volume is experimentally accessible with Hanbury-Brown-Twiss (HBT) interferometry. 
+The experimental results are typically obtained following the Bertsch-Pratt (BP) parameterisation ($R_{out}, R_{side}, R_{long}$), while the coalescence model described in Section \ref{sec:coalescence} expresses the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. As discussed in Appendix \ref{appendix1}, we identify $\rperp = R_{side}$ and $\rpar = R_{long}$, thus $R = (\rperp^{2}\rpar)^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.
+
 Experimentally, the size of the effective volume can be controlled by selecting different collision geometries, i.e. different centrality classes \cite{Abelev:2013qoq}. In heavy-ion collisions the HBT radii are known to scale with the cubic root of the average charged particle multiplicity density \avdNdeta$^{1/3}$ \cite{Adam:2015vna}, and to depend on the pair average transverse momentum $\langle k_{\mathrm{T}}\rangle$ \cite{Aamodt:2011mr}. In the following, we make the simplifying assumption that the scaling with \avdNdeta$^{1/3}$ holds across collision systems, which is approximately fulfilled in data \cite{Adam:2015pya}. In contrast to \cite{Blum:2017qnn}, we therefore do not explicitly use the measured HBT radii in our study, but we derive the radii from the measured \avdNdeta~according to the following relation:
 
 \begin{equation}
-R = a + b \avdNdeta^{1/3} 
+R = a \avdNdeta^{1/3} + b
 \label{eq:radiusParameterisation}
 \end{equation}
 
-The $a = 0.178$ and $b = 0.367$ coefficients have been determined empirically by interpolating linearly between the value of 0.85 fm and 4.5 fm. These values are consistent with the radius from kaon femtoscopy for $m_{\mathrm{T}} \approx 1$ \GeVc~in low-multiplicity pp collisions \cite{Abelev:2012sq} and the radius from pion femtoscopy in high-multiplicity \PbPb~collisions at the highest available $k_{\mathrm{T}} \approx 0.8$ \GeVc~\cite{Adam:2015vna}. The highest $k_{\mathrm{T}}$ bin was chosen as it corresponds in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon (\pt/$A \approx 0.8$ \GeVc) accessible by ALICE for the measurement of nuclei production. 
+The coefficients, $a = 0.339$ and $b = 0.128$, have been determined by fitting linearly the ALICE data, and the parameterisation is reported in Fig. \ref{fig:radiiparam}. These values are consistent with the radius from kaon femtoscopy for $m_{\mathrm{T}} \approx 1$ \GeVc~in low-multiplicity pp collisions \cite{Abelev:2012sq} and the radius from pion femtoscopy in high-multiplicity \PbPb~collisions at the highest available $k_{\mathrm{T}} \approx 0.8$ \GeVc~\cite{Adam:2015vna}. The highest $k_{\mathrm{T}}$ bin was chosen as it corresponds in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon (\pt/$A \approx 0.8$ \GeVc) accessible by ALICE for the measurement of nuclei production. 
 Ideally, one would use the proton femtoscopic radii for such study, but given that these measurements are not  available in all systems, we assume that $m_{\mathrm{T}}$-scaling holds for HBT radii \cite{Adam:2015vja}.
-
-
-- mention that the parameterisation we propose is found to describe the deuteron data
-- mention we assume the three radii are the same, see line 127
-- plot our parameterisation vs the HBT results: take figure 9 from the femto p-Pb paper but do it at high kt and plot one radii which is the geometric average of the three.
 
 \begin{figure}[htbp]
 \begin{center}
-%\epsfile{file=,scale=0.8}
-\caption{Parameterisation of the dependence of the source radius on multiplicity assumed in this paper, compared to HBT data.}
-\label{fig:cd}
+\includegraphics[width=0.6\textwidth]{HbtRadiusParam.eps}
+\caption{Parameterisation of the dependence of the source radius on multiplicity assumed in this paper, compared to HBT data from \cite{Adam:2015vna, Abelev:2012sq}.}
+\label{fig:radiiparam}
 \end{center}
 \end{figure}
 
-- excess binding energy needs to be released to the system to make coalescence work
 
 \section{Statistical-thermal approach and blast-wave}\label{sec:thermal}
-- 
-
 \section{Comparison with experimental data}\label{sec:comparison}
+- excess binding energy needs to be released to the system to make coalescence work
 
 \subsection{(Anti-)nuclei with $A$ = 2, 3, 4}
 \subsection{(Anti-)hyper-nuclei}
@@ -245,15 +241,41 @@ Ideally, one would use the proton femtoscopic radii for such study, but given th
 
 We conclude that (c.) appears unlikely, thus leaving (b.) as a viable option, at least with our present knowledge of the hypertriton size.
 
+
+
+%%%%%%%%APPENDIX
+\begin{appendix}
+\section{HBT radii in Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisation for comparison with coalescence models}
+The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{sside}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015pwa} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
+The transformation between the two parameterisations is best presented in~\cite{Wiedemann:1999qn} in the equations (W 3.48) to (W 3.52)\footnote{The equations in~\cite{Wiedemann:1999qn} are denoted as (W...) in order to distinguish them from the equations presented in this paper.}:
+
+\begin{eqnarray}
+R_{side}^{2}    &=& R_{\perp}^{2}  \;, \\
+R_{diff}^{2} &=& R_{out}^{2} -  R_{side}^{2} = \beta_{\perp}^2 \gamma^2 (R_{0}^2 + v^2R_{\parallel}^2) \;, \\
+R_{long}^{2}     &=& (1 - \beta_l^2) R_{\parallel}^2 + \gamma^2 (\beta_l - v)^2 (R_{0}^2 + v^2R_{\parallel}^2) \;, \\
+R_{ol}^{2}   &=& \beta_{\perp} (-\beta_l R_{\parallel}^{2} +  \gamma^2 (\beta_l - v)(R_{0}^2 + v^2R_{\parallel}^2)) \,.
+\end{eqnarray}
+%
+We immediately identify that $R_{\perp}^2$ can be identified with $R_{side}^{2}$. Following the reasoning and the nomenclature in~\cite{Wiedemann:1999qn} (W 3.52-3.53), the above equations can be inverted and $R_{\parallel}^{2}$ can be expressed as 
+%
+\begin{eqnarray}
+R_{\parallel}^{2} &=& B  - v \cdot C \;, \\
+                          &=& R_{long}^2 - 2{\beta_l \over \beta_\perp}  R_{ol}^2 + {\beta_l^2 \over \beta_\perp^2} R_{diff}^2 
+                          - v \cdot \Bigl(-{1 \over \beta_\perp } R_{ol}^2 + {\beta_l \over \beta_\perp^2} R_{diff}^2  \Bigr) \; .
+\end{eqnarray}
+%
+As it turns out all corrections which are subtracted from $R_{long}^{2}$ can be neglected. First, we notice that the cross term $R_{ol}$ vanishes if the measured fireball is longitudinally boost-invariant, which is a valid approximation for the rapidity ranges studied here. The remaining terms are all proportional to $\beta_l$, which is also $\beta_l = 0$ by definition of the rest frame for a longitudinally-boosted invariant system. In summary, we can consider $R_{\perp} = R_{side}$ and $R_{\parallel}=R_{long}$ for the present study.
+\end{appendix}
+
+
 %%%%% acknowledgements
 \newenvironment{acknowledgement}{\relax}{\relax}
 \begin{acknowledgement}
 \section*{Acknowledgements}
-
+We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii.
 The authors would like to thank themselves for the auto-critics.
 
 \end{acknowledgement}
-
 
 
 
