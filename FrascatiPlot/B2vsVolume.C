@@ -4,73 +4,99 @@
 #include "TMath.h"
 #include "./generateBWpredictionsB2.C" //ADAPT ME
 
+void convertMultiToRadius(TGraphErrors * graph = 0x0, Int_t paramSet = 0);
+void convertMultiToRadius(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 0);
+
+void getRadiusFromParameterisation(Double_t * multi = 0x0, Double_t * radius = 0x0, Int_t paramSet = 0);
 TF1 * MakeB2TheoryGraphQMfactor(Double_t objSize = 3.2);
 TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 3.2);
 TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.75);
 
-TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
+TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 
-TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733);
-TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733);
-TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800);
-TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.);
+TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
+TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
 
-TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
-TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75);
+TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 
-TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733);
-TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0);
+TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0, Int_t paramSet = 0);
 
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 
-
   
-Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.)
+Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.,
+		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kTRUE)
 {
   
   //--------------------
   //data
   //--------------------
-  TGraphErrors* gB2vsR_pp7TeV = (TGraphErrors *) getB2_pp7TeV(kFALSE, pToA);
-  TGraphErrors* gB2vsR_pp7TeV_sys = (TGraphErrors *) getB2_pp7TeV(kTRUE, pToA);
+  const Int_t nParamSet = 2;
+  TGraphErrors* gB2vsR_pp7TeV[nParamSet];
+  TGraphErrors* gB2vsR_pp7TeV_sys[nParamSet];
+  TGraphErrors* gB2vsR_pPb5TeV[nParamSet];
+  TGraphErrors* gB2vsR_pPb5TeV_sys[nParamSet];
+  TGraphErrors* gB2vsR_PbPb5TeV[nParamSet];
+  TGraphErrors* gB2vsR_PbPb5TeV_sys[nParamSet];
+  TGraphErrors* gB2vsR_PbPb276TeV[nParamSet];
+  TGraphErrors* gB2vsR_PbPb276TeV_sys[nParamSet];
+  //
+  TGraphErrors* gB3vsR_PbPb5TeV[nParamSet];
+  TGraphErrors* gB3vsR_PbPb5TeV_sys[nParamSet];
+  TGraphErrors* gB3vsR_PbPb276TeV[nParamSet];
+  TGraphErrors* gB3vsR_PbPb276TeV_sys[nParamSet];
+  TGraphAsymmErrors* gB3vsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gB3vsR_pp7TeV_sys[nParamSet];
+  TGraphAsymmErrors* gB3LambdavsR_PbPb276TeV[nParamSet];
+  TGraphAsymmErrors* gB3LambdavsR_PbPb276TeV_sys[nParamSet];
+  //
+  TGraphAsymmErrors* gBlastB2vsR_PbPb276TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB2vsR_PbPb502TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB2vsR_pPb502TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB2vsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB3vsR_PbPb276TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB3LambdavsR_PbPb276TeV[nParamSet];
 
-  TGraphErrors* gB2vsR_pPb5TeV = (TGraphErrors *) getB2_pPb5TeV(kFALSE, pToA);
-  TGraphErrors* gB2vsR_pPb5TeV_sys = (TGraphErrors *) getB2_pPb5TeV(kTRUE, pToA);
-  
-  TGraphErrors* gB2vsR_PbPb5TeV = (TGraphErrors *) getB2_PbPb5TeV(kFALSE, pToA);
-  TGraphErrors* gB2vsR_PbPb5TeV_sys = (TGraphErrors *) getB2_PbPb5TeV(kTRUE, pToA);
-  
-  TGraphErrors* gB2vsR_PbPb276TeV = (TGraphErrors *) getB2_PbPb276TeV(kFALSE, pToA);
-  TGraphErrors* gB2vsR_PbPb276TeV_sys = (TGraphErrors *) getB2_PbPb276TeV(kTRUE, pToA);
+  for (Int_t ip = 0; ip < nParamSet; ip++){
+    gB2vsR_pp7TeV[ip] = (TGraphErrors *) getB2_pp7TeV(kFALSE, pToA, ip);
+    gB2vsR_pp7TeV_sys[ip] = (TGraphErrors *) getB2_pp7TeV(kTRUE, pToA, ip);
+    gB2vsR_pPb5TeV[ip] = (TGraphErrors *) getB2_pPb5TeV(kFALSE, pToA, ip);
+    gB2vsR_pPb5TeV_sys[ip] = (TGraphErrors *) getB2_pPb5TeV(kTRUE, pToA, ip);
+    gB2vsR_PbPb5TeV[ip] = (TGraphErrors *) getB2_PbPb5TeV(kFALSE, pToA, ip);
+    gB2vsR_PbPb5TeV_sys[ip] = (TGraphErrors *) getB2_PbPb5TeV(kTRUE, pToA, ip);
+    gB2vsR_PbPb276TeV[ip] = (TGraphErrors *) getB2_PbPb276TeV(kFALSE, pToA, ip);
+    gB2vsR_PbPb276TeV_sys[ip] = (TGraphErrors *) getB2_PbPb276TeV(kTRUE, pToA, ip);
+    //
+    gB3vsR_PbPb5TeV[ip] = (TGraphErrors *) getB3_PbPb5TeV(kFALSE, pToAb3, ip);
+    gB3vsR_PbPb5TeV_sys[ip] = (TGraphErrors *) getB3_PbPb5TeV(kTRUE, pToAb3, ip);
+    gB3vsR_PbPb276TeV[ip] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToAb3, ip);
+    gB3vsR_PbPb276TeV_sys[ip] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToAb3, ip);
+    gB3vsR_pp7TeV[ip] = (TGraphAsymmErrors *) getB3_pp7TeV(kFALSE, pToAb3pp, ip);
+    gB3vsR_pp7TeV_sys[ip] = (TGraphAsymmErrors *) getB3_pp7TeV(kTRUE, pToAb3pp, ip);
+    gB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kFALSE, pToAb3Lambda, ip);
+    gB3LambdavsR_PbPb276TeV_sys[ip] = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kTRUE, pToAb3Lambda, ip);
 
-  TGraphErrors* gB3vsR_PbPb5TeV = (TGraphErrors *) getB3_PbPb5TeV(kFALSE, pToAb3);
-  TGraphErrors* gB3vsR_PbPb5TeV_sys = (TGraphErrors *) getB3_PbPb5TeV(kTRUE, pToAb3);
-  
-  TGraphErrors* gB3vsR_PbPb276TeV = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToAb3);
-  TGraphErrors* gB3vsR_PbPb276TeV_sys = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToAb3);
-
-  TGraphAsymmErrors* gB3vsR_pp7TeV = (TGraphAsymmErrors *) getB3_pp7TeV(kFALSE, pToAb3pp);
-  TGraphAsymmErrors* gB3vsR_pp7TeV_sys = (TGraphAsymmErrors *) getB3_pp7TeV(kTRUE, pToAb3pp);
-
-  TGraphAsymmErrors* gB3LambdavsR_PbPb276TeV = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kFALSE, pToAb3Lambda);
-  TGraphAsymmErrors* gB3LambdavsR_PbPb276TeV_sys = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kTRUE, pToAb3Lambda);
-
-  //-----------------------------
-  //theory - Blast Wave + thermal
-  //-----------------------------
-  TGraphAsymmErrors* gBlastB2vsR_PbPb276TeV = (TGraphAsymmErrors *)  getBlastB2_PbPb276TeV(kFALSE, pToA);
-  TGraphAsymmErrors* gBlastB2vsR_PbPb502TeV = (TGraphAsymmErrors *)  getBlastB2_PbPb502TeV(kFALSE, pToA);
-  TGraphAsymmErrors* gBlastB2vsR_pPb502TeV = (TGraphAsymmErrors *)  getBlastB2_pPb502TeV(kFALSE, pToA);
-  TGraphAsymmErrors* gBlastB2vsR_pp7TeV = (TGraphAsymmErrors *)  getBlastB2_pp7TeV(kFALSE, pToA);
-
-  TGraphAsymmErrors* gBlastB3vsR_PbPb276TeV = (TGraphAsymmErrors *)  getBlastB3_PbPb276TeV(kFALSE, pToAb3);
-  TGraphAsymmErrors* gBlastB3LambdavsR_PbPb276TeV = (TGraphAsymmErrors *)  getBlastB3Lambda_PbPb276TeV(kFALSE, pToAb3);
+    //-----------------------------
+    //theory - Blast Wave + thermal
+    //-----------------------------
+    gBlastB2vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB2_PbPb276TeV(kFALSE, pToA, ip);
+    gBlastB2vsR_PbPb502TeV[ip] = (TGraphAsymmErrors *)  getBlastB2_PbPb502TeV(kFALSE, pToA, ip);
+    gBlastB2vsR_pPb502TeV[ip] = (TGraphAsymmErrors *)  getBlastB2_pPb502TeV(kFALSE, pToA, ip);
+    gBlastB2vsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB2_pp7TeV(kFALSE, pToA, ip);
+    //
+    gBlastB3vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB3_PbPb276TeV(kFALSE, pToAb3, ip);
+    gBlastB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB3Lambda_PbPb276TeV(kFALSE, pToAb3, ip);
+  }
   
   //--------------------
   //theory - coalescence
@@ -156,7 +182,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gStyle->SetPadRightMargin(0.02); 
 
   //------------------------------
-  // PLOT COALESCENCE ONLY
+  // PLOT COALESCENCE ONLY with different radii
   //------------------------------
   TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 1000);
   coalcanv->SetBottomMargin(0.02);
@@ -165,7 +191,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   coalcanv->SetRightMargin(0.02);
   coalcanv->Divide(2,1);
 
-   TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; R (fm); #LTC_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
+  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; R (fm); #LTC_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
   frame_cd->GetXaxis()->SetTitleSize(0.05);
   frame_cd->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
@@ -210,7 +236,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2_coal->Draw();
 
   coalcanv->Print("theory_coalescence_Cd_B2.eps");
-  //return 0;
+  if (plotOnlyCoalescence) return 0;
+
+  //  if (plotPaperFigures) return 0;
+
   //------------------------------
   // PLOT FRASCATI PLOT
   //------------------------------
@@ -233,40 +262,43 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 			   kGreen+2, kSpring+4, kRed+1, kRed+2,
 			   kBlue-5, kBlue-7, kRed+1, kRed+2};
   
-  Int_t Marker_Style[] = { 21, 22, 24, 20,
-			   21, 22, 24, 20,
-			   21, 22, 24, 20,
-			   21, 22, 24, 20};
+  Int_t Marker_Style[] = { 23, 22, 21, 20,
+			   23, 22, 21, 20,
+			   23, 22, 21, 20,
+			   23, 22, 21, 20};
   
-  MakeUp(gB2vsR_pp7TeV_sys, color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
-  MakeUp(gB2vsR_pp7TeV    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
+  for (Int_t ip = 0; ip < nParamSet; ip++) {
+    MakeUp(gB2vsR_pp7TeV_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
 
-  MakeUp(gB2vsR_pPb5TeV_sys, color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502], Marker_Size);
-  MakeUp(gB2vsR_pPb5TeV    , color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502], Marker_Size);
+    MakeUp(gB2vsR_pPb5TeV_sys[ip], color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_pPb5TeV[ip]    , color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
 
-  MakeUp(gB2vsR_PbPb276TeV_sys, color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276], Marker_Size);
-  MakeUp(gB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276], Marker_Size);
+    MakeUp(gB2vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276]+4*ip, Marker_Size);
+    
+    MakeUp(gB2vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_PbPb5TeV[ip]    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502]+4*ip, Marker_Size);
 
-  MakeUp(gB2vsR_PbPb5TeV_sys, color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
-  MakeUp(gB2vsR_PbPb5TeV    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
+    MakeUp(gBlastB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast]+4*ip, Marker_Size);
+    MakeUp(gBlastB2vsR_pPb502TeV[ip]    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast]+4*ip, Marker_Size);
+    MakeUp(gBlastB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast]+4*ip, Marker_Size);
+    MakeUp(gBlastB2vsR_PbPb502TeV[ip]    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast]+4*ip, Marker_Size);
 
-  
-  MakeUp(gBlastB2vsR_pp7TeV    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
-  MakeUp(gBlastB2vsR_pPb502TeV    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb276TeV    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
-  MakeUp(gBlastB2vsR_PbPb502TeV    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
+    MakeUp(gB3vsR_pp7TeV_sys[ip], color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
+    MakeUp(gB3vsR_pp7TeV[ip]    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
 
-  MakeUp(gB3vsR_pp7TeV_sys, color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
-  MakeUp(gB3vsR_pp7TeV    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
+    MakeUp(gB3vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276]+4*ip, Marker_Size);
+    MakeUp(gB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276]+4*ip, Marker_Size);
 
-  MakeUp(gB3vsR_PbPb276TeV_sys, color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
-  MakeUp(gB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
+    MakeUp(gB3vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502]+4*ip, Marker_Size);
+    MakeUp(gB3vsR_PbPb5TeV[ip]    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502]+4*ip, Marker_Size);
 
-  MakeUp(gB3vsR_PbPb5TeV_sys, color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
-  MakeUp(gB3vsR_PbPb5TeV    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
+    MakeUp(gBlastB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast]+4*ip, Marker_Size);
+  }
 
-  MakeUp(gBlastB3vsR_PbPb276TeV    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
-  
+
+
   //display
   TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
   cb2->SetBottomMargin(0.02);
@@ -542,7 +574,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 }
 
 
-void getRadiusFromParameterisation(Double_t * multi, Double_t * radius)
+void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t paramSet)
 {
   // parameterisation to convert multiplicity into Rside
   // this is the parameterisation for the pion radius
@@ -557,13 +589,19 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius)
   // We assume R=4.5fm for central Pb-Pb based on arXiv:1012.4035 (figure 2)
   // We interpolate linearly and take the highest kT bin, because
   // a pT/A of 0.8 GeV/c corresponds to mT=1.23GeV which is a kT of pions of 1.2GeV
-  //
-  //Double_t radiusVal = 0.177825 + 0.36733 * multi3;
+  // radiusVal = 0.177825 + 0.36733 * multi3;
 
   // VERSION (17th May 2018):
-  // We fit linearly the ALICE data at the kT = 0.887
-
-  Double_t radiusVal = 0.128 + 0.339 * multi3; 
+  // We fit linearly the ALICE data at the kT = 0.887 
+  Double_t radiusVal = 0.0;
+  if (paramSet==1) {
+    //manual hack to have the data points fall onto the U. Heinz curve for deuteron
+    radiusVal = -0.750 + 0.625 * multi3;
+  } else {
+    //fit to the HBT data, kT = 0.887
+    radiusVal = 0.128 + 0.339 * multi3; 
+  }
+  
   //
   //
   // OLD versions:
@@ -681,7 +719,7 @@ TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT, Double_t objSize)
 
 }
 
-void convertMultiToRadius(TGraphErrors * graph)
+void convertMultiToRadius(TGraphErrors * graph, Int_t paramSet)
 {
   //convert multiplicity dN/deta into radius with parameterisation
   if (!graph) return;
@@ -691,7 +729,7 @@ void convertMultiToRadius(TGraphErrors * graph)
     xold[0] = graph->GetX()[ip];
     xold[1] = graph->GetEX()[ip];
     Double_t xnew[2] = {-1.0, -1.0};
-    getRadiusFromParameterisation(xold, xnew);
+    getRadiusFromParameterisation(xold, xnew, paramSet);
     graph->GetX()[ip] = xnew[0];
     graph->GetEX()[ip] = xnew[1];
   }
@@ -700,7 +738,7 @@ void convertMultiToRadius(TGraphErrors * graph)
 }
 
 
-void convertMultiToRadius(TGraphAsymmErrors * graph)
+void convertMultiToRadius(TGraphAsymmErrors * graph, Int_t paramSet)
 {
   //convert multiplicity dN/deta into radius with parameterisation
   if (!graph) return;
@@ -710,7 +748,7 @@ void convertMultiToRadius(TGraphAsymmErrors * graph)
     xold[0] = graph->GetX()[ip];
     xold[1] = graph->GetEXlow()[ip];
     Double_t xnew[2] = {-1.0, -1.0};
-    getRadiusFromParameterisation(xold, xnew);
+    getRadiusFromParameterisation(xold, xnew, paramSet);
     graph->GetX()[ip] = xnew[0];
     graph->GetEXlow()[ip] = xnew[1];
     graph->GetEXhigh()[ip] = xnew[1];
@@ -723,7 +761,7 @@ void convertMultiToRadius(TGraphAsymmErrors * graph)
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- pp 7 TeV
 
-TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA)
+TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   //from Manuel - pp 7 TeV EXA 2017 preliminary
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -736,7 +774,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kGreen+2);
   graph->SetLineColor(kGreen+2);
@@ -750,7 +788,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- pPb 5 TeV
-TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA)
+TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
 
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -763,7 +801,7 @@ TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kBlue);
   graph->SetLineColor(kBlue);
@@ -778,7 +816,7 @@ TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- PbPb 5 TeV
-TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA)
+TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   //Preliminary from Max - QM 2017
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -791,7 +829,7 @@ TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
@@ -806,7 +844,7 @@ TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- PbPb 2.76 TeV
-TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
+TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   //Published PRC 93, 0249717 (2016)
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -819,7 +857,7 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kRed+2);
   graph->SetLineColor(kRed+2);
@@ -835,7 +873,7 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
 //---------------------------------------------------------
 //------------------------------ ALICE data B3 --- pp 7 TeV
 
-TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp)
+TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp, Int_t paramSet)
 {
   //from 1709.08522
   TFile * f0 = TFile::Open("B3pToA_pp7TeV.root");
@@ -848,7 +886,7 @@ TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kTeal-5);
   graph->SetLineColor(kTeal-5);
@@ -863,7 +901,7 @@ TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B3 --- PbPb 5 TeV
-TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3)
+TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
 {
   //Preliminary from Max - QM 2017
   TFile * f0 = TFile::Open("B3pToA_PbPb5TeV_preliminarySQM17.root");
@@ -876,7 +914,7 @@ TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
@@ -891,7 +929,7 @@ TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B3 --- PbPb 2.76 TeV
-TGraphErrors * getB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
+TGraphErrors * getB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
 {
   //Published PRC 93, 0249717 (2016)
   TFile * f0 = TFile::Open("B3pToA_PbPb276TeV.root");
@@ -904,7 +942,7 @@ TGraphErrors * getB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   graph->SetMarkerColor(kRed+2);
   graph->SetLineColor(kRed+2);
   graph->SetFillColorAlpha(kRed+2, 0.3);  
@@ -917,7 +955,7 @@ TGraphErrors * getB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B3Lambda --- PbPb 2.76 TeV
-TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda)
+TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda, Int_t paramSet)
 {
   //Published Physics Letters B 754 (2016) 360–372
   TFile * f0 = TFile::Open("B3LambdapToA_PbPb276TeV.root");
@@ -929,7 +967,7 @@ TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda
     return NULL;
   }
 
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kAzure-7);
   graph->SetLineColor(kAzure-7);
@@ -944,14 +982,14 @@ TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal PbPb 2.76 TeV
-TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
+TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   // Published proton yield from Phys. Rev. C 88 (2013) 044910
   // Blast wave params from π,K,p published
   // d/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "deuteron", pToA);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta+2);
   graph->SetLineColor(kMagenta+2);
@@ -966,14 +1004,14 @@ TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal PbPb 5.02 TeV
-TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys, Double_t pToA)
+TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   // Preliminary (~final) proton yields and BW params from:
   //https://gitlab.cern.ch/njacazio/SpectraAnalysisRun2/tree/master/results/spectra/spectra-pag/Preliminaries/QM2017
   // d/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb502TeV", "rms", "deuteron", pToA);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta+2);
   graph->SetLineColor(kMagenta+2);
@@ -989,14 +1027,14 @@ TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal pPb 5 TeV
-TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys, Double_t pToA)
+TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   // Published proton yield  
   // Blast wave params from π,K,p published
   // d/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pPb502TeV", "rms", "deuteron", pToA);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta);
   graph->SetLineColor(kMagenta);
@@ -1012,14 +1050,14 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal pp 7 TeV
-TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA)
+TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   // Final proton yield from long paper pp7 TeV
   // Blast wave params from π,K,p published
   // d/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "deuteron", pToA);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta-2);
   graph->SetLineColor(kMagenta-2);
@@ -1036,14 +1074,14 @@ TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA)
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal PbPb 2.76 TeV
-TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
+TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
 {
   // Published proton yield from Phys. Rev. C 88 (2013) 044910
   // Blast wave params from π,K,p published
   // 3He/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "He3", pToAb3);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta+1);
   graph->SetLineColor(kMagenta+1);
@@ -1058,7 +1096,7 @@ TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
 }
 
 //---------------------- Blast wave + thermal PbPb 2.76 TeV -- Hypertriton
-TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
+TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
 {
   // Published proton yield from Phys. Rev. C 88 (2013) 044910
   // Blast wave params from π,K,p published
@@ -1066,7 +1104,7 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3)
   // s3 from hyper-triton paper
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "hyper-triton", pToAb3);
-  convertMultiToRadius(graph);
+  convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kAzure-7);
   graph->SetLineColor(kAzure-7);
