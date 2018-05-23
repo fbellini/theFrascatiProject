@@ -1,4 +1,5 @@
-/* akalweit@cern.ch, fbellini@cern.ch
+/*
+   akalweit@cern.ch, fbellini@cern.ch
    17.01.2018 - The Frascati plot
 */
 #include "TMath.h"
@@ -13,13 +14,14 @@ TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize 
 TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.75);
 
 TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_pp7TeVINEL(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 
 TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
 TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
-TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
+TGraphAsymmErrors * getB3_pp7TeVINEL(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
 TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
 
 TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
@@ -44,6 +46,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   const Int_t nParamSet = 2;
   TGraphErrors* gB2vsR_pp7TeV[nParamSet];
   TGraphErrors* gB2vsR_pp7TeV_sys[nParamSet];
+  TGraphErrors* gB2vsR_pp7TeVINEL[nParamSet];
+  TGraphErrors* gB2vsR_pp7TeVINEL_sys[nParamSet];
   TGraphErrors* gB2vsR_pPb5TeV[nParamSet];
   TGraphErrors* gB2vsR_pPb5TeV_sys[nParamSet];
   TGraphErrors* gB2vsR_PbPb5TeV[nParamSet];
@@ -68,8 +72,12 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   TGraphAsymmErrors* gBlastB3LambdavsR_PbPb276TeV[nParamSet];
 
   for (Int_t ip = 0; ip < nParamSet; ip++){
-    gB2vsR_pp7TeV[ip] = (TGraphErrors *) getB2_pp7TeV(kFALSE, pToA, ip);
-    gB2vsR_pp7TeV_sys[ip] = (TGraphErrors *) getB2_pp7TeV(kTRUE, pToA, ip);
+    gB2vsR_pp7TeVINEL[ip] = (TGraphErrors *) getB2_pp7TeVINEL(kFALSE, pToA, ip);
+    gB2vsR_pp7TeVINEL_sys[ip] = (TGraphErrors *) getB2_pp7TeVINEL(kTRUE, pToA, ip);
+
+    gB2vsR_pp7TeV[ip] = (TGraphErrors *) getB2_pp7TeVINEL(kFALSE, pToA, ip);
+    gB2vsR_pp7TeV_sys[ip] = (TGraphErrors *) getB2_pp7TeVINEL(kTRUE, pToA, ip);
+      
     gB2vsR_pPb5TeV[ip] = (TGraphErrors *) getB2_pPb5TeV(kFALSE, pToA, ip);
     gB2vsR_pPb5TeV_sys[ip] = (TGraphErrors *) getB2_pPb5TeV(kTRUE, pToA, ip);
     gB2vsR_PbPb5TeV[ip] = (TGraphErrors *) getB2_PbPb5TeV(kFALSE, pToA, ip);
@@ -81,8 +89,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     gB3vsR_PbPb5TeV_sys[ip] = (TGraphErrors *) getB3_PbPb5TeV(kTRUE, pToAb3, ip);
     gB3vsR_PbPb276TeV[ip] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToAb3, ip);
     gB3vsR_PbPb276TeV_sys[ip] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToAb3, ip);
-    gB3vsR_pp7TeV[ip] = (TGraphAsymmErrors *) getB3_pp7TeV(kFALSE, pToAb3pp, ip);
-    gB3vsR_pp7TeV_sys[ip] = (TGraphAsymmErrors *) getB3_pp7TeV(kTRUE, pToAb3pp, ip);
+    gB3vsR_pp7TeV[ip] = (TGraphAsymmErrors *) getB3_pp7TeVINEL(kFALSE, pToAb3pp, ip);
+    gB3vsR_pp7TeV_sys[ip] = (TGraphAsymmErrors *) getB3_pp7TeVINEL(kTRUE, pToAb3pp, ip);
     gB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kFALSE, pToAb3Lambda, ip);
     gB3LambdavsR_PbPb276TeV_sys[ip] = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kTRUE, pToAb3Lambda, ip);
 
@@ -241,9 +249,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //  if (plotPaperFigures) return 0;
 
   //------------------------------
-  // PLOT FRASCATI PLOT
+  // PLOT FRASCATI PLOT(S)
   //------------------------------
-
   //make up options
   Int_t Fill_Style = 1001;
   Int_t Line_Style = 1;
@@ -270,6 +277,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   for (Int_t ip = 0; ip < nParamSet; ip++) {
     MakeUp(gB2vsR_pp7TeV_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
     MakeUp(gB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_pp7TeVINEL_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_pp7TeVINEL[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
 
     MakeUp(gB2vsR_pPb5TeV_sys[ip], color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
     MakeUp(gB2vsR_pPb5TeV[ip]    , color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
@@ -284,7 +293,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     MakeUp(gBlastB2vsR_pPb502TeV[ip]    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast]+4*ip, Marker_Size);
     MakeUp(gBlastB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast]+4*ip, Marker_Size);
     MakeUp(gBlastB2vsR_PbPb502TeV[ip]    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast]+4*ip, Marker_Size);
-
     MakeUp(gB3vsR_pp7TeV_sys[ip], color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
     MakeUp(gB3vsR_pp7TeV[ip]    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
 
@@ -297,25 +305,20 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     MakeUp(gBlastB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast]+4*ip, Marker_Size);
   }
 
-
-
-  //display
-  TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
-  cb2->SetBottomMargin(0.02);
-  cb2->SetTopMargin(0.02);
-  cb2->SetLeftMargin(0.15);
-  cb2->SetRightMargin(0.02);
+  //Define frames only once for all sets of B2 or B3 vs Radius
   TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; radius (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.05);
   hframe->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
+
   TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; radius (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.05);
   hframe3->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
 
+  //Define pT/A labels only once
   TPaveText * pavept = new TPaveText(0.55, 0.55, 0.95, 0.6, "NDC");
   pavept->SetFillStyle(0);
   pavept->SetTextFont(42);
@@ -334,6 +337,39 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   paveptB3L->SetTextFont(42);
   paveptB3L->AddText(Form("#it{B}_{3,#Lambda}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
+
+  
+  //---------------------------------------
+  // PLOT FIGURES FOR PAPER
+  //---------------------------------------  
+
+  TCanvas * cr1 = new TCanvas("cr1", "compare radii parameterisations", 1600, 1000);
+  cr1->SetBottomMargin(0.02);
+  cr1->SetTopMargin(0.02);
+  cr1->SetLeftMargin(0.15);
+  cr1->SetRightMargin(0.02);
+  cr1->Divide(2,1);
+  
+  cr1->cd(1);
+  hframe->Draw();
+  
+  
+  if (plotPaperFigures) return 0;
+
+  //---------------------------------------
+  // PLOT FRASCATI PLOTS FOR SLIDES
+  //---------------------------------------  
+
+  //Chose the set of parameterisation for the radii
+  Short_t ip = 1;
+
+  //display
+  TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
+  cb2->SetBottomMargin(0.02);
+  cb2->SetTopMargin(0.02);
+  cb2->SetLeftMargin(0.15);
+  cb2->SetRightMargin(0.02);
+  
   //Legends
   int nl = 10;
   TLegend * legB2;
@@ -346,14 +382,14 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   legB2->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
   legB2->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r}(d) = 0 (point-like)", "l");
-  legB2->AddEntry(gB2vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2->AddEntry(gB2vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB2->AddEntry(gB2vsR_pPb5TeV_sys, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2->AddEntry(gB2vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
-  legB2->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB2->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB2->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB2->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gB2vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB2->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB2->AddEntry(gB2vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB2->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2->AddEntry(gBlastB2vsR_PbPb502TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_PbPb276TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_pPb502TeV[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->AddEntry(gBlastB2vsR_pp7TeV[ip], "pp #sqrt{#it{s}} = 7 TeV, BW + GSI (T = 156 MeV)", "l");
   
   nl = 8;
   TLegend * legB3;
@@ -365,13 +401,13 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->SetTextSize(0.025);
   legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
   legB3->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
-  legB3->AddEntry(gB3vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB3->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB3->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
-  legB3->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB3->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
   legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
-  legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
-  legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
+  legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
 
   cb2->Divide(2,1);
 
@@ -382,18 +418,18 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hframe->Draw();
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
-  gBlastB2vsR_PbPb276TeV->Draw("samel");
-  gBlastB2vsR_PbPb502TeV->Draw("samel");
-  gBlastB2vsR_pPb502TeV->Draw("samel");
-  gBlastB2vsR_pp7TeV->Draw("samel");
-  gB2vsR_pp7TeV_sys->Draw("p3");
-  gB2vsR_pp7TeV->Draw("samep");
-  gB2vsR_pPb5TeV_sys->Draw("p3");
-  gB2vsR_pPb5TeV->Draw("samep");
-  gB2vsR_PbPb5TeV_sys->Draw("p3");
-  gB2vsR_PbPb5TeV->Draw("samep");
-  gB2vsR_PbPb276TeV_sys->Draw("p3");
-  gB2vsR_PbPb276TeV->Draw("samep");
+  gBlastB2vsR_PbPb276TeV[ip]->Draw("samel");
+  gBlastB2vsR_PbPb502TeV[ip]->Draw("samel");
+  gBlastB2vsR_pPb502TeV[ip]->Draw("samel");
+  gBlastB2vsR_pp7TeV[ip]->Draw("samel");
+  gB2vsR_pp7TeV_sys[ip]->Draw("p3");
+  gB2vsR_pp7TeV[ip]->Draw("samep");
+  gB2vsR_pPb5TeV_sys[ip]->Draw("p3");
+  gB2vsR_pPb5TeV[ip]->Draw("samep");
+  gB2vsR_PbPb5TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb5TeV[ip]->Draw("samep");
+  gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb276TeV[ip]->Draw("samep");
   legB2->Draw();
   pavept->Draw();
 
@@ -405,16 +441,16 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
   hB3L_coalescence->Draw("lsame");
-  gB3vsR_PbPb5TeV_sys->Draw("p3");
-  gB3vsR_PbPb5TeV->Draw("samep");
-  gB3vsR_PbPb276TeV_sys->Draw("samep3");
-  gB3vsR_PbPb276TeV->Draw("samep");
-  gB3vsR_pp7TeV_sys->Draw("samep2");
-  gB3vsR_pp7TeV->Draw("samep");
-  gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
-  gB3LambdavsR_PbPb276TeV->Draw("samep");
-  gBlastB3vsR_PbPb276TeV->Draw("samel");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
+  gB3vsR_PbPb5TeV_sys[ip]->Draw("p3");
+  gB3vsR_PbPb5TeV[ip]->Draw("samep");
+  gB3vsR_PbPb276TeV_sys[ip]->Draw("samep3");
+  gB3vsR_PbPb276TeV[ip]->Draw("samep");
+  gB3vsR_pp7TeV_sys[ip]->Draw("samep2");
+  gB3vsR_pp7TeV[ip]->Draw("samep");
+  gB3LambdavsR_PbPb276TeV_sys[ip]->Draw("samep2");
+  gB3LambdavsR_PbPb276TeV[ip]->Draw("samep");
+  gBlastB3vsR_PbPb276TeV[ip]->Draw("samel");
+  gBlastB3LambdavsR_PbPb276TeV[ip]->Draw("samel");
   legB3->Draw();
   paveptB3->Draw();
   paveptB3L->Draw();
@@ -427,20 +463,20 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2data->SetFillStyle(0);
   legB2data->SetTextSize(0.035);
   legB2data->SetBorderSize(0);
-  legB2data->AddEntry(gB2vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2data->AddEntry(gB2vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB2data->AddEntry(gB2vsR_pPb5TeV_sys, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2data->AddEntry(gB2vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2data->AddEntry(gB2vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB2data->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB2data->AddEntry(gB2vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB2data->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
  
   nl = 5;
   TLegend * legB2blast = new TLegend(0.1, 0.65-nl*0.04, 0.45, 0.65, "Blast-Wave (#pi,K,p) + GSI-Heid. (T = 156 MeV)");
   legB2blast->SetFillStyle(0);
   legB2blast->SetTextSize(0.035);
   legB2blast->SetBorderSize(0);
-  legB2blast->AddEntry(gBlastB2vsR_PbPb502TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
-  legB2blast->AddEntry(gBlastB2vsR_PbPb276TeV, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
-  legB2blast->AddEntry(gBlastB2vsR_pPb502TeV, "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
-  legB2blast->AddEntry(gBlastB2vsR_pp7TeV, "pp #sqrt{#it{s}} = 7 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_PbPb502TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_PbPb276TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_pPb502TeV[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "l");
+  legB2blast->AddEntry(gBlastB2vsR_pp7TeV[ip], "pp #sqrt{#it{s}} = 7 TeV", "l");
   
   nl = 3;
   TLegend * legB2coal = new TLegend(0.1, 0.40-nl*0.04, 0.45, 0.40, "Coalescence");
@@ -465,18 +501,18 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB2_coalescence->Draw("l");
   hB2_coalescence_pointlike->Draw("lsame");
   
-  gBlastB2vsR_PbPb276TeV->Draw("samel");
-  gBlastB2vsR_PbPb502TeV->Draw("samel");
-  gBlastB2vsR_pPb502TeV->Draw("samel");
-  gBlastB2vsR_pp7TeV->Draw("samel");
-  gB2vsR_pp7TeV_sys->Draw("p3");
-  gB2vsR_pp7TeV->Draw("samep");
-  gB2vsR_pPb5TeV_sys->Draw("p3");
-  gB2vsR_pPb5TeV->Draw("samep");
-  gB2vsR_PbPb5TeV_sys->Draw("p3");
-  gB2vsR_PbPb5TeV->Draw("samep");
-  gB2vsR_PbPb276TeV_sys->Draw("p3");
-  gB2vsR_PbPb276TeV->Draw("samep");
+  gBlastB2vsR_PbPb276TeV[ip]->Draw("samel");
+  gBlastB2vsR_PbPb502TeV[ip]->Draw("samel");
+  gBlastB2vsR_pPb502TeV[ip]->Draw("samel");
+  gBlastB2vsR_pp7TeV[ip]->Draw("samel");
+  gB2vsR_pp7TeV_sys[ip]->Draw("p3");
+  gB2vsR_pp7TeV[ip]->Draw("samep");
+  gB2vsR_pPb5TeV_sys[ip]->Draw("p3");
+  gB2vsR_pPb5TeV[ip]->Draw("samep");
+  gB2vsR_PbPb5TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb5TeV[ip]->Draw("samep");
+  gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb276TeV[ip]->Draw("samep");
   pavept->Draw();
   cb2opta->cd(2);
   legB2data->Draw();
@@ -491,18 +527,18 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3data->SetFillStyle(0);
   legB3data->SetTextSize(0.035);
   legB3data->SetBorderSize(0);
-  legB3data->AddEntry(gB3vsR_PbPb5TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB3data->AddEntry(gB3vsR_PbPb276TeV_sys, "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB3data->AddEntry(gB3vsR_pp7TeV_sys, "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
-  legB3data->AddEntry(gB3LambdavsR_PbPb276TeV_sys, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
+  legB3data->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  legB3data->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3data->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
+  legB3data->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
 
   nl = 3;
   TLegend * legB3blast = new TLegend(0.1, 0.55-nl*0.04, 0.45, 0.55, "Blast-Wave (#pi,K,p) + GSI-Heid. (T = 156 MeV)");
   legB3blast->SetFillStyle(0);
   legB3blast->SetTextSize(0.035);
   legB3blast->SetBorderSize(0);
-  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV, "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
-  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV, "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
 
   nl = 4;
   TLegend * legB3coal = new TLegend(0.1, 0.4-nl*0.04, 0.45, 0.4, "Coalescence");
@@ -530,14 +566,14 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3_coalescence->Draw("l");
   hB3_coalescence_pointlike->Draw("lsame");
   //hB3L_coalescence->Draw("lsame");
-  gBlastB3vsR_PbPb276TeV->Draw("samel");
+  gBlastB3vsR_PbPb276TeV[ip]->Draw("samel");
   //gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
-  gB3vsR_PbPb5TeV_sys->Draw("p3");
-  gB3vsR_PbPb5TeV->Draw("samep");
-  gB3vsR_PbPb276TeV_sys->Draw("samep3");
-  gB3vsR_PbPb276TeV->Draw("samep");
-  gB3vsR_pp7TeV_sys->Draw("samep2");
-  gB3vsR_pp7TeV->Draw("samep");
+  gB3vsR_PbPb5TeV_sys[ip]->Draw("p3");
+  gB3vsR_PbPb5TeV[ip]->Draw("samep");
+  gB3vsR_PbPb276TeV_sys[ip]->Draw("samep3");
+  gB3vsR_PbPb276TeV[ip]->Draw("samep");
+  gB3vsR_pp7TeV_sys[ip]->Draw("samep2");
+  gB3vsR_pp7TeV[ip]->Draw("samep");
   // gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   // gB3LambdavsR_PbPb276TeV->Draw("samep");
 
@@ -559,9 +595,9 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   if (!plotLinX)  gPad->SetLogx();
   hframe3->DrawCopy();
   hB3L_coalescence->Draw("lsame");
-  gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
-  gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
-  gB3LambdavsR_PbPb276TeV->Draw("samep");
+  gBlastB3LambdavsR_PbPb276TeV[ip]->Draw("samel");
+  gB3LambdavsR_PbPb276TeV_sys[ip]->Draw("samep2");
+  gB3LambdavsR_PbPb276TeV[ip]->Draw("samep");
 
 
   cb3optaLambda->cd(2);
@@ -596,7 +632,10 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   Double_t radiusVal = 0.0;
   if (paramSet==1) {
     //manual hack to have the data points fall onto the U. Heinz curve for deuteron
-    radiusVal = -0.750 + 0.625 * multi3;
+    radiusVal = 0.190 + 0.380 * multi3;
+  } else if (paramSet==2) {
+    //manual hack to have the data points fall onto the U. Heinz curve for 3He
+    radiusVal = 0.190 + 0.380 * multi3;
   } else {
     //fit to the HBT data, kT = 0.887
     radiusVal = 0.128 + 0.339 * multi3; 
@@ -786,6 +825,40 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
   
 }
 
+TGraphErrors * getB2_pp7TeVINEL(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+{
+  if (pToA<0.74 || pToA>0.76 ) return 0x0;
+  
+  //for multi INEL>0 Eur. Phys. J. C 77 (2017) 33, Link: https://link.springer.com/article/10.1140/epjc/s10052-016-4571-1
+  const Int_t nP = 1;
+  Double_t dndeta[nP] = {5.98};
+  Double_t dndetaErr[nP] = {0.09};
+
+  //from ALICE, Phys. Rev. C 97, 024615 (2018) -- arXiv:1709.08522
+  Double_t y[nP] = {0.01842};
+  Double_t ey[nP] = {0.00074};
+  Double_t yy[nP] = {0.00275};
+  TGraphErrors * graph = 0x0;
+  if (plotSys) graph = new TGraphErrors(nP, dndeta, y, dndetaErr, yy);
+  else graph = new TGraphErrors(nP, dndeta, y, dndetaErr, ey);
+  graph->SetName("B2_pp7TeVINEL");
+  if (!graph) {
+    Printf("Error: cannot retrieve graph. Check pt bin requested.");
+    return NULL;
+  }
+
+  convertMultiToRadius(graph, paramSet);
+
+  graph->SetMarkerColor(kGreen+2);
+  graph->SetLineColor(kGreen+2);
+  graph->SetFillColorAlpha(kGreen+2, 0.1);
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.2);
+  graph->SetMarkerStyle(20);
+  return graph;
+  
+}
+
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- pPb 5 TeV
 TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
@@ -873,9 +946,10 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 //---------------------------------------------------------
 //------------------------------ ALICE data B3 --- pp 7 TeV
 
-TGraphAsymmErrors * getB3_pp7TeV(Bool_t plotSys, Double_t pToAb3pp, Int_t paramSet)
+TGraphAsymmErrors * getB3_pp7TeVINEL(Bool_t plotSys, Double_t pToAb3pp, Int_t paramSet)
 {
-  //from 1709.08522
+  //from ALICE, Phys. Rev. C 97, 024615 (2018) -- arXiv:1709.08522
+  // x value for multi is INEL >0
   TFile * f0 = TFile::Open("B3pToA_pp7TeV.root");
   if (!f0) return NULL;
 
