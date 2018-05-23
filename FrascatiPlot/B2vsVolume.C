@@ -443,7 +443,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   paveB->Draw();
   legC->Draw();
 
-  cr1->Print("radiiParamCompareData.eps");
+  cr1->Print("Paper/radiiParamCompareData.eps");
   
   if (plotPaperFigures) return 0;
 
