@@ -261,80 +261,92 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
   enum EPlotEntries { kPP7, kPPB502, kPBPB276, kPBPB502,
 		      kPP7blast, kPPB502blast, kPBPB276blast, kPBPB502blast,
-		      kB3_PP7, kB3_PPB502, kB3_PBPB276, kB3_PBPB502,
-		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast};
+		      kB3_PP7, kB3_PPB502, kB3_PBPB276, kB3_PBPB502, kB3L_PBPB276,
+		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast, kB3L_PBPB276blast};
   
   Color_t color[]      = {kGreen+2, kBlue+2, kRed+1, kRed+2,
 			   kGreen+2, kBlue+2, kRed+1, kRed+2,
-			   kGreen+2, kSpring+4, kRed+1, kRed+2,
-			   kBlue-5, kBlue-7, kRed+1, kRed+2};
+			  kGreen+2, kSpring+4, kRed+1, kRed+2, kAzure-6,
+			  kBlue-5, kBlue-7, kRed+1, kRed+2, kAzure-6};
   
-  Int_t Marker_Style[] = { 23, 22, 21, 20,
-			   23, 22, 21, 20,
-			   23, 22, 21, 20,
-			   23, 22, 21, 20};
+  Int_t Marker_Style[] = { 21, 22, 20, 23,
+			   21, 22, 20, 23,
+			   21, 22, 20, 23, 33,
+			   21, 22, 20, 23, 33};
   
   for (Int_t ip = 0; ip < nParamSet; ip++) {
-    MakeUp(gB2vsR_pp7TeV_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_pp7TeVINEL_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_pp7TeVINEL[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7]+4*ip, Marker_Size);
-
-    MakeUp(gB2vsR_pPb5TeV_sys[ip], color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_pPb5TeV[ip]    , color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502]+4*ip, Marker_Size);
-
-    MakeUp(gB2vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276]+4*ip, Marker_Size);
-    
-    MakeUp(gB2vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502]+4*ip, Marker_Size);
-    MakeUp(gB2vsR_PbPb5TeV[ip]    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502]+4*ip, Marker_Size);
-
-    MakeUp(gBlastB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast]+4*ip, Marker_Size);
-    MakeUp(gBlastB2vsR_pPb502TeV[ip]    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast]+4*ip, Marker_Size);
-    MakeUp(gBlastB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast]+4*ip, Marker_Size);
-    MakeUp(gBlastB2vsR_PbPb502TeV[ip]    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast]+4*ip, Marker_Size);
-    MakeUp(gB3vsR_pp7TeV_sys[ip], color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
-    MakeUp(gB3vsR_pp7TeV[ip]    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7]+4*ip, Marker_Size);
-
-    MakeUp(gB3vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276]+4*ip, Marker_Size);
-    MakeUp(gB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276]+4*ip, Marker_Size);
-
-    MakeUp(gB3vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502]+4*ip, Marker_Size);
-    MakeUp(gB3vsR_PbPb5TeV[ip]    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502]+4*ip, Marker_Size);
-
-    MakeUp(gBlastB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast]+4*ip, Marker_Size);
+    MakeUp(gB2vsR_pp7TeV_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
+    MakeUp(gB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
+    MakeUp(gB2vsR_pp7TeVINEL_sys[ip], color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
+    MakeUp(gB2vsR_pp7TeVINEL[ip]    , color[EPlotEntries::kPP7], color[EPlotEntries::kPP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPP7], Marker_Size);
+    MakeUp(gB2vsR_pPb5TeV_sys[ip], color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502], Marker_Size);
+    MakeUp(gB2vsR_pPb5TeV[ip]    , color[EPlotEntries::kPPB502], color[EPlotEntries::kPPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPPB502], Marker_Size);
+    MakeUp(gB2vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276], Marker_Size);
+    MakeUp(gB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276], color[EPlotEntries::kPBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB276], Marker_Size);
+    MakeUp(gB2vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
+    MakeUp(gB2vsR_PbPb5TeV[ip]    , color[EPlotEntries::kPBPB502], color[EPlotEntries::kPBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kPBPB502], Marker_Size);
+    //blast 
+    MakeUp(gBlastB2vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+    MakeUp(gBlastB2vsR_pPb502TeV[ip]    , color[EPlotEntries::kPPB502blast], color[EPlotEntries::kPPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPPB502blast], Marker_Size);
+    MakeUp(gBlastB2vsR_PbPb276TeV[ip]    , color[EPlotEntries::kPBPB276blast], color[EPlotEntries::kPBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB276blast], Marker_Size);
+    MakeUp(gBlastB2vsR_PbPb502TeV[ip]    , color[EPlotEntries::kPBPB502blast], color[EPlotEntries::kPBPB502blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPBPB502blast], Marker_Size);
+    //B3
+    MakeUp(gB3vsR_pp7TeV_sys[ip], color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
+    MakeUp(gB3vsR_pp7TeV[ip]    , color[EPlotEntries::kB3_PP7], color[EPlotEntries::kB3_PP7], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PP7], Marker_Size);
+    MakeUp(gB3vsR_PbPb276TeV_sys[ip], color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
+    MakeUp(gB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
+    MakeUp(gB3vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
+    MakeUp(gB3vsR_PbPb5TeV[ip]    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
+    MakeUp(gB3LambdavsR_PbPb276TeV_sys[ip], color[EPlotEntries::kB3L_PBPB276], color[EPlotEntries::kB3L_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
+    MakeUp(gB3LambdavsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3L_PBPB276], color[EPlotEntries::kB3L_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3L_PBPB276], Marker_Size);
+    //BLAST B3
+    MakeUp(gBlastB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
+    MakeUp(gBlastB3LambdavsR_PbPb276TeV[ip] , color[EPlotEntries::kB3L_PBPB276blast], color[EPlotEntries::kB3L_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3L_PBPB276blast], Marker_Size);
   }
 
   //Define frames only once for all sets of B2 or B3 vs Radius
-  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; radius (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
-  hframe->GetXaxis()->SetTitleSize(0.05);
-  hframe->GetYaxis()->SetTitleSize(0.05);
+  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
+  hframe->GetXaxis()->SetTitleSize(0.06);
+  hframe->GetYaxis()->SetTitleSize(0.06);
+  hframe->GetXaxis()->SetTitleOffset(0.8);
+  hframe->GetXaxis()->SetLabelSize(0.05);
+  hframe->GetYaxis()->SetLabelSize(0.05);
   if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
 
-  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; radius (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
-  hframe3->GetXaxis()->SetTitleSize(0.05);
-  hframe3->GetYaxis()->SetTitleSize(0.05);
+  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  hframe3->GetXaxis()->SetTitleSize(0.06);
+  hframe3->GetYaxis()->SetTitleSize(0.06);
+  hframe3->GetXaxis()->SetTitleOffset(0.8);
+  hframe3->GetXaxis()->SetLabelSize(0.05);
+  hframe3->GetYaxis()->SetLabelSize(0.05);
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
 
   //Define pT/A labels only once
-  TPaveText * pavept = new TPaveText(0.55, 0.55, 0.95, 0.6, "NDC");
+  TPaveText * pavept = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
   pavept->SetFillStyle(0);
   pavept->SetTextFont(42);
   pavept->SetBorderSize(0);
-  pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  pavept->SetTextSize(0.05);
+  pavept->SetTextAlign(12);
+  pavept->AddText(Form("#it{B}_{2}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
 
-  TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
+  //TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
+  TPaveText * paveptB3 = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
   paveptB3->SetFillStyle(0);
   paveptB3->SetTextFont(42);
   paveptB3->SetBorderSize(0);
+  paveptB3->SetTextSize(0.05);
+  paveptB3->SetTextAlign(12);
   paveptB3->AddText(Form("#it{B}_{3}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
 
   TPaveText * paveptB3L = new TPaveText(0.55, 0.55, 0.95, 0.6, "NDC");
   paveptB3L->SetFillStyle(0);
   paveptB3L->SetBorderSize(0);
   paveptB3L->SetTextFont(42);
+  paveptB3L->SetTextSize(0.05);
+  paveptB3L->SetTextAlign(12);
   paveptB3L->AddText(Form("#it{B}_{3,#Lambda}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
 
@@ -342,17 +354,96 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //---------------------------------------
   // PLOT FIGURES FOR PAPER
   //---------------------------------------  
+  TLegend * legA = new TLegend(0.17, 0.13, 0.45, 0.32);
+  legA->SetFillStyle(0);
+  legA->SetTextFont(42);
+  legA->SetTextSize(0.05);
+  legA->SetBorderSize(0);
+  legA->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
+  legA->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
+  legA->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
 
-  TCanvas * cr1 = new TCanvas("cr1", "compare radii parameterisations", 1600, 1000);
+  TLegend * legC = new TLegend(0.17, 0.13, 0.45, 0.32);
+  legC->SetFillStyle(0);
+  legC->SetTextFont(42);
+  legC->SetTextSize(0.05);
+  legC->SetBorderSize(0);
+  legC->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
+  legC->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
+  legC->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
+  
+  TPaveText * paveA = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
+  paveA->SetFillStyle(0);
+  paveA->SetTextFont(42);
+  paveA->SetBorderSize(0);
+  paveA->SetTextSize(0.05);
+  paveA->SetTextAlign(12);
+  paveA->InsertText("Linear fit to HBT radii: ");
+  paveA->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.339, #it{b} = 0.128");
+
+  TPaveText * paveB = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
+  paveB->SetFillStyle(0);
+  paveB->SetTextFont(42);
+  paveB->SetBorderSize(0);
+  paveB->SetTextSize(0.05);
+  paveB->SetTextAlign(12);
+  paveB->InsertText("Fixed to #it{B}_{2} in 0-10% Pb-Pb:");
+  //paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}");
+  paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.473, #it{b} = 0");
+
+  
+  TCanvas * cr1 = new TCanvas("cr1", "compare radii parameterisations", 1000, 1000);
   cr1->SetBottomMargin(0.02);
-  cr1->SetTopMargin(0.02);
-  cr1->SetLeftMargin(0.15);
+  cr1->SetTopMargin(0.01);
+  cr1->SetLeftMargin(0.12);
   cr1->SetRightMargin(0.02);
-  cr1->Divide(2,1);
+  cr1->Divide(2,2);
   
   cr1->cd(1);
+  gPad->SetLogy();
   hframe->Draw();
+  hB2_coalescence->Draw("l");
+  gB2vsR_pp7TeVINEL_sys[0]->Draw("samep2");
+  gB2vsR_pp7TeVINEL[0]->Draw("samepz");
+  gB2vsR_PbPb276TeV_sys[0]->Draw("samep3");
+  gB2vsR_PbPb276TeV[0]->Draw("samepz");
+  pavept->Draw();
+  paveA->Draw();
   
+  cr1->cd(2);
+  gPad->SetLogy();
+  hframe->Draw();
+  hB2_coalescence->Draw("l");
+  gB2vsR_pp7TeVINEL_sys[1]->Draw("samep2");
+  gB2vsR_pp7TeVINEL[1]->Draw("samepz");
+  gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB2vsR_PbPb276TeV[1]->Draw("samepz");
+  paveB->Draw();
+  legA->Draw();
+
+  cr1->cd(3);
+  gPad->SetLogy();
+  hframe3->Draw();
+  hB3_coalescence->Draw("l");
+  gB3vsR_PbPb276TeV_sys[0]->Draw("samep3");
+  gB3vsR_PbPb276TeV[0]->Draw("samepz");
+  gB3vsR_pp7TeV_sys[0]->Draw("samep2");
+  gB3vsR_pp7TeV[0]->Draw("samepz");
+  paveptB3->Draw();
+  paveA->Draw();
+
+  cr1->cd(4);
+  gPad->SetLogy();
+  hframe3->Draw();
+  hB3_coalescence->Draw("l");
+  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB3vsR_PbPb276TeV[1]->Draw("samepz");
+  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
+  gB3vsR_pp7TeV[1]->Draw("samepz");
+  paveB->Draw();
+  legC->Draw();
+
+  cr1->Print("radiiParamCompareData.eps");
   
   if (plotPaperFigures) return 0;
 
@@ -630,12 +721,15 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   // VERSION (17th May 2018):
   // We fit linearly the ALICE data at the kT = 0.887 
   Double_t radiusVal = 0.0;
-  if (paramSet==1) {
-    //manual hack to have the data points fall onto the U. Heinz curve for deuteron
-    radiusVal = 0.190 + 0.380 * multi3;
-  } else if (paramSet==2) {
+  if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     radiusVal = 0.190 + 0.380 * multi3;
+  } else  if (paramSet==1) {
+    //manual hack to have the data points fall onto the U. Heinz curve for deuteron
+    radiusVal = 0.0 + 0.472949 * multi3; //radius = 0 at 0 dN/deta
+    //radiusVal = 0.07412 + 0.46637 * multi3; //radius = 0.85 fm for pp, dN/deta = 4.60 (INEL)
+    //radiusVal = -0.009 + 0.4738 * multi3; //radius = 0.85 fm for pp, dN/deta = 5.98 (INEL>0)
+    //radiusVal = -0.3949 + 0.507865 * multi3; //most central and peripheral PbPb 2.76 TeV on the curve
   } else {
     //fit to the HBT data, kT = 0.887
     radiusVal = 0.128 + 0.339 * multi3; 
@@ -829,10 +923,10 @@ TGraphErrors * getB2_pp7TeVINEL(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 {
   if (pToA<0.74 || pToA>0.76 ) return 0x0;
   
-  //for multi INEL>0 Eur. Phys. J. C 77 (2017) 33, Link: https://link.springer.com/article/10.1140/epjc/s10052-016-4571-1
+  //for multi INEL Eur. Phys. J. C 77 (2017) 33, Link: https://link.springer.com/article/10.1140/epjc/s10052-016-4571-1
   const Int_t nP = 1;
-  Double_t dndeta[nP] = {5.98};
-  Double_t dndetaErr[nP] = {0.09};
+  Double_t dndeta[nP] = {4.60};
+  Double_t dndetaErr[nP] = {0.34};
 
   //from ALICE, Phys. Rev. C 97, 024615 (2018) -- arXiv:1709.08522
   Double_t y[nP] = {0.01842};

@@ -17,10 +17,14 @@ void GetB3inpToA_pp7TeV()
   if (!gB30100) return;
   if (!gB30100_sys) return;
   
-  //for multi INEL>0 Eur. Phys. J. C 77 (2017) 33, Link: https://link.springer.com/article/10.1140/epjc/s10052-016-4571-1
+  //for multi INEL Eur. Phys. J. C 77 (2017) 33, Link: https://link.springer.com/article/10.1140/epjc/s10052-016-4571-1
   const Int_t nP = 3;
-  Double_t dndeta[nP] = {5.98};
-  Double_t dndetaErr[nP] = {0.09};
+  Double_t dndeta[nP] = {4.60};
+  Double_t dndetaErr[nP] = {0.34};
+
+  //Following are INEL > 0
+  //  Double_t dndeta[nP] = {5.98};
+  // Double_t dndetaErr[nP] = {0.09};
 
   TFile * fout = new TFile("B3pToA_pp7TeV.root","recreate");
 
