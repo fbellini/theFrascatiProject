@@ -264,10 +264,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		      kB3_PP7, kB3_PPB502, kB3_PBPB276, kB3_PBPB502, kB3L_PBPB276,
 		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast, kB3L_PBPB276blast};
   
-  Color_t color[]      = {kGreen+2, kBlue+2, kRed+1, kRed+2,
-			   kGreen+2, kBlue+2, kRed+1, kRed+2,
-			  kGreen+2, kSpring+4, kRed+1, kRed+2, kAzure-6,
-			  kBlue-5, kBlue-7, kRed+1, kRed+2, kAzure-6};
+  Color_t color[]      = {kGreen+2, kBlue+2, kRed, kRed+2,
+			  kGreen+2, kBlue+2, kRed, kRed+2,
+			  kGreen+2, kSpring+4, kRed, kRed+2, kAzure-6,
+			  kBlue-5, kBlue-7, kRed, kRed+2, kAzure-6};
   
   Int_t Marker_Style[] = { 21, 22, 20, 23,
 			   21, 22, 20, 23,
@@ -402,48 +402,49 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   cr1->cd(1);
   gPad->SetLogy();
   hframe->Draw();
-  hB2_coalescence->Draw("l");
   gB2vsR_pp7TeVINEL_sys[0]->Draw("samep2");
   gB2vsR_pp7TeVINEL[0]->Draw("samepz");
   gB2vsR_PbPb276TeV_sys[0]->Draw("samep3");
   gB2vsR_PbPb276TeV[0]->Draw("samepz");
+  hB2_coalescence->Draw("l");
   pavept->Draw();
   paveA->Draw();
   
   cr1->cd(2);
   gPad->SetLogy();
   hframe->Draw();
-  hB2_coalescence->Draw("l");
   gB2vsR_pp7TeVINEL_sys[1]->Draw("samep2");
   gB2vsR_pp7TeVINEL[1]->Draw("samepz");
   gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB2vsR_PbPb276TeV[1]->Draw("samepz");
+  hB2_coalescence->Draw("l");
   paveB->Draw();
   legA->Draw();
 
   cr1->cd(3);
   gPad->SetLogy();
   hframe3->Draw();
-  hB3_coalescence->Draw("l");
   gB3vsR_PbPb276TeV_sys[0]->Draw("samep3");
   gB3vsR_PbPb276TeV[0]->Draw("samepz");
   gB3vsR_pp7TeV_sys[0]->Draw("samep2");
   gB3vsR_pp7TeV[0]->Draw("samepz");
+  hB3_coalescence->Draw("l");
   paveptB3->Draw();
   paveA->Draw();
 
   cr1->cd(4);
   gPad->SetLogy();
   hframe3->Draw();
-  hB3_coalescence->Draw("l");
   gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB3vsR_PbPb276TeV[1]->Draw("samepz");
   gB3vsR_pp7TeV_sys[1]->Draw("samep2");
   gB3vsR_pp7TeV[1]->Draw("samepz");
+  hB3_coalescence->Draw("l");
   paveB->Draw();
   legC->Draw();
 
   cr1->Print("Paper/radiiParamCompareData.eps");
+  cr1->Print("Paper/radiiParamCompareData.png");
   
   if (plotPaperFigures) return 0;
 
