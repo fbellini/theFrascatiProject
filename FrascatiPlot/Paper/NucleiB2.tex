@@ -3,16 +3,17 @@
 %\documentclass[a4paper,11pt]{scrartcl} % scrartcl scrreprt
 \documentclass[a4paper,11pt]{scrartcl} % scrartcl scrreprt
 
-\usepackage[margin=2.cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{multirow}
 \usepackage{tabularx} 
+\usepackage{rotating,graphicx} 
 \usepackage{appendix} 
 
-\ifpdf
-  \usepackage[pdftex]{graphicx}
-\else
-  \usepackage[dvips]{graphicx}
-\fi
+%\ifpdf
+%  \usepackage[pdftex]{graphicx}
+%\else
+%  \usepackage[dvips]{graphicx}
+%\fi
 
 %\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -34,7 +35,7 @@
 
 \begin{document}
 \begin{center}
-{\Large \textbf{Testing coalescence and statistical-thermal production scenarios for (anti-)(hyper-)nuclei at LHC energies with recent and future Run 3 and 4 data}}
+{\Large \textbf{Testing coalescence and statistical-thermal production scenarios for (anti-)(hyper-)nuclei and exotic QCD objects at LHC energies with recent and future experimental data}}
 
 \medskip
 
@@ -42,7 +43,7 @@ F. Bellini and A. Kalweit
 
 \medskip
 
-26th of February 2018
+16th of May 2018
 \end{center}
 
 \bigskip
@@ -55,19 +56,22 @@ F. Bellini and A. Kalweit
 %\newpage
 
 \begin{abstract}
-(Anti-)(hyper-)nuclei are unique probes of the medium created in proton-proton, proton-Pb, and Pb--Pb collisions at LHC energies. At LHC energies, their production is typically discussed within the framework of coalescence and thermal-statistical production models. While it is often argued that both approaches are not distinguishable, we present a detailed study of both theories which reveals largely different predictions between the two approach for the production of 3He and hyper-tritons. Confronting our results with recent ALICE measurements, the coalescence approach is found to provide a correct description of the data only in small systems such as pp collisions, while it fails for central Pb--Pb collisions. The thermal-statistical model on the other hand is in agreement with results in central Pb--Pb collisions even though such fragile objects should be destroyed in hadronic interactions after the chemical freeze-out of the system. Our finding thus indicate the existence of a novel production mechanism for these objects.
+(Anti-)(hyper-)nuclei are unique probes of the medium created in proton-proton, proton-Pb, and Pb--Pb collisions at LHC energies. At LHC energies, their production is typically discussed within the framework of coalescence and thermal-statistical production models. While it is often argued that both approaches are not distinguishable, we present a detailed study of both theories which reveals largely different predictions between the two approach for the production of \hethree\ and hyper-tritons. Confronting our results with recent ALICE measurements, the coalescence approach is found to provide a correct description of the data only in small systems such as pp collisions, while it fails for central Pb--Pb collisions. The thermal-statistical model on the other hand is in agreement with results in central Pb--Pb collisions even though such fragile objects should be destroyed in hadronic interactions after the chemical freeze-out of the system. Our findings thus indicate the existence of a novel production mechanism for these objects.
 \end{abstract}
 
 
 %%Table of contents - to be removed for submission%%
+\newpage
 \tableofcontents
 \newpage
 
 \section{Introduction} 
 The formation of light anti- and hyper- nuclei in highly energetic proton-proton, proton-nucleus and nucleus-nucleus collisions provides unique observables for the study of the system created in these collisions. 
-In this context, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons, because their size is comparable to a fraction or the whole system created in the collision \cite{}. The relevant properties of the objects under study are summarised in Table \ref{tab:nucleusradii}
-As quantum-mechanical objects, their size is typically defined as the rms of their wave function, which ranges from \textcolor{red}{xx fm for the 3He up to yy fm for the hyper-triton}. 
-Halo nuclei as 6He would be ideal for such studies, but they remain out of the experimental reach in high-energy experiments in the near future. 
+In this context, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons, because their size (i.e. the extension of their wave-function) is comparable to a fraction or the whole system created in the collision~\cite{Adam:2015vna}. Halo nuclei as 6He would be ideal for such studies, but they remain out of the experimental reach in high-energy experiments in the near future. 
+It must be noted, that these studies thus do not only shed light on the characteristics of the system created in the collision (if (anti-)nuclei with well known properties are studied), but also on the internal structure of the produced objects if their properties are not well known.
+The relevant known properties of the objects under study are summarised in Table \ref{tab:nucleusradii}.
+As quantum-mechanical objects, their size is typically defined as the rms of their wave function, which ranges from \textcolor{red}{xx fm for the 3He up to yy fm for the hyper-triton}. For simplicity, we approximate the wave-function of the objects under study by the wave-function of a spherical harmonic oscillator as in~\cite{Scheibl:1998tk}. This allows to derive in the following a set of analytic formulas which can be used for the calculation of coalescence predictions. We encourage future more rigorous studies which address the coalescence probabilities with more precise wave-functions.
+
 
 Surprisingly, thermal-statistical models have been successful at describing not only light-flavour particle production, but also that of light (anti-)(hyper-)nuclei across a wide range of energies in nucleus-nucleus collisions \cite{Andronic:2017, Andronic:2010qu}. 
 In this approach, particles are produced from a fireball in thermal and kinetic equilibrium with temperatures of the order of $T_{chem}$ = 156 MeV (near the temperature at the QCD phase transition boundary, as predicted by lattice QCD calculations \cite{Bazavov:2014pvz}. Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that can affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. Once the particle density of the system is so low that the mean free path for elastic collisions is larger than the size of the system, the fireball freezes-out kinetically. This is seen to occur when the system has reached temperatures of the order of $T_{kin} \approx$ 90 MeV. 
@@ -80,23 +84,24 @@ Several solutions have been proposed to solve this ``light (anti-)nuclei puzzle'
 Data from rescattering of short-lived hadronic resonances indicate that the system undergoes a long-lasting hadronic phase before decoupling \cite{Abelev:2014uua}, thus strongly disfavouring hypothesis (a.). 
 While hypothesis (b.) cannot presently be tested beyond the agreement of measured (anti-)nuclei production yields with statistical-thermal model predictions, hypothesis (c.) is scrutinised in the present work.
 
-\begin{table}[b]
+\begin{sidewaystable}[p]
 
 \centering
-\begin{tabularx}{\textwidth}{cccccc}
-\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} \\ \hline
-A = 2                           & d                           & pn                              & 2.2                                          & 3.2                                                 &                           \\ \hline
-\multirow{3}{*}{A = 3}  & \tritium 	         & pnn                            &                                                &                                                     &                           \\
-                                   & \hethree                & ppn                            &                                                &                                                     &                           \\
-                                   & \hthreelambda      & p$\Lambda$n       &                                                &                                                     &                           \\ \hline
-\multirow{4}{*}{A = 4}  & \hefour                  & ppnn                                    &                                                &                                                     &                           \\
-                                   & \hfourlambda        & p$\Lambda$nn          &                                              &                                                     &                           \\
-                                   & \hfourtwolambda  &  p$\Lambda\Lambda$n                                   &                                              &                                                     &                           \\
-                                   & \hefourlambda      & pp$\Lambda$n                                    &                                              &                                                     &                           \\ \hline
+\begin{tabularx}{\textwidth}{cccccccc}
+%\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} \\ \hline
+Mass number             & Nucleus                         & Composition                   & $B_{E}$ (MeV)   & Spin $J$ & rms radius of wavefunction (fm) &  harmonic oscillator width r (fm)   & Refs. \\ \hline
+A = 2                           & d                                    & pn                                   &   2.2                    &     1       & 2.1413 $\pm$ 0.0025                 &  3.2                                                &   \cite{Mohr:2015ccw}      \\ \hline
+\multirow{3}{*}{A = 3}  & \tritium 	                  & pnn                                &    8.4817986 (20) &      1/2   &  1.755  $\pm$ 0.086                   &                                                     &   \cite{Purcell:2015gtm}           \\
+                                   & \hethree                         & ppn                                &                            &        1/2    &                                                   &                                                       &   \cite{Purcell:2015gtm} \\
+                                   & \hthreelambda               & p$\Lambda$n                &                             &                 &                                                   &                                                      & \\ \hline
+\multirow{4}{*}{A = 4}  & \hefour                          & ppnn                              &                              &                 &                                                   &                                                       & \\
+                                   & \hfourlambda                & p$\Lambda$nn              &                               &               &                                                    &                                                       &  \\
+                                   & \hfourtwolambda          &  p$\Lambda\Lambda$n &                                &               &                                                    &                                                       &\\
+                                   & \hefourlambda              & pp$\Lambda$n              &                               &                &                                                    &                                                      &\\ \hline
 \end{tabularx}
 \caption{Properties of nuclei and hyper-nuclei. $B_{E}$ is the binding energy per nucleon in MeV and the radius is given in terms of the rms radius of the wavefunction. References are given in the last column.}
 \label{tab:nucleusradii}
-\end{table}
+\end{sidewaystable}
 
 For the table: there seems to be a nice summary here (including that the hyper-triton is spin 1/2):
 %https://books.google.fr/books?id=utBKDwAAQBAJ&pg=PA56&lpg=PA56&dq=spin+of+hypertriton&source=bl&ots=x-wqVWSIpJ&sig=k2tZUsruf2M5o-slqOp0Q9v-PCI&hl=de&sa=X&ved=0ahUKEwj1-NOo4t3aAhUCU1AKHbjVCAoQ6AEIczAJ#v=onepage&q=spin%20of%20hypertriton&f=false
@@ -297,7 +302,7 @@ We conclude that (c.) appears unlikely, thus leaving (b.) as a viable option, at
 %%%%%%%%APPENDIX
 \begin{appendix}
 \section{HBT radii in Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisation for comparison with coalescence models}
-The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{sside}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015pwa} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
+The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{sside}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015vna} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
 The transformation between the two parameterisations is best presented in~\cite{Wiedemann:1999qn} in the equations (W 3.48) to (W 3.52)\footnote{The equations in~\cite{Wiedemann:1999qn} are denoted as (W...) in order to distinguish them from the equations presented in this paper.}:
 
 \begin{eqnarray}
