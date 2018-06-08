@@ -8,6 +8,7 @@
 \usepackage{tabularx} 
 \usepackage{rotating,graphicx} 
 \usepackage{appendix} 
+\usepackage{makecell}
 
 %\ifpdf
 %  \usepackage[pdftex]{graphicx}
@@ -73,8 +74,8 @@ As quantum-mechanical objects, their size is typically defined as the rms of the
 
 
 Surprisingly, thermal-statistical models have been successful in describing not only light-flavour particle production, but also that of light (anti-)(hyper-)nuclei across a wide range of energies in nucleus-nucleus collisions \cite{Andronic:2017, Andronic:2010qu}. 
-In this approach, particles are produced from a fireball in thermal and kinetic equilibrium with temperatures of the order of $T_{chem}$ = 156 MeV (near the temperature of the QCD phase transition boundary, as predicted by lattice QCD calculations \cite{Bazavov:2014pvz}). Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that can affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. Once the particle density of the system is so low that the mean free path for elastic collisions is larger than the size of the system, the fireball freezes-out kinetically. This is seen to occur when the system has reached temperatures of the order of $T_{kin} \approx$ 90 MeV. 
-In such a dense and hot environment, composite objects with binding energies that are small with respect to the temperature of the system, appear as ``fragile'' objects. For instance, the binding energy of the deuteron is $E_{B, d}$ = 2.2 MeV $\ll T_{chem}, T_{kin}$.
+In this approach, particles are produced from a fireball in thermal and kinetic equilibrium with temperatures of the order of $T_{chem}$ = 156 MeV (near the temperature of the QCD phase transition boundary, as predicted by lattice QCD calculations \cite{Bazavov:2014pvz}). Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that can affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. Once the particle density of the system is so low that the mean free path for elastic collisions is larger than the size of the system, the fireball freezes-out kinetically. At LHC energies, this is seen to occur when the system has reached temperatures of the order of $T_{kin} \approx$ 90 MeV~\cite{Abelev:2013vea}. 
+In such a dense and hot environment, composite objects with binding energies that are small with respect to the temperature of the system, appear as ``fragile'' objects. For instance, the binding energy of the deuteron is $B_{E, d}$ = 2.2 MeV $\ll T_{chem}, T_{kin}$.
 As a matter of fact, the cross-section for pion-induced deuteron breakup is significantly larger than the typical (pseudo)-elastic cross-sections for the re-scattering of hadronic resonance decay products (check statement) \cite{Garcilazo:1982yc, Bass:1998ca, Schukraft:2017nbn}. 
 Similarly, the elastic cross-section which drives the deuteron spectra to kinetic equilibration in central heavy-ion collisions \cite{Acharya:2017dmc} is \textcolor{red}{smaller than the breakup cross-section} \cite{Schukraft:2017nbn}.   
 Based on this, the deuterons produced at chemical freeze-out would be expected not to survive the hadronic phase of the medium expansion, yet their production is measured to be consistent to the predictions from statistical-thermal models and they develop also a non-zero elliptic flow which is consistent with a common radial expansion together with the non-composite hadrons \cite{Acharya:2017dmc}. 
@@ -83,24 +84,25 @@ Several solutions have been proposed to solve this ``light (anti-)nuclei puzzle'
 Data from rescattering of short-lived hadronic resonances indicate that the system undergoes a long-lasting hadronic phase before decoupling \cite{Abelev:2014uua}, thus strongly disfavouring hypothesis (a.). 
 While hypothesis (b.) cannot presently be tested beyond the agreement of measured (anti-)nuclei production yields with statistical-thermal model predictions, hypothesis (c.) is scrutinised in the present work.
 
-\begin{sidewaystable}[p]
+\begin{table}[htb]
 
 \centering
-\begin{tabularx}{\textwidth}{XcccccXc}
-%\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} \\ \hline
-Mass \newline number & Nucleus                         & Composition                  & $B_{E}$ (MeV)   & Spin $J$ & (charge) rms radius (fm) &  harmonic oscillator  \newline width r (fm)  & Refs. \\ \hline
-A = 2                           & d                                    & pn                                  &   2.224575 (9)     &     1   & 2.1413 $\pm$ 0.0025      &  3.2    &   \cite{VanDerLeun:1982bhg,Mohr:2015ccw}      \\ \hline
+\begin{tabularx}{\textwidth}{cccccccc}
+%\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} 
+ \hline \hline
+\makecell{Mass \\number } & Nucleus           &  \makecell{Compo-\\sition}               & $B_{E}$ (MeV)   & Spin $J$ & \makecell{(charge) \\rms\\ radius (fm)} &  \makecell{harmonic \\ oscillator \\ width \\r (fm) } & Refs. \\ \hline
+      A = 2                     & d                                    & pn                                  &   2.224575 (9)     &     1   & 2.1413 $\pm$ 0.0025      &  3.2    &   \cite{VanDerLeun:1982bhg,Mohr:2015ccw}      \\ \hline
 \multirow{3}{*}{A = 3}  & \tritium 	                  & pnn                               &    8.4817986 (20) & 1/2   &  1.755  $\pm$ 0.086        &             &   \cite{Purcell:2015gtm}           \\
                                    & \hethree                         & ppn                                &   7.7180428  (23) & 1/2  & 1.959 $\pm$  0.030         &              &   \cite{Purcell:2015gtm} \\
                                    & \hthreelambda               & p$\Lambda$n                &    0.13 $\pm$ 0.05 & 1/2  &  4.9 --  10.0                    &            & \cite{Davis:2005mb,Nemura:1999qp} \\ \hline
 \multirow{4}{*}{A = 4}  & \hefour                          & ppnn                              &    28.29566   (20)  &      0  &  1.6755 $\pm$ 0.0028  &             & \cite{1674-1137-41-3-030003,Angeli:2013epw} \\
                                    & \hfourlambda                & p$\Lambda$nn              &  2.04 $\pm$0.04   &   0   &    2.0 -- 3.8                       &                 & \cite{Davis:2005mb,Nemura:1999qp} \\
-                                   & \hfourtwolambda          &  p$\Lambda\Lambda$n &   0.39 -- 0.51         &    1 (cf text in \cite{Nemura:1999qp})    &    4.2 -- 7.1                      &           &   \cite{Nemura:1999qp} \\
-                                   & \hefourlambda              & pp$\Lambda$n              &  2.39 $\pm$ 0.03  &    0   &    2.0 -- 3.8                     &            & \cite{Davis:2005mb,Nemura:1999qp}\\ \hline
+                                   & \hfourtwolambda          &  p$\Lambda\Lambda$n &   0.39 -- 0.51         &    1     &    4.2 -- 7.1                      &           &   \cite{Nemura:1999qp} \\
+                                   & \hefourlambda              & pp$\Lambda$n              &  2.39 $\pm$ 0.03  &    0   &    2.0 -- 3.8                     &            & \cite{Davis:2005mb,Nemura:1999qp}\\ \hline \hline
 \end{tabularx}
-\caption{Properties of nuclei and hyper-nuclei. $B_{E}$ is the binding energy per nucleon in MeV and the radius is given in terms of the rms radius of the wavefunction. References are given in the last column.}
+\caption{Properties of nuclei and hyper-nuclei. $B_{E}$ is the binding energy in MeV. The size of the nucleus is given in terms of the (charge) rms radius of the wavefunction. The size parameter $r$ of the wave-function of the harmonic oscillator potential is chosen such that the measured/expected rms is approximately reproduced (see text for details). References are given in the last column. The spin of \hfourtwolambda\ is discussed in the text of~\cite{Nemura:1999qp}.}
 \label{tab:nucleusradii}
-\end{sidewaystable}
+\end{table}
 
 
 
@@ -109,7 +111,7 @@ In the nucleon-coalescence approach, nuclei are formed at kinetic freeze-out by 
 The direct comparison of the two approaches and the comparison with data are discussed in section \ref{sec:comparison}.
 We find that a systematic study of the coalescence parameter \bA~provides an important discrimination power between the two approaches. 
 A comparison of the production rates of nuclei with similar mass but very different internal structure has already been suggested for the case of \hefour~and ${}^{4}\mathrm{Li}$ \cite{Bazak:2018hgl}. However, as the ${}^{4}\mathrm{Li}$ is not stable with respect to strong decay, its measurement is experimentally very challenging and probably less constraining than the comparison with hyper-nuclei proposed here.
-In section \ref{sec:projections} we propose that \bA~is systematically measured in all collision systems by exploiting the large statistics sample that will be available with the LHC Run 3 and 4, in order to rule out or support the aforementioned scenarios. As a matter of fact, the upcoming years of LHC data taking provide a unique opportunity to for the final understanding of (anti-)(hyper-)nuclei production.
+In section \ref{sec:projections}, we propose that \bA~is systematically measured in all collision systems by exploiting the large statistics sample that will be available with the LHC Run 3 and 4, in order to rule out or support the aforementioned scenarios. As a matter of fact, the upcoming years of LHC data taking provide a unique opportunity to for the final understanding of (anti-)(hyper-)nuclei production.
 Setting a final word on the production mechanisms is not only in the interest of the heavy-ion community, but has a broader application in astrophysics and dark-matter searches, by representing an essential input for the measurement of (anti-)nuclei in space with ongoing \cite{Alcaraz:2000ss} and future \cite{AMS100, Aramaki:2015laa} experiments. 
 In addition to this, the study of light(anti-)nuclei might serve as a baseline for understanding the debated nature of exotic states such as the X(3872), that has been interpreted as tetraquark state or hadronic molecule \cite{Esposito:2015fsa, Cho:2017dcy}.
 
@@ -118,7 +120,7 @@ In addition to this, the study of light(anti-)nuclei might serve as a baseline f
 \label{sec:coalescence}
 
 \subsection{Simple coalescence}
-In simple coalescence, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963,Kapusta:1980}. For a nucleus with mass number $A = Z + N$, the coalescence probability is typically quantified in terms of the coalescence parameter $B_{A}$, which is defined as
+In the coalescence picture, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963,Kapusta:1980}. For a nucleus with mass number $A = Z + N$, the coalescence probability is typically quantified in terms of the coalescence parameter $B_{A}$, which is defined as
 
 \begin{equation}
 E_{A}\frac{\mathrm{d}^{3}N_{A}}{\mathrm{d}p_{A}^{3}}=B_{A}{\left(E_{\mathrm{p}}\frac{\mathrm{d}^{3}N_{\mathrm{p}}}{\mathrm{d}p_{\mathrm{p}}^{3}}\right)^{Z}\left(E_{\mathrm{n}}\frac{\mathrm{d}^{3}N_{\mathrm{n}}}{\mathrm{d}p_{\mathrm{n}}^{3}}\right)^{N}}\left\vert_{\vec{p}_{\mathrm{p}}=\vec{p}_{\mathrm{n}}=\frac{\vec{p}_{A}}{A}} \right.\;,    
