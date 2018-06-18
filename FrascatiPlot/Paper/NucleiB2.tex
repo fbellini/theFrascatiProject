@@ -90,7 +90,7 @@ While hypothesis (b.) cannot presently be tested beyond the agreement of measure
 \begin{tabularx}{\textwidth}{cccccccc}
 %\multicolumn{1}{l}{Mass number} & \multicolumn{1}{l}{Nucleus} & \multicolumn{1}{l}{Composition} & \multicolumn{1}{l}{$B_{E}$ (MeV)} & \multicolumn{1}{l}{rms radius of wavefunction (fm)} & \multicolumn{1}{l}{Refs.} 
  \hline \hline
-\makecell{Mass \\number } & Nucleus           &  \makecell{Compo-\\sition}               & $B_{E}$ (MeV)   & Spin $J$ & \makecell{(charge) \\rms\\ radius (fm)} &  \makecell{harmonic \\ oscillator \\ width \\r (fm) } & Refs. \\ \hline
+\makecell{Mass \\number } & Nucleus           &  \makecell{Compo-\\sition}               & $B_{E}$ (MeV)   & Spin $J$ & \makecell{(charge) \\rms\\ radius (fm)} &  \makecell{harmonic \\ oscillator \\ size \\ parameter \\$r_{A}$ (fm) } & Refs. \\ \hline
       A = 2                     & d                                    & pn                                  &   2.224575 (9)     &     1   & 2.1413 $\pm$ 0.0025      &  3.2    &   \cite{VanDerLeun:1982bhg,Mohr:2015ccw}      \\ \hline
 \multirow{3}{*}{A = 3}  & \tritium 	                  & pnn                               &    8.4817986 (20) & 1/2   &  1.755  $\pm$ 0.086        &             &   \cite{Purcell:2015gtm}           \\
                                    & \hethree                         & ppn                                &   7.7180428  (23) & 1/2  & 1.959 $\pm$  0.030         &              &   \cite{Purcell:2015gtm} \\
@@ -145,9 +145,22 @@ In addition, the elliptic flow of deuterons cannot be explained by simple coales
 
 In contrast to the simple approach described in the previous section, a more advanced coalescence model takes into account the size of the particle emission source, as the coalescence probability naturally decreases for two nucleons with similar momenta that are produced far apart in configuration space. While there are several approaches to address this effect~\cite{PapersWithWignerCitedinUli}, we rely in our study on the formalism proposed in~\cite{Scheibl:1998tk}. 
 
+In particular, the wave-function of the objects under study are approximated by the wave-function of a spherical harmonic oscillator as in~\cite{Scheibl:1998tk} with a characteristic size parameter $r_{A}$. For the deuteron (A = 2) wave-function $\varphi_{d}(\vec{r}) $, one obtains
 
+\begin{equation}
+ \varphi_{d}(\vec{r}) = (\pi r_{d}^2)^{-3/4} \exp\left(-{r^2 \over 2 r_{d}^2}\right) \;.
+\end{equation}
 
-\textcolor{red}{In particular, we approximate the wave-function of the objects under study by the wave-function of a spherical harmonic oscillator as in~\cite{Scheibl:1998tk}. This allows to derive in the following a set of analytic formulas which can be used for the calculation of coalescence predictions. In Tab.~\ref{tab:nucleusradii}, we therefore do not list only the rms of the wavefunction, but we also list the size parameter $r$ of the harmonic oscillator potential. We encourage future more rigorous studies which address the coalescence probabilities with more realistic wave-functions. Consider mentioning the further  approximations done by Uli in his paper, if there is time and how Uli's paper relates to the Wigner formalism.}
+\noindent For larger nuclei (A > 2), analogous forms exist (see for instance~\cite{Scheibl:1998tk} for the explicit form of A=3). The relation between the characteristic size parameter $r_{A}$ and the rms of the wave-function was derived in~\cite{Shebeko:2006ud} as
+
+\begin{equation}
+ {\rm rms}_{A}^2 = {3 \over 2}{A - 1 \over A} r_{A}^2
+\end{equation}
+
+\noindent for point-like constituents. In particular, we obtain $r_{d}=\sqrt{4/3}{\rm rms}_{d}$ for A= 2, $r_{3}= {\rm rms}_{3}$ for A = 3, and ???????.
+
+This ansatz allows to derive in the following a set of analytic formulas which can be used for the calculation of coalescence predictions. In Tab.~\ref{tab:nucleusradii}, we therefore do not list only the rms of the wavefunction, but we also list the size parameter $r_{A}$ of the harmonic oscillator potential. We encourage future more rigorous studies which address the coalescence probabilities with more realistic wave-functions. \textcolor{red}{Consider mentioning the further  approximations done by Uli in his paper, if there is time and how Uli's paper relates to the Wigner formalism.}
+
 In this approach, the quantum mechanical nature of the coalescence products is explicitly accounted for by means of an average quantum mechanical correction factor, $\langle C_{A} \rangle$. In the case of the deuteron, the quantum mechanical correction factor $\langle C_{d} \rangle$ has been approximated as 
 
 \begin{equation}
@@ -155,7 +168,7 @@ In this approach, the quantum mechanical nature of the coalescence products is e
 \label{eq:Cd}
 \end{equation}
 %
-where \dradius~is the radius of the deuteron, \rperp~and \rpar~are the lenghts of homogeneity of the coalescence volume and $m_{T}$ is the transverse mass of the coalescing nucleons.
+where \dradius~is the radius of the deuteron, \rperp~and \rpar~are the lengths of homogeneity of the coalescence volume and $m_{T}$ is the transverse mass of the coalescing nucleons.
 The size of the nucleus enters in the determination of the coalescence parameter \btwo~via the quantum-mechanical correction factor $\langle C_{d} \rangle$, as well as the homogeneity volume $\rperp^{2}\rpar$, according to the relation
 %
 \begin{equation}
