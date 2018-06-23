@@ -364,11 +364,25 @@ B_{A} = ({4 \over 3} \pi p_{0}^{3})^{A-1} {1 \over m^{A-1}} {1 \over A^{2}} \; .
 
 
 \begin{eqnarray}
-B_{A} &=& {2J_{A} + 1 \over 2^{A}} A^{3/2} (4\pi)^{3/2} (\nu_{A}\nu/(\nu_{A}+ \nu))^{3/2(A-1)} {1 \over m^{A-1}} {1 \over A^{2}}  \\
-           &=&  {2J_{A} + 1 \over 2^{A}} {1 \over m^{A-1}} {1 \over \sqrt{A}} (4\pi)^{3/2} (\nu_{A}\nu/(\nu_{A}+ \nu))^{3/2(A-1)} \;,
+B_{A} &=& {2J_{A} + 1 \over 2^{A}} A^{3/2} (4\pi)^{3/2} \Bigl({\nu_{A}\nu \over \nu_{A}+ \nu}\Bigr)^{3/2(A-1)} {1 \over m^{A-1}} {1 \over A^{2}}  \\
+           &=&  {2J_{A} + 1 \over 2^{A}} {1 \over m^{A-1}} {1 \over \sqrt{A}} (4\pi)^{3/2} \Bigl({\nu_{A}\nu \over \nu_{A}+ \nu}\Bigr)^{3/2(A-1)} \;,
 \end{eqnarray}
 
-\noindent where $\nu_{A}$ corresponds again to the size parameter of the gaussian wave-function of the nucleus.
+\noindent where $\nu_{A}$ corresponds again to the size parameter of the gaussian wave-function of the nucleus which are assumed as gaussians (solutions to the spherical harmonic oscillator potential) of the form~\cite{Sato:1981ez,Bergstrom:1979gpv}:
+
+\begin{equation}
+ \phi_{A} = C \exp\Bigl(-{1\over2} \nu_{A} \sum_{i=1}^{A}(\vec{x}_{i} - \vec{X})^2 \Bigr)
+\end{equation}
+
+\noindent with an appropriate normalisation factor $C$. The parameter $\nu_{A}$ is typically chosen such that the measured rms charge radius $r_{A}^{rms}$ is reproduced. The relation between $r_{A}^{rms}$ and $\nu_{A}$ is obtained by a transformation to the Jacobi variables and performing the integration. In particular, one obtains for A < 5:
+
+\begin{eqnarray}
+	(A = 2) \;\;  \nu_{d} = {2 \over r_{d}^2} = {3 \over 4 {r_{d}^{rms}}^2 }  \\
+	(A = 3) \;\;  \nu_{t,{\rm 3He}} = {1 \over r_{t,{\rm 3He}}^2} = {1 \over {r_{t,{\rm 3He}}^{rms}}^2 } \\
+	(A = 4)  \;\; \nu_{\alpha} =  {9 \over 8{r_{\rm 4He}^{rms}}^2 }
+\end{eqnarray}
+
+\noindent Please note that proton rms charge radius ${r_{p}^{rms}}$ is subtracted quadratically from the measured rms charge radius ${r_{A}^{rms,meas}}$ of the nucleus ${r_{A}^{rms}} = \sqrt{{r_{A}^{rms,meas}}^2 - {r_{p}^{rms}}^2}$ to account for the finite extension of the constituents.
 
 \end{appendix}
 
