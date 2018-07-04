@@ -451,7 +451,27 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 
 \begin{align}
 	\lambda_{4}^{2} &= \int {1\over 4}  \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 |\phi|^2 {\rm d}\vec{x}_{1}{\rm d}\vec{x}_{2}{\rm d}\vec{x}_{3}{\rm d}\vec{x}_{4} \\
-				 &= {C_4^2 \over 4}  \int \bigl({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2} \bigr) \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}
+				 &= {C_4^2 \over 4}  \int \bigl({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2} \bigr) \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} \\
+				 &= {C_4^2 \over 4} \Bigl(\underbrace{{1\over 2} \int r_{1}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm I} \\
+				  &\;\;+ \underbrace{{2\over 3} \int r_{2}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm II} \\
+				  &\;\;+ \underbrace{{3\over 4} \int r_{3}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm III}
+				 \Bigr)
+\end{align}
+
+\noindent The first summand I can be calculated with ${\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} = (4\pi)^3 r_1^2 r_2^2 r_3^2 {\rm d}r_{1}{\rm d}r_{2}{\rm d}r_{3}$ as
+
+\begin{align}
+ {\rm I} &= {1\over 2} (4\pi)^3 \cdot \int_{0}^{\infty} r_{1}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr){\rm d}r_{1} \cdot \int_{0}^{\infty}\exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) {\rm d}r_{2} \cdot \int_{0}^{\infty} \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}r_{3} \\
+ 	&= {1\over 2} (4\pi)^3 \cdot {3\sqrt{\pi} \over 8} {1 \over ({1\over 2} \nu_{A})^{5/2}} \cdot {\sqrt{\pi} \over 4} {1 \over ({2\over 3} \nu_{A})^{3/2}} \cdot {\sqrt{\pi} \over 4} {1 \over ({3\over 4} \nu_{A})^{3/2}} \;.
+\end{align}
+
+\noindent The other two summands II and III are evaluated accordingly and we thus obtain for the rms:
+
+\begin{align}
+	\lambda_{4}^{2} &= {C_4^2 \over 4} ({\rm I} + {\rm II} + {\rm III} ) \\
+	&= {C_4^2 \over 4} (4\pi)^3 {3\pi^{3/2} \over 8 \cdot 4^2 \cdot \nu_A^{11/2}} \underbrace{\Bigl({{1\over2} \over ({1\over2})^{5/2}({2\over3})^{3/2}({3\over4})^{3/2} } +
+	{{2\over3} \over ({1\over2})^{3/2}({2\over3})^{5/2}({3\over4})^{3/2} } + {{3\over4} \over ({1\over2})^{3/2}({2\over3})^{3/2}({3\over4})^{5/2} } \Bigr)}_{= 24} \\
+	&= {9 \over 8 \nu_A} \;.
 \end{align}
 
 %
