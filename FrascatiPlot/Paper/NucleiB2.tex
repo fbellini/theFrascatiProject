@@ -433,7 +433,7 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 \noindent From the requirement $\int|\phi|^2{\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} = 1$, we thus obtain for the normalisation constant $C_4$: 
 
 \begin{align}
-	{1\over C_{4}^{2}} &= \int \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + 3r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}
+	{1\over C_{4}^{2}} &= \int \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}
 \end{align}
 
 \noindent where the integration in spherical coordinates is performed with ${\rm d}\vec{r}_{1} = 4\pi r_{1}^{2}{\rm d}r_{1},  {\rm d}\vec{r}_{2} = \ldots$ which gives
@@ -449,8 +449,10 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 \noindent For the rms, we obtain accordingly:
 
 
-
-
+\begin{align}
+	\lambda_{4}^{2} &= \int {1\over 4}  \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 |\phi|^2 {\rm d}\vec{x}_{1}{\rm d}\vec{x}_{2}{\rm d}\vec{x}_{3}{\rm d}\vec{x}_{4} \\
+				 &= {C_4^2 \over 4}  \int \bigl({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2} \bigr) \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}
+\end{align}
 
 %
 % HBT Appendix
