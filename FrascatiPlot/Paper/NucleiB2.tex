@@ -9,6 +9,7 @@
 \usepackage{rotating,graphicx} 
 \usepackage{appendix} 
 \usepackage{makecell}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
 
 %\ifpdf
 %  \usepackage[pdftex]{graphicx}
@@ -391,7 +392,7 @@ The parameter $\nu_{A}$ is typically chosen such that the measured rms charge ra
 %
 \section{RMS of a gaussian wave-function for A=4 }\label{appendix:integration}
 
-In this appendix, we show the calculation of the RMS of a gaussian wave-function with the example of A=4. We thus start from the wave-function
+In this appendix, we show the calculation of the RMS of a gaussian wave-function with the example of A=4. We start from the wave-function
 
 \begin{equation}\label{eq:SatoWave}
  \phi_{A=4} = C_{4} \exp\Bigl(-{1\over2} \nu_{4} \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 \Bigr) \; .
@@ -399,12 +400,64 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 
 \noindent Then we introduce the Jacobi variables which are given by %HERE-I-STOP
 
+\begin{align}
+	\vec{X}    &= {1 \over 4} (\vec{x_1} + \vec{x_2} + \vec{x_3} + \vec{x_4}) \\
+	\vec{r_1} &= \vec{x_2} - \vec{x_1}\\
+	\vec{r_2} &= \vec{x_3} - {1 \over 2}(\vec{x_1} + \vec{x_2})\\
+	\vec{r_3} &= \vec{x_4} - {1 \over 3}(\vec{x_1} + \vec{x_2} + \vec{x_3}) \; .
+\end{align}
+
+\noindent In this parameterisation we can express the squared distance of each nucleon with respect to the centre-of-mass as
+
+\begin{equation}
+ \sum_{i=1}^{4} \bigl(\vec{x_i} - \vec{X} \bigr)^2 = {1\over 4} \bigl(2\vec{r_1} + {8\over 3}\vec{r_2} + 3\vec{r_3}\bigr)  \; .
+\end{equation}
+
+\noindent For the following integral calculations we determine the Jacobian as
+
+\begin{align}
+	{\rm d}R{\rm d}r_{1}{\rm d}r_{2}{\rm d}r_{3} &= \vert\det {\partial(R,r_{1},r_{2},r_{3}) \over \partial(x_{1},x_{2},x_{3},x_{4})}\vert \; {\rm d}x_{1}{\rm d}x_{2}{\rm d}x_{3}{\rm d}x_{4} \\
+		&= \begin{vmatrix} {\partial R \over \partial x_{1}} & {\partial r_{1} \over \partial x_{1}} & {\partial r_{2} \over \partial x_{1}}& {\partial r_{3} \over \partial x_{1}} \\ 
+		{\partial R \over \partial x_{2}} & {\partial r_{1} \over \partial x_{2}} & {\partial r_{2} \over \partial x_{2}}& {\partial r_{3} \over \partial x_{2}} \\ 
+		{\partial R \over \partial x_{3}} & {\partial r_{1} \over \partial x_{3}} & {\partial r_{2} \over \partial x_{3}}& {\partial r_{3} \over \partial x_{3}} \\ 
+		{\partial R \over \partial x_{4}} & {\partial r_{1} \over \partial x_{4}} & {\partial r_{2} \over \partial x_{4}}& {\partial r_{3} \over \partial x_{4}} \end{vmatrix} 
+		{\rm d}x_{1}{\rm d}x_{2}{\rm d}x_{3}{\rm d}x_{4} \\
+		&=  \begin{vmatrix} {1\over 4} & -1 & -{1\over 2} & -{1\over 3}  \\
+			{1\over 4} & 1 & -{1\over 2} & -{1\over 3}  \\
+			{1\over 4} & 0 & 1 & -{1\over 3}  \\
+			{1\over 4} & 0 & 0 & 1
+			 \end{vmatrix} {\rm d}x_{1}{\rm d}x_{2}{\rm d}x_{3}{\rm d}x_{4} \\
+		&= 1 \cdot {\rm d}x_{1}{\rm d}x_{2}{\rm d}x_{3}{\rm d}x_{4} \; .
+\end{align}
+
+\noindent From the requirement $\int|\phi|^2{\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} = 1$, we thus obtain for the normalisation constant $C_4$: 
+
+\begin{align}
+	{1\over C_{4}^{2}} &= \int \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + 3r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}
+\end{align}
+
+\noindent where the integration in spherical coordinates is performed with ${\rm d}\vec{r}_{1} = 4\pi r_{1}^{2}{\rm d}r_{1},  {\rm d}\vec{r}_{2} = \ldots$ which gives
+
+\begin{align}
+	{1\over C_{4}^{2}} &= (4\pi)^{3} \underbrace{\int_{0}^{\infty} r_{1}^{2}\exp\Bigl(-{1\over 2} \nu_{4}  r_{1}^{2}  \Bigr)  {\rm d}r_{1}}_{{\sqrt{\pi} \over 4} {1 \over ({1\over 2} \nu_{4})^{3/2}}  }
+							\underbrace{\int_{0}^{\infty} r_{2}^{2}\exp\Bigl(-{2\over 3} \nu_{4}  r_{2}^{2}  \Bigr)  {\rm d}r_{2}}_{{\sqrt{\pi} \over 4} {1 \over ({2\over 3} \nu_{4})^{3/2}}  }
+							\underbrace{\int_{0}^{\infty} r_{3}^{2}\exp\Bigl(-{3\over 4} \nu_{4}  r_{3}^{2}  \Bigr)  {\rm d}r_{3}}_{{\sqrt{\pi} \over 4} {1 \over ({3\over 4} \nu_{4})^{3/2}}  } \\
+		&= \bigl({\pi \over \nu_{A}}\bigr)^{9/2} 4^{3/2} \\
+	\Rightarrow C_{4} &= \Bigl({\nu_{A}^{3} \over 4 \pi^{3}}\Bigr)^{3/4} \;.
+\end{align}
+
+\noindent For the rms, we obtain accordingly:
+
+
+
+
+
 %
 % HBT Appendix
 %
 \section{HBT radii in Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisation for comparison with coalescence models}\label{appendix:YKP}
 
-The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{sside}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015vna} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
+The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{side}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015vna} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
 The transformation between the two parameterisations is best presented in~\cite{Wiedemann:1999qn} in the equations (W 3.48) to (W 3.52)\footnote{The equations in~\cite{Wiedemann:1999qn} are denoted as (W...) in order to distinguish them from the equations presented in this paper.}:
 
 \begin{eqnarray}
