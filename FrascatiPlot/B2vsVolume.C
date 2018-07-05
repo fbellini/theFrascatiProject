@@ -199,13 +199,13 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   coalcanv->SetRightMargin(0.02);
   coalcanv->Divide(2,1);
 
-  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; R (fm); #LTC_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
+  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
   frame_cd->GetXaxis()->SetTitleSize(0.05);
   frame_cd->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  frame_cd->GetXaxis()->SetRangeUser(0.1, 10.5);
   
-  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; R (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.1);
+  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.1);
   frame_coal->GetXaxis()->SetTitleSize(0.05);
   frame_coal->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
@@ -243,7 +243,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB2_coalescence_largeradius->Draw("same");
   legB2_coal->Draw();
 
-  coalcanv->Print("theory_coalescence_Cd_B2.eps");
+  coalcanv->Print("Paper/theory_coalescence_Cd_B2.eps");
+  coalcanv->Print("Paper/theory_coalescence_Cd_B2.png");
   if (plotOnlyCoalescence) return 0;
 
   //  if (plotPaperFigures) return 0;
