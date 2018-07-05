@@ -11,7 +11,7 @@ void convertMultiToRadius(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 0);
 void getRadiusFromParameterisation(Double_t * multi = 0x0, Double_t * radius = 0x0, Int_t paramSet = 0);
 TF1 * MakeB2TheoryGraphQMfactor(Double_t objSize = 3.2);
 TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 3.2);
-TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.75);
+TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 2.48);
 
 TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphErrors * getB2_pp7TeVINEL(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
@@ -113,7 +113,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //We use now the mass of the proton and the pT per nucleon
   Double_t mT = TMath::Sqrt(pToA * pToA + 0.938 * 0.938);
   // objSize = 3.2; //fm for the deuteron
-  // objSize = 1.75; //fm for the 3^He
+  // objSize = 2.48; //fm for the 3^He
 
   TF1 * Cd_coalescence = (TF1*) MakeB2TheoryGraphQMfactor();
   Cd_coalescence->SetLineWidth(3);
@@ -369,7 +369,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legC->SetTextFont(42);
   legC->SetTextSize(0.05);
   legC->SetBorderSize(0);
-  legC->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
+  legC->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
   legC->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
   legC->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
   
@@ -492,7 +492,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->SetTextSize(0.035);
   legB3->SetBorderSize(0);
   legB3->SetTextSize(0.025);
-  legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
+  legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
   legB3->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
   legB3->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
@@ -638,7 +638,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3coal->SetFillStyle(0);
   legB3coal->SetTextSize(0.035);
   legB3coal->SetBorderSize(0);
-  legB3coal->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 1.75 fm", "l");
+  legB3coal->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
   legB3coal->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
   legB3coal->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
 
