@@ -161,7 +161,7 @@ In particular, the wave-function of the objects under study are approximated by 
 
 \noindent for point-like constituents. In particular, we obtain $r_{d}= \sqrt{8/3}  \rmsd$ for $A = 2$, $r_{3}= \sqrt{2}{\rmsthree}$ for $A = 3$, and  $r_{4}= \sqrt{16/9} \rmsfour$ for $A=4$ (see Appendix \ref{appendix:Sato} for details).
 
-This ansatz allows to derive in the following a set of analytic formulas which can be used for the calculation of coalescence predictions. In Tab.~\ref{tab:nucleusradii}, we therefore do not list only the rms of the wavefunction, but we also list the size parameter of the harmonic oscillator potential, $r_{A}$. We encourage future more rigorous studies which address the coalescence probabilities with more realistic wave-functions. \textcolor{red}{Consider mentioning the further  approximations done by Uli in his paper, if there is time and how Uli's paper relates to the Wigner formalism.}
+This ansatz allows to derive in the following a set of analytic formulas which can be used for the calculation of coalescence predictions. In Tab.~\ref{tab:nucleusradii}, we therefore do not list only the rms of the wavefunction, but we also list the size parameter of the harmonic oscillator potential, $r_{A}$. The approximation of the wave-function with a gaussian form can be further refined with more realistic parameterisations, e.g. the Hulthen parameterisation for the deuteron or a $\Lambda$-deuteron parameterisation for the hyper-triton. We encourage future more rigorous numerical studies which address the coalescence probabilities with more realistic wave-functions, but remain with the gaussian ansatz in the following in order to obtain more intuitive analytic solutions which highlight the sensitivity to the source and the (hyper-)nucleus size. \textcolor{red}{Consider mentioning the further  approximations done by Uli in his paper, if there is time and how Uli's paper relates to the Wigner formalism.}
 
 In this approach, the quantum mechanical nature of the coalescence products is explicitly accounted for by means of an average quantum mechanical correction factor, $\langle C_{A} \rangle$. In the case of the deuteron, the quantum mechanical correction factor $\langle C_{d} \rangle$ has been approximated as 
 
@@ -229,7 +229,20 @@ In particular, for the case of \hethree~with $A=3$ and $J=1/2$, Eq. \ref{eq:BA_g
 \label{eq:C3}
 \end{equation}
  
- \textcolor{red}{Mention (if true, please check) that this assumes a gaussian wave function of the produced object. This might not be true in reality for the hyper-triton, but it allows to show the sensitivity of the wave-function and gives easy analytic expressions.}
+In summary, one obtains under the assumption $R_1\approx R_2 \approx R_3 \approx R$ (see details in next section) by combining Eq.~\ref{eq:BA_general} and Eq.~\ref{eq:CA_general} the following general expression for the coalescence parameter which can be compared to experimental data:
+
+\begin{equation}
+	\boxed {  B_{A} = {J_{A} + 1 \over 2^{A}} {1 \over \sqrt{A}} {1 \over m_{T}^{A-1}} \Bigl({2\pi \over R^2 + ({r_A \over 2})^2 }\Bigr)^{3/2(A-1)} } \;\; .
+\end{equation}
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% SOURCE VOLUME
+%%
+%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Source volume}
 \label{SecSourceVolume}
@@ -264,7 +277,7 @@ Ideally, one would use the proton femtoscopic radii for such study, but given th
 
 In the statistical-thermal approach, the yields (d$N$/d$y$) of light anti- and hyper-nuclei are very sensitive to the chemical freeze-out temperature $T_{chem}$ due to their large mass $m$ and approximately scale as d$N$/d$y \propto \exp(-m/T_{chem})$. As a matter of fact, the chemical freeze-out temperature defines the only scale in this model, since at the LHC the chemical potentials which ensure the conservation of baryon number ($\mu_{B}$), strangeness ($\mu_{S}$), and electric charge ($\mu_{Q}$) are negligible.
 In contrast to the coalescence approach, the current implementations~\cite{} of the statistical-thermal model provide only \pt-integrated yields and not the full hadron spectra. 
-In order to fill this gap, and for the purposes of this exercise, \pt~spectra have been modeled using a blast-wave~\cite{} parameterization. When extracting the predicted spectrum for a given particle species (proton, $\Lambda$, deuteron, \hethree), the parameters of the blast-wave (average radial flow velocity $\langle\beta_{T}\rangle$, kinetic freeze-out temperature $T_{kin}$, and velocity profile $n$) are fixed to the values obtained from the simultaneous fit of the pion, kaon and proton spectra measured in each collision system and multiplicity event class by ALICE~\cite{}. 
+In order to fill this gap, and for the purposes of this exercise, \pt~spectra have been modelled using a blast-wave~\cite{} parameterization. When extracting the predicted spectrum for a given particle species (proton, $\Lambda$, deuteron, \hethree), the parameters of the blast-wave (average radial flow velocity $\langle\beta_{T}\rangle$, kinetic freeze-out temperature $T_{kin}$, and velocity profile $n$) are fixed to the values obtained from the simultaneous fit of the pion, kaon and proton spectra measured in each collision system and multiplicity event class by ALICE~\cite{}. 
 The normalisation is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg model with $T_{chem} = 156$ MeV, multiplied by the pion yield measured by ALICE~\cite{}. 
 This choice is motivated by the fact that the measured proton yield is seen to be slightly underestimated by the thermal model predictions at the LHC~\cite{}.
 In the case of hyper-triton, a slightly different procedure is chosen, namely the normalisation for \hthreelambda~is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3}$ multiplied by the measured $\Lambda/p$ ratio \cite{} and the measured \hethree~yield \cite{}. Based on the thus obtained spectra, we calculate the corresponding coalescence parameters for a given \pt/A and compare it with coalescence expectations. Because we use experimental data to constrain the blast-wave prediction as well as the normalisation, and because such data are provided for given centrality/multiplicity classes, we use the corresponding \avdNdeta~in the same class to estimate the system radius based on the parameterisation discussed in Sec.~\ref{SecSourceVolume}. 
