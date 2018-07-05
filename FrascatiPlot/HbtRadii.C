@@ -25,7 +25,7 @@ void HbtRadii() {
   gStyle->SetPadTopMargin(0.05);
 
   TCanvas * canvHbtPlot = new TCanvas("canvHbtPlot","canvHbtPlot");
-  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{#it{N}_{ch}}/d#it{#eta}#GT^{1/3}; #it{R} (fm)",200,0.0,13.0,200,0.0,6.0);
+  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{N}_{ch}/d#it{#eta}#GT^{1/3}; #it{R} (fm)",200,0.0,13.0,200,0.0,6.0);
   histFrame->GetXaxis()->SetTitleSize(0.06);
   histFrame->GetXaxis()->SetLabelSize(0.045);
   histFrame->GetXaxis()->SetTitleOffset(1.1);
