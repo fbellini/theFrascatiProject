@@ -35,10 +35,14 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pTo
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 
+void MakePaperFigure2();
   
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.,
 		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kTRUE)
 {
+  //
+  // main function which generates the plots of the Frascati project
+  //
   
   //--------------------
   //data
@@ -764,6 +768,15 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   return; 
 }
 
+
+void MakePaperFigure2() {
+  //
+  // Create the (pure theory) figure which plots <C_d> and B2 vs R
+  // for different radii
+  //
+
+
+}
 
 
 Double_t getB2fromRadius(Double_t homogR, Double_t mT, Double_t objSize)
