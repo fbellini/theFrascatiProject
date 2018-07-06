@@ -147,7 +147,7 @@ In addition, the elliptic flow of deuterons cannot be explained by simple coales
 
 In contrast to the simple approach described in the previous section, a more advanced coalescence model takes into account the size of the particle emission source, as the coalescence probability naturally decreases for two nucleons with similar momenta that are produced far apart in configuration space. While there are several approaches to address this effect~\cite{Sato:1981ez, Nagle:1996vp, Bergstrom:1979gpv, PapersWithWignerCitedinUli}, we rely in our study on the formalism proposed in~\cite{Scheibl:1998tk}. 
 
-In particular, the wave-function of the objects under study are approximated by the wave-function of a spherical harmonic oscillator as in~\cite{Scheibl:1998tk} with a characteristic size parameter $r_{A}$. For the deuteron (A = 2) wave-function $\varphi_{d}(\vec{r}) $, one obtains
+In particular, the wave-function of the objects under study are approximated by the ground-state wave-functions of an isotropic spherical harmonic oscillator as in~\cite{Scheibl:1998tk} with a characteristic size parameter $r_{A}$. For the deuteron (A = 2) wave-function $\varphi_{d}(\vec{r}) $, one obtains
 
 \begin{equation}\label{eq:WaveHeinz}
  \varphi_{d}(\vec{r}) = (\pi r_{d}^2)^{-3/4} \exp\left(-{r^2 \over 2 r_{d}^2}\right) \;.
@@ -291,8 +291,8 @@ Data on anti- and hyper-nuclei production at LHC energies and different collisio
 In Fig. \ref{fig:CompareB2B3forDifferentParamWithData} we compare the coalescence parameter \btwo~from the coalescence model (see Eqs.~\ref{eq:B2cd} and \ref{eq:B2approx}, with $r_{d} = 3.2$ fm) with the ALICE data.  
 First, the parameterisation of the system radius fitted to the HBT data as described in Sec.~\ref{SecSourceVolume} is used to map the \avdNdeta~to the source size (datapoints shown in the two left panels).
 We notice already at this point that the coalescence volume from our extracted parameterisation of the HBT radii leads to discrepancies with respect to the curve from the coalescence calculation, and in particular, we notice that the model would require a larger radius for a given value of \btwo.
-Therefore, in a second step the radius is tuned such that the data points for (anti-) deuterons fall onto the coalescence prediction (solid markers). We find that the parameters of Eq.~\ref{eq:radiusParameterisation} turn out to be \textcolor{red}{$a = xxx$ and $b = yyy$}. 
-With this second parameterisation, we investigate also the agreement of the model with the measured coalescence parameter \bthree. As shown in Fig.~\ref{fig:CompareB2B3forDifferentParamWithData}, also in the case of \bthree, a tension between the model and the data is found which ameliorates with the parameterisation which is tuned to the (anti-)deuteron data.  \textcolor{red}{We note that this approach is in contrast to the study of Che Ming Ko which allows different freeze-out times for different particles???}
+Therefore, in a second step the radius is tuned such that the data points for (anti-) deuterons fall onto the coalescence prediction (solid markers). We find that the parameters of Eq.~\ref{eq:radiusParameterisation} turn out to be \textcolor{red}{$a \approx 0.473$ and $b \approx 0$}. 
+With this second parameterisation, we investigate also the agreement of the model with the measured coalescence parameter \bthree. As shown in Fig.~\ref{fig:CompareB2B3forDifferentParamWithData}, also in the case of \bthree, a tension between the model and the data is found which ameliorates with the parameterisation which is tuned to the (anti-)deuteron data. The strength of this approach is given by the fact that the coalescence volume is constrained with the more differential (anti-)deuteron data assuming that it is the same for all fragile anti- and hyper-nuclei. %\textcolor{red}{We note that this approach is in contrast to the study of Che Ming Ko which allows different freeze-out times for different particles???}
 It is also noteworthy that any change of the radii parameterisation would result in a shift along the x axis of both \btwo~and \bthree~data points in the same way, while the theoretical coalescence curve would not be affected. 
  
  \begin{figure}[htbp]
@@ -332,7 +332,7 @@ We conclude that (c.) appears unlikely, thus leaving (b.) as a viable option, at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%              APPENDIX                   %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \begin{appendix}
 \section{Relation to the Sato-Yazaki coalescence model}\label{appendix:Sato}
 %As discussed in~\cite{Nagle:1996vp}, 
@@ -404,6 +404,7 @@ The parameter $\nu_{A}$ is typically chosen such that the measured rms charge ra
 %
 % RMS appendix
 %
+\newpage
 \section{RMS of a gaussian wave-function for A=4 }\label{appendix:integration}
 
 In this appendix, we show the calculation of the RMS of a gaussian wave-function with the example of A=4. We start from the wave-function
@@ -464,11 +465,12 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 
 
 \begin{align}
-	\lambda_{4}^{2} &= \int {1\over 4}  \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 |\phi|^2 {\rm d}\vec{x}_{1}{\rm d}\vec{x}_{2}{\rm d}\vec{x}_{3}{\rm d}\vec{x}_{4} \\
-				 &= {C_4^2 \over 4}  \int \bigl({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2} \bigr) \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} \\
-				 &= {C_4^2 \over 4} \Bigl(\underbrace{{1\over 2} \int r_{1}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm I} \\
-				  &\;\;+ \underbrace{{2\over 3} \int r_{2}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm II} \\
-				  &\;\;+ \underbrace{{3\over 4} \int r_{3}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm III}
+	\lambda_{4}^{2} &= {1 \over 4} \langle \phi \vert   \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 \vert \phi \rangle \\
+	&= \int {1\over 4}  \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 |\phi|^2 {\rm d}\vec{x}_{1}{\rm d}\vec{x}_{2}{\rm d}\vec{x}_{3}{\rm d}\vec{x}_{4} \\
+	 &= {C_4^2 \over 4}  \int \bigl({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2} \bigr) \exp^{2}\Bigl(-{1\over 2} \nu_{4} ({1\over 2}r_{1}^{2} + {2\over 3} r_{2}^{2} + {3\over 4}r_{3}^{2}) \Bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3} \\
+	&= {C_4^2 \over 4} \Bigl(\underbrace{{1\over 2} \int r_{1}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm I} \\
+	&\;\;+ \underbrace{{2\over 3} \int r_{2}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm II} \\
+	&\;\;+ \underbrace{{3\over 4} \int r_{3}^2 \exp\bigl(-{1\over2} \nu_A r_{1}^{2}\bigr) \exp\bigl(-{2\over3} \nu_A r_{2}^{2}\bigr) \exp\bigl(-{3\over4} \nu_A r_{3}^{2}\bigr) {\rm d}\vec{r}_{1}{\rm d}\vec{r}_{2}{\rm d}\vec{r}_{3}}_{\rm III}
 				 \Bigr)
 \end{align}
 
@@ -491,6 +493,7 @@ In this appendix, we show the calculation of the RMS of a gaussian wave-function
 %
 % HBT Appendix
 %
+\newpage
 \section{HBT radii in Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisation for comparison with coalescence models}\label{appendix:YKP}
 
 The results of HBT analyses are typically presented in either the Bertsch-Pratt ($R_{out}$, $R_{side}$, $R_{long}$) or the Yano-Koonin-Podgoretskii ($R_{\perp}$, $R_{0}$, $R_{\parallel}$) parameterization. The ALICE HBT results \cite{Aamodt:2011mr, Adam:2015vna} are given in the Bertsch-Pratt convention, whereas the coalescence parameter is derived in \cite{Scheibl:1998tk} by expressing the dependence on the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
