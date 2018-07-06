@@ -3,6 +3,12 @@
    17.01.2018 - The Frascati plot
 */
 #include "TMath.h"
+#include "TGraphAsymmErrors.h"
+#include "TGraphErrors.h"
+#include "TPaveText.h"
+#include "TLegend.h"
+#include "TH1D.h"
+#include "TH2D.h"
 #include "./generateBWpredictionsB2.C" //ADAPT ME
 
 void convertMultiToRadius(TGraphErrors * graph = 0x0, Int_t paramSet = 0);
@@ -35,8 +41,15 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pTo
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 
-void MakePaperFigure2();
-  
+void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
+		      TF1 *Cd_coalescence, TF1* Cd_coalescence_pointlike, TF1* Cd_coalescence_radius1third,  TF1* Cd_coalescence_largeradius,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB2_coalescence_pointlike, TGraphErrors * hB2_coalescence_radius1third, TGraphErrors * hB2_coalescence_largeradius);
+
+void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, 
+		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINEL_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINEL,
+		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV);
+
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.,
 		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kTRUE)
 {
@@ -179,7 +192,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3_coalescence_pointlike->SetMarkerSize(0.4);
   hB3_coalescence_pointlike->SetLineWidth(3);
 
-  TGraphErrors* hB3L_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 10.6);
+  TGraphErrors* hB3L_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 6.8);
   hB3L_coalescence->SetMarkerStyle(20);
   hB3L_coalescence->SetMarkerColor(kAzure-7);
   hB3L_coalescence->SetLineColor(kAzure-7);
@@ -193,73 +206,14 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gStyle->SetPadLeftMargin(0.15);
   gStyle->SetPadRightMargin(0.02); 
 
-  //------------------------------
-  // PLOT COALESCENCE ONLY with different radii
-  //------------------------------
-  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 1000);
-  coalcanv->SetBottomMargin(0.02);
-  coalcanv->SetTopMargin(0.02);
-  coalcanv->SetLeftMargin(0.15);
-  coalcanv->SetRightMargin(0.02);
-  coalcanv->Divide(2,1);
-
-  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
-  frame_cd->GetXaxis()->SetTitleSize(0.05);
-  frame_cd->GetYaxis()->SetTitleSize(0.05);
-  if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
-  else  frame_cd->GetXaxis()->SetRangeUser(0.1, 10.5);
-  
-  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.1);
-  frame_coal->GetXaxis()->SetTitleSize(0.05);
-  frame_coal->GetYaxis()->SetTitleSize(0.05);
-  if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
-  else  frame_coal->GetXaxis()->SetRangeUser(0.1, 10.5);
-  
-  TLegend * legB2_coal;
-  if (plotLinX) legB2_coal = new TLegend(0.4, 0.95-4*0.04, 0.8, 0.95);
-  else legB2_coal = new TLegend(0.2, 0.15, 0.75, 0.15+4*0.03);
-  legB2_coal->SetFillStyle(0);
-  legB2_coal->SetTextSize(0.035);
-  legB2_coal->SetBorderSize(0);
-  
-  legB2_coal->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r_{d}} = 0 (point-like)", "l");
-  legB2_coal->AddEntry(hB2_coalescence_radius1third, "#it{B}_{2} coalesc., #it{r_{d}} = 0.3 fm", "l");
-  legB2_coal->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r_{d}} = 3.2 fm", "l");
-  legB2_coal->AddEntry(hB2_coalescence_largeradius, "#it{B}_{2} coalesc., #it{r_{d}} = 10 fm", "l");
-  // add pT over A here as well
-
-  coalcanv->cd(1);
-  gPad->SetTickx();
-  gPad->SetTicky();
-  frame_cd->Draw();
-  Cd_coalescence->Draw("same");
-  Cd_coalescence_pointlike->Draw("same");
-  Cd_coalescence_radius1third->Draw("same");
-  Cd_coalescence_largeradius->Draw("same");
-  
-  coalcanv->cd(2);
-  gPad->SetLogy();
-  gPad->SetTickx();
-  gPad->SetTicky();
-  frame_coal->Draw();
-  hB2_coalescence->Draw("same");
-  hB2_coalescence_pointlike->Draw("same");
-  hB2_coalescence_radius1third->Draw("same");
-  hB2_coalescence_largeradius->Draw("same");
-  legB2_coal->Draw();
-
-  TPaveText * paveptCoalCanv = new TPaveText(0.5, 0.6, 0.9, 0.7, "NDC");
-  paveptCoalCanv->SetFillStyle(0);
-  paveptCoalCanv->SetTextFont(42);
-  paveptCoalCanv->SetBorderSize(0);
-  paveptCoalCanv->SetTextSize(0.04);
-  paveptCoalCanv->SetTextAlign(12);
-  paveptCoalCanv->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
-  paveptCoalCanv->Draw();
 
 
-  coalcanv->Print("Paper/theory_coalescence_Cd_B2.eps");
-  coalcanv->Print("Paper/theory_coalescence_Cd_B2.png");
+  // ------------------
+  // make the figure with coalescence only
+  // ------------------
+  MakePaperFigure2(plotLinX, pToA,
+		   Cd_coalescence, Cd_coalescence_pointlike, Cd_coalescence_radius1third, Cd_coalescence_largeradius,
+		   hB2_coalescence, hB2_coalescence_pointlike, hB2_coalescence_radius1third, hB2_coalescence_largeradius);
   if (plotOnlyCoalescence) return 0;
 
   //  if (plotPaperFigures) return 0;
@@ -320,7 +274,17 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     MakeUp(gBlastB3LambdavsR_PbPb276TeV[ip] , color[EPlotEntries::kB3L_PBPB276blast], color[EPlotEntries::kB3L_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3L_PBPB276blast], Marker_Size);
   }
 
-  //Define frames only once for all sets of B2 or B3 vs Radius
+
+  MakePaperFigure3(plotLinX, pToA, pToAb3,
+		   hB2_coalescence, hB3_coalescence, 
+		   gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINEL_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINEL,
+		   gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV);
+  if (plotPaperFigures) return 0;
+
+  //---------------------------------------
+  // PLOT FRASCATI PLOTS FOR SLIDES
+  //---------------------------------------  
+
   TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
@@ -365,108 +329,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   paveptB3L->SetTextAlign(12);
   paveptB3L->AddText(Form("#it{B}_{3,#Lambda}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
-
-  
-  //---------------------------------------
-  // PLOT FIGURES FOR PAPER
-  //---------------------------------------  
-  TLegend * legA = new TLegend(0.17, 0.13, 0.45, 0.32);
-  legA->SetFillStyle(0);
-  legA->SetTextFont(42);
-  legA->SetTextSize(0.05);
-  legA->SetBorderSize(0);
-  legA->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
-  legA->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
-  legA->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
-
-  TLegend * legC = new TLegend(0.17, 0.13, 0.45, 0.32);
-  legC->SetFillStyle(0);
-  legC->SetTextFont(42);
-  legC->SetTextSize(0.05);
-  legC->SetBorderSize(0);
-  legC->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
-  legC->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
-  legC->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
-  
-  TPaveText * paveA = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
-  paveA->SetFillStyle(0);
-  paveA->SetTextFont(42);
-  paveA->SetBorderSize(0);
-  paveA->SetTextSize(0.05);
-  paveA->SetTextAlign(12);
-  paveA->InsertText("Linear fit to HBT radii: ");
-  paveA->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.339, #it{b} = 0.128");
-
-  TPaveText * paveB = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
-  paveB->SetFillStyle(0);
-  paveB->SetTextFont(42);
-  paveB->SetBorderSize(0);
-  paveB->SetTextSize(0.05);
-  paveB->SetTextAlign(12);
-  paveB->InsertText("Fixed to #it{B}_{2} in 0-10% Pb-Pb:");
-  //paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}");
-  paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.473, #it{b} = 0");
-
-  
-  TCanvas * cr1 = new TCanvas("cr1", "compare radii parameterisations", 1000, 1000);
-  cr1->SetBottomMargin(0.02);
-  cr1->SetTopMargin(0.01);
-  cr1->SetLeftMargin(0.12);
-  cr1->SetRightMargin(0.02);
-  cr1->Divide(2,2);
-  
-  cr1->cd(1);
-  gPad->SetLogy();
-  hframe->Draw();
-  gB2vsR_pp7TeVINEL_sys[0]->Draw("samep2");
-  gB2vsR_pp7TeVINEL[0]->Draw("samepz");
-  gB2vsR_PbPb276TeV_sys[0]->Draw("samep3");
-  gB2vsR_PbPb276TeV[0]->Draw("samepz");
-  hB2_coalescence->Draw("l");
-  pavept->Draw();
-  paveA->Draw();
-  
-  cr1->cd(2);
-  gPad->SetLogy();
-  hframe->Draw();
-  gB2vsR_pp7TeVINEL_sys[1]->Draw("samep2");
-  gB2vsR_pp7TeVINEL[1]->Draw("samepz");
-  gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
-  gB2vsR_PbPb276TeV[1]->Draw("samepz");
-  hB2_coalescence->Draw("l");
-  paveB->Draw();
-  legA->Draw();
-
-  cr1->cd(3);
-  gPad->SetLogy();
-  hframe3->Draw();
-  gB3vsR_PbPb276TeV_sys[0]->Draw("samep3");
-  gB3vsR_PbPb276TeV[0]->Draw("samepz");
-  gB3vsR_pp7TeV_sys[0]->Draw("samep2");
-  gB3vsR_pp7TeV[0]->Draw("samepz");
-  hB3_coalescence->Draw("l");
-  paveptB3->Draw();
-  paveA->Draw();
-
-  cr1->cd(4);
-  gPad->SetLogy();
-  hframe3->Draw();
-  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
-  gB3vsR_PbPb276TeV[1]->Draw("samepz");
-  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
-  gB3vsR_pp7TeV[1]->Draw("samepz");
-  hB3_coalescence->Draw("l");
-  paveB->Draw();
-  legC->Draw();
-
-  cr1->Print("Paper/radiiParamCompareData.eps");
-  cr1->Print("Paper/radiiParamCompareData.png");
-  
-  if (plotPaperFigures) return 0;
-
-  //---------------------------------------
-  // PLOT FRASCATI PLOTS FOR SLIDES
-  //---------------------------------------  
 
   //Chose the set of parameterisation for the radii
   Short_t ip = 1;
@@ -513,7 +375,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
+  legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
   legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
   legB3->AddEntry(gBlastB3LambdavsR_PbPb276TeV[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
 
@@ -655,7 +517,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3coal->SetBorderSize(0);
   legB3coal->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
   legB3coal->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
-  legB3coal->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 10.6 fm", "l");
+  legB3coal->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
 
   TCanvas * cb3opta = new TCanvas("cb3opta", "Frascati plot B3", 1000, 600);
   cb3opta->SetBottomMargin(0.02);
@@ -718,6 +580,224 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 }
 
 
+
+void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
+		      TF1 *Cd_coalescence, TF1* Cd_coalescence_pointlike, TF1* Cd_coalescence_radius1third,  TF1* Cd_coalescence_largeradius,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB2_coalescence_pointlike, TGraphErrors * hB2_coalescence_radius1third, TGraphErrors * hB2_coalescence_largeradius) {
+  //
+  // Create the (pure theory) figure which plots <C_d> and B2 vs R
+  // for different radii (PLOT COALESCENCE ONLY)
+  //
+  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 1000);
+  coalcanv->SetBottomMargin(0.02);
+  coalcanv->SetTopMargin(0.02);
+  coalcanv->SetLeftMargin(0.15);
+  coalcanv->SetRightMargin(0.02);
+  coalcanv->Divide(2,1);
+
+  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
+  frame_cd->GetXaxis()->SetTitleSize(0.05);
+  frame_cd->GetYaxis()->SetTitleSize(0.05);
+  if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  frame_cd->GetXaxis()->SetRangeUser(0.1, 10.5);
+  
+  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.1);
+  frame_coal->GetXaxis()->SetTitleSize(0.05);
+  frame_coal->GetYaxis()->SetTitleSize(0.05);
+  if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  frame_coal->GetXaxis()->SetRangeUser(0.1, 10.5);
+  
+  TLegend * legB2_coal;
+  if (plotLinX) legB2_coal = new TLegend(0.4, 0.95-4*0.04, 0.8, 0.95);
+  else legB2_coal = new TLegend(0.2, 0.15, 0.75, 0.15+4*0.03);
+  legB2_coal->SetFillStyle(0);
+  legB2_coal->SetTextSize(0.035);
+  legB2_coal->SetBorderSize(0);
+  
+  legB2_coal->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r_{d}} = 0 (point-like)", "l");
+  legB2_coal->AddEntry(hB2_coalescence_radius1third, "#it{B}_{2} coalesc., #it{r_{d}} = 0.3 fm", "l");
+  legB2_coal->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r_{d}} = 3.2 fm", "l");
+  legB2_coal->AddEntry(hB2_coalescence_largeradius, "#it{B}_{2} coalesc., #it{r_{d}} = 10 fm", "l");
+  // add pT over A here as well
+
+  coalcanv->cd(1);
+  gPad->SetTickx();
+  gPad->SetTicky();
+  frame_cd->Draw();
+  Cd_coalescence->Draw("same");
+  Cd_coalescence_pointlike->Draw("same");
+  Cd_coalescence_radius1third->Draw("same");
+  Cd_coalescence_largeradius->Draw("same");
+  
+  coalcanv->cd(2);
+  gPad->SetLogy();
+  gPad->SetTickx();
+  gPad->SetTicky();
+  frame_coal->Draw();
+  hB2_coalescence->Draw("same");
+  hB2_coalescence_pointlike->Draw("same");
+  hB2_coalescence_radius1third->Draw("same");
+  hB2_coalescence_largeradius->Draw("same");
+  legB2_coal->Draw();
+
+  TPaveText * paveptCoalCanv = new TPaveText(0.5, 0.6, 0.9, 0.7, "NDC");
+  paveptCoalCanv->SetFillStyle(0);
+  paveptCoalCanv->SetTextFont(42);
+  paveptCoalCanv->SetBorderSize(0);
+  paveptCoalCanv->SetTextSize(0.04);
+  paveptCoalCanv->SetTextAlign(12);
+  paveptCoalCanv->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  paveptCoalCanv->Draw();
+
+
+  coalcanv->Print("Paper/theory_coalescence_Cd_B2.eps");
+  coalcanv->Print("Paper/theory_coalescence_Cd_B2.png");
+
+
+}
+
+
+void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, 
+		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINEL_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINEL,
+		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors **gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV) {
+  //
+  // Make the 4-panel figure comparing B2 and B3 with data for the 
+  // tuned and non-tuned parameterisation.
+  // 
+
+  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
+  hframe->GetXaxis()->SetTitleSize(0.06);
+  hframe->GetYaxis()->SetTitleSize(0.06);
+  hframe->GetXaxis()->SetTitleOffset(0.8);
+  hframe->GetXaxis()->SetLabelSize(0.05);
+  hframe->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  hframe3->GetXaxis()->SetTitleSize(0.06);
+  hframe3->GetYaxis()->SetTitleSize(0.06);
+  hframe3->GetXaxis()->SetTitleOffset(0.8);
+  hframe3->GetXaxis()->SetLabelSize(0.05);
+  hframe3->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  //Define pT/A labels only once
+  TPaveText * pavept = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
+  pavept->SetFillStyle(0);
+  pavept->SetTextFont(42);
+  pavept->SetBorderSize(0);
+  pavept->SetTextSize(0.05);
+  pavept->SetTextAlign(12);
+  pavept->AddText(Form("#it{B}_{2}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+
+  //TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
+  TPaveText * paveptB3 = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
+  paveptB3->SetFillStyle(0);
+  paveptB3->SetTextFont(42);
+  paveptB3->SetBorderSize(0);
+  paveptB3->SetTextSize(0.05);
+  paveptB3->SetTextAlign(12);
+  paveptB3->AddText(Form("#it{B}_{3}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
+
+  TLegend * legA = new TLegend(0.17, 0.13, 0.45, 0.32);
+  legA->SetFillStyle(0);
+  legA->SetTextFont(42);
+  legA->SetTextSize(0.05);
+  legA->SetBorderSize(0);
+  legA->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
+  legA->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
+  legA->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
+
+  TLegend * legC = new TLegend(0.17, 0.13, 0.45, 0.32);
+  legC->SetFillStyle(0);
+  legC->SetTextFont(42);
+  legC->SetTextSize(0.05);
+  legC->SetBorderSize(0);
+  legC->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
+  legC->AddEntry(gB2vsR_PbPb276TeV_sys[0], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
+  legC->AddEntry(gB2vsR_pp7TeVINEL_sys[0], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL)", "p");
+  
+  TPaveText * paveA = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
+  paveA->SetFillStyle(0);
+  paveA->SetTextFont(42);
+  paveA->SetBorderSize(0);
+  paveA->SetTextSize(0.05);
+  paveA->SetTextAlign(12);
+  paveA->InsertText("Linear fit to HBT radii: ");
+  paveA->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.339, #it{b} = 0.128");
+
+  TPaveText * paveB = new TPaveText(0.17, 0.82, 0.80, 0.95, "NDC");
+  paveB->SetFillStyle(0);
+  paveB->SetTextFont(42);
+  paveB->SetBorderSize(0);
+  paveB->SetTextSize(0.05);
+  paveB->SetTextAlign(12);
+  paveB->InsertText("Fixed to #it{B}_{2} in 0-10% Pb-Pb:");
+  //paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}");
+  paveB->InsertText("#it{R} = #it{a} #LT d#it{N}_{ch}/d#it{#eta}#GT^{1/3} + #it{b}, #it{a} = 0.473, #it{b} = 0");
+
+  
+  TCanvas * cr1 = new TCanvas("cr1", "compare radii parameterisations", 1000, 1000);
+  cr1->SetBottomMargin(0.02);
+  cr1->SetTopMargin(0.01);
+  cr1->SetLeftMargin(0.12);
+  cr1->SetRightMargin(0.02);
+  cr1->Divide(2,2);
+  
+  cr1->cd(1);
+  gPad->SetLogy();
+  hframe->Draw();
+  gB2vsR_pp7TeVINEL_sys[0]->Draw("samep2");
+  gB2vsR_pp7TeVINEL[0]->Draw("samepz");
+  gB2vsR_PbPb276TeV_sys[0]->Draw("samep3");
+  gB2vsR_PbPb276TeV[0]->Draw("samepz");
+  hB2_coalescence->Draw("l");
+  pavept->Draw();
+  paveA->Draw();
+  
+  cr1->cd(2);
+  gPad->SetLogy();
+  hframe->Draw();
+  gB2vsR_pp7TeVINEL_sys[1]->Draw("samep2");
+  gB2vsR_pp7TeVINEL[1]->Draw("samepz");
+  gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB2vsR_PbPb276TeV[1]->Draw("samepz");
+  hB2_coalescence->Draw("l");
+  paveB->Draw();
+  legA->Draw();
+
+  cr1->cd(3);
+  gPad->SetLogy();
+  hframe3->Draw();
+  gB3vsR_PbPb276TeV_sys[0]->Draw("samep3");
+  gB3vsR_PbPb276TeV[0]->Draw("samepz");
+  gB3vsR_pp7TeV_sys[0]->Draw("samep2");
+  gB3vsR_pp7TeV[0]->Draw("samepz");
+  hB3_coalescence->Draw("l");
+  paveptB3->Draw();
+  paveA->Draw();
+
+  cr1->cd(4);
+  gPad->SetLogy();
+  hframe3->Draw();
+  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB3vsR_PbPb276TeV[1]->Draw("samepz");
+  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
+  gB3vsR_pp7TeV[1]->Draw("samepz");
+  hB3_coalescence->Draw("l");
+  paveB->Draw();
+  legC->Draw();
+
+  cr1->Print("Paper/radiiParamCompareData.eps");
+  cr1->Print("Paper/radiiParamCompareData.png");
+  
+
+}
+
+
 void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t paramSet)
 {
   // parameterisation to convert multiplicity into Rside
@@ -766,16 +846,6 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   radius[0] = radiusVal;
   radius[1] = radiusErr;
   return; 
-}
-
-
-void MakePaperFigure2() {
-  //
-  // Create the (pure theory) figure which plots <C_d> and B2 vs R
-  // for different radii
-  //
-
-
 }
 
 
