@@ -222,6 +222,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2_coal->AddEntry(hB2_coalescence_radius1third, "#it{B}_{2} coalesc., #it{r_{d}} = 0.3 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r_{d}} = 3.2 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence_largeradius, "#it{B}_{2} coalesc., #it{r_{d}} = 10 fm", "l");
+  // add pT over A here as well
 
   coalcanv->cd(1);
   gPad->SetTickx();
@@ -242,6 +243,16 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB2_coalescence_radius1third->Draw("same");
   hB2_coalescence_largeradius->Draw("same");
   legB2_coal->Draw();
+
+  TPaveText * paveptCoalCanv = new TPaveText(0.5, 0.6, 0.9, 0.7, "NDC");
+  paveptCoalCanv->SetFillStyle(0);
+  paveptCoalCanv->SetTextFont(42);
+  paveptCoalCanv->SetBorderSize(0);
+  paveptCoalCanv->SetTextSize(0.04);
+  paveptCoalCanv->SetTextAlign(12);
+  paveptCoalCanv->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  paveptCoalCanv->Draw();
+
 
   coalcanv->Print("Paper/theory_coalescence_Cd_B2.eps");
   coalcanv->Print("Paper/theory_coalescence_Cd_B2.png");
