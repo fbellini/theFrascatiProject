@@ -826,6 +826,7 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   TH2D * hframe = new TH2D("hframeFig4", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
+  hframe->GetYaxis()->SetTitleOffset(1.25);
   hframe->GetXaxis()->SetTitleOffset(0.8);
   hframe->GetXaxis()->SetLabelSize(0.05);
   hframe->GetYaxis()->SetLabelSize(0.05);
@@ -835,6 +836,7 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   TH2D * hframe3 = new TH2D("hframe3Fig4", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.06);
   hframe3->GetYaxis()->SetTitleSize(0.06);
+  hframe3->GetYaxis()->SetTitleOffset(1.25);
   hframe3->GetXaxis()->SetTitleOffset(0.8);
   hframe3->GetXaxis()->SetLabelSize(0.05);
   hframe3->GetYaxis()->SetLabelSize(0.05);
@@ -905,18 +907,23 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   hframe3->Draw();
   gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
   gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
-  //  gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
   gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
   hB3L_coalescence->Draw("l");
   paveptB3L->Draw();
+  //
+  Int_t nl = 3;
+  TLegend * legB3Lambda = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB3Lambda->SetFillStyle(0);
+  legB3Lambda->SetTextSize(0.03);
+  legB3Lambda->SetBorderSize(0);
+  legB3Lambda->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
+  legB3Lambda->AddEntry(gB3LambdavsR_PbPb276TeV_sys[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
+  legB3Lambda->AddEntry(gBlastB3LambdavsR_PbPb276TeV[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3Lambda->Draw();
+  //
 
-
-  //  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
-  //  gB3vsR_PbPb276TeV[1]->Draw("samepz");
-  //  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
-  //  gB3vsR_pp7TeV[1]->Draw("samepz");
-  //  hB3_coalescence->Draw("l");
-
+  cr4->Print("Paper/compareThermalAndCoalescence.eps");
+  cr4->Print("Paper/compareThermalAndCoalescence.png");
 
 
 
