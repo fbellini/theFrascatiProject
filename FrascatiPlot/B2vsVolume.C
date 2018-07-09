@@ -885,6 +885,17 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB2vsR_PbPb276TeV[1]->Draw("samepz");
   gBlastB2vsR_PbPb276TeV[1]->Draw("samel");
+  //
+  TLegend * legB2 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB2->SetFillStyle(0);
+  legB2->SetTextSize(0.03);
+  legB2->SetBorderSize(0);
+  legB2->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
+  legB2->AddEntry(gB2vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB2->AddEntry(gB2vsR_pp7TeVINEL_sys[1], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB2->Draw();
+  //
   hB2_coalescence->Draw("l");
 
   pavept->Draw();
@@ -899,6 +910,17 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   gB3vsR_pp7TeV[1]->Draw("samepz");
   gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
   hB3_coalescence->Draw("l");
+  //
+  TLegend * legB3 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB3->SetFillStyle(0);
+  legB3->SetTextSize(0.03);
+  legB3->SetBorderSize(0);
+  legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
+  legB3->AddEntry(gB3vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3->AddEntry(gB3vsR_pp7TeV_sys[1], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV[1], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  legB3->Draw();
+  //
   paveptB3->Draw();
 
 
@@ -911,7 +933,6 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   hB3L_coalescence->Draw("l");
   paveptB3L->Draw();
   //
-  Int_t nl = 3;
   TLegend * legB3Lambda = new TLegend(0.2, 0.95, 0.6, 0.8, "");
   legB3Lambda->SetFillStyle(0);
   legB3Lambda->SetTextSize(0.03);
