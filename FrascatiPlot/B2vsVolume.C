@@ -51,7 +51,7 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV);
 
 void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
-		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINEL_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINEL,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
@@ -201,11 +201,18 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
   TGraphErrors* hB3L_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 6.8);
   hB3L_coalescence->SetMarkerStyle(20);
-  hB3L_coalescence->SetMarkerColor(kAzure-7);
-  hB3L_coalescence->SetLineColor(kAzure-7);
+  hB3L_coalescence->SetMarkerColor(kBlack);
+  hB3L_coalescence->SetLineColor(kBlack);
   hB3L_coalescence->SetLineWidth(3);
-  hB3L_coalescence->SetLineStyle(9);
+  hB3L_coalescence->SetLineStyle(1);
 
+  TGraphErrors* hB3L_coalescence_largeradius = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 14.1);
+  hB3L_coalescence_largeradius->SetMarkerStyle(20);
+  hB3L_coalescence_largeradius->SetMarkerColor(kBlack);
+  hB3L_coalescence_largeradius->SetLineColor(kBlack);
+  hB3L_coalescence_largeradius->SetLineWidth(3);
+  hB3L_coalescence_largeradius->SetLineStyle(7);
+  
   gStyle->SetOptStat(0);
   gStyle->SetOptTitle(0);
   gStyle->SetPadTopMargin(0.02);
@@ -242,9 +249,9 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		      kB3_PP7blast, kB3_PPB502blast, kB3_PBPB276blast, kB3_PBPB502blast, kB3L_PBPB276blast};
   
   Color_t color[]      = {kGreen+2, kBlue+2, kRed, kRed+2,
-			  kGreen+2, kBlue+2, kRed, kRed+2,
-			  kGreen+2, kSpring+4, kRed, kRed+2, kAzure-6,
-			  kBlue-5, kBlue-7, kRed, kRed+2, kAzure-6};
+			  kGreen+2, kBlue+2, kBlue+1, kRed+2,
+			  kGreen+2, kSpring+4, kRed, kRed+2, kRed,
+			  kBlue-5, kBlue-7, kBlue+1, kRed+2, kBlue+1};
   
   Int_t Marker_Style[] = { 21, 22, 20, 23,
 			   21, 22, 20, 23,
@@ -290,7 +297,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		   gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV);
 
   MakePaperFigure4(plotLinX, pToA, pToAb3, pToAb3Lambda,
-		   hB2_coalescence, hB3_coalescence, hB3L_coalescence,
+		   hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
 		   gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINEL_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINEL,
 		   gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
 		   gBlastB2vsR_PbPb276TeV, gBlastB3vsR_PbPb276TeV,
@@ -372,7 +379,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2->AddEntry(gB2vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB2->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB2->AddEntry(gB2vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
   legB2->AddEntry(gBlastB2vsR_PbPb502TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
   legB2->AddEntry(gBlastB2vsR_PbPb276TeV[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
   legB2->AddEntry(gBlastB2vsR_pPb502TeV[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, BW + GSI (T = 156 MeV)", "l");
@@ -390,7 +397,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
   legB3->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB3->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
+  legB3->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
   legB3->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
   legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
   legB3->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
@@ -453,7 +460,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2data->AddEntry(gB2vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB2data->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB2data->AddEntry(gB2vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  legB2data->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2data->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
  
   nl = 5;
   TLegend * legB2blast = new TLegend(0.1, 0.65-nl*0.04, 0.45, 0.65, "Blast-Wave (#pi,K,p) + GSI-Heid. (T = 156 MeV)");
@@ -667,8 +674,8 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   paveptCoalCanv->Draw();
 
 
-  coalcanv->Print("Paper/theory_coalescence_Cd_B2.eps");
-  coalcanv->Print("Paper/theory_coalescence_Cd_B2.png");
+  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
+  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
 
 
 }
@@ -808,14 +815,14 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
   paveB->Draw();
   legC->Draw();
 
-  cr1->Print("Paper/radiiParamCompareData.eps");
-  cr1->Print("Paper/radiiParamCompareData.png");
+  cr1->SaveAs("Paper/radiiParamCompareData.eps");
+  cr1->SaveAs("Paper/radiiParamCompareData.png");
   
 
 }
 
 void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t pToAb3Lambda,
-		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius, 
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINEL_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINEL,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
@@ -826,7 +833,7 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   TH2D * hframe = new TH2D("hframeFig4", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
-  hframe->GetYaxis()->SetTitleOffset(1.25);
+  hframe->GetYaxis()->SetTitleOffset(1.3);
   hframe->GetXaxis()->SetTitleOffset(0.8);
   hframe->GetXaxis()->SetLabelSize(0.05);
   hframe->GetYaxis()->SetLabelSize(0.05);
@@ -836,55 +843,100 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   TH2D * hframe3 = new TH2D("hframe3Fig4", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.06);
   hframe3->GetYaxis()->SetTitleSize(0.06);
-  hframe3->GetYaxis()->SetTitleOffset(1.25);
+  hframe3->GetYaxis()->SetTitleOffset(1.3);
   hframe3->GetXaxis()->SetTitleOffset(0.8);
   hframe3->GetXaxis()->SetLabelSize(0.05);
   hframe3->GetYaxis()->SetLabelSize(0.05);
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
 
+  TH2D * hframe3L = new TH2D("hframe3LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{3,#Lambda} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  hframe3L->GetXaxis()->SetTitleSize(0.06);
+  hframe3L->GetYaxis()->SetTitleSize(0.06);
+  hframe3L->GetYaxis()->SetTitleOffset(1.3);
+  hframe3L->GetXaxis()->SetTitleOffset(0.8);
+  hframe3L->GetXaxis()->SetLabelSize(0.05);
+  hframe3L->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe3L->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe3L->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+
+  //define particle label
+  TPaveText * paveLab2 = new TPaveText(0.8, 0.8, 0.9, 0.9, "NDC");
+  paveLab2->SetFillStyle(0);
+  paveLab2->SetTextFont(42);
+  paveLab2->SetBorderSize(0);
+  paveLab2->SetTextSize(0.1);
+  paveLab2->SetTextAlign(12);
+  paveLab2->AddText("#bf{d}");
+
+  TPaveText * paveLab3 = new TPaveText(0.77, 0.8, 0.9, 0.9, "NDC");
+  paveLab3->SetFillStyle(0);
+  paveLab3->SetTextFont(42);
+  paveLab3->SetBorderSize(0);
+  paveLab3->SetTextSize(0.1);
+  paveLab3->SetTextAlign(12);
+  paveLab3->AddText("#bf{^{3}He}");
+
+  TPaveText * paveLab3L = new TPaveText(0.75, 0.8, 0.9, 0.9, "NDC");
+  paveLab3L->SetFillStyle(0);
+  paveLab3L->SetTextFont(42);
+  paveLab3L->SetBorderSize(0);
+  paveLab3L->SetTextSize(0.1);
+  paveLab3L->SetTextAlign(12);
+  paveLab3L->AddText("#bf{ ^{3}_{#Lambda}H}");
+  
   //Define pT/A labels only once
-  TPaveText * pavept = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
+  TPaveText * pavept = new TPaveText(0.17, 0.87, 0.7, 0.92, "NDC");
   pavept->SetFillStyle(0);
   pavept->SetTextFont(42);
   pavept->SetBorderSize(0);
   pavept->SetTextSize(0.05);
   pavept->SetTextAlign(12);
-  pavept->AddText(Form("#it{B}_{2}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
 
   //TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
-  TPaveText * paveptB3 = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
+  TPaveText * paveptB3 = new TPaveText(0.17, 0.87, 0.7, 0.92, "NDC");
   paveptB3->SetFillStyle(0);
   paveptB3->SetTextFont(42);
   paveptB3->SetBorderSize(0);
   paveptB3->SetTextSize(0.05);
   paveptB3->SetTextAlign(12);
-  paveptB3->AddText(Form("#it{B}_{3}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
+  paveptB3->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
 
-  TPaveText * paveptB3L = new TPaveText(0.17, 0.17, 0.7, 0.23, "NDC");
+  TPaveText * paveptB3L = new TPaveText(0.17, 0.87, 0.7, 0.92, "NDC");
   paveptB3L->SetFillStyle(0);
   paveptB3L->SetBorderSize(0);
   paveptB3L->SetTextFont(42);
   paveptB3L->SetTextSize(0.05);
   paveptB3L->SetTextAlign(12);
-  paveptB3L->AddText(Form("#it{B}_{3,#Lambda}: #it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
+  paveptB3L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
   
-  TCanvas * cr4 = new TCanvas("cr4", "compare coalesence with thermal", 1600, 600);
+  /*TCanvas * cr4 = new TCanvas("cr4", "compare coalesence with thermal", 1600, 600);
   cr4->SetBottomMargin(0.02);
   cr4->SetTopMargin(0.01);
   cr4->SetLeftMargin(0.12);
   cr4->SetRightMargin(0.01);
   cr4->Divide(3,1);
+  */
+
+   
+  TCanvas * cr4 = new TCanvas("cr4", "compare thermal with coalescence", 1000, 1000);
+  cr4->SetBottomMargin(0.02);
+  cr4->SetTopMargin(0.01);
+  cr4->SetLeftMargin(0.12);
+  cr4->SetRightMargin(0.02);
+  cr4->Divide(2,2);
   
   cr4->cd(1);
   gPad->SetLogy();
   hframe->Draw();
+  gBlastB2vsR_PbPb276TeV[1]->Draw("samel");
   gB2vsR_pp7TeVINEL_sys[1]->Draw("samep2");
   gB2vsR_pp7TeVINEL[1]->Draw("samepz");
   gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB2vsR_PbPb276TeV[1]->Draw("samepz");
-  gBlastB2vsR_PbPb276TeV[1]->Draw("samel");
   //
   TLegend * legB2 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
   legB2->SetFillStyle(0);
@@ -892,23 +944,22 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   legB2->SetBorderSize(0);
   legB2->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
   legB2->AddEntry(gB2vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
-  legB2->AddEntry(gB2vsR_pp7TeVINEL_sys[1], "pp #sqrt{#it{s}} = 7 TeV, prelim.", "pf");
+  legB2->AddEntry(gB2vsR_pp7TeVINEL_sys[1], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
   legB2->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB2->Draw();
+  //legB2->Draw();
   //
   hB2_coalescence->Draw("l");
-
   pavept->Draw();
-
+  paveLab2->Draw();
   
-  cr4->cd(2);
+  cr4->cd(3);
   gPad->SetLogy();
   hframe3->Draw();
+  gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
   gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB3vsR_PbPb276TeV[1]->Draw("samepz");
   gB3vsR_pp7TeV_sys[1]->Draw("samep2");
   gB3vsR_pp7TeV[1]->Draw("samepz");
-  gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
   hB3_coalescence->Draw("l");
   //
   TLegend * legB3 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
@@ -919,19 +970,21 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys[1], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
   legB3->AddEntry(gBlastB3vsR_PbPb276TeV[1], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB3->Draw();
+  //legB3->Draw();
   //
   paveptB3->Draw();
+  paveLab3->Draw();
 
-
-  cr4->cd(3);
+  cr4->cd(4);
   gPad->SetLogy();
-  hframe3->Draw();
+  hframe3L->Draw();
+  hB3L_coalescence_largeradius->Draw("samel");
+  hB3L_coalescence->Draw("l");
+  gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
   gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
   gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
-  gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
-  hB3L_coalescence->Draw("l");
   paveptB3L->Draw();
+  paveLab3L->Draw();
   //
   TLegend * legB3Lambda = new TLegend(0.2, 0.95, 0.6, 0.8, "");
   legB3Lambda->SetFillStyle(0);
@@ -940,14 +993,28 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   legB3Lambda->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
   legB3Lambda->AddEntry(gB3LambdavsR_PbPb276TeV_sys[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
   legB3Lambda->AddEntry(gBlastB3LambdavsR_PbPb276TeV[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
-  legB3Lambda->Draw();
+  //legB3Lambda->Draw();
   //
 
-  cr4->Print("Paper/compareThermalAndCoalescence.eps");
-  cr4->Print("Paper/compareThermalAndCoalescence.png");
+  TLegend * masterLeg = new TLegend(0.1, 0.3, 0.5, 0.9, "");
+  masterLeg->SetFillStyle(0);
+  masterLeg->SetTextSize(0.05);
+  masterLeg->SetBorderSize(0);
+  masterLeg->AddEntry(gB2vsR_PbPb276TeV_sys[1], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  masterLeg->AddEntry(gB2vsR_pp7TeVINEL_sys[1], "ALICE, pp #sqrt{#it{s}} = 7 TeV", "pf");
+  masterLeg->AddEntry(gBlastB2vsR_PbPb276TeV[1], "BW + GSI-Heidelberg (T = 156 MeV)", "l");
+  //masterLeg->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "");
+  masterLeg->AddEntry(hB2_coalescence, "#it{B}_{#it{A}} coalescence", "l");
+  masterLeg->AddEntry(hB2_coalescence, "#it{r}(d) = 3.2 fm", "");
+  masterLeg->AddEntry(hB3_coalescence, "#it{r}(^{3}He) = 2.48 fm", "");
+  masterLeg->AddEntry(hB3L_coalescence, "#it{r}(^{3}_{#Lambda}H) = 6.8 fm", "");
+  masterLeg->AddEntry(hB3L_coalescence_largeradius, "#it{r}(^{3}_{#Lambda}H) = 14.1 fm", "l");
 
-
-
+  cr4->cd(2);
+  masterLeg->Draw();
+  
+  cr4->SaveAs("Paper/compareThermalAndCoalescence.eps");
+  cr4->SaveAs("Paper/compareThermalAndCoalescence.png");
 
 }
 
