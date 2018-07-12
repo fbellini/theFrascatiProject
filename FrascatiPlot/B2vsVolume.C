@@ -815,8 +815,8 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
   paveB->Draw();
   legC->Draw();
 
-  cr1->SaveAs("Paper/radiiParamCompareData.eps");
-  cr1->SaveAs("Paper/radiiParamCompareData.png");
+  // cr1->SaveAs("Paper/radiiParamCompareData.eps");
+  // cr1->SaveAs("Paper/radiiParamCompareData.png");
   
 
 }
@@ -1013,8 +1013,8 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   cr4->cd(2);
   masterLeg->Draw();
   
-  cr4->SaveAs("Paper/compareThermalAndCoalescence.eps");
-  cr4->SaveAs("Paper/compareThermalAndCoalescence.png");
+  // cr4->SaveAs("Paper/compareThermalAndCoalescence.eps");
+  // cr4->SaveAs("Paper/compareThermalAndCoalescence.png");
 
 }
 
