@@ -62,7 +62,7 @@ void HbtRadii() {
   //
   TGraphErrors * grHbtRadiusPPB = GetPPbHbtRadius0887KT();
   grHbtRadiusPPB->SetMarkerStyle(21);
-  grHbtRadiusPPB->SetMarkerSize(1.);
+  grHbtRadiusPPB->SetMarkerSize(1.2);
   grHbtRadiusPPB->SetLineWidth(1);
   grHbtRadiusPPB->SetLineStyle(1);
   grHbtRadiusPPB->SetLineColor(kBlue);
@@ -71,7 +71,7 @@ void HbtRadii() {
   //
   TGraphErrors * grHbtRadiusPBPB = GetPbPbHbtRadius0887KT();
   grHbtRadiusPBPB->SetMarkerStyle(20);
-  grHbtRadiusPBPB->SetMarkerSize(1.0);
+  grHbtRadiusPBPB->SetMarkerSize(1.2);
   grHbtRadiusPBPB->SetLineWidth(1);
   grHbtRadiusPBPB->SetLineStyle(1);
   grHbtRadiusPBPB->SetLineColor(kRed);
@@ -81,9 +81,11 @@ void HbtRadii() {
   TGraphErrors * grHbtRadiusPP = new TGraphErrors(1);
   grHbtRadiusPP->SetPoint(0, TMath::Power(5.98,1./3.), 0.8);
   grHbtRadiusPP->SetPointError(0, TMath::Power(5.98,-2./3.)*0.09/3., 0.3);
-  grHbtRadiusPP->SetLineColor(kGreen+1);
-  grHbtRadiusPP->SetMarkerColor(kGreen+1);
+  grHbtRadiusPP->SetLineColor(kGreen+2);
+  grHbtRadiusPP->SetMarkerColor(kGreen+2);
   grHbtRadiusPP->SetMarkerStyle(22);
+  grHbtRadiusPP->SetMarkerSize(1.4);
+
 
     //canvHbtPlot->BuildLegend()
   TF1 * poly1 = new TF1("poly1", "[0]*x + [1]", 0., 13.);
@@ -108,19 +110,19 @@ void HbtRadii() {
   leg1->SetBorderSize(0);
   leg1->SetFillStyle(0);
   leg1->SetTextSize(0.04);
-  leg1->AddEntry(poly1, "#it{R} = #it{a} #times #LTd#it{#it{N}_{ch}}/d#it{#eta}#GT^{1/3} + #it{b}", "l");
+  leg1->AddEntry(poly1, "#it{R} = #it{a} #times #LTd#it{N}_{ch}/ d#it{#eta}#GT^{1/3} + #it{b}", "l");
   leg1->Draw();
-  TLegend * leg = new TLegend(0.2, 0.6, 0.5, 0.8, "ALICE, #it{k}_{T} = 0.887 GeV/#it{c}");
+  TLegend * leg = new TLegend(0.2, 0.56, 0.5, 0.8, "ALICE, #it{k}_{T} = 0.887 GeV/#it{c}");
   leg->SetBorderSize(0);
   leg->SetFillStyle(0);
   leg->SetTextSize(0.04);
-  leg->AddEntry(grHbtRadiusPP,"pp, #sqrt{s} = 7 TeV", "p");
-  leg->AddEntry(grHbtRadiusPPB,"p-Pb, #sqrt{s_{NN}} = 5.02 TeV", "p");
-  leg->AddEntry(grHbtRadiusPBPB, "Pb-Pb, #sqrt{s_{NN}} = 2.76 TeV", "p");
+  leg->AddEntry(grHbtRadiusPP,"pp, #sqrt{#it{s}} = 7 TeV (INEL>0)", "p");
+  leg->AddEntry(grHbtRadiusPPB,"p-Pb, #sqrt{#it{s}_{NN}} = 5.02 TeV", "p");
+  leg->AddEntry(grHbtRadiusPBPB, "Pb-Pb, #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
   leg->Draw();
   
   TString text="Uncertainties: #sqrt{stat.^{2} + sys.^{2}}";
-  TPaveText * pave = new TPaveText(0.2,0.53,0.5,0.58,"brNDC");
+  TPaveText * pave = new TPaveText(0.2,0.48,0.5,0.54,"brNDC");
   pave->SetBorderSize(0);
   pave->SetFillColor(kWhite);
   pave->SetTextColor(kBlack);
@@ -129,7 +131,8 @@ void HbtRadii() {
   pave->InsertText(text.Data());
   pave->Draw();
 
-  canvHbtPlot->Print("HbtRadiusParam.eps");
+  canvHbtPlot->Print("Paper/HbtRadiusParam.eps");
+  canvHbtPlot->Print("Paper/HbtRadiusParam.png");
 }
 
 TGraphErrors * GetPbPbHbtRadius0887KT() {
