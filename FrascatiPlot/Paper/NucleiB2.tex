@@ -21,7 +21,7 @@
 \usepackage{hyperref}
 
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 
 \usepackage{xcolor}
 
@@ -34,11 +34,12 @@
 
 \medskip
 
-F. Bellini$^{1}$ and A. Kalweit$^{1}$
-\\$^{1}$CERN, Switzerland
+F. Bellini and A. Kalweit \footnote{Contacts: fbellini@cern.ch, akalweit@cern.ch}
+\\CERN, EP Department, Geneva (Switzerland)
+
 \medskip
 
-15th July 2018
+16$^{th}$ July 2018
 \end{center}
 
 \bigskip
@@ -172,7 +173,7 @@ and
 \label{eq:B2approx}
 \end{equation}
 %
-Figure \ref{fig:radiusDependence} shows the source radius ($R$) dependence of the quantum-mechanical correction factor (on the left) and the coalescence parameter \btwo~(on the right), calculated assuming (a.) a point-like nucleus $\dradius = 0$, (b.) $\dradius = 0.3$ fm, similar to the value currently assumed in thermal model calculations \cite{Andronic:2016nof}, (c.) the actual value which reproduces the measured rms radius of the deuteron $\dradius = 3.2$ fm \cite{Mohr:2015ccw}, (d.) a larger, irrealistic value of  $\dradius = 10$ fm. 
+Figure \ref{fig:radiusDependence} shows the source radius ($R$) dependence of the quantum-mechanical correction factor (on the left) and the coalescence parameter \btwo~(on the right), calculated assuming (a.) a point-like nucleus $\dradius = 0$, (b.) $\dradius = 0.3$ fm, (c.) the actual value which reproduces the measured rms radius of the deuteron $\dradius = 3.2$ fm \cite{Mohr:2015ccw}, (d.) a larger, irrealistic value of  $\dradius = 10$ fm. 
 As can be seen in Fig. \ref{fig:radiusDependence}, the quantum-mechanical correction factor leads to a significant suppression in the production of those objects whose radius is large compared to that of the source.
 
 \begin{figure}[htbp]
@@ -251,7 +252,7 @@ In order to fill this gap, and for the purposes of this exercise, \pt~spectra ha
 The normalisation is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg model with $T_{chem} = 156$ MeV, multiplied by the pion yield measured by ALICE~\cite{Abelev:2013vea}. 
 This choice, as opposed to using ratio to proton, is motivated by the fact that the measured proton yield is seen to be slightly underestimated by the thermal model predictions at the LHC~\cite{Abelev:2012wca}.
 In the case of hyper-triton, a slightly different procedure is chosen, namely the normalisation for \hthreelambda~is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3}$ multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and the measured \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. Based on the spectra obtained in this way, we calculate the corresponding coalescence parameters for a given \pt/$A$ and compare it with coalescence expectations. Because we use experimental data to constrain the blast-wave prediction as well as the normalisation, and because such data are provided for given centrality classes, we use the corresponding \avdNdeta~in each class to estimate the system radius based on the parameterisation discussed in Sec.~\ref{SecSourceVolume}. 
-In contrast to the coalescence approach, which explicitly depends on the size of the produced object with respect to the system size, the object size does not enter in the formulation of the blast-wave model. Being a simplified hydrodynamic model, the latter treats the system as a continuum and is not particle based. The thermal model on the other hand, implements eigenvolume corrections by fixing the object radius as an external parameter ($r=0.3$~fm in the case of baryons for the GSI-Heidelberg model used here). We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light anti- and hyper-nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production of these objects as compact quark bags~\cite{Andronic:2017}.
+In contrast to the coalescence approach, which explicitly depends on the size of the produced object with respect to the system size, the object size does not enter in the formulation of the blast-wave model. Being a simplified hydrodynamic model, the latter treats the system as a continuum and is not particle based. The thermal model on the other hand, implements eigenvolume corrections by fixing the object radius as an external parameter (0.3 fm in the case of baryons for the GSI-Heidelberg model used here). We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light anti- and hyper-nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production of these objects as compact quark bags~\cite{Andronic:2017}.
 
 
 \section{Comparison with experimental data}\label{sec:comparison}
@@ -259,7 +260,7 @@ In contrast to the coalescence approach, which explicitly depends on the size of
 \subsection{Constraining the source volume with data}\label{sec:radiiParamet}
 
 Data on anti- and hyper-nuclei production at LHC energies and different collision systems have been released by the ALICE Collaboration in recent years \cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Acharya:2017dmc, Adam:2015yta}. 
-In Fig. \ref{fig:CompareB2B3forDifferentParamWithData} we compare the coalescence parameter for deuteron (\btwo) from the coalescence model (see Eqs.~\ref{eq:B2cd} and \ref{eq:B2approx}, with $r_{d} = 3.2$ fm) to the ALICE data for Pb-Pb collisions at $\sqrt{s_{\mathrm{NN}}} = 2.76$ TeV and pp collisions at $\sqrt{s} = 7$ TeV. For pp collisions, data in  \cite{ALICE:nucleipp2017} are given for inelastic (INEL) collisions. In order to facilitate the comparison with future multiplicity-dependent data given in the INEL$>0$ class, we have rescaled the \btwo~and \bthree~by the ratio of the charged particle multiplicity density in these two event classes \cite{Adam:2015gka}.
+In Fig. \ref{fig:CompareB2B3forDifferentParamWithData} we compare the coalescence parameter for deuteron (\btwo) from the coalescence model (see Eqs.~\ref{eq:B2cd} and \ref{eq:B2approx}, with $r_{d} = 3.2$ fm) to the ALICE data for Pb-Pb collisions at $\sqrt{s_{\mathrm{NN}}} = 2.76$ TeV and pp collisions at $\sqrt{s} = 7$ TeV. For pp collisions, data in  \cite{ALICE:nucleipp2017} are given for inelastic (INEL) collisions. In order to facilitate the comparison with future multiplicity-dependent data given in the INEL$>$0 class, we have rescaled the \btwo~and \bthree~by the ratio of the charged particle multiplicity density in these two event classes \cite{Adam:2015gka}.
 First, the parameterisation of the system radius fitted to the HBT data as described in Sec.~\ref{SecSourceVolume} (labeled in the following as "parameterisation A") is used to map the \avdNdeta~to the source size (top left panel of Fig. \ref{fig:CompareB2B3forDifferentParamWithData}). 
 We notice already at this point that the coalescence volume from parameterisation A radii leads to discrepancies with respect to the curve from the coalescence calculation, and in particular, we notice that the model would require a larger radius for a given value of \btwo~for Pb-Pb collisions.
 
@@ -281,7 +282,7 @@ In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available data for (anti-)de
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{compareThermalAndCoalescence.png}
+		\includegraphics[width=\textwidth]{compareThermalAndCoalescence.png}
 		\caption{Comparison of the coalescence parameters measured by ALICE (solid markers) for deuterons (upper left panel), \hethree\ (lower left panel) and \hthreelambda\ (lower right panel) in pp \cite{ALICE:nucleipp2017} and Pb--Pb~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta} collisions with the thermal+BW model expectations (dotted line) and the coalescence predictions (solid lines). Parameterisation B has been used to map the charged particle multiplicity density into the radius $R$ of the source (see text for details). The dashed line in the lower right panel corresponds to the coalescence prediction for the \hthreelambda\ with a larger radius.}
 		\label{fig:CompareThermalAndCoalescence}
 	\end{center}
@@ -319,8 +320,7 @@ In a follow-up publication, we plan to extend our study to predictions for the $
 \newenvironment{acknowledgement}{\relax}{\relax}
 \begin{acknowledgement}
 \section*{Acknowledgements}
-We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Roman Lietava, Kfir Blum and the colleagues from the ALICE Collaboration for their valuable input.  
-
+We would like to thank Kfir Blum for inspiring this work. We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions, and with Eulogio Serradilla Rodriguez. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Maximiliano Puccio, Roman Lietava and the colleagues from the ALICE Collaboration for their valuable input. 
 \end{acknowledgement}
 
 
@@ -392,9 +392,9 @@ The parameter $\nu_{A}$ is typically chosen such that the measured rms charge ra
 % A = 4 Appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{RMS of a gaussian wave-function for A=4 }\label{appendix:integration}
+\section{RMS of a gaussian wave-function for $\mathbf{A=4}$}\label{appendix:integration}
 
-In this appendix, we show the calculation of the RMS of a gaussian wave-function with the example of A=4. We start from the wave-function
+In this appendix, we show the calculation of the RMS of a gaussian wave-function with the example of $A=4$. We start from the wave-function
 
 \begin{equation}\label{eq:SatoWave}
  \phi_{A=4} = C_{4} \exp\Bigl(-{1\over2} \nu_{4} \sum_{i=1}^{4}(\vec{x}_{i} - \vec{X})^2 \Bigr) \; .
