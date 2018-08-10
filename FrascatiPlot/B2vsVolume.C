@@ -18,6 +18,7 @@ void getRadiusFromParameterisation(Double_t * multi = 0x0, Double_t * radius = 0
 TF1 * MakeB2TheoryGraphQMfactor(Double_t objSize = 3.2);
 TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 3.2);
 TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 2.48);
+TGraphErrors * MakeB4TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.9);
 
 TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
@@ -36,7 +37,16 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.7
 TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 
 TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB3_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+
 TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB3Lambda_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0, Int_t paramSet = 0);
+
+TGraphAsymmErrors * getBlastB4_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb4 = 0.75, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB4_pp7TeV(Bool_t plotSys = 0, Double_t pToAb4 = 0.75, Int_t paramSet = 0);
+
+TGraphAsymmErrors * getBlastB4Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
+TGraphAsymmErrors * getBlastB4Lambda_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
 
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
@@ -51,14 +61,26 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV);
 
 void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
-		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
+		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius, 
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
 		      TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys, TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV);
 
-Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1.,
-		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kTRUE)
+void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
+		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
+		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
+		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
+		  TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB2vsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3vsR_pp7TeV,
+		  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys,
+		  TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3LambdavsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
+		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV);
+
+Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
+		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kFALSE, Bool_t plotYRFigure = kTRUE)
 {
   //
   // main function which generates the plots of the Frascati project
@@ -91,9 +113,16 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   TGraphAsymmErrors* gBlastB2vsR_PbPb276TeV[nParamSet];
   TGraphAsymmErrors* gBlastB2vsR_PbPb502TeV[nParamSet];
   TGraphAsymmErrors* gBlastB2vsR_pPb502TeV[nParamSet];
-  TGraphAsymmErrors* gBlastB2vsR_pp7TeV[nParamSet];
   TGraphAsymmErrors* gBlastB3vsR_PbPb276TeV[nParamSet];
   TGraphAsymmErrors* gBlastB3LambdavsR_PbPb276TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB4vsR_PbPb276TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB4LambdavsR_PbPb276TeV[nParamSet];
+  //
+  TGraphAsymmErrors* gBlastB2vsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB3vsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB4vsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB3LambdavsR_pp7TeV[nParamSet];
+  TGraphAsymmErrors* gBlastB4LambdavsR_pp7TeV[nParamSet];
 
   for (Int_t ip = 0; ip < nParamSet; ip++){
     gB2vsR_pp7TeVINELg0[ip] = (TGraphErrors *) getB2_pp7TeVINELg0(kFALSE, pToA, ip);
@@ -127,7 +156,16 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     gBlastB2vsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB2_pp7TeV(kFALSE, pToA, ip);
     //
     gBlastB3vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB3_PbPb276TeV(kFALSE, pToAb3, ip);
-    gBlastB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB3Lambda_PbPb276TeV(kFALSE, pToAb3, ip);
+    gBlastB3vsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB3_pp7TeV(kFALSE, pToAb3pp, ip);
+    //
+    gBlastB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB3Lambda_PbPb276TeV(kFALSE, pToAb3Lambda, ip);
+    gBlastB3LambdavsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB3Lambda_pp7TeV(kFALSE, pToAb3Lambda, ip);
+    //
+    gBlastB4vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB4_PbPb276TeV(kFALSE, pToAb4, ip);
+    gBlastB4vsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB4_pp7TeV(kFALSE, pToAb4, ip);
+    //
+    gBlastB4LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_PbPb276TeV(kFALSE, pToAb4, ip);
+    gBlastB4LambdavsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_pp7TeV(kFALSE, pToAb4, ip);
   }
   
   //--------------------
@@ -158,7 +196,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   Cd_coalescence_largeradius->SetLineWidth(3);
   Cd_coalescence_largeradius->SetLineStyle(9);
   Cd_coalescence_largeradius->SetLineColor(kGreen+1);
-
   
   TGraphErrors* hB2_coalescence = (TGraphErrors*) MakeB2TheoryGraphCoalescence(mT);
   hB2_coalescence->SetMarkerStyle(20);
@@ -212,6 +249,26 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3L_coalescence_largeradius->SetLineColor(kBlack);
   hB3L_coalescence_largeradius->SetLineWidth(3);
   hB3L_coalescence_largeradius->SetLineStyle(7);
+
+  TGraphErrors* hB4_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 1.9); //He4
+  hB4_coalescence->SetMarkerStyle(1);
+  hB4_coalescence->SetMarkerColor(kBlack);
+  hB4_coalescence->SetLineColor(kBlack);
+  hB4_coalescence->SetLineWidth(3);
+
+  TGraphErrors* hB4L_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 2.4); //4LH
+  hB4L_coalescence->SetMarkerStyle(20);
+  hB4L_coalescence->SetMarkerColor(kBlack);
+  hB4L_coalescence->SetLineColor(kBlack);
+  hB4L_coalescence->SetLineWidth(3);
+  hB4L_coalescence->SetLineStyle(1);
+
+  TGraphErrors* hB4L_coalescence_largeradius = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 4.9); //4LH
+  hB4L_coalescence_largeradius->SetMarkerStyle(20);
+  hB4L_coalescence_largeradius->SetMarkerColor(kBlack);
+  hB4L_coalescence_largeradius->SetLineColor(kBlack);
+  hB4L_coalescence_largeradius->SetLineWidth(3);
+  hB4L_coalescence_largeradius->SetLineStyle(7);
   
   gStyle->SetOptStat(0);
   gStyle->SetOptTitle(0);
@@ -286,25 +343,56 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     //BLAST B3
     MakeUp(gBlastB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
     MakeUp(gBlastB3LambdavsR_PbPb276TeV[ip] , color[EPlotEntries::kB3L_PBPB276blast], color[EPlotEntries::kB3L_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3L_PBPB276blast], Marker_Size);
+    MakeUp(gBlastB3vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+    MakeUp(gBlastB3LambdavsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+
+    //blast B4
+    MakeUp(gBlastB4vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276blast], color[EPlotEntries::kB3_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3_PBPB276blast], Marker_Size);
+    MakeUp(gBlastB4vsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+    MakeUp(gBlastB4LambdavsR_PbPb276TeV[ip] , color[EPlotEntries::kB3L_PBPB276blast], color[EPlotEntries::kB3L_PBPB276blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kB3L_PBPB276blast], Marker_Size);
+    MakeUp(gBlastB4LambdavsR_pp7TeV[ip]    , color[EPlotEntries::kPP7blast], color[EPlotEntries::kPP7blast], Fill_Style, Line_Style_Blast, Line_Width_Blast, Marker_Style[EPlotEntries::kPP7blast], Marker_Size);
+
   }
 
 
+  if (plotPaperFigures) {
+
+    MakePaperFigure3(plotLinX, pToA, pToAb3,
+		     hB2_coalescence, hB3_coalescence, 
+		     gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
+		     gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV);
+
+    MakePaperFigure4(plotLinX, pToA, pToAb3, pToAb3Lambda,
+		     hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
+		     gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
+		     gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
+		     gBlastB2vsR_PbPb276TeV, gBlastB3vsR_PbPb276TeV,
+		     gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys, gBlastB3LambdavsR_PbPb276TeV);
+
+    return 0;
+  }
   
+  //---------------------------------------
+  // PLOT Yellow Report figure
+  //---------------------------------------  
 
-  MakePaperFigure3(plotLinX, pToA, pToAb3,
-		   hB2_coalescence, hB3_coalescence, 
-		   gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
-		   gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV);
+  if (plotYRFigure) {
+    MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda,
+		 hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
+		 hB4_coalescence, hB4L_coalescence, hB4L_coalescence_largeradius, 
+		 gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
+		 gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
+		 gBlastB2vsR_PbPb276TeV, gBlastB2vsR_pp7TeV,
+		 gBlastB3vsR_PbPb276TeV, gBlastB3vsR_pp7TeV,
+		 gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys,
+		 gBlastB3LambdavsR_PbPb276TeV, gBlastB3LambdavsR_pp7TeV,
+		 gBlastB4vsR_PbPb276TeV, gBlastB4vsR_pp7TeV,
+		 gBlastB4LambdavsR_PbPb276TeV,  gBlastB4LambdavsR_pp7TeV);
+   
+    return 0;
+  }
 
-  MakePaperFigure4(plotLinX, pToA, pToAb3, pToAb3Lambda,
-		   hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
-		   gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
-		   gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
-		   gBlastB2vsR_PbPb276TeV, gBlastB3vsR_PbPb276TeV,
-		   gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys, gBlastB3LambdavsR_PbPb276TeV);
-
-  if (plotPaperFigures) return 0;
-
+  
   //---------------------------------------
   // PLOT FRASCATI PLOTS FOR SLIDES
   //---------------------------------------  
@@ -1114,6 +1202,20 @@ Double_t getB3fromRadius(Double_t homogR, Double_t mT, Double_t objSize)
   return B3;
 }
 
+Double_t getB4fromRadius(Double_t homogR, Double_t mT, Double_t objSize)//He4
+{
+  // formula 13 of the Frascati paper arXiv:1807.05894
+  Double_t convFactor_fm2InvGeV = 0.197;
+
+  //calculation for 4He (J_A = 0)
+  Double_t B4 = 1./32. * TMath::Power(mT, -3.) *
+    TMath::Power(2* TMath::Pi(), 9./2.) *
+    TMath::Power((homogR * homogR +  objSize * objSize / 4.)/(convFactor_fm2InvGeV * convFactor_fm2InvGeV), -9./2.);
+  
+  return B4;
+}
+
+
 TF1 * MakeB2TheoryGraphQMfactor(Double_t objSize)
 {
   TF1 * funcCd = new TF1(Form("funcCd_%i", TMath::Nint(objSize*10)), "1 / TMath::Power(1 + [0]*[0]/(4*x*x), 1.5)", 0., 15.);
@@ -1168,6 +1270,30 @@ TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT, Double_t objSize)
   return graphOut;
 
 }
+
+TGraphErrors * MakeB4TheoryGraphCoalescence(Double_t mT, Double_t objSize)
+{
+  const Int_t nPoints = 1000;
+  Double_t gY[nPoints];
+  Double_t gR[nPoints];
+  
+  TGraphErrors * graphOut = new TGraphErrors(nPoints);
+  graphOut->SetName("B4_th_coalescence");
+  graphOut->SetTitle("B_{4} from coalescence");
+  
+  
+  for (int i = 0; i<nPoints; i++){
+    gR[i] = 10.0 * i / nPoints; 
+    gY[i] = getB4fromRadius(gR[i], mT, objSize);
+
+    graphOut->SetPoint(i, gR[i], gY[i]);
+    graphOut->SetPointError(i, 0.0, 0.0);
+  }
+
+  return graphOut;
+
+}
+
 
 void convertMultiToRadius(TGraphErrors * graph, Int_t paramSet)
 {
@@ -1568,6 +1694,28 @@ TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t param
   
 }
 
+//---------------------------------------------------------
+//---------------------- Blast wave + thermal pp 7 TeV
+TGraphAsymmErrors * getBlastB3_pp7TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
+{
+  // Final proton yield from long paper pp7 TeV
+  // Blast wave params from π,K,p published
+  // d/p from thermal model T = 156 MeV
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "He3", pToAb3);
+  convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kMagenta-2);
+  graph->SetLineColor(kMagenta-2);
+  graph->SetFillColorAlpha(kMagenta-2, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal PbPb 2.76 TeV
@@ -1616,7 +1764,115 @@ TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3,
 }
 
 
+//---------------------- Blast wave + thermal PbPb 2.76 TeV -- Hypertriton
+TGraphAsymmErrors * getBlastB3Lambda_pp7TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
+{
+  // Published proton yield from Phys. Rev. C 88 (2013) 044910
+  // Blast wave params from π,K,p published
+  // 3He/p from thermal model T = 156 MeV
+  // s3 from hyper-triton paper
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "hyper-triton", pToAb3);
+  convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kAzure-7);
+  graph->SetLineColor(kAzure-7);
+  graph->SetFillColorAlpha(kAzure-7, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(24);
+  graph->SetLineWidth(5);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
+//---------------------- Blast wave + thermal PbPb 2.76 TeV
+TGraphAsymmErrors * getBlastB4_PbPb276TeV(Bool_t plotSys, Double_t pToAb4, Int_t paramSet)
+{
+  // Published proton yield from Phys. Rev. C 88 (2013) 044910
+  // Blast wave params from π,K,p published
+  // 4He from thermal model T = 156 MeV yield = 7e-7
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "He4", pToAb4);
+  convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kMagenta+1);
+  graph->SetLineColor(kMagenta+1);
+  graph->SetFillColorAlpha(kMagenta+1, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(33);
+  graph->SetLineWidth(5);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
 
+//---------------------------------------------------------
+//---------------------- Blast wave + thermal pp 7 TeV
+TGraphAsymmErrors * getBlastB4_pp7TeV(Bool_t plotSys, Double_t pToAb4, Int_t paramSet)
+{
+  // Final proton yield from long paper pp7 TeV
+  // Blast wave params from π,K,p published
+  // 4He yield from thermal model T = 156 MeV
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "He4", pToAb4);
+  convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kMagenta-2);
+  graph->SetLineColor(kMagenta-2);
+  graph->SetFillColorAlpha(kMagenta-2, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(33);
+  graph->SetLineWidth(3);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
+
+
+//---------------------- Blast wave + thermal PbPb 2.76 TeV -- 4LH
+TGraphAsymmErrors * getBlastB4Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
+{
+  // Published proton yield from Phys. Rev. C 88 (2013) 044910
+  // Blast wave params from π,K,p published
+  // 4LH yield from thermal model T = 156 MeV
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("PbPb276TeV", "rms", "4LH", pToAb3);
+  convertMultiToRadius(graph, paramSet);
+  graph->SetMarkerColor(kAzure-7);
+  graph->SetLineColor(kAzure-7);
+  graph->SetFillColorAlpha(kAzure-7, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(24);
+  graph->SetLineWidth(5);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
+
+//---------------------- Blast wave + thermal PbPb 2.76 TeV -- 4LH
+TGraphAsymmErrors * getBlastB4Lambda_pp7TeV(Bool_t plotSys, Double_t pToAb4, Int_t paramSet)
+{
+  // Published proton yield from Phys. Rev. C 88 (2013) 044910
+  // Blast wave params from π,K,p published
+  // 4LH yield from thermal model T = 156 MeV
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "4LH", pToAb4);
+  convertMultiToRadius(graph, paramSet);
+  graph->SetMarkerColor(kAzure-7);
+  graph->SetLineColor(kAzure-7);
+  graph->SetFillColorAlpha(kAzure-7, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(24);
+  graph->SetLineWidth(5);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
 
 //----------------------------------------------
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size)
@@ -1649,3 +1905,292 @@ void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Sty
   obj->SetMarkerSize(Marker_Size);
   return;
 }
+ 
+void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
+		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
+		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
+		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
+		  TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB2vsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3vsR_pp7TeV,
+		  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys,
+		  TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3LambdavsR_pp7TeV,
+		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
+		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV)
+{
+  //
+  // make figure for YR
+  //
+  TH2D * hframe = new TH2D("hframeFig4", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
+  hframe->GetXaxis()->SetTitleSize(0.06);
+  hframe->GetYaxis()->SetTitleSize(0.06);
+  hframe->GetYaxis()->SetTitleOffset(1.3);
+  hframe->GetXaxis()->SetTitleOffset(0.8);
+  hframe->GetXaxis()->SetLabelSize(0.05);
+  hframe->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  TH2D * hframe3 = new TH2D("hframe3Fig4", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  hframe3->GetXaxis()->SetTitleSize(0.06);
+  hframe3->GetYaxis()->SetTitleSize(0.06);
+  hframe3->GetYaxis()->SetTitleOffset(1.3);
+  hframe3->GetXaxis()->SetTitleOffset(0.8);
+  hframe3->GetXaxis()->SetLabelSize(0.05);
+  hframe3->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  TH2D * hframe3L = new TH2D("hframe3LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{3,#Lambda} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  hframe3L->GetXaxis()->SetTitleSize(0.06);
+  hframe3L->GetYaxis()->SetTitleSize(0.06);
+  hframe3L->GetYaxis()->SetTitleOffset(1.3);
+  hframe3L->GetXaxis()->SetTitleOffset(0.8);
+  hframe3L->GetXaxis()->SetLabelSize(0.05);
+  hframe3L->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe3L->GetXaxis()->SetRangeUser(0.01, 8.5);
+  else  hframe3L->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+ TH2D * hframe4 = new TH2D("hframe4Fig4", "B_{4} vs radius; #it{R} (fm); #it{B}_{4} (GeV^{6}/#it{c}^{9})", 1000, 0.01, 6.0, 2000, 1.e-12, 1.e-1);
+  hframe4->GetXaxis()->SetTitleSize(0.06);
+  hframe4->GetYaxis()->SetTitleSize(0.06);
+  hframe4->GetYaxis()->SetTitleOffset(1.3);
+  hframe4->GetXaxis()->SetTitleOffset(0.8);
+  hframe4->GetXaxis()->SetLabelSize(0.05);
+  hframe4->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe4->GetXaxis()->SetRangeUser(0.01, 6.);
+  else  hframe4->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  TH2D * hframe4L = new TH2D("hframe4LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{4,#Lambda} (GeV^{6}/#it{c}^{9})", 1000, 0.01, 6.0, 2000, 1.e-12, 1.e-1);
+  hframe4L->GetXaxis()->SetTitleSize(0.06);
+  hframe4L->GetYaxis()->SetTitleSize(0.06);
+  hframe4L->GetYaxis()->SetTitleOffset(1.3);
+  hframe4L->GetXaxis()->SetTitleOffset(0.8);
+  hframe4L->GetXaxis()->SetLabelSize(0.05);
+  hframe4L->GetYaxis()->SetLabelSize(0.05);
+  if (plotLinX) hframe4L->GetXaxis()->SetRangeUser(0.01, 6.);
+  else  hframe4L->GetXaxis()->SetRangeUser(0.1, 10.5);
+  
+  //define particle label
+  TPaveText * paveLab2 = new TPaveText(0.8, 0.8, 0.9, 0.9, "NDC");
+  paveLab2->SetFillStyle(0);
+  paveLab2->SetTextFont(42);
+  paveLab2->SetBorderSize(0);
+  paveLab2->SetTextSize(0.1);
+  paveLab2->SetTextAlign(12);
+  paveLab2->AddText("#bf{d}");
+
+  TPaveText * paveLab3 = new TPaveText(0.77, 0.8, 0.9, 0.9, "NDC");
+  paveLab3->SetFillStyle(0);
+  paveLab3->SetTextFont(42);
+  paveLab3->SetBorderSize(0);
+  paveLab3->SetTextSize(0.1);
+  paveLab3->SetTextAlign(12);
+  paveLab3->AddText("#bf{^{3}He}");
+
+  TPaveText * paveLab3L = new TPaveText(0.75, 0.8, 0.9, 0.9, "NDC");
+  paveLab3L->SetFillStyle(0);
+  paveLab3L->SetTextFont(42);
+  paveLab3L->SetBorderSize(0);
+  paveLab3L->SetTextSize(0.1);
+  paveLab3L->SetTextAlign(12);
+  paveLab3L->AddText("#bf{ ^{3}_{#Lambda}H}");
+
+  TPaveText * paveLab4 = new TPaveText(0.77, 0.8, 0.9, 0.9, "NDC");
+  paveLab4->SetFillStyle(0);
+  paveLab4->SetTextFont(42);
+  paveLab4->SetBorderSize(0);
+  paveLab4->SetTextSize(0.1);
+  paveLab4->SetTextAlign(12);
+  paveLab4->AddText("#bf{^{4}He}");
+
+   TPaveText * paveLab4L = new TPaveText(0.77, 0.8, 0.9, 0.9, "NDC");
+  paveLab4L->SetFillStyle(0);
+  paveLab4L->SetTextFont(42);
+  paveLab4L->SetBorderSize(0);
+  paveLab4L->SetTextSize(0.1);
+  paveLab4L->SetTextAlign(12);
+  paveLab4L->AddText("#bf{ ^{4}_{#Lambda}H}");
+  
+  //Define pT/A labels only once
+  TPaveText * pavept = new TPaveText(0.65, 0.7, 0.92, 0.78, "NDC");
+  pavept->SetFillStyle(0);
+  pavept->SetTextFont(42);
+  pavept->SetBorderSize(0);
+  pavept->SetTextSize(0.05);
+  pavept->SetTextAlign(12);
+  pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+
+  //TPaveText * paveptB3 = new TPaveText(0.55, 0.62, 0.95, 0.67, "NDC");
+  TPaveText * paveptB3 = new TPaveText(0.65, 0.7, 0.92, 0.78, "NDC");
+  paveptB3->SetFillStyle(0);
+  paveptB3->SetTextFont(42);
+  paveptB3->SetBorderSize(0);
+  paveptB3->SetTextSize(0.05);
+  paveptB3->SetTextAlign(12);
+  paveptB3->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
+
+  TPaveText * paveptB3L = new TPaveText(0.65, 0.7, 0.92, 0.78, "NDC");
+  paveptB3L->SetFillStyle(0);
+  paveptB3L->SetBorderSize(0);
+  paveptB3L->SetTextFont(42);
+  paveptB3L->SetTextSize(0.05);
+  paveptB3L->SetTextAlign(12);
+  paveptB3L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
+
+  TCanvas * cr4 = new TCanvas("cr4", "compare thermal with coalescence", 1400, 800);
+  cr4->SetBottomMargin(0.02);
+  cr4->SetTopMargin(0.01);
+  cr4->SetLeftMargin(0.12);
+  cr4->SetRightMargin(0.02);
+  cr4->Divide(3,2);
+
+  //-------------------------------
+  //   DRAW 2H
+  //-------------------------------
+
+  cr4->cd(1);
+  gPad->SetLogy();
+  gPad->SetTicky();
+  gPad->SetTickx();
+  hframe->Draw();
+  gBlastB2vsR_PbPb276TeV[1]->Draw("samel");
+  gBlastB2vsR_pp7TeV[1]->Draw("samel");
+  gB2vsR_pp7TeVINELg0_sys[1]->Draw("samep2");
+  gB2vsR_pp7TeVINELg0[1]->Draw("samepz");
+  gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB2vsR_PbPb276TeV[1]->Draw("samepz");
+  //
+  TLegend * legB2 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB2->SetFillStyle(0);
+  legB2->SetTextSize(0.03);
+  legB2->SetBorderSize(0);
+  legB2->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
+  legB2->AddEntry(gB2vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB2->AddEntry(gB2vsR_pp7TeVINELg0_sys[1], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
+  legB2->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  //legB2->Draw();
+  //
+  hB2_coalescence->Draw("l");
+  pavept->Draw();
+  paveLab2->Draw();
+
+  //-------------------------------
+  //   DRAW 3He
+  //-------------------------------
+
+  cr4->cd(2);
+  gPad->SetLogy();
+  gPad->SetTicky();
+  gPad->SetTickx();
+  hframe3->Draw();
+  hB3_coalescence->Draw("l");
+  gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
+  gBlastB3vsR_pp7TeV[1]->Draw("samel");
+  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
+  gB3vsR_PbPb276TeV[1]->Draw("samepz");
+  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
+  gB3vsR_pp7TeV[1]->Draw("samepz");
+  //
+  TLegend * legB3 = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB3->SetFillStyle(0);
+  legB3->SetTextSize(0.03);
+  legB3->SetBorderSize(0);
+  legB3->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
+  legB3->AddEntry(gB3vsR_PbPb276TeV_sys[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3->AddEntry(gB3vsR_pp7TeV_sys[1], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
+  legB3->AddEntry(gBlastB3vsR_PbPb276TeV[1], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  //legB3->Draw();
+  //
+  paveptB3->Draw();
+  paveLab3->Draw();
+
+  //-------------------------------
+  //   DRAW 3LH
+  //-------------------------------
+
+  cr4->cd(3);
+  gPad->SetLogy();
+  gPad->SetTicky();
+  gPad->SetTickx();
+  hframe3L->Draw();
+  hB3L_coalescence_largeradius->Draw("samel");
+  hB3L_coalescence->Draw("l");
+  gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
+  gBlastB3LambdavsR_pp7TeV[1]->Draw("samel");
+  gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
+  gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
+  paveptB3L->Draw();
+  paveLab3L->Draw();
+  //
+  TLegend * legB3Lambda = new TLegend(0.2, 0.95, 0.6, 0.8, "");
+  legB3Lambda->SetFillStyle(0);
+  legB3Lambda->SetTextSize(0.03);
+  legB3Lambda->SetBorderSize(0);
+  legB3Lambda->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
+  legB3Lambda->AddEntry(gB3LambdavsR_PbPb276TeV_sys[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
+  legB3Lambda->AddEntry(gBlastB3LambdavsR_PbPb276TeV[1], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
+  //legB3Lambda->Draw();
+  //
+
+  //-------------------------------
+  //   DRAW 4LH
+  //-------------------------------
+
+  cr4->cd(6);
+  gPad->SetLogy();
+  gPad->SetTicky();
+  gPad->SetTickx();
+  hframe4L->Draw();
+  hB4L_coalescence_largeradius->Draw("samel");
+  hB4L_coalescence->Draw("samel");
+  gBlastB4LambdavsR_PbPb276TeV[1]->Draw("samel");
+  gBlastB4LambdavsR_pp7TeV[1]->Draw("samel");
+  pavept->Draw();
+  paveLab4L->Draw();
+
+  
+  //-------------------------------
+  //   DRAW 4He
+  //-------------------------------
+  cr4->cd(5);
+  gPad->SetLogy();
+  gPad->SetTicky();
+  gPad->SetTickx();
+  hframe4->Draw();
+  hB4_coalescence->Draw("samel");
+  gBlastB4vsR_PbPb276TeV[1]->Draw("samel");
+  gBlastB4vsR_pp7TeV[1]->Draw("samel");
+  paveLab4->Draw();
+  pavept->Draw();
+
+  //-------------------------------
+  //   DRAW Master legend
+  //-------------------------------
+
+  TLegend * masterLeg = new TLegend(0.1, 0.2, 0.7, 0.9, "");
+  masterLeg->SetFillStyle(0);
+  masterLeg->SetTextSize(0.05);
+  masterLeg->SetBorderSize(0);
+  masterLeg->AddEntry(gB2vsR_PbPb276TeV_sys[1], "ALICE, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  masterLeg->AddEntry(gB2vsR_pp7TeVINELg0_sys[1], "ALICE, pp #sqrt{#it{s}} = 7 TeV (INEL>0)", "pf");
+  masterLeg->AddEntry(gBlastB2vsR_PbPb276TeV[1], "BW + GSI-Heid. (#it{T}_{chem} = 156 MeV), Pb-Pb", "l");
+  masterLeg->AddEntry(gBlastB2vsR_pp7TeV[1], "BW + GSI-Heid. (#it{T}_{chem} = 156 MeV), pp", "l");
+  //masterLeg->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "");
+  masterLeg->AddEntry(hB2_coalescence, "#it{B}_{#it{A}} coalescence", "l");
+  masterLeg->AddEntry(hB2_coalescence, "#it{r} (d) = 3.2 fm", "");
+  masterLeg->AddEntry(hB3_coalescence, "#it{r} (^{3}He) = 2.48 fm", "");
+  masterLeg->AddEntry(hB3L_coalescence, "#it{r} (^{3}_{#Lambda}H) = 6.8 fm", "");
+  masterLeg->AddEntry(hB3L_coalescence, "#it{r} (^{4}_{#Lambda}H) = 2.4 fm", "");
+  masterLeg->AddEntry(hB4_coalescence, "#it{r} (^{4}He) = 1.9 fm", "");
+  masterLeg->AddEntry(hB3L_coalescence_largeradius, "#it{r} (^{3}_{#Lambda}H) = 14.1 fm", "l");
+  masterLeg->AddEntry(hB4L_coalescence_largeradius, "#it{r} (^{4}_{#Lambda}H) = 4.9 fm", "");
+  
+  cr4->cd(4);
+  masterLeg->Draw();
+  
+  // cr4->SaveAs("YRfigure.eps");
+  // cr4->SaveAs("YRfigure.png");
+
+}
+

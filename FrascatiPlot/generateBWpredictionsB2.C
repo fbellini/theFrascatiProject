@@ -263,7 +263,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   const Double_t s3thermal = 0.55; // TODO: this is just read off figure 7 og hyper-triton paper.
   const Double_t mProton = 0.938;
   const Double_t mLambda = 1.115; // FIXME: use proper mass value
-
+  const Double_t He4thermal = 7.e-7; //read off plot 
+  const Double_t H4Lthermal = 2.e-7; //read off plot
   //Sed deuteron mass
   Double_t m = 0.0;
   
@@ -272,7 +273,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   if (particle.Contains("triton")) m = 2.808921112; //triton mass 
   if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
   if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
-
+  if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
+  if (particle.Contains("4LH")) m = 3.931; 
   //centrality bin
   Int_t cb = -1;
  
@@ -366,6 +368,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
       Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[0]/protYield[0]); // FIXME --> ALL CENTRALITIES FOR LAMBDA!!!!!!!
       fNucleus->SetParameter(1, hyperTritonYield/Inucleus); // normalisation to match yields
     }
+    if (Inucleus>0 && particle.Contains("He4")) fNucleus->SetParameter(1, He4thermal/Inucleus); // normalisation to match yields
+    if (Inucleus>0 && particle.Contains("4LH")) fNucleus->SetParameter(1, H4Lthermal/Inucleus); // normalisation to match yields
 
     
     // Printf(Form("-------------------------------------\nV0M multiplicity class: %s (cb = %i)", mclass[j], j));
@@ -382,6 +386,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     if (particle.Contains("deuteron")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton);
     if (particle.Contains("He3")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton * invYieldProton);
     if (particle.Contains("hyper-triton")) B2blastW[j] = invYieldNucleus / (invYieldLambda * invYieldProton * invYieldProton);
+    if (particle.Contains("He4")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton * invYieldProton * invYieldProton);
+    if (particle.Contains("4LH")) B2blastW[j] = invYieldNucleus / (invYieldLambda * invYieldProton * invYieldProton * invYieldProton);
     binCounter++;
 
   }
@@ -389,9 +395,9 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   //output graph
   TGraphAsymmErrors * gB2 = new TGraphAsymmErrors(binCounter, multi, B2blastW, 0x0, 0x0, 0x0, 0x0);
 
-  // TCanvas * model = new TCanvas("model","model", 800, 800);
-  // model->cd();
-  // gB2->Draw("apz");
+  TCanvas * model = new TCanvas("model","model", 800, 800);
+  model->cd();
+  gB2->Draw("apz");
   
   return gB2;
 }
