@@ -395,9 +395,9 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   //output graph
   TGraphAsymmErrors * gB2 = new TGraphAsymmErrors(binCounter, multi, B2blastW, 0x0, 0x0, 0x0, 0x0);
 
-  TCanvas * model = new TCanvas("model","model", 800, 800);
-  model->cd();
-  gB2->Draw("apz");
+  // TCanvas * model = new TCanvas("model","model", 800, 800);
+  // model->cd();
+  // gB2->Draw("apz");
   
   return gB2;
 }

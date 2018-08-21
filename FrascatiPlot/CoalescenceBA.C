@@ -115,7 +115,7 @@ Double_t getBAfromRadius(Short_t A, Double_t JA, Double_t mT, Double_t homogR,  
 {
   // formula 13 of the Frascati paper arXiv:1807.05894
   Double_t convFactor_fm2InvGeV = 0.197;
-  Double_t spinFactor = (JA+1) / TMath::Power(2., A);
+  Double_t spinFactor = (2*JA+1) / TMath::Power(2., A);
   Double_t expo = 3.*(A-1)/2.;
   Double_t mtfactor = TMath::Power(mT, -(A-1));
   Double_t BA =  spinFactor * 1./TMath::Sqrt(A) * mtfactor *
