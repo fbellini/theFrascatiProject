@@ -125,10 +125,13 @@ In this naive expectation, the number of nuclei produced by coalescence increase
 While this picture is found to be approximately valid in pp and \pPb~collisions \cite{ALICE:nucleipp2017, anielski-HQ14}, it breaks down in \PbPb~collisions, that exhibit a strong decrease of $B_{A}$ with the centrality of the collision \cite{ALICE:deuteronppPbPb2015}. 
 In addition, the elliptic flow of deuterons cannot be explained by simple coalescence \cite{Acharya:2017dmc}. 
 
+
 \subsection{Advanced coalescence}
 \label{subsec:FullCoalescence}
 
 In contrast to the simple approach described in the previous section, a more advanced coalescence model takes into account the size of the particle emission source, as the coalescence probability naturally decreases for two nucleons with similar momenta that are produced far apart in configuration space. While there are several approaches to address this effect~\cite{Sato:1981ez, Nagle:1996vp}, in our study we rely on the formalism proposed in~\cite{Scheibl:1998tk}. The authors use a density matrix approach to calculate the coalescence probability and the invariant momentum spectra of deuterons and anti-deuterons in heavy-ion collisions. They consider the coalescence of nucleons within a source that is rapidly expanding under collective flow.
+The fact that the coalescence probability is anti-proportional to the source volume can already be understood in the classical phase-space picture as due simply to the separation in configuration space. Because coalescence is a quantum-mechanical process, however, the classical definition of phase space does not apply and it is replaced by the Wigner formalism. Therefore, most coalescence models, including \cite{Scheibl:1998tk}, determine the production probability of a nucleon cluster as by the overlap of the Wigner function of its internal wave-function with the phase-space distributions of the constituent particles.
+
 The wave-functions of the objects under study are approximated by the ground-state wave-functions of an isotropic spherical harmonic oscillator as in~\cite{Scheibl:1998tk} with a characteristic size parameter $r_{A}$. For the deuteron (A = 2) wave-function $\varphi_{d}(\vec{r}) $, one obtains
 
 \begin{equation}\label{eq:WaveHeinz}
@@ -139,7 +142,7 @@ The wave-functions of the objects under study are approximated by the ground-sta
 
 \begin{equation}
  \rmsradius^2 = {3 \over 2}{A - 1 \over A} {r_{A}^2 \over 2}
-\end{equation}
+\end{equation} 
 
 \noindent for point-like constituents. In particular, we obtain $r_{d}= \sqrt{8/3}  \rmsd$ for $A = 2$, $r_{3}= \sqrt{2}{\rmsthree}$ for $A = 3$, and  $r_{4}= \sqrt{16/9} \rmsfour$ for $A=4$ (see Appendix \ref{appendix:Sato} and \ref{appendix:integration} for details).
 
@@ -219,11 +222,18 @@ In summary, under the assumption $R_1\approx R_2 \approx R_3 \approx R$ as in \c
 
 \noindent This formula can be used to compare the predicted $B_{A}$ with experimental data directly.
  
+We understand the relation between $B_A$ and the radii as follows: for small radii of the source, as $R \rightarrow 0$, the coalescence probability appears to be anti-proportional to the harmonic oscillator size parameter $r_A$, and thus proportional to the depth of the attractive potential in the harmonic oscillator picture (and thus to the nucleus binding energy).
+Quite naturally, the allowed momentum difference between the coalescing nucleons is larger for more attractive, i.e. deeper, potentials. 
+For large source volume, i.e. $R \gg r_A$, the coalescence probability is dominated by the classical phase-space separation, and thus decreases for large differences in configuration space. 
 
 \subsection{Source volume}
 \label{SecSourceVolume}
-We identify the source volume as the effective sub-volume of the whole system that is governed by the homogeneity length of the interacting nucleons, as in \cite{Scheibl:1998tk}. In addition, the same authors claim that this volume is experimentally accessible with Hanbury-Brown-Twiss (HBT) interferometry. 
-The experimental results are typically obtained following the Bertsch-Pratt (BP) parameterisation ($R_{out}, R_{side}, R_{long}$), while the coalescence model described in Section \ref{sec:coalescence} expresses the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. As discussed in Appendix \ref{appendix:YKP}, we identify $\rperp = R_{side}$ and $\rpar = R_{long}$. We then take $R = (\rperp^{2}\rpar)^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.
+We identify the source volume as the effective sub-volume of the whole system that is governed by the homogeneity length of the interacting nucleons, as in \cite{Scheibl:1998tk}. 
+The latter is much smaller that the entire fireball which is created in heavy-ion collisions. 
+This is not only caused by the limitations ascribed to the causally-connected volume, but also to the presence of a common radial expansion, which causes the particles inside the fireball to be sorted according to their velocities.
+As pointed out by the same authors, this volume is experimentally accessible with Hanbury-Brown-Twiss (HBT) interferometry. 
+The experimental results are typically obtained following the Bertsch-Pratt (BP) parameterisation ($R_{out}, R_{side}, R_{long}$), while the coalescence model described in Section \ref{sec:coalescence} expresses the volume in terms of the Yano-Koonin-Podgoretskii (YKP) parameterisation. 
+As discussed in Appendix \ref{appendix:YKP}, we identify $\rperp = R_{side}$ and $\rpar = R_{long}$. We then take $R = (\rperp^{2}\rpar)^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.
 
 Experimentally, the size of the effective volume can be controlled by selecting different collision geometries, i.e. different centrality classes \cite{Abelev:2013qoq}. In heavy-ion collisions the HBT radii are known to scale with the cubic root of the average charged particle multiplicity density \avdNdeta$^{1/3}$ \cite{Adam:2015vna}, and to depend on the pair average transverse momentum $\langle k_{\mathrm{T}}\rangle$ \cite{Aamodt:2011mr}. In the following, we make the simplifying assumption that the scaling with \avdNdeta$^{1/3}$ holds across collision systems, which is approximately fulfilled in data \cite{Adam:2015pya}. In contrast to \cite{Blum:2017qnn}, we therefore do not explicitly use the measured HBT radii in our study, but we derive the radii from the measured \avdNdeta~according to the following relation:
 
@@ -321,7 +331,7 @@ In a follow-up publication, we plan to extend our study to predictions for the $
 \newenvironment{acknowledgement}{\relax}{\relax}
 \begin{acknowledgement}
 \section*{Acknowledgements}
-We would like to thank Kfir Blum for inspiring this work. We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions, and with Eulogio Serradilla Rodriguez. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Maximiliano Puccio, Roman Lietava and the colleagues from the ALICE Collaboration for their valuable input. 
+We would like to thank Kfir Blum for inspiring this work. We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions, and with Eulogio Serradilla Rodriguez. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Maximiliano Puccio, Roman Lietava, Natasha Sharma and the colleagues from the ALICE Collaboration for their valuable input. 
 \end{acknowledgement}
 
 
