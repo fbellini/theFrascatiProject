@@ -11,26 +11,18 @@
 #include "TH2D.h"
 #include "./generateBWpredictionsB2.C" //ADAPT ME
 
+//mapping multiplicity into radius
 void convertMultiToRadius(TGraphErrors * graph = 0x0, Int_t paramSet = 0);
 void convertMultiToRadius(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 0);
-
 void getRadiusFromParameterisation(Double_t * multi = 0x0, Double_t * radius = 0x0, Int_t paramSet = 0);
-TF1 * MakeB2TheoryGraphQMfactor(Double_t objSize = 3.2);
+
+//coalescence predictions up to A=4
+TF1 *          MakeB2TheoryGraphQMfactor(Double_t objSize = 3.2);
 TGraphErrors * MakeB2TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 3.2);
 TGraphErrors * MakeB3TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 2.48);
 TGraphErrors * MakeB4TheoryGraphCoalescence(Double_t mT = 1.0, Double_t objSize = 1.9);
 
-TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-
-TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
-TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
-TGraphAsymmErrors * getB3_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
-TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
-
+//thermal model + blast-wave predictions up to A=4
 TGraphAsymmErrors * getBlastB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphAsymmErrors * getBlastB2_PbPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
@@ -48,9 +40,31 @@ TGraphAsymmErrors * getBlastB4_pp7TeV(Bool_t plotSys = 0, Double_t pToAb4 = 0.75
 TGraphAsymmErrors * getBlastB4Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
 TGraphAsymmErrors * getBlastB4Lambda_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
 
+//ALICE data on nuclei BA
+//deuteron
+TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+
+//helium-3
+TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphAsymmErrors * getB3_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
+
+//hypertriton
+TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
+
+//pseudodata
+TGraphErrors * GetPseudoBAvsMulti(TString particle = "deuteron",  Int_t paramSet = 0);
+
+  
+// beautification of plots
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 
+//figure making
 void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
 		      TF1 *Cd_coalescence, TF1* Cd_coalescence_pointlike, TF1* Cd_coalescence_radius1third,  TF1* Cd_coalescence_largeradius,
 		      TGraphErrors * hB2_coalescence, TGraphErrors * hB2_coalescence_pointlike, TGraphErrors * hB2_coalescence_radius1third, TGraphErrors * hB2_coalescence_largeradius);
@@ -60,14 +74,14 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV);
 
-void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
+void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, 
 		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius, 
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
 		      TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys, TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV);
 
-void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
+void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, Double_t pToAb4Lambda,
 		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
 		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
 		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
@@ -79,13 +93,22 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
 		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
 		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV);
 
+//main plotting for Frascati plot
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
-		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = kFALSE, Bool_t plotYRFigure = kTRUE)
+		 Double_t pToAb4Lambda = 0.75,
+		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 1, Bool_t plotYRFigure = 0)
 {
   //
   // main function which generates the plots of the Frascati project
   //
-  
+  if (plotYRFigure) {
+    pToA = 0.75;
+    pToAb3 = 0.77;
+    pToAb3pp = 0.800;
+    pToAb3Lambda = 1.17;
+    pToAb4 = 0.75;
+    pToAb4Lambda = 0.62;
+  }
   //--------------------
   //data
   //--------------------
@@ -164,8 +187,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     gBlastB4vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB4_PbPb276TeV(kFALSE, pToAb4, ip);
     gBlastB4vsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB4_pp7TeV(kFALSE, pToAb4, ip);
     //
-    gBlastB4LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_PbPb276TeV(kFALSE, pToAb4, ip);
-    gBlastB4LambdavsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_pp7TeV(kFALSE, pToAb4, ip);
+    gBlastB4LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_PbPb276TeV(kFALSE, pToAb4Lambda, ip);
+    gBlastB4LambdavsR_pp7TeV[ip] = (TGraphAsymmErrors *)  getBlastB4Lambda_pp7TeV(kFALSE, pToAb4Lambda, ip);
   }
   
   //--------------------
@@ -174,6 +197,11 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //mT is the mass of the particle relative to which the HBT radius is calculated.
   //We use now the mass of the proton and the pT per nucleon
   Double_t mT = TMath::Sqrt(pToA * pToA + 0.938 * 0.938);
+  Double_t mT3 = TMath::Sqrt(pToAb3 * pToAb3 + 0.938 * 0.938);
+  Double_t mT4 = TMath::Sqrt(pToAb4 * pToAb4 + 0.938 * 0.938);
+  Double_t mT3L = TMath::Sqrt(pToAb3Lambda * pToAb3Lambda + 0.938 * 0.938);
+  Double_t mT4L = TMath::Sqrt(pToAb4Lambda * pToAb4Lambda + 0.938 * 0.938);
+  
   // objSize = 3.2; //fm for the deuteron
   // objSize = 2.48; //fm for the 3^He
 
@@ -223,47 +251,47 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB2_coalescence_largeradius->SetLineStyle(9);
   hB2_coalescence_largeradius->SetLineColor(kGreen+1);
 
-  TGraphErrors* hB3_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT);
+  TGraphErrors* hB3_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3);
   hB3_coalescence->SetMarkerStyle(20);
   hB3_coalescence->SetMarkerColor(kBlack);
   hB3_coalescence->SetLineColor(kBlack);
   hB3_coalescence->SetLineWidth(2);
 
-  TGraphErrors* hB3_coalescence_pointlike = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 0.0);
+  TGraphErrors* hB3_coalescence_pointlike = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3, 0.0);
   hB3_coalescence_pointlike->SetMarkerStyle(24);
   hB3_coalescence_pointlike->SetMarkerColor(kGray);
   hB3_coalescence_pointlike->SetLineColor(kGray);
   hB3_coalescence_pointlike->SetMarkerSize(0.4);
   hB3_coalescence_pointlike->SetLineWidth(2);
 
-  TGraphErrors* hB3L_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 6.8);
+  TGraphErrors* hB3L_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3L, 6.8);
   hB3L_coalescence->SetMarkerStyle(20);
   hB3L_coalescence->SetMarkerColor(kBlack);
   hB3L_coalescence->SetLineColor(kBlack);
   hB3L_coalescence->SetLineWidth(2);
   hB3L_coalescence->SetLineStyle(1);
 
-  TGraphErrors* hB3L_coalescence_largeradius = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT, 14.1);
+  TGraphErrors* hB3L_coalescence_largeradius = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3L, 14.1);
   hB3L_coalescence_largeradius->SetMarkerStyle(20);
   hB3L_coalescence_largeradius->SetMarkerColor(kBlack);
   hB3L_coalescence_largeradius->SetLineColor(kBlack);
   hB3L_coalescence_largeradius->SetLineWidth(2);
   hB3L_coalescence_largeradius->SetLineStyle(7);
 
-  TGraphErrors* hB4_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 1.9); //He4
+  TGraphErrors* hB4_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT4, 1.9); //He4
   hB4_coalescence->SetMarkerStyle(1);
   hB4_coalescence->SetMarkerColor(kBlack);
   hB4_coalescence->SetLineColor(kBlack);
   hB4_coalescence->SetLineWidth(2);
 
-  TGraphErrors* hB4L_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 2.4); //4LH
+  TGraphErrors* hB4L_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT4L, 2.4); //4LH
   hB4L_coalescence->SetMarkerStyle(20);
   hB4L_coalescence->SetMarkerColor(kBlack);
   hB4L_coalescence->SetLineColor(kBlack);
   hB4L_coalescence->SetLineWidth(2);
   hB4L_coalescence->SetLineStyle(1);
 
-  TGraphErrors* hB4L_coalescence_largeradius = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT, 4.9); //4LH
+  TGraphErrors* hB4L_coalescence_largeradius = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT4L, 4.9); //4LH
   hB4L_coalescence_largeradius->SetMarkerStyle(20);
   hB4L_coalescence_largeradius->SetMarkerColor(kBlack);
   hB4L_coalescence_largeradius->SetLineColor(kBlack);
@@ -296,7 +324,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   Int_t Fill_Style = 1001;
   Int_t Line_Style = 1;
   Int_t Line_Style_Blast = 2;
-  Int_t Line_Width = 1;
+  Int_t Line_Width = 1; 
   Int_t Line_Width_Blast = 3;
   Float_t Marker_Size = 1.3;
 
@@ -377,7 +405,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //---------------------------------------  
 
   if (plotYRFigure) {
-    MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda,
+    MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda, pToAb4Lambda,
 		 hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
 		 hB4_coalescence, hB4L_coalescence, hB4L_coalescence_largeradius, 
 		 gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
@@ -762,8 +790,8 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   paveptCoalCanv->Draw();
 
 
-  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
-  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
+  // coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
+  //coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
 
 
 }
@@ -909,7 +937,7 @@ void MakePaperFigure3(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,
 
 }
 
-void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t pToAb3Lambda,
+void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t pToAb3Lambda, 
 		      TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius, 
 		      TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
 		      TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
@@ -999,7 +1027,6 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3,  Double_t
   paveptB3L->SetTextSize(0.05);
   paveptB3L->SetTextAlign(12);
   paveptB3L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
-
   
   /*TCanvas * cr4 = new TCanvas("cr4", "compare coalesence with thermal", 1600, 600);
   cr4->SetBottomMargin(0.02);
@@ -1906,7 +1933,7 @@ void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Sty
   return;
 }
  
-void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda,
+void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, Double_t pToAb4Lambda,
 		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
 		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
 		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
@@ -2038,6 +2065,16 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   paveptB3L->SetTextAlign(12);
   paveptB3L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
+
+   TPaveText * paveptB4L = new TPaveText(0.17, 0.87, 0.7, 0.92, "NDC");
+  paveptB4L->SetFillStyle(0);
+  paveptB4L->SetBorderSize(0);
+  paveptB4L->SetTextFont(42);
+  paveptB4L->SetTextSize(0.05);
+  paveptB4L->SetTextAlign(12);
+  paveptB4L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb4Lambda));
+
+  
   TCanvas * cr4 = new TCanvas("cr4", "compare thermal with coalescence", 1400, 800);
   cr4->SetBottomMargin(0.02);
   cr4->SetTopMargin(0.01);
@@ -2054,12 +2091,14 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   gPad->SetTicky();
   gPad->SetTickx();
   hframe->Draw();
+  if (gB2vsR_PbPb276TeV[1]){
   gBlastB2vsR_PbPb276TeV[1]->Draw("samel");
   //gBlastB2vsR_pp7TeV[1]->Draw("samel");
   gB2vsR_pp7TeVINELg0_sys[1]->Draw("samep2");
   gB2vsR_pp7TeVINELg0[1]->Draw("samepz");
   gB2vsR_PbPb276TeV_sys[1]->Draw("samep3");
   gB2vsR_PbPb276TeV[1]->Draw("samepz");
+  }
   hB2_coalescence->Draw("l");
   pavept->Draw();
   paveLab2->Draw();
@@ -2076,10 +2115,12 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   hB3_coalescence->Draw("l");
   gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
   //gBlastB3vsR_pp7TeV[1]->Draw("samel");
-  gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
-  gB3vsR_PbPb276TeV[1]->Draw("samepz");
-  gB3vsR_pp7TeV_sys[1]->Draw("samep2");
-  gB3vsR_pp7TeV[1]->Draw("samepz");
+  if (gB3vsR_PbPb276TeV_sys[1]){
+    gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
+    gB3vsR_PbPb276TeV[1]->Draw("samepz");
+    gB3vsR_pp7TeV_sys[1]->Draw("samep2");
+    gB3vsR_pp7TeV[1]->Draw("samepz");
+  }
   paveptB3->Draw();
   paveLab3->Draw();
 
@@ -2096,8 +2137,10 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   hB3L_coalescence->Draw("l");
   gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
   //gBlastB3LambdavsR_pp7TeV[1]->Draw("samel");
-  gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
-  gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
+  if (gB3LambdavsR_PbPb276TeV[1]) {
+    gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
+    gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
+  }
   paveptB3L->Draw();
   paveLab3L->Draw();
 
@@ -2114,7 +2157,7 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   hB4L_coalescence->Draw("samel");
   gBlastB4LambdavsR_PbPb276TeV[1]->Draw("samel");
   //gBlastB4LambdavsR_pp7TeV[1]->Draw("samel");
-  pavept->Draw();
+  paveptB4L->Draw();
   paveLab4L->Draw();
 
   
@@ -2132,6 +2175,21 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   paveLab4->Draw();
   pavept->Draw();
 
+  //-------------------------------
+  //   DRAW pseudodata
+  //-------------------------------
+  TGraphErrors * gPseudoDeuteron = (TGraphErrors *) GetPseudoBAvsMulti("deuteron", 1);
+  cr4->cd(1);  gPseudoDeuteron->Draw("samep2");
+  TGraphErrors * gPseudo3He = (TGraphErrors *) GetPseudoBAvsMulti("he3", 1);
+  cr4->cd(2);  gPseudo3He->Draw("samep2");
+  TGraphErrors * gPseudo3LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH3", 1);
+  cr4->cd(3);  gPseudo3LambdaH->Draw("samep2");
+  TGraphErrors * gPseudo4He = (TGraphErrors *) GetPseudoBAvsMulti("he4", 1);
+  cr4->cd(5);  gPseudo4He->Draw("samep2");
+  TGraphErrors * gPseudo4LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH4", 1);
+  cr4->cd(6);  gPseudo4LambdaH->Draw("samep2");
+
+  
   //-------------------------------
   //   DRAW Master legend
   //-------------------------------
@@ -2161,3 +2219,31 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
 
 }
 
+
+TGraphErrors * GetPseudoBAvsMulti(TString particle,  Int_t paramSet)
+{
+  TFile * fin = TFile::Open("~/alice/nucleiB2/projectionsYR/ba_180830.root");
+  TH1D * hist = 0x0;
+  if (particle.Contains("deuteron")) hist = (TH1D *) fin->Get("badeuteron"); //ptoa = 0.75 GeV/c
+  if (particle.Contains("triton")) hist = (TH1D *) fin->Get("batriton");  //ptoa = 0.77 GeV/c
+  if (particle.Contains("he3")) hist = (TH1D *) fin->Get("bahe3"); //ptoa = 0.77 GeV/c
+  if (particle.Contains("he4")) hist = (TH1D *) fin->Get("bahe4"); //ptoa = 0.75 GeV/c
+  if (particle.Contains("hyperH3")) hist = (TH1D *) fin->Get("bahyperH3"); //ptoa = 1.17 GeV/c
+  if (particle.Contains("hyperH4")) hist = (TH1D *) fin->Get("bahyperH4"); //ptoa = 0.62 GeV/c
+
+  Double_t multi[10]    = {1942.5, 1585.5, 1180.0, 786.0, 512.0, 318.0, 183.0, 96.3, 44.9, 17.52};
+  Double_t multierr[10] = {53.5, 46.0, 31.0, 20.0, 15.0, 12.0, 8.0, 5.8, 3.4, 1.84};
+  
+  Double_t ba[10], baerr[10];
+  for (int i=1;i<11;i++){
+    ba[i-1] = hist->GetBinContent(i);
+    baerr[i-1] = hist->GetBinError(i);
+  }
+  
+  TGraphErrors * graph = new TGraphErrors(10, multi, ba, multierr, baerr);
+  convertMultiToRadius(graph, paramSet);
+  graph->SetMarkerStyle(24);
+  graph->SetMarkerColor(kBlack);
+  graph->SetLineColor(kBlack);
+  return graph;
+}

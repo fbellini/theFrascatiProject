@@ -9,6 +9,7 @@
 
 Double_t getBAfromRadius(Short_t A, Double_t JA, Double_t mT, Double_t homogR,  Double_t objSize);
 TGraphErrors * MakeBATheoryGraphCoalescence(Short_t A, Double_t JA, Double_t mT, Double_t objSize);
+TGraphErrors * MakeBAcoalRelSize(Short_t A, Double_t JA, Double_t pToA, Bool_t isHyper);
 
 void CoalescenceBA(Double_t pToA = 0.75)
 {
@@ -19,7 +20,7 @@ void CoalescenceBA(Double_t pToA = 0.75)
   Double_t objRadius[8] = {3.2, 2.15, 2.48, 6.8, 1.9, 2.4, 5.5, 2.4};
   Color_t color[8] = {kBlack, kBlue+1, kAzure+8, kGreen+2, kRed+1, kOrange+8, kPink-3, kOrange};
   Int_t line[8] = {1, 1, 1, 2, 1, 2, 5, 3};
-    TGraphErrors * hBA_coalescence[8];
+  TGraphErrors * hBA_coalescence[8];
 
   for(Int_t j=0; j<8; j++) {
     hBA_coalescence[j] = (TGraphErrors*) MakeBATheoryGraphCoalescence(nucleiA[j], spin[j], mT, objRadius[j]);
@@ -84,8 +85,10 @@ void CoalescenceBA(Double_t pToA = 0.75)
  cr4->cd(2);
  masterLeg->Draw();
  cr4->SaveAs(Form("coalescenceBA_%3.2f.pdf", pToA));
+ 
  return;
 }
+
 
 
 TGraphErrors * MakeBATheoryGraphCoalescence(Short_t A, Double_t JA, Double_t mT, Double_t objSize)
@@ -111,6 +114,9 @@ TGraphErrors * MakeBATheoryGraphCoalescence(Short_t A, Double_t JA, Double_t mT,
 
 }
 
+
+
+
 Double_t getBAfromRadius(Short_t A, Double_t JA, Double_t mT, Double_t homogR,  Double_t objSize)
 {
   // formula 13 of the Frascati paper arXiv:1807.05894
@@ -124,3 +130,5 @@ Double_t getBAfromRadius(Short_t A, Double_t JA, Double_t mT, Double_t homogR,  
   
   return BA;
 }
+
+
