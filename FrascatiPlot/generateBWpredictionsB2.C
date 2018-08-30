@@ -336,7 +336,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     bb[j] *= (0.5*(bn[j]+2.));
     
     //-----------------------------------
-    // Construct Blast-Wave model protons --> TODO: FOR THE HYPER-TRITON WE WILL ALSO NEED THE LAMBDA!!!
+    // Construct Blast-Wave model protons and Lambda
     //-----------------------------------
     TF1 * fProton = new TF1(Form("BlastWaveProton-%s", mclass[j]), x_blast, 0., 10., 5);
     fProton->SetParameters(mProton, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
@@ -376,12 +376,16 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     // Printf("Blast-Wave parameters (pi,K,p):\n  T = %6.4f \n  n = %6.4f \n  beta_T = %6.4f", bt[j], bn[j], bb[j]);
 
     //-----------------------------------
-    // do the actual B2 calculation
+    // do the actual BA calculation
     //-----------------------------------
-    Int_t A = (particle.Contains("deuteron")? 2 : 3); // deuteron case TODO: also implement A = 3
+    Int_t A = 1;
+    if (particle.Contains("deuteron")) A = 2;
+    else if (particle.Contains("He3") || particle.Contains("hyper-triton")) A = 3;
+    else if (particle.Contains("He4") || particle.Contains("4LH")) A = 4;
+	
     Double_t invYieldProton = fProton->Eval(pToA)/(2*TMath::Pi()*pToA);
     Double_t invYieldLambda = fLambda->Eval(pToA)/(2*TMath::Pi()*pToA);
-    Double_t invYieldNucleus = fNucleus->Eval(pToA*A)/(2*TMath::Pi()*pToA*2);
+    Double_t invYieldNucleus = fNucleus->Eval(pToA*A)/(2*TMath::Pi()*pToA*A);
 
     if (particle.Contains("deuteron")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton);
     if (particle.Contains("He3")) B2blastW[j] = invYieldNucleus / (invYieldProton * invYieldProton * invYieldProton);
