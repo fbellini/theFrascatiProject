@@ -206,7 +206,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   // objSize = 2.48; //fm for the 3^He
 
   TF1 * Cd_coalescence = (TF1*) MakeB2TheoryGraphQMfactor();
-  Cd_coalescence->SetLineWidth(2);
+  Cd_coalescence->SetLineWidth(3);
   Cd_coalescence->SetLineStyle(1);
   Cd_coalescence->SetLineColor(kBlack);
 
@@ -227,7 +227,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   TGraphErrors* hB2_coalescence = (TGraphErrors*) MakeB2TheoryGraphCoalescence(mT);
   hB2_coalescence->SetMarkerStyle(20);
-  hB2_coalescence->SetLineWidth(2);
+  hB2_coalescence->SetLineWidth(3);
   hB2_coalescence->SetLineStyle(1);
 
   TGraphErrors* hB2_coalescence_pointlike = (TGraphErrors*) MakeB2TheoryGraphCoalescence(mT, 0.0);
@@ -255,7 +255,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3_coalescence->SetMarkerStyle(20);
   hB3_coalescence->SetMarkerColor(kBlack);
   hB3_coalescence->SetLineColor(kBlack);
-  hB3_coalescence->SetLineWidth(2);
+  hB3_coalescence->SetLineWidth(3);
 
   TGraphErrors* hB3_coalescence_pointlike = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3, 0.0);
   hB3_coalescence_pointlike->SetMarkerStyle(24);
@@ -268,7 +268,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB3L_coalescence->SetMarkerStyle(20);
   hB3L_coalescence->SetMarkerColor(kBlack);
   hB3L_coalescence->SetLineColor(kBlack);
-  hB3L_coalescence->SetLineWidth(2);
+  hB3L_coalescence->SetLineWidth(3);
   hB3L_coalescence->SetLineStyle(1);
 
   TGraphErrors* hB3L_coalescence_largeradius = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT3L, 14.1);
@@ -282,13 +282,13 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hB4_coalescence->SetMarkerStyle(1);
   hB4_coalescence->SetMarkerColor(kBlack);
   hB4_coalescence->SetLineColor(kBlack);
-  hB4_coalescence->SetLineWidth(2);
+  hB4_coalescence->SetLineWidth(3);
 
   TGraphErrors* hB4L_coalescence = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT4L, 2.4); //4LH
   hB4L_coalescence->SetMarkerStyle(20);
   hB4L_coalescence->SetMarkerColor(kBlack);
   hB4L_coalescence->SetLineColor(kBlack);
-  hB4L_coalescence->SetLineWidth(2);
+  hB4L_coalescence->SetLineWidth(3);
   hB4L_coalescence->SetLineStyle(1);
 
   TGraphErrors* hB4L_coalescence_largeradius = (TGraphErrors*) MakeB4TheoryGraphCoalescence(mT4L, 4.9); //4LH
@@ -728,7 +728,7 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   // Create the (pure theory) figure which plots <C_d> and B2 vs R
   // for different radii (PLOT COALESCENCE ONLY)
   //
-  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 1000);
+  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 700);
   coalcanv->SetBottomMargin(0.02);
   coalcanv->SetTopMargin(0.02);
   coalcanv->SetLeftMargin(0.15);
@@ -746,6 +746,10 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   frame_coal->GetYaxis()->SetTitleSize(0.05);
   if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  frame_coal->GetXaxis()->SetRangeUser(0.1, 10.5);
+
+  TLine * lInflectionPoint = new TLine(1.3, 0.0, 1.3, 1.2);
+  lInflectionPoint->SetLineStyle(3);
+  lInflectionPoint->SetLineWidth(3);
   
   TLegend * legB2_coal;
   if (plotLinX) legB2_coal = new TLegend(0.4, 0.95-4*0.04, 0.8, 0.95);
@@ -768,6 +772,7 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   Cd_coalescence_pointlike->Draw("same");
   Cd_coalescence_radius1third->Draw("same");
   Cd_coalescence_largeradius->Draw("same");
+  lInflectionPoint->Draw();
   
   coalcanv->cd(2);
   gPad->SetLogy();
@@ -790,8 +795,8 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   paveptCoalCanv->Draw();
 
 
-  // coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
-  //coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
+  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
+  coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
 
 
 }
@@ -1948,7 +1953,7 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   //
   // make figure for YR
   //
-  TH2D * hframe = new TH2D("hframeFig4", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
+  TH2D * hframe = new TH2D("hframeFig4", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 2000, 0.01, 7.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleOffset(1.3);
@@ -1958,7 +1963,7 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
 
-  TH2D * hframe3 = new TH2D("hframe3Fig4", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  TH2D * hframe3 = new TH2D("hframe3Fig4", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 2000, 0.01, 7.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.06);
   hframe3->GetYaxis()->SetTitleSize(0.06);
   hframe3->GetYaxis()->SetTitleOffset(1.3);
@@ -1968,7 +1973,7 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   if (plotLinX) hframe3->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3->GetXaxis()->SetRangeUser(0.1, 10.5);
 
-  TH2D * hframe3L = new TH2D("hframe3LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{3,#Lambda} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  TH2D * hframe3L = new TH2D("hframe3LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{3,#Lambda} (GeV^{4}/#it{c}^{6})", 2000, 0.01, 7.0, 2000, 1.e-9, 1.e-1);
   hframe3L->GetXaxis()->SetTitleSize(0.06);
   hframe3L->GetYaxis()->SetTitleSize(0.06);
   hframe3L->GetYaxis()->SetTitleOffset(1.3);
@@ -1978,24 +1983,24 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   if (plotLinX) hframe3L->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe3L->GetXaxis()->SetRangeUser(0.1, 10.5);
 
- TH2D * hframe4 = new TH2D("hframe4Fig4", "B_{4} vs radius; #it{R} (fm); #it{B}_{4} (GeV^{6}/#it{c}^{9})", 1000, 0.01, 6.0, 2000, 1.e-12, 1.e-1);
+ TH2D * hframe4 = new TH2D("hframe4Fig4", "B_{4} vs radius; #it{R} (fm); #it{B}_{4} (GeV^{6}/#it{c}^{9})", 2000, 0.01, 7.0, 2000, 1.e-12, 1.e-1);
   hframe4->GetXaxis()->SetTitleSize(0.06);
   hframe4->GetYaxis()->SetTitleSize(0.06);
   hframe4->GetYaxis()->SetTitleOffset(1.3);
   hframe4->GetXaxis()->SetTitleOffset(0.8);
   hframe4->GetXaxis()->SetLabelSize(0.05);
   hframe4->GetYaxis()->SetLabelSize(0.05);
-  if (plotLinX) hframe4->GetXaxis()->SetRangeUser(0.01, 6.);
+  if (plotLinX) hframe4->GetXaxis()->SetRangeUser(0.01, 7.);
   else  hframe4->GetXaxis()->SetRangeUser(0.1, 10.5);
 
-  TH2D * hframe4L = new TH2D("hframe4LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{4,#Lambda} (GeV^{6}/#it{c}^{9})", 1000, 0.01, 6.0, 2000, 1.e-12, 1.e-1);
+  TH2D * hframe4L = new TH2D("hframe4LFig4", "B_{3,#Lambda} vs radius; #it{R} (fm); #it{B}_{4,#Lambda} (GeV^{6}/#it{c}^{9})", 2000, 0.01, 7.0, 2000, 1.e-12, 1.e-1);
   hframe4L->GetXaxis()->SetTitleSize(0.06);
   hframe4L->GetYaxis()->SetTitleSize(0.06);
   hframe4L->GetYaxis()->SetTitleOffset(1.3);
   hframe4L->GetXaxis()->SetTitleOffset(0.8);
   hframe4L->GetXaxis()->SetLabelSize(0.05);
   hframe4L->GetYaxis()->SetLabelSize(0.05);
-  if (plotLinX) hframe4L->GetXaxis()->SetRangeUser(0.01, 6.);
+  if (plotLinX) hframe4L->GetXaxis()->SetRangeUser(0.01, 7.);
   else  hframe4L->GetXaxis()->SetRangeUser(0.1, 10.5);
   
   //define particle label
@@ -2222,7 +2227,7 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
 
 TGraphErrors * GetPseudoBAvsMulti(TString particle,  Int_t paramSet)
 {
-  TFile * fin = TFile::Open("~/alice/nucleiB2/projectionsYR/ba_180830.root");
+  TFile * fin = TFile::Open("~/alice/nucleiB2/projectionsYR/ba_300818.root");
   TH1D * hist = 0x0;
   if (particle.Contains("deuteron")) hist = (TH1D *) fin->Get("badeuteron"); //ptoa = 0.75 GeV/c
   if (particle.Contains("triton")) hist = (TH1D *) fin->Get("batriton");  //ptoa = 0.77 GeV/c

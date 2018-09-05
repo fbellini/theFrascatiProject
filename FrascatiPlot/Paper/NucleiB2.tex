@@ -178,12 +178,13 @@ and
 \end{equation}
 %
 Figure \ref{fig:radiusDependence} shows the source radius ($R$) dependence of the quantum-mechanical correction factor (on the left) and the coalescence parameter \btwo~(on the right), calculated assuming (a.) a point-like nucleus $\dradius = 0$, (b.) $\dradius = 0.3$ fm, (c.) the actual value which reproduces the measured rms radius of the deuteron $\dradius = 3.2$ fm \cite{Mohr:2015ccw}, (d.) a larger, irrealistic value of  $\dradius = 10$ fm. 
-As can be seen in Fig. \ref{fig:radiusDependence}, the quantum-mechanical correction factor leads to a significant suppression in the production of those objects whose radius is large compared to that of the source.
+As can be seen in Fig. \ref{fig:radiusDependence}, the quantum-mechanical correction factor leads to a significant suppression in the production of those objects whose radius is large compared to that of the source. 
+As a matter of fact, the inflection point of $\langle C_{d} \rangle$ is situated at $R = \dradius/\sqrt{6}$, as indicated in the left panel of Fig. \ref{fig:radiusDependence} by the vertical dotted line for $\dradius = 3.2$ fm.
 
-\begin{figure}[htbp]
+\begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1.0\textwidth]{theory_coalescence_Cd_B2.png}
-\caption{{The quantum mechanical correction factor $\langle C_{d} \rangle$ (left panel, see Eq. \ref{eq:Cdapprox}) and the coalescence parameter \btwo~for deuteron (right panel, see Eq. \ref{eq:B2approx}) as a function of the radius of the source, $R$, calculated assuming a size parameter for the deuteron $\dradius = 0, 0.3, 3.2$ and $10$ fm.}}
+\includegraphics[width=.9\textwidth]{theory_coalescence_Cd_B2.png}
+\caption{{The quantum mechanical correction factor $\langle C_{d} \rangle$ (left panel, see Eq. \ref{eq:Cdapprox}) and the coalescence parameter \btwo~for deuteron (right panel, see Eq. \ref{eq:B2approx}) as a function of the radius of the source, $R$, calculated assuming a size parameter for the deuteron $\dradius = 0, 0.3, 3.2$ and $10$ fm. The inflection point of $\langle C_{d} \rangle$ corresponds to $R = \dradius/\sqrt{6}$ and is indicated in the left panel by the vertical dotted line for $\dradius = 3.2$ fm.}}
 \label{fig:radiusDependence}
 \end{center}
 \end{figure}
@@ -245,7 +246,7 @@ R = a \avdNdeta^{1/3} + b
 The coefficients, $a = 0.339$ and $b = 0.128$ (in units of fm), have been determined by fitting linearly the ALICE data, and the parameterisation is reported in Fig. \ref{fig:radiiparam}. 
 The values we obtain by interpolating the geometric mean of the measured radii are consistent with the radii from kaon femtoscopy for $m_{\mathrm{T}} \approx 1$ \GeVc~in low-multiplicity pp collisions \cite{Abelev:2012sq} and the radii from pion femtoscopy in high-multiplicity \PbPb~collisions at the highest available $k_{\mathrm{T}} \approx 0.9$ \GeVc~\cite{Adam:2015vna}. 
 The highest $k_{\mathrm{T}}$ bin was chosen as it is closest in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon (\pt/$A \approx 0.8$ \GeVc) accessible by ALICE for the measurement of nuclei production. 
-Ideally, one would use the proton femtoscopic radii for such a study, but given that these measurements are not  available in all collision systems and centralities, we assume that $m_{\mathrm{T}}$-scaling holds for HBT radii \cite{Adam:2015vja}.
+Ideally, one would use the proton femtoscopic radii for such a study, but given that these measurements are not  available in all collision systems and centralities, we assume that $m_{\mathrm{T}}$-scaling holds for HBT radii \cite{Adam:2015vja}. We acknowledge that a model-based scaling factor is proposed by \cite{Kisiel:2014upa}, which alternatively could be considered.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -258,10 +259,10 @@ Ideally, one would use the proton femtoscopic radii for such a study, but given 
 \section{Statistical-thermal approach and blast-wave}\label{sec:thermal}
 
 In the statistical-thermal approach, the yields (d$N$/d$y$) of light anti- and hyper-nuclei are very sensitive to the chemical freeze-out temperature $T_{chem}$ due to their large mass $m$ and approximately scale as d$N$/d$y \propto \exp(-m/T_{chem})$. As a matter of fact, the chemical freeze-out temperature defines the only scale in this model, since at the LHC the chemical potentials which ensure the conservation of baryon number ($\mu_{B}$), strangeness ($\mu_{S}$), and electric charge ($\mu_{Q}$) are negligible.
-In contrast to the coalescence approach, the current implementations~\cite{Petran:2013dva,Wheaton:2004qb,Andronic:2005yp} of the statistical-thermal model provide only \pt-integrated yields and not the \pt-differential hadron spectra. 
+In contrast to the coalescence approach, the statistical-thermal model \cite{Petran:2013dva,Wheaton:2004qb,Andronic:2005yp} provide only \pt-integrated yields and not the \pt-differential hadron spectra. 
 In order to fill this gap, and for the purposes of this exercise, \pt~spectra have been modelled using a blast-wave~\cite{Schnedermann:1993ws} parameterization. When extracting the predicted spectrum for a given particle species (proton, $\Lambda$, deuteron, \hethree), the parameters of the blast-wave (average radial flow velocity $\langle\beta_{T}\rangle$, kinetic freeze-out temperature $T_{kin}$, and velocity profile $n$) are fixed to the values obtained from the simultaneous fit to the pion, kaon and proton spectra measured in Pb--Pb collisions as a function of centrality by ALICE~\cite{Abelev:2013vea}. 
 The normalisation is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg model with $T_{chem} = 156$ MeV, multiplied by the pion yield measured by ALICE~\cite{Abelev:2013vea}. 
-This choice, as opposed to using ratio to proton, is motivated by the fact that the measured proton yield is seen to be slightly underestimated by the thermal model predictions at the LHC~\cite{Abelev:2012wca}.
+This choice, as opposed to using ratio to proton, is motivated by the fact that the measured proton yield is seen to be slightly overestimated by the thermal model predictions at the LHC~\cite{Abelev:2012wca}.
 In the case of hyper-triton, a slightly different procedure is chosen, namely the normalisation for \hthreelambda~is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3}$ multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and the measured \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. Based on the spectra obtained in this way, we calculate the corresponding coalescence parameters for a given \pt/$A$ and compare it with coalescence expectations. Because we use experimental data to constrain the blast-wave prediction as well as the normalisation, and because such data are provided for given centrality classes, we use the corresponding \avdNdeta~in each class to estimate the system radius based on the parameterisation discussed in Sec.~\ref{SecSourceVolume}. 
 In contrast to the coalescence approach, which explicitly depends on the size of the produced object with respect to the system size, the object size does not enter in the formulation of the blast-wave model. Being a simplified hydrodynamic model, the latter treats the system as a continuum and is not particle based. The thermal model on the other hand, implements eigenvolume corrections by fixing the object radius as an external parameter (0.3 fm in the case of baryons for the GSI-Heidelberg model used here). We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light anti- and hyper-nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production of these objects as compact quark bags~\cite{Andronic:2017}.
 
@@ -276,8 +277,10 @@ First, the parameterisation of the system radius fitted to the HBT data as descr
 We notice already at this point that the coalescence volume from parameterisation A radii leads to discrepancies with respect to the curve from the coalescence calculation, and in particular, we notice that the model would require a larger radius for a given value of \btwo~for Pb-Pb collisions.
 
 In a second step the radius is tuned such that the data points for (anti-)deuterons fall onto the coalescence prediction (top right panel of Fig. \ref{fig:CompareB2B3forDifferentParamWithData}). We find that the parameters of Eq.~\ref{eq:radiusParameterisation} turn out to be $a = 0.473$ and $b = 0$. 
-With this second parameterisation (labeled as "B" in the following), we investigate the agreement of the model with the measured coalescence parameter for \hethree,  \bthree. As shown in the lower panels of Fig.~\ref{fig:CompareB2B3forDifferentParamWithData}, also in the case of \bthree, a tension between the model and the data is found for parameterisation A, which ameliorates for the parameterisation B, tuned to the (anti-)deuteron data. The strength of this approach is given by the fact that the coalescence volume is constrained with the more differential (anti-)deuteron data assuming that the latter is the same for all anti- and hyper-nuclei. It is also noteworthy that any change of the radii parameterisation would result in a shift along the x axis of both \btwo~and \bthree~data points in the same way, while the theoretical coalescence curve would not be affected. 
- 
+With this second parameterisation (labeled as "B" in the following), we investigate the agreement of the model with the measured coalescence parameter for \hethree, \bthree. As shown in the lower panels of Fig.~\ref{fig:CompareB2B3forDifferentParamWithData}, also in the case of \bthree, a tension between the model and the data is found for parameterisation A, which ameliorates for the parameterisation B, tuned to the (anti-)deuteron data. The strength of this approach is given by the fact that the coalescence volume is constrained with the more differential (anti-)deuteron data assuming that the latter is the same for all anti- and hyper-nuclei. It is also noteworthy that any change of the radii parameterisation would result in a shift along the x axis of both \btwo~and \bthree~data points in the same way, while the theoretical coalescence curve would not be affected. 
+
+The necessity of introducing a second parameterisation for the radius could point to the fact that the kinetic freeze-out volume relevant for coalescence is not given by the $m_{T}$-scaled pion HBT volume considered here, but by a slightly larger system.  
+
 \begin{figure}[htbp]
 	\begin{center}
 		\includegraphics[width=\textwidth]{radiiParamCompareData.png}
@@ -286,22 +289,12 @@ With this second parameterisation (labeled as "B" in the following), we investig
 	\end{center}
 \end{figure}
 
-\newpage
- \subsection{Thermal and coalescence model for $\mathbf{A = 2, 3}$ anti- and hyper-nuclei}
-
+\subsection{Thermal and coalescence model for $\mathbf{A = 2, 3}$ anti- and hyper-nuclei}
 In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available data for (anti-)deuterons, (anti-)\hethree\ and \hthreelambda~\cite{Adam:2015yta} are compared to both coalescence and thermal model predictions. For the coalescence predictions, the radius parameterisation B is used, as discussed in Sec.~\ref{sec:radiiParamet}. The combined thermal model and blast-wave predictions are calculated as described in Sec.~\ref{sec:thermal}. 
 
-\begin{figure}[ht]
-	\begin{center}
-		\includegraphics[width=\textwidth]{compareThermalAndCoalescence.png}
-		\caption{Comparison of the coalescence parameters measured by ALICE (solid markers) for deuterons (upper left panel), \hethree\ (lower left panel) and \hthreelambda\ (lower right panel) in pp \cite{ALICE:nucleipp2017} and Pb--Pb~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta} collisions with the thermal+BW model expectations (dotted line) and the coalescence predictions (solid lines). Parameterisation B has been used to map the charged particle multiplicity density into the radius $R$ of the source (see text for details). The dashed line in the lower right panel corresponds to the coalescence prediction for the \hthreelambda\ with a larger radius.}
-		\label{fig:CompareThermalAndCoalescence}
-	\end{center}
-\end{figure}
-
 As a first observation, one sees that for deuterons both approaches lead to similar predictions and give a reasonable description of the experimental data for $R \gtrsim 1.6$ fm. 
-For \hethree~the two models exhibit a qualitatively similar trend as a function of $R$, but they differ by a factor of about 2. The the limited amount of data that is currently available is consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on the data. 
-Both approaches show large differences (a factor 5 to 6 for central Pb--Pb collisions and a factor of about 30 for small radii, $R < 2$ fm) for the \hthreelambda\ caused by the significantly larger size of \hthreelambda\ with respect to \hethree. 
+For \hethree~the two models exhibit a qualitatively similar trend as a function of $R$, but they differ by a factor of about 1.5 to 2. The the limited amount of data that is currently available is consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on the data. 
+Both approaches show large differences (a factor 5 to 6 for central Pb--Pb collisions and a factor larger than 50 for small radii, $R < 2$ fm) for the \hthreelambda\ caused by the significantly larger size of \hthreelambda\ with respect to \hethree. 
 As a matter of fact, the only datapoint available so far in Pb--Pb collisions is in agreement with the thermal+BW model but not with coalescence. The difference between data and the coalescence model is about 6$\sigma$. However, it is to be kept in mind that the considerations expressed here are subject to the validity of our assumptions, \textit{in primis} the usage of a gaussian form for the wave-function.
 Some authors argue that the difference of data to the coalescence model might be explained by a later formation through the coalescence of $\Lambda$s and deuterons~\cite{Zhang:2018euf}. 
 In addition, the presence of an excited state with $J=3/2$ of the hyper-triton would significantly enhance the phase space for its production. This is not considered here as there is no evidence for the existence of such an excited state~\cite{Mart:1996ay}. According to our understanding, in both the coalescence and the thermal model calculations the presence of excited states enters via a spin degeneracy factor $(2J_{A}+1)$ and thus the predictions would increase by the same factor.
@@ -309,17 +302,26 @@ In addition, the presence of an excited state with $J=3/2$ of the hyper-triton w
 Most importantly, Fig.~\ref{fig:CompareThermalAndCoalescence} shows that the difference between the two approaches increases with decreasing source volume, thus underlining the need for additional and more precise data as a function of multiplicity or centrality in order to distinguish between the two production scenarios. 
 In the case of \hthreelambda~we have considered also a prediction from coalescence for a wider wave-function (dashed line in bottom right panel of Fig. \ref{fig:CompareThermalAndCoalescence}), which results in even lower production probabilities. This behaviour highlights the unique potential to constrain the wave-function of the particle under study at the moment of its production via precise measurements of the coalescence parameter as a function of the source volume. The curves presented here also explicitly allow for an estimate of the expected hyper-triton production in pp collisions. As it can be seen, the latter is expected to be suppressed by about two orders of magnitude with respect to the production of \hethree, thus making this measurement a prime candidate for future experimental studies.
  
- 
-\section{Summary, conclusions, and outlook}
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=\textwidth]{compareThermalAndCoalescence.png}
+		\caption{Comparison of the coalescence parameters measured by ALICE (solid markers) for deuterons (upper left panel), \hethree\ (lower left panel) and \hthreelambda\ (lower right panel) in pp \cite{ALICE:nucleipp2017} and Pb--Pb~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta} collisions with the thermal+BW model expectations (dotted line) and the coalescence predictions (solid lines). Parameterisation B has been used to map the charged particle multiplicity density into the radius $R$ of the source (see text for details). The dashed line in the lower right panel corresponds to the coalescence prediction for the \hthreelambda\ with a larger radius.}
+		\label{fig:CompareThermalAndCoalescence}
+	\end{center}
+\end{figure}
 
+
+\section{Summary, conclusions, and outlook}
 While it is often argued that the coalescence and the thermal model approach give very similar predictions for the production of light anti- and hyper-nuclei in heavy-ion collisions, the study presented here shows that large differences can be expected for hyper-nuclei with extended wave-functions. In the following, we summarise our main conclusions:
 \begin{enumerate}
 	\item For the production of $A=2$ and $A=3$ (anti-)nuclei in heavy-ion collisions, the thermal and coalescence models give similar predictions for a source volume that is constrained by experimental data on (anti-)deuteron production in central Pb--Pb collisions at the LHC.
 	\item For the production of hyper-triton, the thermal and coalescence models give very different predictions as a function of source volume. In particular, the yield of hyper-tritons appears to be suppressed by about two orders of magnitude in pp collisions with respect to the production of \hethree. The very limited amount of data currently available favours the thermal model prediction within our assumptions.
-	\item Systematic measurements in pp, p--Pb, and Pb--Pb collisions at LHC energies have a unique potential to clarify the production mechanism and the nature of composite QCD objects. 
+	\item Systematic measurements in pp, p--Pb, and Pb--Pb collisions at LHC energies have a unique potential to clarify the production mechanism and the nature of composite QCD objects. Ideally, such measurements are accompanied by systematic measurements of the HBT radii in the same multiplicity/centrality classes and collision systems.
 \end{enumerate}
 
-We would like to remark that our study is deliberately based on many simplified assumptions in order to allow for a completely analytical treatment of the problem. Future studies should be based on more realistic approximations, which requires numerical calculations. Moreover, as the study presented here has been carried out for a specific value of transverse momentum per nucleon, it will be interesting to explore further the \pt~dependence of the observations made here in comparison to future and currently available data.
+We would like to remark that our study is deliberately based on many simplified assumptions in order to allow for a completely analytical treatment of the problem. As mentioned earlier, future studies should be based on more realistic approximations (in particular the wave function), which requires numerical calculations. 
+The difference between such calculations and our predictions would also indicate the uncertainty associated with the coalescence model. 
+Moreover, as the study presented here has been carried out for a specific value of transverse momentum per nucleon, it will be interesting to explore further the \pt~dependence of the observations made here in comparison to future and currently available data.
 
 In a follow-up publication, we plan to extend our study to predictions for the $A=4$ systems introduced in Tab.~\ref{tab:nucleusradii} and to more exotic QCD objects like the X(3872). In fact, if the X(3872) corresponds to a loosely bound $\overline{D}^{*0}$--$D^{0}$ molecule, the rms of its wave-function can be as large as $4.9^{+13.4}_{-1.4}$~fm \cite{Artoisenet:2010uu}, which is very similar to that of the hyper-triton. Thus, its possible production via a coalescence mechanism in pp collisions would be subject to a similar suppression as the hyper-triton. Additional theoretical studies and numerical predictions are encouraged in view of the high-luminosity phase of the LHC (Run 3 $\&$ 4), where $A = 4$ hyper-nuclei and other rare composite objects might become experimentally accessible.
 
