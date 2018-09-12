@@ -408,4 +408,126 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
 
 
 
+TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276TeV",  TString particle = "proton", TString errType = "rms")
+{
+  //
+  // Get the blast-wave for proton, based on the pi/K/p parameters.
+  // The normalisation is such that the pT-integrated yield of protons corresponds to the measured yield
+  const Double_t mProton = 0.938;
+  const Double_t mLambda = 1.115; // FIXME: use proper mass value
+  //Set mass
+  Double_t m = 0.0;
+  
+  //CODATA ref: http://www.codata.org/uploads/RMP.88.035009.pdf
+  if (particle.Contains("deuteron")) m = 1.875612928; //CODATA, https://physics.nist.gov/cgi-bin/cuu/Value?mdc2mev
+  if (particle.Contains("triton")) m = 2.808921112; //triton mass 
+  if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
+  if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
+  if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
+  if (particle.Contains("4LH")) m = 3.931; 
 
+  //centrality bin
+  Int_t cb = -1;
+ 
+  Color_t color[10] = {kRed+2, kRed, kOrange, kYellow+1, kSpring+2, kGreen+1, kAzure+7, kBlue, kViolet-3, kBlue+2};
+  Char_t mclass[10][5] = {"I", "II", "III", "IV", "V","VI","VII","VIII","IX","X"};
+   
+  Double_t bt[10];
+  Double_t bterr[10];
+
+  Double_t bn[10];
+  Double_t bnerr[10];
+  
+  Double_t bb[10];
+  Double_t bberr[10];
+
+  Double_t multi[10];
+  Double_t multiErr[10];
+
+  Double_t protYield[10];
+  Double_t protYieldErr[10];
+
+  Double_t pionYield[10];
+  Double_t pionYieldErr[10];
+
+  Double_t lambdaYield[10];
+  Double_t lambdaYieldErr[10];
+  
+  //-------------------------------
+  //arrays defined above are filled here usig the proper function and depending on the content of the string 'system'
+  //-------------------------------
+
+  if (system.Contains("PbPb276TeV"))
+    GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
+  
+  if (system.Contains("PbPb502TeV"))
+    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
+  
+  if (system.Contains("pPb502TeV"))
+    GetParams_pPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
+
+  if (system.Contains("pp7TeV"))
+    GetParams_pp7TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
+
+  Int_t binCounter = 0;
+  TH1D * hPro[10];
+  TH1D * hLambda[10];
+  
+  for (Int_t j=0; j<10; j++){
+
+    if ((cb>0) && (j!=cb)) continue;
+    if (system.Contains("pPb502TeV") && j>6) continue; //we have only 7 points for p-Pb
+    
+    //bb is changed from <beta_T> to beta_S
+    bb[j] *= (0.5*(bn[j]+2.));
+    
+    //-----------------------------------
+    // Construct Blast-Wave model protons and Lambda
+    //-----------------------------------
+    TF1 * fProton = new TF1(Form("BlastWaveProton-%s", mclass[j]), x_blast, 0., 10., 5);
+    fProton->SetParameters(mProton, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
+    fProton->SetLineColor(color[j]);
+    Double_t Iproton = fProton->Integral(0.,10.);
+    if (Iproton>0) fProton->SetParameter(1, protYield[j]/Iproton); // normalisation to match yields
+
+    TF1 * fLambda = new TF1(Form("BlastWaveLambda-%s", mclass[j]), x_blast, 0., 10., 5);
+    fLambda->SetParameters(mLambda, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
+    fLambda->SetLineColor(color[j]);
+    Double_t Ilambda = fLambda->Integral(0.,10.);
+    if (Ilambda>0) fLambda->SetParameter(1, lambdaYield[j]/Ilambda); // normalisation to match yields // FIXME --> proper LambdaYield
+
+    hPro[j] = new TH1D(Form("hPro%i", j), "p spectrum", 60, 0., 6.);
+    hLambda[j] = new TH1D(Form("hLambda%i", j), "#Lambda spectrum", 60, 0., 6.);
+    
+    for (Int_t ib = 1; ib < 61; ib++){
+      Double_t pt = hPro[j]->GetXaxis()->GetBinCenter(ib);
+      Double_t dpt = hPro[j]->GetXaxis()->GetBinWidth(ib);
+
+      hPro[j]->SetBinContent(ib, fProton->Eval(pt));
+      //assign conervative error of 10%
+      hPro[j]->SetBinError(ib, fProton->Eval(pt)*0.1);
+      
+      hLambda[j]->SetBinContent(ib, fLambda->Eval(pt));
+      //assign conervative error of 10%
+      hLambda[j]->SetBinError(ib, fLambda->Eval(pt)*0.1);
+    }
+    
+    hPro[j]->SetLineColor(color[j]);
+    hPro[j]->SetMarkerColor(color[j]);
+    hPro[j]->SetMarkerStyle(20);
+
+    hLambda[j]->SetLineColor(color[j]);
+    hLambda[j]->SetMarkerColor(color[j]);
+    hLambda[j]->SetMarkerStyle(25);
+  }
+  /*
+  TCanvas * model = new TCanvas("model","model", 800, 800);
+  model->cd();
+  hPro[0]->Draw();
+  hPro[1]->Draw("same");
+  hLambda[0]->Draw("same");
+  hLambda[1]->Draw("same");
+  */
+  if (particle.Contains("proton")) return hPro[selcent];
+  return hLambda[selcent];
+}
