@@ -9,7 +9,7 @@
 #include "TLegend.h"
 #include "TH1D.h"
 #include "TH2D.h"
-#include "./generateBWpredictionsB2.C" //ADAPT ME
+#include "./generateBWpredictionsB2.C" 
 
 //mapping multiplicity into radius
 void convertMultiToRadius(TGraphErrors * graph = 0x0, Int_t paramSet = 0);
@@ -40,6 +40,8 @@ TGraphAsymmErrors * getBlastB4_pp7TeV(Bool_t plotSys = 0, Double_t pToAb4 = 0.75
 TGraphAsymmErrors * getBlastB4Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
 TGraphAsymmErrors * getBlastB4Lambda_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.75, Int_t paramSet = 0);
 
+TGraphAsymmErrors * getBAthermalBlast(TString system = "PbPb276TeV", TString particle = "deuteron", Double_t pToA = 0.75, Color_t color = kBlack, Int_t paramSet = 1);
+
 //ALICE data on nuclei BA
 //deuteron
 TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
@@ -57,12 +59,15 @@ TGraphAsymmErrors * getB3_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToAb3pp = 0
 TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
 
 //pseudodata
-TGraphErrors * GetPseudoBAvsMulti(TString particle = "deuteron",  Int_t paramSet = 0);
+//TGraphErrors * GetPseudoBAvsMulti(TString particle = "deuteron",  Int_t paramSet = 1);
+//TGraphErrors * GetPseudoBAvsMultiUnc(TString particle = "deuteron",  Int_t paramSet = 1);
 
   
 // beautification of plots
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
+//void ConfigTwoPanelsPad(TPad* pad1, TPad* pad2, Float_t leftmargin, Float_t rightmargin);
+//void ConfigThreePanelsPad(TPad* pad1, TPad* pad2, TPad* pad3, Float_t leftmargin = 0.15, Float_t rightmargin = 0.001);
 
 //figure making
 void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
@@ -81,34 +86,35 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t 
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
 		      TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys, TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV);
 
-void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, Double_t pToAb4Lambda,
-		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
-		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
-		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
-		  TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
-		  TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB2vsR_pp7TeV,
-		  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3vsR_pp7TeV,
-		  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys,
-		  TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3LambdavsR_pp7TeV,
-		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
-		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV);
+// void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, Double_t pToAb4Lambda,
+// 		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
+// 		  TGraphErrors* hB4_coalescence, TGraphErrors* hB4L_coalescence, TGraphErrors* hB4L_coalescence_largeradius, 
+// 		  TGraphErrors ** gB2vsR_PbPb276TeV_sys,  TGraphErrors ** gB2vsR_pp7TeVINELg0_sys, TGraphErrors **gB2vsR_PbPb276TeV, TGraphErrors **  gB2vsR_pp7TeVINELg0,
+// 		  TGraphErrors ** gB3vsR_PbPb276TeV_sys,  TGraphAsymmErrors ** gB3vsR_pp7TeV_sys, TGraphErrors ** gB3vsR_PbPb276TeV, TGraphAsymmErrors **  gB3vsR_pp7TeV,
+// 		  TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB2vsR_pp7TeV,
+// 		  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3vsR_pp7TeV,
+// 		  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys,
+// 		  TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3LambdavsR_pp7TeV,
+// 		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
+// 		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV,
+// 		  Bool_t plotPseudoData = 0);
 
 //main plotting for Frascati plot
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
 		 Double_t pToAb4Lambda = 0.75,
-		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 1, Bool_t plotYRFigure = 0)
+		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 1, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 1)
 {
   //
   // main function which generates the plots of the Frascati project
   //
-  if (plotYRFigure) {
-    pToA = 0.75;
-    pToAb3 = 0.77;
-    pToAb3pp = 0.800;
-    pToAb3Lambda = 1.17;
-    pToAb4 = 0.75;
-    pToAb4Lambda = 0.62;
-  }
+  // if (plotYRFigure) {
+  //   pToA = 0.75;
+  //   pToAb3 = 0.77;
+  //   pToAb3pp = 0.800;
+  //   pToAb3Lambda = 1.17;
+  //   pToAb4 = 0.75;
+  //   pToAb4Lambda = 0.62;
+  // }
   //--------------------
   //data
   //--------------------
@@ -305,8 +311,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gStyle->SetPadLeftMargin(0.15);
   gStyle->SetPadRightMargin(0.02); 
 
-
-
   // ------------------
   // make the figure with coalescence only
   // ------------------
@@ -404,21 +408,21 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   // PLOT Yellow Report figure
   //---------------------------------------  
 
-  if (plotYRFigure) {
-    MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda, pToAb4Lambda,
-		 hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
-		 hB4_coalescence, hB4L_coalescence, hB4L_coalescence_largeradius, 
-		 gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
-		 gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
-		 gBlastB2vsR_PbPb276TeV, gBlastB2vsR_pp7TeV,
-		 gBlastB3vsR_PbPb276TeV, gBlastB3vsR_pp7TeV,
-		 gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys,
-		 gBlastB3LambdavsR_PbPb276TeV, gBlastB3LambdavsR_pp7TeV,
-		 gBlastB4vsR_PbPb276TeV, gBlastB4vsR_pp7TeV,
-		 gBlastB4LambdavsR_PbPb276TeV,  gBlastB4LambdavsR_pp7TeV);
+  // if (plotYRFigure) {
+  //   MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda, pToAb4Lambda,
+  // 		 hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
+  // 		 hB4_coalescence, hB4L_coalescence, hB4L_coalescence_largeradius, 
+  // 		 gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
+  // 		 gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
+  // 		 gBlastB2vsR_PbPb276TeV, gBlastB2vsR_pp7TeV,
+  // 		 gBlastB3vsR_PbPb276TeV, gBlastB3vsR_pp7TeV,
+  // 		 gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys,
+  // 		 gBlastB3LambdavsR_PbPb276TeV, gBlastB3LambdavsR_pp7TeV,
+  // 		 gBlastB4vsR_PbPb276TeV, gBlastB4vsR_pp7TeV,
+  // 		 gBlastB4LambdavsR_PbPb276TeV,  gBlastB4LambdavsR_pp7TeV, plotPseudoData);
    
-    return 0;
-  }
+  //   return 0;
+  // }
 
   
   //---------------------------------------
@@ -1634,6 +1638,26 @@ TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys, Double_t pToAb3Lambda
   
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//thermal + blastwave
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+TGraphAsymmErrors * getBAthermalBlast(TString system, TString particle, Double_t pToA, Color_t color, Int_t paramSet)
+{
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2(system.Data(), "rms", particle.Data(), pToA);
+  //parameterisation 1 of the radius to be used in order to have data points fall onto the U. Heinz curve for deuteron
+  convertMultiToRadius(graph, paramSet);
+  //set style
+  graph->SetMarkerColor(color);
+  graph->SetLineColor(color);
+  graph->SetFillColorAlpha(color, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(33);
+  graph->SetLineWidth(2);
+  graph->SetLineStyle(2);
+
+  return graph;
+}
 
 //---------------------------------------------------------
 //---------------------- Blast wave + thermal PbPb 2.76 TeV
@@ -1937,6 +1961,8 @@ void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Sty
   obj->SetMarkerSize(Marker_Size);
   return;
 }
+
+/*
  
 void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToAb3Lambda, Double_t pToAb4Lambda,
 		  TGraphErrors * hB2_coalescence, TGraphErrors * hB3_coalescence, TGraphErrors* hB3L_coalescence, TGraphErrors* hB3L_coalescence_largeradius,
@@ -1948,7 +1974,8 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
 		  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys,
 		  TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gBlastB3LambdavsR_pp7TeV,
 		  TGraphAsymmErrors** gBlastB4vsR_PbPb276TeV, TGraphAsymmErrors** gBlastB4vsR_pp7TeV, 
-		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV)
+		  TGraphAsymmErrors** gBlastB4LambdavsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB4LambdavsR_pp7TeV,
+		  Bool_t plotPseudoData)
 {
   //
   // make figure for YR
@@ -2071,13 +2098,21 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   paveptB3L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
 
 
-   TPaveText * paveptB4L = new TPaveText(0.17, 0.87, 0.7, 0.92, "NDC");
+  TPaveText * paveptB4L = new TPaveText(0.6, 0.7, 0.9, 0.78, "NDC");
   paveptB4L->SetFillStyle(0);
   paveptB4L->SetBorderSize(0);
   paveptB4L->SetTextFont(42);
   paveptB4L->SetTextSize(0.05);
   paveptB4L->SetTextAlign(12);
   paveptB4L->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb4Lambda));
+
+  //-------------------------------
+  //-------------------------------
+  //-------------------------------
+  //   DRAW FIRST OPTION -- 5 panels, pseudodata on top
+  //-------------------------------
+  //-------------------------------
+  //-------------------------------
 
   
   TCanvas * cr4 = new TCanvas("cr4", "compare thermal with coalescence", 1400, 800);
@@ -2184,16 +2219,18 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   //   DRAW pseudodata
   //-------------------------------
   TGraphErrors * gPseudoDeuteron = (TGraphErrors *) GetPseudoBAvsMulti("deuteron", 1);
-  cr4->cd(1);  gPseudoDeuteron->Draw("samep2");
   TGraphErrors * gPseudo3He = (TGraphErrors *) GetPseudoBAvsMulti("he3", 1);
-  cr4->cd(2);  gPseudo3He->Draw("samep2");
   TGraphErrors * gPseudo3LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH3", 1);
-  cr4->cd(3);  gPseudo3LambdaH->Draw("samep2");
   TGraphErrors * gPseudo4He = (TGraphErrors *) GetPseudoBAvsMulti("he4", 1);
-  cr4->cd(5);  gPseudo4He->Draw("samep2");
   TGraphErrors * gPseudo4LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH4", 1);
-  cr4->cd(6);  gPseudo4LambdaH->Draw("samep2");
 
+  if (plotPseudoData) {
+    cr4->cd(1);  gPseudoDeuteron->Draw("samep2");
+    cr4->cd(2);  gPseudo3He->Draw("samep2");
+    cr4->cd(3);  gPseudo3LambdaH->Draw("samep2");
+    cr4->cd(5);  gPseudo4He->Draw("samep2");
+    cr4->cd(6);  gPseudo4LambdaH->Draw("samep2");
+  }
   
   //-------------------------------
   //   DRAW Master legend
@@ -2216,13 +2253,270 @@ void MakeYRfigure(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t pToA
   masterLeg->AddEntry(hB4_coalescence, "#it{r} (^{4}He) = 1.9 fm", "");
   masterLeg->AddEntry(hB3L_coalescence_largeradius, "#it{r} (^{3}_{#Lambda}H) = 14.1 fm", "l");
   masterLeg->AddEntry(hB4L_coalescence_largeradius, "#it{r} (^{4}_{#Lambda}H) = 4.9 fm", "");
-  
+  if (plotPseudoData) masterLeg->AddEntry(gPseudoDeuteron, "ALICE pseudo-data, Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "lp");
   cr4->cd(4);
-  masterLeg->Draw();
-  
+  masterLeg->Draw();  
   cr4->SaveAs("BAmodels.png");
 
+
+  //-------------------------------
+  //-------------------------------
+  //-------------------------------
+  //   DRAW SECOND OPTION -- 12 panels, pseudodata in the middle, separation in the bottom
+  //-------------------------------
+  //-------------------------------
+  //-------------------------------
+  TPaveText * paveALICE = new TPaveText(0.22, 0.78, 0.5, 0.96, "NDC");
+  paveALICE->SetFillStyle(0);
+  paveALICE->SetBorderSize(0);
+  paveALICE->SetTextFont(42);
+  paveALICE->SetTextSize(0.08);
+  paveALICE->SetTextAlign(12);
+  paveALICE->AddText(Form("#bf{ALICE upgrade projection}"));
+  paveALICE->AddText("Pb-Pb #sqrt{#it{s}_{NN}} = 5.5 TeV, L = 10 nb^{-1}");
+  
+  //TGraphErrors * gPseudoDeuteronUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("deuteron", 1);
+  TGraphErrors * gPseudo3HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he3", 1);
+  TGraphErrors * gPseudo3LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH3", 1);
+  TGraphErrors * gPseudo4HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he4", 1);
+  TGraphErrors * gPseudo4LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH4", 1);
+  gPseudo3HeUnc->SetFillStyle(0);
+  gPseudo3LambdaHUnc->SetFillStyle(0);
+  gPseudo4HeUnc->SetFillStyle(0);
+  gPseudo4LambdaHUnc->SetFillStyle(0);
+
+
+  Double_t assumedRelSysUncMin = 0.10;
+  Double_t assumedRelSysUncMax = 0.20;
+
+  TGraphErrors * gSepar3HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMin);
+  TGraphErrors * gSepar3LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMin);
+  TGraphErrors * gSepar4HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMin);
+  TGraphErrors * gSepar4LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMin);
+
+  gSepar3HeMin->SetLineStyle(1);
+  gSepar3LambdaHMin->SetLineStyle(1);
+  gSepar4HeMin->SetLineStyle(1);
+  gSepar4LambdaHMin->SetLineStyle(1);
+  
+  TGraphErrors * gSepar3HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMax);
+  TGraphErrors * gSepar3LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMax);
+  TGraphErrors * gSepar4HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMax);
+  TGraphErrors * gSepar4LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMax);
+
+  gSepar3HeMax->SetLineStyle(3);
+  gSepar3LambdaHMax->SetLineStyle(3);
+  gSepar4HeMax->SetLineStyle(3);
+  gSepar4LambdaHMax->SetLineStyle(3);
+  
+  TH1D * hframeBA = new TH1D("hframeBA", "B_{A} vs radius; #it{R} (fm); #it{B}_{A}", 2000, 0.01, 6.5);
+  hframeBA->GetXaxis()->SetTitleSize(0.06);
+  hframeBA->GetYaxis()->SetTitleSize(0.06);
+  hframeBA->GetYaxis()->SetTitleOffset(1.3);
+  hframeBA->GetXaxis()->SetTitleOffset(0.8);
+  hframeBA->GetXaxis()->SetLabelSize(0.05);
+  hframeBA->GetYaxis()->SetLabelSize(0.05);
+  hframeBA->GetYaxis()->SetRangeUser(2.E-12, 3.E-3);
+
+  TH1D * hframeRStat = new TH1D("hframeRStat", "; #it{R} (fm); #sigma_{stat}/#it{B_{A}}", 2000, 0.01, 6.5);
+  hframeRStat->GetXaxis()->SetTitleSize(0.06);
+  hframeRStat->GetYaxis()->SetTitleSize(0.07);
+  hframeRStat->GetYaxis()->SetTitleOffset(1.3);
+  hframeRStat->GetXaxis()->SetTitleOffset(1.);
+  hframeRStat->GetXaxis()->SetLabelSize(0.07);
+  hframeRStat->GetYaxis()->SetLabelSize(0.07);
+  hframeRStat->GetYaxis()->SetNdivisions(507);
+  hframeRStat->GetYaxis()->SetRangeUser(0.03, 1.97);
+
+  TH1D * hframeSep = CreateFrameSeparation();
+  hframeSep->GetXaxis()->SetRangeUser(0.01, 6.5);
+  
+  Float_t yl = 0.03; 
+  Float_t yu = 0.23; 
+  Float_t xl = 0.05; 
+  Float_t xu = 0.5; 
+  TLegend * masterLeg3 = new TLegend(xl + 0.18, yl, xu, yu, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3));
+  masterLeg3->SetFillStyle(0);
+  masterLeg3->SetTextSize(0.05);
+  masterLeg3->SetBorderSize(0);
+  masterLeg3->AddEntry(gBlastB2vsR_PbPb276TeV[1], "BW + GSI-Heid. (#it{T}_{chem} = 156 MeV)", "l");
+  //masterLeg3->AddEntry(gBlastB2vsR_PbPb276TeV[1], "Pb-Pb 5.02 TeV", "");
+  masterLeg3->AddEntry(hB3_coalescence, "Coal., #it{r}(^{3}He) = 2.48 fm", "l");
+
+  TLegend * masterLeg3L = new TLegend(xl, yl, xu, yu, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb3Lambda));
+  masterLeg3L->SetFillStyle(0);
+  masterLeg3L->SetTextSize(0.05);
+  masterLeg3L->SetBorderSize(0);
+  masterLeg3L->AddEntry(hB3L_coalescence, "Coal., #it{r} (^{3}_{#Lambda}H) = 6.8 fm", "l");
+  masterLeg3L->AddEntry(hB3L_coalescence_largeradius, "Coal., #it{r} (^{3}_{#Lambda}H) = 14.1 fm", "l");
+  
+  TLegend * masterLeg4 = new TLegend(xl, yl+0.06, xu, yu, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  masterLeg4->SetFillStyle(0);
+  masterLeg4->SetTextSize(0.05);
+  masterLeg4->SetBorderSize(0);
+  masterLeg4->AddEntry(hB4_coalescence, "Coal., #it{r} (^{4}He) = 1.9 fm", "l");
+
+  TLegend * masterLeg4L = new TLegend(xl, yl, xu, yu, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToAb4Lambda));
+  masterLeg4L->SetFillStyle(0);
+  masterLeg4L->SetTextSize(0.05);
+  masterLeg4L->SetBorderSize(0);
+  masterLeg4L->AddEntry(hB3L_coalescence, "Coal., #it{r} (^{4}_{#Lambda}H) = 2.4 fm", "l");
+  masterLeg4L->AddEntry(hB4L_coalescence_largeradius, "Coal., #it{r} (^{4}_{#Lambda}H) = 4.9 fm", "l");
+  
+  TLine * lineat1 = new TLine(0.01, 1., 6.5, 1.);
+  lineat1->SetLineStyle(3);
+  lineat1->SetLineWidth(1);
+  
+  TCanvas * cr5 = new TCanvas("cr5", "compare thermal with coalescence", 1400, 900);
+  cr5->SetMargin(0.15, 0.02, 0.02, 0.02);
+  //cr5->Divide(4,1);
+
+  Double_t lowx[5] = {0.001, 0.28, 0.52, 0.76, 0.99};
+  Double_t lowy[4] = {0.001, 0., 0., 0.99};
+  
+  TPad * pad[4][3];
+  for (int c = 0; c<4; c++) {
+    for (int r = 0; r<3; r++) {
+      pad[c][r] = new TPad(Form("pad%i%i",c,r),"pad", lowx[c], lowy[r], lowx[c+1], lowy[r+1]);
+    }
+    ConfigThreePanelsPad(pad[c][2], pad[c][1], pad[c][0], 0.15, 0.001);
+  }
+  
+  // TPad * pad2 = new TPad("pad2","This is pad2", lowx[0], 0.001, upx[0], 0.40);
+  // TPad * pad3 = new TPad("pad3","This is pad3", lowx[1], 0.400, upx[1], 0.99);
+  // TPad * pad4 = new TPad("pad4","This is pad4", lowx[1], 0.001, upx[1], 0.40);
+  // TPad * pad5 = new TPad("pad5","This is pad5", lowx[2], 0.400, upx[2], 0.99);
+  // TPad * pad6 = new TPad("pad6","This is pad6", lowx[2], 0.001, upx[2], 0.40);
+  // TPad * pad7 = new TPad("pad7","This is pad7", lowx[3], 0.400, upx[3], 0.99);
+  // TPad * pad8 = new TPad("pad8","This is pad8", lowx[3], 0.001, upx[3], 0.40);
+  
+  // ConfigTwoPanelsPad(pad1, pad2, 0.2, 0.001);
+  // ConfigTwoPanelsPad(pad3, pad4, 0.001, 0.001);
+  // ConfigTwoPanelsPad(pad5, pad6, 0.001, 0.001);
+  // ConfigTwoPanelsPad(pad7, pad8, 0.001, 0.001);
+
+  //-------------------------------
+  //   DRAW 3He
+  //-------------------------------
+  cr5->cd();
+  pad[0][2]->Draw();
+  pad[0][2]->cd();
+  hframeBA->Draw();
+  hB3_coalescence->Draw("l");
+  gBlastB3vsR_PbPb276TeV[1]->Draw("samel");
+  if (gB3vsR_PbPb276TeV_sys[1]){
+    gB3vsR_PbPb276TeV_sys[1]->Draw("samep3");
+    gB3vsR_PbPb276TeV[1]->Draw("samepz");
+    gB3vsR_pp7TeV_sys[1]->Draw("samep2");
+    gB3vsR_pp7TeV[1]->Draw("samepz");
+  }
+  paveLab3->Draw();
+  masterLeg3->Draw();
+  
+  cr5->cd();
+  pad[0][1]->Draw();
+  pad[0][1]->cd();
+  hframeRStat->Draw();
+  lineat1->Draw();
+  gPseudo3HeUnc->Draw("sameE2");
+  paveALICE->Draw();
+
+  cr5->cd();
+  pad[0][0]->Draw();
+  pad[0][0]->cd();
+  gSepar3HeMin->Draw("l");
+  gSepar3HeMax->Draw("samel");
+  
+  //-------------------------------
+  //   DRAW 3LH
+  //-------------------------------
+  cr5->cd();
+  pad[1][2]->Draw();
+  pad[1][2]->cd();
+  hframeBA->Draw();
+  hB3L_coalescence_largeradius->Draw("samel");
+  hB3L_coalescence->Draw("l");
+  gBlastB3LambdavsR_PbPb276TeV[1]->Draw("samel");
+  if (gB3LambdavsR_PbPb276TeV[1]) {
+    gB3LambdavsR_PbPb276TeV_sys[1]->Draw("samep2");
+    gB3LambdavsR_PbPb276TeV[1]->Draw("samep");
+  }
+  masterLeg3L->Draw();
+  paveLab3L->Draw();
+  
+  
+  cr5->cd();
+  pad[1][1]->Draw();
+  pad[1][1]->cd();
+  hframeRStat->Draw();
+  lineat1->Draw();
+  gPseudo3LambdaHUnc->Draw("sameE2");
+
+  cr5->cd();
+  pad[1][0]->Draw();
+  pad[1][0]->cd();
+  gSepar3LambdaHMin->Draw("l");
+  gSepar3LambdaHMax->Draw("samel");
+
+  //-------------------------------
+  //   DRAW 4He
+  //-------------------------------
+  
+  cr5->cd();
+  pad[2][2]->Draw();
+  pad[2][2]->cd();
+  hframeBA->Draw();
+  hB4_coalescence->Draw("samel");
+  gBlastB4vsR_PbPb276TeV[1]->Draw("samel");
+  paveLab4->Draw();
+  masterLeg4->Draw();
+  
+  cr5->cd();
+  pad[2][1]->Draw();
+  pad[2][1]->cd();
+  hframeRStat->Draw();
+  lineat1->Draw();
+  gPseudo4HeUnc->Draw("sameE2");
+
+  cr5->cd();
+  pad[2][0]->Draw();
+  pad[2][0]->cd();
+  gSepar4HeMin->Draw("l");
+  gSepar4HeMax->Draw("samel");
+
+  //-------------------------------
+  //   DRAW 4LH
+  //-------------------------------
+  
+  cr5->cd();
+  pad[3][2]->Draw();
+  pad[3][2]->cd();
+  hframeBA->Draw();
+  hB4L_coalescence_largeradius->Draw("samel");
+  hB4L_coalescence->Draw("samel");
+  gBlastB4LambdavsR_PbPb276TeV[1]->Draw("samel");
+  masterLeg4L->Draw();
+  paveLab4L->Draw();
+
+  cr5->cd();
+  pad[3][1]->Draw();
+  pad[3][1]->cd();
+  hframeRStat->Draw();
+  lineat1->Draw();
+  gPseudo4LambdaHUnc->Draw("sameE2");
+
+  cr5->cd();
+  pad[3][0]->Draw();
+  pad[3][0]->cd();
+  gSepar4LambdaHMin->Draw("l");
+  gSepar4LambdaHMax->Draw("samel");
+ 
+  cr5->SaveAs("BAmodels_pseudoUnc.png");
+
+  return;
+  
 }
+
 
 
 TGraphErrors * GetPseudoBAvsMulti(TString particle,  Int_t paramSet)
@@ -2252,3 +2546,86 @@ TGraphErrors * GetPseudoBAvsMulti(TString particle,  Int_t paramSet)
   graph->SetLineColor(kBlack);
   return graph;
 }
+
+TGraphErrors * GetPseudoBAvsMultiUnc(TString particle,  Int_t paramSet)
+{
+  TFile * fin = TFile::Open("~/alice/nucleiB2/projectionsYR/ba_300818.root");
+  TH1D * hist = 0x0;
+  if (particle.Contains("deuteron")) hist = (TH1D *) fin->Get("badeuteron"); //ptoa = 0.75 GeV/c
+  if (particle.Contains("triton")) hist = (TH1D *) fin->Get("batriton");  //ptoa = 0.77 GeV/c
+  if (particle.Contains("he3")) hist = (TH1D *) fin->Get("bahe3"); //ptoa = 0.77 GeV/c
+  if (particle.Contains("he4")) hist = (TH1D *) fin->Get("bahe4"); //ptoa = 0.75 GeV/c
+  if (particle.Contains("hyperH3")) hist = (TH1D *) fin->Get("bahyperH3"); //ptoa = 1.17 GeV/c
+  if (particle.Contains("hyperH4")) hist = (TH1D *) fin->Get("bahyperH4"); //ptoa = 0.62 GeV/c
+
+  Double_t multi[10]    = {1942.5, 1585.5, 1180.0, 786.0, 512.0, 318.0, 183.0, 96.3, 44.9, 17.52};
+  Double_t multierr[10] = {53.5, 46.0, 31.0, 20.0, 15.0, 12.0, 8.0, 5.8, 3.4, 1.84};
+  
+  Double_t ba[10], baerr[10];
+  for (int i=1;i<11;i++){
+    Double_t relUnc = hist->GetBinError(i)/hist->GetBinContent(i);
+    if (relUnc>=1.) ba[i-1] = -1.;
+    else {
+      ba[i-1] = 1.;
+      if (hist->GetBinContent(i)>0) baerr[i-1] = relUnc;
+      else baerr[i-1] = 0.0;
+    }
+  }
+  
+  TGraphErrors * graph = new TGraphErrors(10, multi, ba, multierr, baerr);
+  convertMultiToRadius(graph, paramSet);
+  graph->SetMarkerStyle(24);
+  graph->SetMarkerColor(kBlack);
+  graph->SetLineColor(kBlack);
+  return graph;
+}
+
+void ConfigTwoPanelsPad(TPad* pad1, TPad* pad2, Float_t leftmargin = 0.15, Float_t rightmargin = 0.001)
+{
+  //top pad
+  pad1->SetFillColor(0);
+  pad1->SetBorderMode(0);
+  pad1->SetBorderSize(0);
+  pad1->SetMargin(leftmargin, rightmargin, 0.001, 0.001);
+  pad1->SetLogy();
+  pad1->SetTicky();
+  pad1->SetTickx();
+  //bottom pad
+  pad2->SetFillColor(0);
+  pad2->SetBorderMode(0);
+  pad2->SetBorderSize(0);
+  pad2->SetMargin(leftmargin, rightmargin, 0.15, 0.001);
+  pad2->SetTicky();
+  pad2->SetTickx();
+  return;
+}
+
+void ConfigThreePanelsPad(TPad* pad1, TPad* pad2, TPad* pad3, Float_t leftmargin = 0.15, Float_t rightmargin = 0.001)
+{
+  //top pad
+  pad1->SetFillColor(0);
+  pad1->SetBorderMode(0);
+  pad1->SetBorderSize(0);
+  pad1->SetMargin(leftmargin, rightmargin, 0.001, 0.001);
+  pad1->SetLogy();
+  pad1->SetTicky();
+  pad1->SetTickx();
+
+  //middle pad
+  pad2->SetFillColor(0);
+  pad2->SetBorderMode(0);
+  pad2->SetBorderSize(0);
+  pad2->SetMargin(leftmargin, rightmargin, 0.001, 0.001);
+  pad2->SetTicky();
+  pad2->SetTickx();
+
+  //bottom pad
+  pad3->SetFillColor(0);
+  pad3->SetBorderMode(0);
+  pad3->SetBorderSize(0);
+  pad3->SetMargin(leftmargin, rightmargin, 0.15, 0.001);
+  pad3->SetTicky();
+  pad3->SetTickx();
+  return;
+}
+*/
