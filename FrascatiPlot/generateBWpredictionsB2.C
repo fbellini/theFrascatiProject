@@ -3,6 +3,23 @@
 #include "TMath.h"
 #include "TCanvas.h"
 
+
+//masses of p and Lambda from PDG 2018
+const Double_t mProton = 0.938272081;
+const Double_t mLambda = 1.115683; 
+
+Double_t Mass(TString particle)
+{
+  Double_t m = 0.0;
+  if (particle.Contains("deuteron")) m = 1.875612928; //CODATA, https://physics.nist.gov/cgi-bin/cuu/Value?mdc2mev
+  if (particle.Contains("triton")) m = 2.808921112; //triton mass 
+  if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
+  if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
+  if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
+  if (particle.Contains("4LH")) m = 3.931; //Ramona uses the same, from STEER/STEERBase/AliPDG.cxx
+  return m;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //AK implementation of the blast-wave function
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,21 +295,15 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   const Double_t dOverPiThermal = 0.0001817; // GSI-Heidelberg at 156 MeV
   const Double_t He3OverPiThermal = 5.354e-07; // GSI-Heidelberg at 156 MeV
   const Double_t He3OverPthermal =  8.68733e-06; // GSI-Heidelberg at 156 MeV --- (only 4% difference wrt to old value of 0.00294824/330.)
-  const Double_t s3thermal = 0.55; // TODO: this is just read off figure 7 og hyper-triton paper.
-  const Double_t mProton = 0.938;
-  const Double_t mLambda = 1.115; // FIXME: use proper mass value
+  const Double_t s3thermal = 0.55; // FIXME: this is just read off figure 7 of hyper-triton paper.
+  const Double_t mProton = 0.938272081;
+  const Double_t mLambda = 1.115683; 
   const Double_t He4thermal = 7.e-7; //read off plot 
   const Double_t H4Lthermal = 2.e-7; //read off plot
-  //Sed deuteron mass
-  Double_t m = 0.0;
+
+  //Set nucleus mass
+  Double_t m = Mass(particle.Data());
   
-  //CODATA ref: http://www.codata.org/uploads/RMP.88.035009.pdf
-  if (particle.Contains("deuteron")) m = 1.875612928; //CODATA, https://physics.nist.gov/cgi-bin/cuu/Value?mdc2mev
-  if (particle.Contains("triton")) m = 2.808921112; //triton mass 
-  if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
-  if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
-  if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
-  if (particle.Contains("4LH")) m = 3.931; 
   //centrality bin
   Int_t cb = -1;
  
@@ -319,6 +330,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
 
   Double_t lambdaYield[10];
   Double_t lambdaYieldErr[10];
+  
   //-------------------------------
   //arrays defined above are filled here usig the proper function and depending on the content of the string 'system'
   //-------------------------------
@@ -375,6 +387,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     fNucleus->SetParameters(m, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
     fNucleus->SetLineColor(color[j]);
     Double_t Inucleus = fNucleus->Integral(0.,30.); //don't we want here only up to 10 GeV/c? effect of tail seen in Manuel's results
+    
     //if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, protYield[j]*dOverPthermal/Inucleus); // normalisation to match yields
     //if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, protYield[j]*He3OverPthermal/Inucleus); // normalisation to match yields
     if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, pionYield[j]*dOverPiThermal/Inucleus); // normalisation to match yields
@@ -382,7 +395,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     if (Inucleus>0 && particle.Contains("hyper-triton")) {
       //Double_t he3Yield = protYield[j]*He3OverPthermal;
       Double_t he3Yield = pionYield[j]*He3OverPiThermal;
-      Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[j]/protYield[j]); //now with centrality dependence
+      Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[j]/protYield[j]); 
       fNucleus->SetParameter(1, hyperTritonYield/Inucleus); // normalisation to match yields
     }
     if (Inucleus>0 && particle.Contains("He4")) fNucleus->SetParameter(1, He4thermal/Inucleus); // normalisation to match yields
@@ -429,24 +442,15 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
 // Generate predictions for nuclei spectra
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276TeV",  TString particle = "proton", TString errType = "rms")
+TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276TeV",  TString particle = "proton", TString errType = "rms", Bool_t draw = 0)
 {
   //
   // Get the blast-wave for proton, based on the pi/K/p parameters.
   // The normalisation is such that the pT-integrated yield of protons corresponds to the measured yield
-  //masses of p and Lambda from PDG 2018
-  const Double_t mProton = 0.938272081;
-  const Double_t mLambda = 1.115683; 
-  //Set mass
-  Double_t m = 0.0;
-  
+
+  // Set mass
   //CODATA ref: http://www.codata.org/uploads/RMP.88.035009.pdf
-  if (particle.Contains("deuteron")) m = 1.875612928; //CODATA, https://physics.nist.gov/cgi-bin/cuu/Value?mdc2mev
-  if (particle.Contains("triton")) m = 2.808921112; //triton mass 
-  if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
-  if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
-  if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
-  if (particle.Contains("4LH")) m = 3.931; //Ramona uses the same, from STEER/STEERBase/AliPDG.cxx
+  Double_t m = Mass(particle.Data());
 
   //centrality bin
   Int_t cb = -1;
@@ -516,7 +520,7 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
     fLambda->SetParameters(mLambda, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
     fLambda->SetLineColor(color[j]);
     Double_t Ilambda = fLambda->Integral(0.,10.);
-    if (Ilambda>0) fLambda->SetParameter(1, lambdaYield[j]/Ilambda); // normalisation to match yields // FIXME --> proper LambdaYield
+    if (Ilambda>0) fLambda->SetParameter(1, lambdaYield[j]/Ilambda); // normalisation to match yields 
 
     hPro[j] = new TH1D(Form("hPro%i", j), "p spectrum", 60, 0., 6.);
     hLambda[j] = new TH1D(Form("hLambda%i", j), "#Lambda spectrum", 60, 0., 6.);
@@ -526,11 +530,11 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
       Double_t dpt = hPro[j]->GetXaxis()->GetBinWidth(ib);
 
       hPro[j]->SetBinContent(ib, fProton->Eval(pt));
-      //assign conervative error of 10%
+      //assign conservative error of 10%
       hPro[j]->SetBinError(ib, fProton->Eval(pt)*0.1);
       
       hLambda[j]->SetBinContent(ib, fLambda->Eval(pt));
-      //assign conervative error of 10%
+      //assign conservative error of 10%
       hLambda[j]->SetBinError(ib, fLambda->Eval(pt)*0.1);
     }
     
@@ -542,14 +546,14 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
     hLambda[j]->SetMarkerColor(color[j]);
     hLambda[j]->SetMarkerStyle(25);
   }
-  /*
-  TCanvas * model = new TCanvas("model","model", 800, 800);
-  model->cd();
-  hPro[0]->Draw();
-  hPro[1]->Draw("same");
-  hLambda[0]->Draw("same");
-  hLambda[1]->Draw("same");
-  */
+  if (draw){
+    TCanvas * model = new TCanvas("model","model", 800, 800);
+    model->cd();
+    hPro[0]->Draw();
+    hPro[1]->Draw("same");
+    hLambda[0]->Draw("same");
+    hLambda[1]->Draw("same");
+  }
   if (particle.Contains("proton")) return hPro[selcent];
   return hLambda[selcent];
 }
