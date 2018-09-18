@@ -434,8 +434,9 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
   //
   // Get the blast-wave for proton, based on the pi/K/p parameters.
   // The normalisation is such that the pT-integrated yield of protons corresponds to the measured yield
-  const Double_t mProton = 0.938;
-  const Double_t mLambda = 1.115; // FIXME: use proper mass value
+  //masses of p and Lambda from PDG 2018
+  const Double_t mProton = 0.938272081;
+  const Double_t mLambda = 1.115683; 
   //Set mass
   Double_t m = 0.0;
   
