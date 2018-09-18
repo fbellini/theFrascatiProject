@@ -181,9 +181,9 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
 
   // Lambda only -- table 23 of http://hepdata.cedar.ac.uk/view/ins1243863
   // --> TODO: deal with different binning by interpolation
-  // published bins are (0-5, 5-10, 10-20, 20-40, 40-60, 60-80, 80-90)%
-  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 9.79, 3.79, 0.99, 0.214, -1., -1., -1.};
-  Double_t dNdyErrLambda[10] = { 2.91,  1.9,   1.9,  0.947,0.378,0.0937, 0.0166, 0., 0., 0.};
+  // published bins are          (0-5,  5-10, 10-20, 20-40, fixme, 40-60, fixme, 60-80, fixme,  80-90)%
+  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 9.79,  9.79,  3.79, 3.79,  0.99,   0.99,   0.214};
+  Double_t dNdyErrLambda[10] = { 2.91,  1.9,   1.9,  0.947, 0.947, 0.378,0.378, 0.0937, 0.0937, 0.0166};
 
 
 
@@ -216,7 +216,6 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   //BW Results from Livio (email 27/01/2017): fit of the spectra from 24.01.2017 (approval forum, iteration 1)
   //Parameters and proton yield can be found at:
   //https://gitlab.cern.ch/njacazio/SpectraAnalysisRun2/tree/master/results/spectra/spectra-pag/Preliminaries/QM2017
-  
 
   Double_t bt[10]    = {0.086, 0.088, 0.091, 0.094, 0.099, 0.106, 0.104, 0.127, 0.147, 0.163};
   Double_t bterr[10] = {0.004, 0.004, 0.004, 0.004, 0.004, 0.005, 0.005, 0.006, 0.007, 0.008};
@@ -367,9 +366,8 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     fLambda->SetParameters(mLambda, 1., bt[j], bn[j], bb[j]);//m is mass, yield is yield in min bias
     fLambda->SetLineColor(color[j]);
     Double_t Ilambda = fLambda->Integral(0.,30.);
-    if (Ilambda>0) fLambda->SetParameter(1, protYield[j]*(lambdaYield[0]/protYield[0])/Ilambda); // normalisation to match yields // FIXME --> proper LambdaYield
-
-
+    if (Ilambda>0) fLambda->SetParameter(1, protYield[j]*(lambdaYield[j]/protYield[j])/Ilambda); // normalisation to match yields
+   
     //-----------------------------------
     // Construct Blast-Wave model nuclei
     //-----------------------------------
