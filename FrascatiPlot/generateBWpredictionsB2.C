@@ -3,7 +3,9 @@
 #include "TMath.h"
 #include "TCanvas.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 //AK implementation of the blast-wave function
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 Double_t blast_integrand(const Double_t *x,const Double_t *par){
   Double_t x0=x[0];
   Double_t m=par[0];
@@ -43,6 +45,12 @@ void get_average(Double_t &bt, Double_t &bn, Double_t &bb)
   bb = (0.547*5 + 0.531*5 + 0.511*10) / 20.0;
   return;
 }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Blast-wave parameters from ALICE fits to π,K,p
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void GetParams_pp7TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr, Double_t *protdNdy, Double_t *protdNdyErr, Double_t *piondNdy, Double_t *piondNdyErr)
 {    
@@ -171,9 +179,11 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyPion[10]     = {733., 606., 455., 307., 201., 124., 71., 37., 17.1, 6.6};
   Double_t dNdyErrPion[10]  = { 54.,  42.,  31.,  20.,  13.,   8.,  5.,  2.,  1.1, 0.4};
 
-  // table 23 of http://hepdata.cedar.ac.uk/view/ins1243863 --> TODO: deal with different binning by interpolation
-  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 0., 0., 0., 0., 0., 0., 0.};
-  Double_t dNdyErrLambda[10] = { 0.72,  0.62,  0.50, 0., 0., 0., 0., 0., 0., 0.};
+  // Lambda only -- table 23 of http://hepdata.cedar.ac.uk/view/ins1243863
+  // --> TODO: deal with different binning by interpolation
+  // published bins are (0-5, 5-10, 10-20, 20-40, 40-60, 60-80, 80-90)%
+  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 9.79, 3.79, 0.99, 0.214, -1., -1., -1.};
+  Double_t dNdyErrLambda[10] = { 2.91,  1.9,   1.9,  0.947,0.378,0.0937, 0.0166, 0., 0., 0.};
 
 
 
@@ -197,7 +207,7 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
 }
 
 
-void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr , Double_t *protdNdy, Double_t *protdNdyErr,  Double_t *piondNdy, Double_t *piondNdyErr)
+void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Double_t *parNerr, Double_t *parB, Double_t *parBerr, Double_t *dNdeta, Double_t *dNdetaerr , Double_t *protdNdy, Double_t *protdNdyErr,  Double_t *piondNdy, Double_t *piondNdyErr, Double_t *lambdaYield, Double_t *lambdaYieldErr)
 {    
   //Blast-wave parameters for different multiplicity percentile bins
   //bt is temperature, bn is n power
@@ -228,6 +238,9 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyPion[10]    = {1702.3, 1376.59, 1037.78, 710.13, 466.401, 291.383, 170.758, 88.6999, 41.6013, 16.2665};
   Double_t dNdyErrPion[10] = {87.4099, 71.5484, 51.191, 32.7179, 21.4739, 13.3082, 8.10989, 4.42991, 2.05458, 0.840404};
 
+  //Lambda + antiLambda - from David 13.09.2018
+  Double_t dNdyLambda[10]    = {64.8, 52.9, 41.30, 28.84, 19.44, 12.28, 7.18, 3.74, 1.75, 0.714};
+  Double_t dNdyErrLambda[10] = { 6.0,  5.0,  3.45,  2.38,  1.55,  0.96, 0.56, 0.30, 0.15, 0.076};
 
 
   for (Int_t j=0; j<10; j++){
@@ -244,10 +257,16 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
     protdNdyErr[j] = dNdyErrProt[j]/2.;  
     //return (pi+ + pi-)/2
     piondNdy[j] = dNdyPion[j]/2.;
-    piondNdyErr[j] = dNdyErrPion[j]/2.;  
+    piondNdyErr[j] = dNdyErrPion[j]/2.;
+    lambdaYield[j] = dNdyLambda[j]/2;
+    lambdaYieldErr[j] = dNdyErrLambda[j]/2;
   }
   return;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Generate predictions for BA
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TString errType = "rms", TString particle = "deuteron", Double_t pToA = 0.)
 {
@@ -309,7 +328,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("PbPb502TeV"))
-    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
+    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("pPb502TeV"))
     GetParams_pPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
@@ -365,7 +384,7 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     if (Inucleus>0 && particle.Contains("hyper-triton")) {
       //Double_t he3Yield = protYield[j]*He3OverPthermal;
       Double_t he3Yield = pionYield[j]*He3OverPiThermal;
-      Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[0]/protYield[0]); // FIXME --> ALL CENTRALITIES FOR LAMBDA!!!!!!!
+      Double_t hyperTritonYield = s3thermal*he3Yield*(lambdaYield[j]/protYield[j]); //now with centrality dependence
       fNucleus->SetParameter(1, hyperTritonYield/Inucleus); // normalisation to match yields
     }
     if (Inucleus>0 && particle.Contains("He4")) fNucleus->SetParameter(1, He4thermal/Inucleus); // normalisation to match yields
@@ -408,6 +427,10 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Generate predictions for nuclei spectra
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276TeV",  TString particle = "proton", TString errType = "rms")
 {
   //
@@ -424,7 +447,7 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
   if (particle.Contains("He3")) m = 2.808921112 - 0.018592017; //using mass difference (m3H - m3He) from CODATA
   if (particle.Contains("hyper-triton")) m = 2.991; //FIXME: use a proper values, but this is correct within two permille 2*0.938+1.115
   if (particle.Contains("He4")) m = 3.72737937823; //using value from CODATA for alpha particle
-  if (particle.Contains("4LH")) m = 3.931; 
+  if (particle.Contains("4LH")) m = 3.931; //Ramona uses the same, from STEER/STEERBase/AliPDG.cxx
 
   //centrality bin
   Int_t cb = -1;
@@ -461,7 +484,7 @@ TH1D * generateBWpredictionSpectra(Int_t selcent = 0, TString system = "PbPb276T
     GetParams_PbPb276TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("PbPb502TeV"))
-    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
+    GetParams_PbPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr, lambdaYield, lambdaYieldErr);
   
   if (system.Contains("pPb502TeV"))
     GetParams_pPb502TeV(bt, bterr, bn, bnerr, bb, bberr, multi, multiErr, protYield, protYieldErr, pionYield, pionYieldErr);
