@@ -1,0 +1,60 @@
+\label{appendix:Sato}
+The approach of Sato and Yazaki~\cite{Sato:1981ez} is based on a density matrix model and includes explicitly the system size dependence and wave-function dependence of the coalescence process albeit it assumes a sudden approximation when particles cease their interactions (sudden freeze-out) and thus neglects the collective expansion of the medium in contrast to~\cite{Scheibl:1998tk}. It assumes no correlation between different nucleons and no correlation between coordinates in space and momentum. In a heavy ion collisions, such correlations are consequence of hydrodynamical flow. 
+The coalescence process to form a nucleus with mass number $A = Z + N$ is formulated in terms of the momentum per nucleon ($p$) as
+%
+\begin{equation}
+\frac{\gamma_{A}}{\sigma_{A,0}} \frac{d^{3}\sigma_{A}}{d^{3}p} =  \left( {4 \over 3} \pi p_{0}^{3}\right)^{A-1}\frac{1}{Z! N!} \left(\frac{\gamma_{p}}{\sigma_{p,0}} \frac{d^{3}\sigma_{p}}{d^{3}p_{p}}\right)^{Z} \left(\frac{\gamma_{n}}{\sigma_{n,0}} \frac{d^{3}\sigma_{n}}{d^{3}p_{n}}\right)^{N} 
+\end{equation} 
+%
+where $p_{0}$ corresponds to the coalescence momentum, $\gamma_{A}$ and $\gamma_{p,n}$ are the Lorentz factors for the nucleus and the nucleons, respectively. The reaction cross-sections are denoted as $\sigma_{i,0}$, where $A = p, n, A$.
+Assuming that the proton and neutron emission probabilities are equal and that $p_{p} \approx p_{n} \equiv p$, this expression relates to the $B_{A}$ as defined by our Lorentz invariant Eq.(\ref{eq:BA}) as
+
+\begin{equation}
+B_{A} = \left({4 \over 3} \pi p_{0}^{3}\right)^{A-1} {M \over m^{A}} {1 \over A^{3}}{\frac{1}{Z! N!}}
+\end{equation}
+
+\noindent where the factor ${1 \over A^{3}}$ results from the transformation of $p_{A} \rightarrow A p_{p,n}$ and $M$ corresponds to the nucleus mass and $m$ to the nucleon mass. This expression can be further simplified via the approximation $M \approx A m$ to
+
+\begin{equation}
+B_{A} = \left({4 \over 3} \pi p_{0}^{3}\right)^{A-1} {1 \over m^{A-1}} {1 \over A^{2}}{\frac{1}{Z! N!}} \; .
+\end{equation}
+
+\noindent For nuclei up to $A = 4$ and the non-relativistic case, Sato and Yazaki derive the following relations for the coalescence momentum $p_{0}$, 
+%
+\begin{align}
+	A& =2&
+	{4 \over 3} \pi p_{0}^{3}& ={3 \over 4}2^{3/2}(4\pi)^{3/2} \left(\frac{\nu_{2}\nu}{\nu_{2} + \nu}\right)^{3/2}\\
+	A& =3&
+	{1 \over 2} \left( {4 \over 3} \pi p_{0}^{3}\right)^{2}& ={1 \over 4} 3^{3/2} (4\pi)^{3} \left(\frac{\nu_{3}\nu}{\nu_{3} + \nu}\right)^{3}\\
+	A& =4&  
+	{1 \over 4} \left({4 \over 3} \pi p_{0}^{3}\right)^{3}& = {1 \over 16} 4^{3/2} (4\pi)^{9/2} \left(\frac{\nu_{4}\nu}{\nu_{4}+ \nu}\right)^{9/2}
+\end{align}
+
+\noindent where the size parameter $\nu$ relates to the rms radius $R_{rms}$ of the emission source as $\nu~=~\sqrt{3 \over 2 R_{rms}}$, and $\nu_{A}$ is the size parameter of the nucleus. 
+\\Following the generalisation in~\cite{Nagle:1996vp}, we thus propose the following parameterisation for the coalescence parameter
+
+\begin{eqnarray}
+B_{A} &=& {2J_{A} + 1 \over 2^{A}} A^{3/2} (4\pi)^{{3\over2}(A-1)} \Bigl({\nu_{A}\nu \over \nu_{A}+ \nu}\Bigr)^{{3\over2}(A-1)} {1 \over m^{A-1}} {1 \over A^{2}}  \\
+\label{eq:SatoGeneralised}
+           &=&  {2J_{A} + 1 \over 2^{A}} {1 \over m^{A-1}} {1 \over \sqrt{A}} (4\pi)^{{3\over2}(A-1)} \Bigl({\nu_{A}\nu \over \nu_{A}+ \nu}\Bigr)^{{3\over2}(A-1)} \;,
+\end{eqnarray}
+
+\noindent indicating with $J_{A}$ the spin of the nucleus.
+Once again, the $\nu_{A}$ parameter corresponds to the size parameter of the nucleus wave-function, which is assumed to be gaussian (solution to the isotropic spherical harmonic oscillator potential) of the form~\cite{Sato:1981ez,Bergstrom:1979gpv}:
+
+\begin{equation}\label{eq:SatoWave}
+ \phi_{A} = C \exp\Bigl(-{1\over2} \nu_{A} \sum_{i=1}^{A}(\vec{x}_{i} - \vec{X})^2 \Bigr)
+\end{equation}
+
+\noindent with an appropriate normalisation factor $C$ and the coordinate vector $\vec{X}$ of the centre-of-mass system. 
+ 
+We have also verified that our generalisation of Sato-Yazaki provided by Eq. \ref{eq:SatoGeneralised} and the expression derived from Heinz in Eq. \ref{eq:CA_general} become consistent in the limit $R_{rms} \approx R \rightarrow 0$ (point-like source) and $p_{\mathrm{T}} \rightarrow 0$ (static source), provided that one identifies $\nu_{A} = {2 / r_{A}^{2}}$. Incidentally, the same relation between $\nu_{A}$ and $r_{A}$ can be derived by a straightforward comparison of the nucleus wave-functions employed by the same authors \cite{Scheibl:1998tk,Sato:1981ez}. 
+
+The parameter $\nu_{A}$ is typically chosen such that the measured rms charge radius \rmsradius~is reproduced. The relation between \rmsradius~and $\nu_{A}$ is obtained by a transformation to the Jacobi variables and performing the integration (see Appendix \ref{appendix:integration}). In particular, one obtains for $A < 5$:
+
+\begin{align}
+	A& = 2 \qquad \qquad \nu_{2} = {3 \over {4\rmsd^2}}  \\
+	A& = 3 \qquad \qquad \nu_{3} = {1 \over {\rmsthree^2}} \\
+	A& = 4 \qquad \qquad \nu_{4} =  {9 \over {8\rmsfour^2}} \;\; .
+\end{align}
+
