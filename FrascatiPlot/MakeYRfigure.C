@@ -10,7 +10,7 @@ void ConfigThreePanelsPad(TPad* pad1, TPad* pad2, TPad* pad3, Float_t leftmargin
 
 //pseudodata
 TGraphErrors * GetPseudoBAvsMulti(TString particle = "deuteron",  Int_t paramSet = 1);
-TGraphErrors * GetPseudoBAvsMultiUnc(TString particle = "deuteron",  Int_t paramSet = 1);
+TGraphErrors * GetPseudoBAvsMultiUnc(TString particle = "deuteron",  Int_t paramSet = 1, Color_t color = 0);
 
 //main
 void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t pToAb4 = 0.75, Double_t pToAb4Lambda = 0.62, Bool_t plotPseudoData = 1)
@@ -25,6 +25,8 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   gStyle->SetPadLeftMargin(0.15);
   gStyle->SetPadRightMargin(0.02); 
 
+
+  Color_t projCol = kRed+1;
   Double_t Rmin = 0.01; Double_t Rmax = 6.5;
   //------------------------------
   // Pseudodata
@@ -33,7 +35,47 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   TGraphErrors * gPseudo3LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH3", 1);
   TGraphErrors * gPseudo4He = (TGraphErrors *) GetPseudoBAvsMulti("he4", 1);
   TGraphErrors * gPseudo4LambdaH = (TGraphErrors *) GetPseudoBAvsMulti("hyperH4", 1);
+
+   //TGraphErrors * gPseudoDeuteronUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("deuteron", 1);
+  TGraphErrors * gPseudo3HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he3", 1, projCol);
+  TGraphErrors * gPseudo3LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH3", 1, projCol);
+  TGraphErrors * gPseudo4HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he4", 1, projCol);
+  TGraphErrors * gPseudo4LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH4", 1, projCol);
+  gPseudo3HeUnc->SetFillStyle(0);
+  gPseudo3LambdaHUnc->SetFillStyle(0);
+  gPseudo4HeUnc->SetFillStyle(0);
+  gPseudo4LambdaHUnc->SetFillStyle(0);
+
+  Double_t assumedRelSysUncMin = 0.10;
+  Double_t assumedRelSysUncMax = 0.20;
+  Double_t assumedNoSyst = 0.20;
+
+  TGraphErrors * gSepar3HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMin);
+  TGraphErrors * gSepar3LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMin);
+  TGraphErrors * gSepar4HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMin);
+  //TGraphErrors * gSepar4LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMin);
+
+  gSepar3HeMin->SetLineStyle(1);
+  gSepar3LambdaHMin->SetLineStyle(1);
+  gSepar4HeMin->SetLineStyle(1);
+  //gSepar4LambdaHMin->SetLineStyle(1);
+  gSepar3HeMin->SetLineColor(projCol);
+  gSepar3LambdaHMin->SetLineColor(projCol);
+  gSepar4HeMin->SetLineColor(projCol);
   
+  TGraphErrors * gSepar3HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMax);
+  TGraphErrors * gSepar3LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMax);
+  TGraphErrors * gSepar4HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMax);
+  //TGraphErrors * gSepar4LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMax);
+
+  gSepar3HeMax->SetLineStyle(3);
+  gSepar3LambdaHMax->SetLineStyle(3);
+  gSepar4HeMax->SetLineStyle(3);
+  gSepar3HeMax->SetLineColor(projCol);
+  gSepar3LambdaHMax->SetLineColor(projCol);
+  gSepar4HeMax->SetLineColor(projCol);
+  //gSepar4LambdaHMax->SetLineStyle(3);
+
   //-----------------------------
   //theory - Blast Wave + thermal
   //-----------------------------
@@ -96,7 +138,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   hB4L_coalescence_largeradius->SetLineColor(kBlack);
   hB4L_coalescence_largeradius->SetLineWidth(2);
   hB4L_coalescence_largeradius->SetLineStyle(5);
- 
+
   //---------------------------------------
   // PLOT Yellow Report figure
   //---------------------------------------  
@@ -329,7 +371,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   //-------------------------------
   //-------------------------------
   //-------------------------------
-  TPaveText * paveALICE = new TPaveText(0.1, 0.7, 0.8, 0.9, "NDC");
+  TPaveText * paveALICE = new TPaveText(0.05, 0.7, 0.8, 0.9, "NDC");
   paveALICE->SetFillStyle(0);
   paveALICE->SetBorderSize(0);
   paveALICE->SetTextFont(42);
@@ -337,41 +379,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   paveALICE->SetTextAlign(12);
   paveALICE->AddText(Form("#bf{ALICE Upgrade projection}"));
   paveALICE->AddText("Pb-Pb #sqrt{#it{s}_{NN}} = 5.5 TeV, L = 10 nb^{-1}");
-  
-  //TGraphErrors * gPseudoDeuteronUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("deuteron", 1);
-  TGraphErrors * gPseudo3HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he3", 1);
-  TGraphErrors * gPseudo3LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH3", 1);
-  TGraphErrors * gPseudo4HeUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("he4", 1);
-  TGraphErrors * gPseudo4LambdaHUnc = (TGraphErrors *) GetPseudoBAvsMultiUnc("hyperH4", 1);
-  gPseudo3HeUnc->SetFillStyle(0);
-  gPseudo3LambdaHUnc->SetFillStyle(0);
-  gPseudo4HeUnc->SetFillStyle(0);
-  gPseudo4LambdaHUnc->SetFillStyle(0);
-
-  Double_t assumedRelSysUncMin = 0.10;
-  Double_t assumedRelSysUncMax = 0.30;
-  Double_t assumedNoSyst = 0.20;
-
-  TGraphErrors * gSepar3HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMin);
-  TGraphErrors * gSepar3LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMin);
-  TGraphErrors * gSepar4HeMin = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMin);
-  //TGraphErrors * gSepar4LambdaHMin = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMin);
-
-  gSepar3HeMin->SetLineStyle(1);
-  gSepar3LambdaHMin->SetLineStyle(1);
-  gSepar4HeMin->SetLineStyle(1);
-  //gSepar4LambdaHMin->SetLineStyle(1);
-  
-  TGraphErrors * gSepar3HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(2, assumedRelSysUncMax);
-  TGraphErrors * gSepar3LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(3, assumedRelSysUncMax);
-  TGraphErrors * gSepar4HeMax = (TGraphErrors *) Thermal2CoalescenceSeparation(4, assumedRelSysUncMax);
-  //TGraphErrors * gSepar4LambdaHMax = (TGraphErrors *) Thermal2CoalescenceSeparation(5, assumedRelSysUncMax);
-
-  gSepar3HeMax->SetLineStyle(3);
-  gSepar3LambdaHMax->SetLineStyle(3);
-  gSepar4HeMax->SetLineStyle(3);
-  //gSepar4LambdaHMax->SetLineStyle(3);
-  
+      
   TH1D * hframeBA = new TH1D("hframeBA", "B_{A} vs radius; #it{R} (fm); #it{B}_{A}", 2000, 0.01, 6.5);
   hframeBA->GetXaxis()->SetTitleSize(0.06);
   hframeBA->GetYaxis()->SetTitleSize(0.06);
@@ -399,6 +407,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   hframeSep->GetYaxis()->SetTitleOffset(1.);
   hframeSep->GetYaxis()->SetLabelSize(0.09);
   hframeSep->GetXaxis()->SetTitleSize(0.09);
+  hframeSep->GetXaxis()->SetLabelSize(0.09);
   hframeSep->GetXaxis()->SetTitleOffset(1.);
   
   hframeSep->GetYaxis()->SetTitle("separation power (N#sigma)");
@@ -432,6 +441,13 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   masterLeg4L->SetBorderSize(0);
   masterLeg4L->AddEntry(hB3L_coalescence, "Coal., #it{r} (^{4}_{#Lambda}H) = 2.4 fm", "l");
   masterLeg4L->AddEntry(hB4L_coalescence_largeradius, "Coal., #it{r} (^{4}_{#Lambda}H) = 4.9 fm", "l");
+
+  TLegend * sepLegend = new TLegend(0.24, 0.7, 0.5, 0.9);
+  sepLegend->SetFillStyle(0);
+  sepLegend->SetTextSize(0.09);
+  sepLegend->SetBorderSize(0);
+  sepLegend->AddEntry( gSepar3HeMin, Form("assuming %2.0f%% sys. unc.",assumedRelSysUncMin*100),"l");
+  sepLegend->AddEntry( gSepar3HeMax, Form("assuming %2.0f%% sys. unc.",assumedRelSysUncMax*100),"l");
   
   TLine * lineat1 = new TLine(0.01, 0., 6.5, 0.);
   lineat1->SetLineStyle(3);
@@ -488,7 +504,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   hframeRStat->Draw();
   lineat1->Draw();
   gPseudo3HeUnc->Draw("sameE2");
-  // paveALICE->Draw();
+  //paveALICE->Draw();
 
   cr5->cd();
   pad[0][0]->Draw();
@@ -498,7 +514,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   gSepar3HeMin->Draw("samel");
   gSepar3HeMax->Draw("samel");
   lineat5->Draw();
-
+  sepLegend->Draw();
   //-------------------------------
   //   DRAW 3LH
   //-------------------------------
@@ -586,6 +602,7 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   //gSepar4LambdaHMax->Draw("samel");
  
   cr5->SaveAs("BAmodels_pseudoUnc.png");
+  cr5->SaveAs("BAmodels_pseudoUnc.pdf");
 
   return;
   
@@ -621,7 +638,7 @@ TGraphErrors * GetPseudoBAvsMulti(TString particle,  Int_t paramSet)
   return graph;
 }
 
-TGraphErrors * GetPseudoBAvsMultiUnc(TString particle,  Int_t paramSet)
+TGraphErrors * GetPseudoBAvsMultiUnc(TString particle,  Int_t paramSet, Color_t color)
 {
   TFile * fin = TFile::Open("~/alice/nucleiB2/projectionsYR/ba_300818.root");
   TH1D * hist = 0x0;
@@ -649,8 +666,10 @@ TGraphErrors * GetPseudoBAvsMultiUnc(TString particle,  Int_t paramSet)
   TGraphErrors * graph = new TGraphErrors(10, multi, ba, multierr, baerr);
   convertMultiToRadius(graph, paramSet);
   graph->SetMarkerStyle(24);
-  graph->SetMarkerColor(kBlack);
-  graph->SetLineColor(kBlack);
+  graph->SetMarkerColor(color);
+  graph->SetLineColor(color);
+  graph->SetFillColor(color);
+  graph->SetFillStyle(0);
   return graph;
 }
 
