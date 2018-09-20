@@ -30,36 +30,36 @@ We propose that \bA~is systematically measured in all collision systems by explo
 %In addition to this, the study of light(anti-)nuclei might serve as a baseline for understanding the debated nature of exotic states such as the X(3872), that has been interpreted as tetraquark state or hadronic molecule \cite{Esposito:2015fsa, Cho:2017dcy}.
 
 
-\section{Coalescence approach} 
-\label{sec:coalescence}
+\section{Coalescence approach} \label{sec:coalescence}
 
-\subsection{Simple coalescence}
-In the coalescence picture, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963,Kapusta:1980}. For a nucleus with mass number $A = Z + N$, the coalescence probability is typically quantified in terms of the coalescence parameter $B_{A}$, which is defined as
+%\subsection{Simple coalescence}
+In the coalescence picture, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963,Kapusta:1980}. 
+For a nucleus with mass number $A = Z + N$, the coalescence probability is typically quantified in terms of the coalescence parameter $B_{A}$.
+%that is defined as 
+%\begin{equation}
+%E_{A}\frac{\mathrm{d}^{3}N_{A}}{\mathrm{d}p_{A}^{3}}=B_{A}{\left(E_{\mathrm{p}}\frac{\mathrm{d}^{3}N_{\mathrm{p}}}{\mathrm{d}p_{\mathrm{p}}^{3}}\right)^{Z}\left\vert_{\vec{p}_{\mathrm{p}}=\frac{\vec{p}_{A}}{A}} \right.\;
+%   \left(E_{\mathrm{n}}\frac{\mathrm{d}^{3}N_{\mathrm{n}}}{\mathrm{d}p_{\mathrm{n}}^{3}}\right)^{N}}\left\vert_{\vec{p}_{\mathrm{n}}=\frac{\vec{p}_{A}}{A}} \right.\;
+%,    
+%\label{eq:BA}
+%\end{equation}
+%\noindent where $p_{\mathrm{p,n}}$ are the momenta of the proton and neutron and $E_{p,n}$ their energies.
+%Since in the LHC collision energy regime the number of produced protons and neutrons at midrapidity is expected to be equal, the equation simplifies to 
+Considering that in the LHC collision energy regime the number of produced protons and neutrons at midrapidity is expected to be equal,  $B_{A}$ is defined as
 
 \begin{equation}
-E_{A}\frac{\mathrm{d}^{3}N_{A}}{\mathrm{d}p_{A}^{3}}=B_{A}{\left(E_{\mathrm{p}}\frac{\mathrm{d}^{3}N_{\mathrm{p}}}{\mathrm{d}p_{\mathrm{p}}^{3}}\right)^{Z}\left\vert_{\vec{p}_{\mathrm{p}}=\frac{\vec{p}_{A}}{A}} \right.\;
-   \left(E_{\mathrm{n}}\frac{\mathrm{d}^{3}N_{\mathrm{n}}}{\mathrm{d}p_{\mathrm{n}}^{3}}\right)^{N}}\left\vert_{\vec{p}_{\mathrm{n}}=\frac{\vec{p}_{A}}{A}} \right.\;
-,    
-\label{eq:BA}
-\end{equation}
-
-\noindent where $p_{\mathrm{p,n}}$ are the momenta of the proton and neutron and $E_{p,n}$ their energies.
-Since in the LHC collision energy regime the number of produced protons and neutrons at midrapidity is expected to be equal, the equation simplifies to 
-\begin{equation}
-E_{A}\frac{\mathrm{d}^{3}N_{A}}{\mathrm{d}p_{A}^{3}}=B_{A}{\left(E_{\mathrm{p}}\frac{\mathrm{d}^{3}N_{\mathrm{p}}}{\mathrm{d}p_{\mathrm{p}}^{3}}\right)^{A}}\left\vert_{\vec{p}_{\mathrm{p}}=\frac{\vec{p}_{A}}{A}} \right..
+E_{A}\frac{\mathrm{d}^{3}N_{A}}{\mathrm{d}p_{A}^{3}}=B_{A}{\left(E_{\mathrm{p,n}}\frac{\mathrm{d}^{3}N_{\mathrm{p,n}}}{\mathrm{d}p_{\mathrm{p,n}}^{3}}\right)^{A}}\left\vert_{\vec{p}_{\mathrm{p}}=\vec{p}_{\mathrm{n}}=\frac{\vec{p}_{A}}{A}} \right..
 \label{eq:BA}
 \end{equation}
 %
+where $p_{\mathrm{p,n}}$ are the momenta of the proton and neutron and $E_{p,n}$ their energies.
+
 Moreover, the LHC is particularly suited for the production of anti-nuclei, since the number of baryons and anti-baryons is essentially equal at midrapidity \cite{Abbas:2013rua}. As a consequence, also the anti-particle to particle ratio for the light (hyper-)nuclei considered in this work is measured to be consistent with unity in pp, p--Pb and Pb--Pb collisions \cite{ALICE:nucleipp2017, anielski-HQ14, Acharya:2017dmc, Adam:2015yta}.
 In a simple coalescence approach, the coalescence parameter is expected to be independent of \pt~and of the object size with respect to the volume of particle emission (hereafter referred to as ``source volume'' or ``source size'').
 In this naive expectation, the number of nuclei produced by coalescence increases with increasing number of nucleons produced in the collision. If the nucleon number increases with the event multiplicity, so does the number of (anti-)nuclei. 
 While this picture is found to be approximately valid in pp and \pPb~collisions \cite{ALICE:nucleipp2017, anielski-HQ14}, it breaks down in \PbPb~collisions, that exhibit a strong decrease of $B_{A}$ with centrality \cite{ALICE:deuteronppPbPb2015}. 
 In addition, the elliptic flow of deuterons cannot be explained by simple coalescence \cite{Acharya:2017dmc}. 
 
-
-\subsection{Advanced coalescence}
-\label{subsec:FullCoalescence}
-
+%\subsection{Advanced coalescence} 
 In contrast to the simple approach described in the previous section, a more advanced coalescence model takes into account the size of the particle emission source, as the coalescence probability naturally decreases for two nucleons with similar momenta that are produced far apart in configuration space. While there are several approaches to address this effect~\cite{Sato:1981ez, Nagle:1996vp}, in our study we rely on the formalism proposed in~\cite{Scheibl:1998tk}. The authors use a density matrix approach to calculate the coalescence probability and the invariant momentum spectra of deuterons and anti-deuterons in heavy-ion collisions. They consider the coalescence of nucleons within a source that is rapidly expanding under collective flow.
 The fact that the coalescence probability is anti-proportional to the source volume can already be understood in the classical phase-space picture as due simply to the separation in configuration space. Because coalescence is a quantum-mechanical process, however, the classical definition of phase space does not apply and it is replaced by the Wigner formalism. Therefore, most coalescence models, including \cite{Scheibl:1998tk}, determine the production probability of a nucleon cluster as by the overlap of the Wigner function of its internal wave-function with the phase-space distributions of the constituent particles.
 
