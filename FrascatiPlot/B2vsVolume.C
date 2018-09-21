@@ -53,6 +53,7 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t 
 //helium-3
 TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
 TGraphErrors      * getB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
+TGraphErrors      * getB3_pPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
 TGraphAsymmErrors * getB3_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToAb3pp = 0.800, Int_t paramSet = 0);
 
 //hypertriton
@@ -134,6 +135,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   TGraphErrors* gB3vsR_PbPb5TeV_sys[nParamSet];
   TGraphErrors* gB3vsR_PbPb276TeV[nParamSet];
   TGraphErrors* gB3vsR_PbPb276TeV_sys[nParamSet];
+  TGraphErrors* gB3vsR_pPb5TeV[nParamSet];
+  TGraphErrors* gB3vsR_pPb5TeV_sys[nParamSet];
   TGraphAsymmErrors* gB3vsR_pp7TeV[nParamSet];
   TGraphAsymmErrors* gB3vsR_pp7TeV_sys[nParamSet];
   TGraphAsymmErrors* gB3LambdavsR_PbPb276TeV[nParamSet];
@@ -157,9 +160,9 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     gB2vsR_pp7TeVINELg0[ip] = (TGraphErrors *) getB2_pp7TeVINELg0(kFALSE, pToA, ip);
     gB2vsR_pp7TeVINELg0_sys[ip] = (TGraphErrors *) getB2_pp7TeVINELg0(kTRUE, pToA, ip);
 
-    gB2vsR_pp7TeV[ip] = (TGraphErrors *) getB2_pp7TeVINELg0(kFALSE, pToA, ip);
-    gB2vsR_pp7TeV_sys[ip] = (TGraphErrors *) getB2_pp7TeVINELg0(kTRUE, pToA, ip);
-      
+    gB2vsR_pp7TeV[ip] = (TGraphErrors *) getB2_pp7TeV(kFALSE, pToA, ip);
+    gB2vsR_pp7TeV_sys[ip] = (TGraphErrors *) getB2_pp7TeV(kTRUE, pToA, ip);
+
     gB2vsR_pPb5TeV[ip] = (TGraphErrors *) getB2_pPb5TeV(kFALSE, pToA, ip);
     gB2vsR_pPb5TeV_sys[ip] = (TGraphErrors *) getB2_pPb5TeV(kTRUE, pToA, ip);
     gB2vsR_PbPb5TeV[ip] = (TGraphErrors *) getB2_PbPb5TeV(kFALSE, pToA, ip);
@@ -171,6 +174,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     gB3vsR_PbPb5TeV_sys[ip] = (TGraphErrors *) getB3_PbPb5TeV(kTRUE, pToAb3, ip);
     gB3vsR_PbPb276TeV[ip] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToAb3, ip);
     gB3vsR_PbPb276TeV_sys[ip] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToAb3, ip);
+    gB3vsR_pPb5TeV[ip] = (TGraphErrors *) getB3_pPb5TeV(kFALSE, pToAb3, ip);
+    gB3vsR_pPb5TeV_sys[ip] = (TGraphErrors *) getB3_pPb5TeV(kTRUE, pToAb3, ip);
     gB3vsR_pp7TeV[ip] = (TGraphAsymmErrors *) getB3_pp7TeVINELg0(kFALSE, pToAb3pp, ip);
     gB3vsR_pp7TeV_sys[ip] = (TGraphAsymmErrors *) getB3_pp7TeVINELg0(kTRUE, pToAb3pp, ip);
     gB3LambdavsR_PbPb276TeV[ip] = (TGraphAsymmErrors *) getB3Lambda_PbPb276TeV(kFALSE, pToAb3Lambda, ip);
@@ -339,7 +344,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   Color_t color[]      = {kGreen+2, kBlue+2, kRed, kRed+2,
 			  kGreen+2, kBlue+2, kBlue+1, kRed+2,
-			  kGreen+2, kSpring+4, kRed, kRed+2, kRed,
+			  kGreen+2, kBlue+2, kRed, kRed+2, kRed,
 			  kBlue-5, kBlue-7, kBlue+1, kRed+2, kBlue+1};
   
   Int_t Marker_Style[] = { 21, 22, 20, 23,
@@ -370,6 +375,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
     MakeUp(gB3vsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3_PBPB276], color[EPlotEntries::kB3_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
     MakeUp(gB3vsR_PbPb5TeV_sys[ip], color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
     MakeUp(gB3vsR_PbPb5TeV[ip]    , color[EPlotEntries::kB3_PBPB502], color[EPlotEntries::kB3_PBPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB502], Marker_Size);
+    MakeUp(gB3vsR_pPb5TeV_sys[ip], color[EPlotEntries::kB3_PPB502], color[EPlotEntries::kB3_PPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PPB502], Marker_Size);
+    MakeUp(gB3vsR_pPb5TeV[ip]    , color[EPlotEntries::kB3_PPB502], color[EPlotEntries::kB3_PPB502], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PPB502], Marker_Size);
     MakeUp(gB3LambdavsR_PbPb276TeV_sys[ip], color[EPlotEntries::kB3L_PBPB276], color[EPlotEntries::kB3L_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3_PBPB276], Marker_Size);
     MakeUp(gB3LambdavsR_PbPb276TeV[ip]    , color[EPlotEntries::kB3L_PBPB276], color[EPlotEntries::kB3L_PBPB276], Fill_Style, Line_Style, Line_Width, Marker_Style[EPlotEntries::kB3L_PBPB276], Marker_Size);
     //BLAST B3
@@ -517,6 +524,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
   legB3->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3->AddEntry(gB3vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, 21.09.2018", "pf");
   legB3->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [PRC 97, 024615 (2018)]", "pf");
   legB3->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV, BW + GSI (T = 156 MeV)", "l");
   legB3->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
@@ -559,6 +567,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3vsR_PbPb5TeV[ip]->Draw("samep");
   gB3vsR_PbPb276TeV_sys[ip]->Draw("samep3");
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
+  gB3vsR_pPb5TeV_sys[ip]->Draw("p3");
+  gB3vsR_pPb5TeV[ip]->Draw("samep");
   gB3vsR_pp7TeV_sys[ip]->Draw("samep2");
   gB3vsR_pp7TeV[ip]->Draw("samep");
   gB3LambdavsR_PbPb276TeV_sys[ip]->Draw("samep2");
@@ -639,29 +649,30 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   nl = 8;
   TLegend * legB3data = new TLegend(0.1, 0.95-nl*0.04, 0.45, 0.95, "ALICE");
   legB3data->SetFillStyle(0);
-  legB3data->SetTextSize(0.035);
+  legB3data->SetTextSize(0.04);
   legB3data->SetBorderSize(0);
   legB3data->AddEntry(gB3vsR_PbPb5TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3data->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PRC 93, 0249717 (2016)]", "pf");
+  legB3data->AddEntry(gB3vsR_pPb5TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, 21.09.2018", "pf");
   legB3data->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV [arXiv:1709.08522]", "pf");
-  legB3data->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
+  //legB3data->AddEntry(gB3LambdavsR_PbPb276TeV_sys[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV [PLB 754, 360-372 (2016)]", "pf");
 
   nl = 3;
   TLegend * legB3blast = new TLegend(0.1, 0.55-nl*0.04, 0.45, 0.55, "Blast-Wave (#pi,K,p) + GSI-Heid. (T = 156 MeV)");
   legB3blast->SetFillStyle(0);
-  legB3blast->SetTextSize(0.035);
+  legB3blast->SetTextSize(0.04);
   legB3blast->SetBorderSize(0);
   legB3blast->AddEntry(gBlastB3vsR_PbPb276TeV[ip], "#it{B}_{3}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
-  legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  //legB3blast->AddEntry(gBlastB3LambdavsR_PbPb276TeV[ip], "#it{B}_{3,#Lambda}, Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
 
   nl = 4;
   TLegend * legB3coal = new TLegend(0.1, 0.4-nl*0.04, 0.45, 0.4, "Coalescence");
   legB3coal->SetFillStyle(0);
-  legB3coal->SetTextSize(0.035);
+  legB3coal->SetTextSize(0.04);
   legB3coal->SetBorderSize(0);
   legB3coal->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
-  legB3coal->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
-  legB3coal->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
+  //legB3coal->AddEntry(hB3_coalescence_pointlike, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 0 (point-like)", "l");
+  //legB3coal->AddEntry(hB3L_coalescence, "#it{B}_{3,#Lambda} coalesc., #it{r}(^{3}_{#Lambda}H) = 6.8 fm", "l");
 
   TCanvas * cb3opta = new TCanvas("cb3opta", "Frascati plot B3", 1000, 600);
   cb3opta->SetBottomMargin(0.02);
@@ -678,7 +689,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   hframe3->Draw();
   paveptB3->Draw();
   hB3_coalescence->Draw("l");
-  hB3_coalescence_pointlike->Draw("lsame");
+  //hB3_coalescence_pointlike->Draw("lsame");
   //hB3L_coalescence->Draw("lsame");
   gBlastB3vsR_PbPb276TeV[ip]->Draw("samel");
   //gBlastB3LambdavsR_PbPb276TeV->Draw("samel");
@@ -688,6 +699,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
   gB3vsR_pp7TeV_sys[ip]->Draw("samep2");
   gB3vsR_pp7TeV[ip]->Draw("samep");
+  gB3vsR_pPb5TeV_sys[ip]->Draw("p3");
+  gB3vsR_pPb5TeV[ip]->Draw("samep");
   // gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   // gB3LambdavsR_PbPb276TeV->Draw("samep");
 
@@ -1591,6 +1604,33 @@ TGraphErrors * getB3_PbPb5TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
   graph->SetFillColorAlpha(kRed, 0.1);
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.2);
+  graph->SetMarkerStyle(20);
+  return graph;
+  
+}
+
+//---------------------------------------------------------
+//------------------------------ ALICE data B3 p-Pb 5 TeV
+TGraphErrors * getB3_pPb5TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet)
+{
+  //Ongoing Analysis from Sebastian Hornung
+  TFile * f0 = TFile::Open("B3pToA_pPb502TeV.root");
+  if (!f0) return NULL;
+  
+  TString gName = Form("B3_pPb15_pToA=%4.3f%s", pToAb3, (plotSys? "_sys" : ""));
+  TGraphErrors * graph = (TGraphErrors*) f0->Get(gName.Data());
+  if (!graph) {
+    Printf("Error: cannot retrieve graph. Check pt bin requested.");
+    return NULL;
+  }
+
+  convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kBlue+2);
+  graph->SetLineColor(kBlue+2);
+  graph->SetFillColorAlpha(kBlue+2, 0.1);
   graph->SetFillStyle(1001);
   graph->SetMarkerSize(1.2);
   graph->SetMarkerStyle(20);

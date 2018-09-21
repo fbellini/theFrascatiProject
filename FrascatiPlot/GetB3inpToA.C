@@ -2,6 +2,7 @@ void GetB3inpToA_PbPb5TeV();
 void GetB3inpToA_PbPb276TeV();
 void GetB3inpToA_pp7TeV();
 void GetB3LambdainpToA_PbPb276TeV();
+void GetB3inpToA_pPb5TeV(Double_t pToA = 0.733);
 
 void GetB3inpToA_pp7TeV()
 {
@@ -175,7 +176,48 @@ void GetB3inpToA_PbPb5TeV()
   return;
 
 }
+
+
+void GetB3inpToA_pPb5TeV(Double_t pToA = 0.733)
+{
+  TFile * fin = TFile::Open("B3_pPb_5TeV_21092018.root");
+  if (!fin) return;
+
+  Int_t cent[5] = {0, 10, 20, 40, 100}; 
+  TH1D * hin[4];
+  TH1D * hin_syst[4];
+  //                       0-10    10-20     20-40    40-100
+  Double_t dndeta[4] =    {40.6,    30.5,     23.2,     10.1}; 
+  Double_t dndetaErr[4] = {0.9,     0.7,     0.5,        0.16};
   
+  for (int i = 0; i < 4; i++){
+    hin[i] = (TH1D *) fin->Get(Form("B3_3He_%i_%i", cent[i], cent[i+1]));
+    hin_syst[i] = (TH1D *) fin->Get(Form("B3_3He_%i_%i_Syst", cent[i], cent[i+1]));
+  }
+
+  //selected pt bin  
+  TFile * fout = new TFile("B3pToA_pPb502TeV.root","recreate");
+  TGraphErrors * gout = new TGraphErrors(4);
+  gout->SetName(Form("B3_pPb15_pToA=%4.3f", pToA));
+  
+  TGraphErrors * gout_sys = new TGraphErrors(4);
+  gout_sys->SetName(Form("B3_pPb15_pToA=%4.3f_sys", pToA));
+  
+  for (Int_t ip = 0; ip<4; ip++){
+    Int_t sb = hin[ip]->GetXaxis()->FindBin(pToA);
+    
+    gout->SetPoint(ip, dndeta[ip], hin[ip]->GetBinContent(sb));
+    gout->SetPointError(ip, dndetaErr[ip], hin[ip]->GetBinError(sb));
+    
+    gout_sys->SetPoint(ip, dndeta[ip], hin_syst[ip]->GetBinContent(sb));
+    gout_sys->SetPointError(ip, dndetaErr[ip], hin_syst[ip]->GetBinError(sb));
+  } 
+  fout->cd();
+  gout->Write();
+  gout_sys->Write();
+  return;
+  
+}
   
   
 void GetB3LambdainpToA_PbPb276TeV()
