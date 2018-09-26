@@ -197,13 +197,12 @@ void GetParams_PbPb276TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
   Double_t dNdyErrPion[10]  = { 54.,  42.,  31.,  20.,  13.,   8.,  5.,  2.,  1.1, 0.4};
 
   // Lambda only -- table 23 of http://hepdata.cedar.ac.uk/view/ins1243863
-  // --> TODO: deal with different binning by interpolation
-  // published bins are          (0-5,  5-10, 10-20, 20-40, fixme, 40-60, fixme, 60-80, fixme,  80-90)%
-  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 9.79,  9.79,  3.79, 3.79,  0.99,   0.99,   0.214};
+  // We dealt with different binning by interpolation
+  // published bins are          (0-5,  5-10, 10-20,                       20-30,                       30-40,                      40-50,                      50-60,                     60-70,                      70-80, 80-90)%
+  Double_t dNdyLambda[10]    = {25.61, 21.58, 16.89, 649.*2./(649.+ 426.) * 9.79, 426.*2./(649.+ 426.) * 9.79, 261.*2*3.79 / (261.+ 149.), 149.*2*3.79 / (261.+ 149.), 76. *2.* 0.99 / (76.+ 35),  35. *2.* 0.99 / (76.+ 35),   0.214}; 
   Double_t dNdyErrLambda[10] = { 2.91,  1.9,   1.9,  0.947, 0.947, 0.378,0.378, 0.0937, 0.0937, 0.0166};
-
-
-
+  // 20-40% L dN/dy = 9.79 ± 0.947
+  
   for (Int_t j=0; j<10; j++){
     parT[j] = bt[j];
     parTerr[j] = bterr[j];

@@ -1,6 +1,7 @@
 /*
    akalweit@cern.ch, fbellini@cern.ch
    17.01.2018 - The Frascati plot
+   last update: 26.09.2018
 */
 #include "TMath.h"
 #include "TGraphAsymmErrors.h"
@@ -60,16 +61,9 @@ TGraphAsymmErrors * getB3_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToAb3pp = 0
 //hypertriton
 TGraphAsymmErrors * getB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1., Int_t paramSet = 0);
 
-//pseudodata
-//TGraphErrors * GetPseudoBAvsMulti(TString particle = "deuteron",  Int_t paramSet = 1);
-//TGraphErrors * GetPseudoBAvsMultiUnc(TString particle = "deuteron",  Int_t paramSet = 1);
-
-  
 // beautification of plots
 void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
-//void ConfigTwoPanelsPad(TPad* pad1, TPad* pad2, Float_t leftmargin, Float_t rightmargin);
-//void ConfigThreePanelsPad(TPad* pad1, TPad* pad2, TPad* pad3, Float_t leftmargin = 0.15, Float_t rightmargin = 0.001);
 
 //figure making
 void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
@@ -88,11 +82,10 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t 
 		      TGraphAsymmErrors** gBlastB2vsR_PbPb276TeV,  TGraphAsymmErrors** gBlastB3vsR_PbPb276TeV,
 		      TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV, TGraphAsymmErrors** gB3LambdavsR_PbPb276TeV_sys, TGraphAsymmErrors** gBlastB3LambdavsR_PbPb276TeV);
 
-
 //main plotting for Frascati plot
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
 		 Double_t pToAb4Lambda = 0.75,
-		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 0, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 1)
+		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 1, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 1)
 {
   //
   // main function which generates the plots of the Frascati project
@@ -311,8 +304,6 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 		   hB2_coalescence, hB2_coalescence_pointlike, hB2_coalescence_radius1third, hB2_coalescence_largeradius, kTRUE);
   if (plotOnlyCoalescence) return 0;
 
-  //  if (plotPaperFigures) return 0;
-
   //------------------------------
   // PLOT FRASCATI PLOT(S)
   //------------------------------
@@ -384,7 +375,9 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
   }
 
-
+  //---------------------------------------
+  // PLOT FRASCATI PLOTS FOR PAPER
+  //---------------------------------------  
   if (plotPaperFigures) {
 
     MakePaperFigure3(plotLinX, pToA, pToAb3,
@@ -401,28 +394,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
     return 0;
   }
-  
-  //---------------------------------------
-  // PLOT Yellow Report figure
-  //---------------------------------------  
-
-  // if (plotYRFigure) {
-  //   MakeYRfigure(plotLinX, pToA, pToAb3, pToAb3Lambda, pToAb4Lambda,
-  // 		 hB2_coalescence, hB3_coalescence, hB3L_coalescence, hB3L_coalescence_largeradius,
-  // 		 hB4_coalescence, hB4L_coalescence, hB4L_coalescence_largeradius, 
-  // 		 gB2vsR_PbPb276TeV_sys,  gB2vsR_pp7TeVINELg0_sys, gB2vsR_PbPb276TeV,  gB2vsR_pp7TeVINELg0,
-  // 		 gB3vsR_PbPb276TeV_sys,  gB3vsR_pp7TeV_sys, gB3vsR_PbPb276TeV,  gB3vsR_pp7TeV,
-  // 		 gBlastB2vsR_PbPb276TeV, gBlastB2vsR_pp7TeV,
-  // 		 gBlastB3vsR_PbPb276TeV, gBlastB3vsR_pp7TeV,
-  // 		 gB3LambdavsR_PbPb276TeV, gB3LambdavsR_PbPb276TeV_sys,
-  // 		 gBlastB3LambdavsR_PbPb276TeV, gBlastB3LambdavsR_pp7TeV,
-  // 		 gBlastB4vsR_PbPb276TeV, gBlastB4vsR_pp7TeV,
-  // 		 gBlastB4LambdavsR_PbPb276TeV,  gBlastB4LambdavsR_pp7TeV, plotPseudoData);
-   
-  //   return 0;
-  // }
-
-  
+    
   //---------------------------------------
   // PLOT FRASCATI PLOTS FOR SLIDES
   //---------------------------------------   
