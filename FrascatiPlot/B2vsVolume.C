@@ -10,7 +10,6 @@
 #include "TH1D.h"
 #include "TH2D.h"
 #include "./generateBWpredictionsB2.C"
-#include "./Make13TeVPaperFigure.C"
 
 //mapping multiplicity into radius
 void convertMultiToRadius(TGraphErrors * graph = 0x0, Int_t paramSet = 0);
@@ -45,12 +44,12 @@ TGraphAsymmErrors * getBAthermalBlast(TString system = "PbPb276TeV", TString par
 
 //ALICE data on nuclei BA
 //deuteron
-TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_pp13TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
-TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
+TGraphErrors * getB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphErrors * getB2_pp13TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphErrors * getB2_pPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
 
 //helium-3
 TGraphErrors      * getB3_PbPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0);
@@ -426,14 +425,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   //---------------------------------------
   // PLOT FRASCATI PLOTS FOR SLIDES
-  //---------------------------------------  
-  Make13TeVPaperFigure(plotLinX, pToA, 0,
-		       hB2_coalescence, 
-		       gB2vsR_PbPb276TeV_sys,    gB2vsR_pp7TeV_sys,  gB2vsR_PbPb276TeV,    gB2vsR_pp7TeV,
-		       gB2vsR_pPb5TeV_sys,    gB2vsR_pp13TeV_sys,   gB2vsR_pPb5TeV,    gB2vsR_pp13TeV);
-  return 0;
-
-  
+  //---------------------------------------   
   TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
@@ -1401,7 +1393,7 @@ void convertMultiToRadius(TGraphAsymmErrors * graph, Int_t paramSet)
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- pp 7 TeV
 
-TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
   //from Manuel - pp 7 TeV EXA 2017 preliminary
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -1414,7 +1406,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kGreen+2);
   graph->SetLineColor(kGreen+2);
@@ -1426,7 +1418,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
   
 }
 
-TGraphErrors * getB2_pp13TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_pp13TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
   //from Luca B. - pp 13 TeV QM 2018 preliminary
   TFile * f0 = TFile::Open("customB2PtFixed75_A.root");
@@ -1439,7 +1431,7 @@ TGraphErrors * getB2_pp13TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
   graph->SetMarkerColor(kOrange);
   graph->SetLineColor(kOrange);
   graph->SetFillColorAlpha(kOrange, 0.1);
@@ -1451,7 +1443,7 @@ TGraphErrors * getB2_pp13TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 }
 
 
-TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
   if (pToA<0.74 || pToA>0.76 ) return 0x0;
   
@@ -1479,7 +1471,7 @@ TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kGreen+2);
   graph->SetLineColor(kGreen+2);
@@ -1493,7 +1485,7 @@ TGraphErrors * getB2_pp7TeVINELg0(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- pPb 5 TeV
-TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
 
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -1506,7 +1498,7 @@ TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kBlue);
   graph->SetLineColor(kBlue);
@@ -1521,7 +1513,7 @@ TGraphErrors * getB2_pPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- PbPb 5 TeV
-TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
   //Preliminary from Max - QM 2017
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -1534,7 +1526,7 @@ TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kRed);
   graph->SetLineColor(kRed);
@@ -1549,7 +1541,7 @@ TGraphErrors * getB2_PbPb5TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
 
 //---------------------------------------------------------
 //------------------------------ ALICE data B2 --- PbPb 2.76 TeV
-TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
+TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_t convertToR)
 {
   //Published PRC 93, 0249717 (2016)
   TFile * f0 = TFile::Open("oB2vsNch.root");
@@ -1562,7 +1554,7 @@ TGraphErrors * getB2_PbPb276TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet)
     return NULL;
   }
 
-  convertMultiToRadius(graph, paramSet);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
 
   graph->SetMarkerColor(kRed+2);
   graph->SetLineColor(kRed+2);
