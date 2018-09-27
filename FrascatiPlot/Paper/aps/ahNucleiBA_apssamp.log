@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  27 SEP 2018 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  27 SEP 2018 19:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -334,50 +334,43 @@ Class revtex4-1 Warning: If you want your keywords to appear in your output, us
 e document class option showkeys.
 
 (./main.tex (./table1.tex) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdfte
-x/updmap/pdftex.map}] [2]
+x/updmap/pdftex.map}]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 52.
 
-<../theory_coalescence_Cd_B2_vert.png, id=29, 499.8675pt x 833.1125pt>
+[2]
+<../theory_coalescence_Cd_B2_vert.png, id=29, 499.8675pt x 978.65625pt>
 File: ../theory_coalescence_Cd_B2_vert.png Graphic file (type png)
 <use ../theory_coalescence_Cd_B2_vert.png>
 Package pdftex.def Info: ../theory_coalescence_Cd_B2_vert.png  used on input li
-ne 101.
-(pdftex.def)             Requested size: 246.0pt x 409.9957pt.
+ne 102.
+(pdftex.def)             Requested size: 246.0pt x 481.62146pt.
 
-Underfull \hbox (badness 2119) in paragraph at lines 107--108
+Underfull \hbox (badness 2119) in paragraph at lines 108--109
 []\OT1/cmr/m/n/10 Following the ap-proach and dis-cus-sion pre-sented
  []
 
 [3]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 129.
+ on input line 137.
 
 <../HbtRadiusParam.png, id=34, 700.6175pt x 476.78125pt>
 File: ../HbtRadiusParam.png Graphic file (type png)
 <use ../HbtRadiusParam.png>
-Package pdftex.def Info: ../HbtRadiusParam.png  used on input line 152.
-(pdftex.def)             Requested size: 246.0pt x 167.40701pt.
-[4 <../theory_coalescence_Cd_B2_vert.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 173.
-
-
-LaTeX Warning: Reference `fig:CompareB2B3forDifferentParamWithData' on page 5 u
-ndefined on input line 188.
-
-<../compareThermalAndCoalescence.png, id=38, 1001.7425pt x 833.1125pt>
+Package pdftex.def Info: ../HbtRadiusParam.png  used on input line 153.
+(pdftex.def)             Requested size: 196.80075pt x 133.92706pt.
+[4 <../theory_coalescence_Cd_B2_vert.png> <../HbtRadiusParam.png>]
+<../compareThermalAndCoalescence.png, id=38, 700.6175pt x 1375.1375pt>
 File: ../compareThermalAndCoalescence.png Graphic file (type png)
 <use ../compareThermalAndCoalescence.png>
 Package pdftex.def Info: ../compareThermalAndCoalescence.png  used on input lin
-e 202.
-(pdftex.def)             Requested size: 510.0pt x 424.15717pt.
-[5 <../HbtRadiusParam.png>] [6 <../compareThermalAndCoalescence.png>])
-(./ahNucleiBA_apssamp.bbl
+e 210.
+(pdftex.def)             Requested size: 233.69925pt x 458.68579pt.
+ [5])
+[6 <../compareThermalAndCoalescence.png>] (./ahNucleiBA_apssamp.bbl
 Underfull \hbox (badness 4403) in paragraph at lines 72--80
  \OT1/cmr/m/n/9 Prog. Theor. Phys. \OT1/cmr/bx/n/9 103\OT1/cmr/m/n/9 , 929 (200
 0), arXiv:nucl-
@@ -388,7 +381,7 @@ Underfull \hbox (badness 2409) in paragraph at lines 95--102
  []\OT1/cmr/m/n/9 P. J. Mohr, D. B. Newell,  and B. N. Tay-lor,
  []
 
-[7]
+
 Underfull \hbox (badness 2103) in paragraph at lines 285--293
  []\OT1/cmr/m/n/9 R. Bell-wied, S. Bor-sanyi, Z. Fodor, S. D. Katz,
  []
@@ -399,47 +392,43 @@ Underfull \hbox (badness 2680) in paragraph at lines 522--530
 /9 , 2056 (2014),
  []
 
-) [8] (./ahNucleiBA_apssamp.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[7]) [8] (./ahNucleiBA_apssamp.aux) ) 
 Here is how much of TeX's memory you used:
- 4904 strings out of 492649
- 64918 string characters out of 6129623
- 186558 words of memory out of 5000000
- 8690 multiletter control sequences out of 15000+600000
+ 4901 strings out of 492649
+ 64848 string characters out of 6129623
+ 155807 words of memory out of 5000000
+ 8687 multiletter control sequences out of 15000+600000
  16807 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,33p,1020b,366s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on ahNucleiBA_apssamp.pdf (8 pages, 521947 bytes).
+ 41i,8n,33p,1020b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
+b>
+Output written on ahNucleiBA_apssamp.pdf (8 pages, 472476 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
