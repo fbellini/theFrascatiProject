@@ -1,7 +1,7 @@
 /*
    akalweit@cern.ch, fbellini@cern.ch
    17.01.2018 - The Frascati plot
-   last update: 26.09.2018
+   last update: 27.09.2018
 */
 #include "TMath.h"
 #include "TGraphAsymmErrors.h"
@@ -291,10 +291,10 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   
   gStyle->SetOptStat(0);
   gStyle->SetOptTitle(0);
-  gStyle->SetPadTopMargin(0.02);
+  gStyle->SetPadTopMargin(0.03);
   gStyle->SetPadBottomMargin(0.15);
-  gStyle->SetPadLeftMargin(0.17);
-  gStyle->SetPadRightMargin(0.02); 
+  gStyle->SetPadLeftMargin(0.15);
+  gStyle->SetPadRightMargin(0.05); 
 
   // ------------------
   // make the figure with coalescence only
@@ -713,30 +713,33 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   //
   TCanvas * coalcanv;
   if (plotvert) {
-    coalcanv = new TCanvas("coalcanv", "coalescence", 500, 1000);
+    coalcanv = new TCanvas("coalcanv", "coalescence", 800, 800);
     coalcanv->Divide(1,2);
   } else {
     coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 700);
     coalcanv->Divide(2,1);
   }
   coalcanv->SetBottomMargin(0.1);
-  coalcanv->SetTopMargin(0.02);
-  coalcanv->SetLeftMargin(0.17);
+  coalcanv->SetTopMargin(0.03);
+  coalcanv->SetLeftMargin(0.15);
   coalcanv->SetRightMargin(0.02);
 
   TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
-  frame_cd->GetXaxis()->SetTitleSize(0.06);
-  frame_cd->GetYaxis()->SetTitleSize(0.06);
-  frame_cd->GetXaxis()->SetLabelSize(0.06);
-  frame_cd->GetYaxis()->SetLabelSize(0.06);
+  frame_cd->GetXaxis()->SetTitleSize(0.07);
+  frame_cd->GetYaxis()->SetTitleSize(0.07);
+  frame_cd->GetXaxis()->SetLabelSize(0.07);
+  frame_cd->GetYaxis()->SetLabelSize(0.07);
+  frame_cd->GetYaxis()->SetTitleOffset(1.);
+
   if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  frame_cd->GetXaxis()->SetRangeUser(0.1, 10.5);
   
-  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.1);
-  frame_coal->GetXaxis()->SetTitleSize(0.06);
-  frame_coal->GetYaxis()->SetTitleSize(0.06);
-  frame_coal->GetXaxis()->SetLabelSize(0.06);
-  frame_coal->GetYaxis()->SetLabelSize(0.06);
+  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.3);
+  frame_coal->GetXaxis()->SetTitleSize(0.07);
+  frame_coal->GetYaxis()->SetTitleSize(0.07);
+  frame_coal->GetYaxis()->SetTitleOffset(1.);
+  frame_coal->GetXaxis()->SetLabelSize(0.07);
+  frame_coal->GetYaxis()->SetLabelSize(0.07);
   if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  frame_coal->GetXaxis()->SetRangeUser(0.1, 10.5);
 
@@ -745,10 +748,10 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   lInflectionPoint->SetLineWidth(3);
   
   TLegend * legB2_coal;
-  if (plotLinX) legB2_coal = new TLegend(0.4, 0.95-4*0.04, 0.8, 0.95);
-  else legB2_coal = new TLegend(0.2, 0.15, 0.75, 0.15+4*0.03);
+  if (plotLinX) legB2_coal = new TLegend(0.55, 0.9-5*0.06, 0.85, 0.9, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  else legB2_coal = new TLegend(0.2, 0.15, 0.75, 0.15+4*0.03, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
   legB2_coal->SetFillStyle(0);
-  legB2_coal->SetTextSize(0.035);
+  legB2_coal->SetTextSize(0.055);
   legB2_coal->SetBorderSize(0);
   
   legB2_coal->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r_{d}} = 0 (point-like)", "l");
@@ -785,7 +788,7 @@ void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
   paveptCoalCanv->SetTextSize(0.04);
   paveptCoalCanv->SetTextAlign(12);
   paveptCoalCanv->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
-  paveptCoalCanv->Draw();
+  // paveptCoalCanv->Draw();
 
   if (plotvert) {
     coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2_vert.eps");
