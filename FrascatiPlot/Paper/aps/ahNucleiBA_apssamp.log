@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  27 SEP 2018 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  27 SEP 2018 21:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -341,12 +341,12 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on input line 52.
 
 [2]
-<../theory_coalescence_Cd_B2_vert.png, id=30, 399.4925pt x 777.90625pt>
+<../theory_coalescence_Cd_B2_vert.png, id=30, 800.9925pt x 777.90625pt>
 File: ../theory_coalescence_Cd_B2_vert.png Graphic file (type png)
 <use ../theory_coalescence_Cd_B2_vert.png>
 Package pdftex.def Info: ../theory_coalescence_Cd_B2_vert.png  used on input li
 ne 103.
-(pdftex.def)             Requested size: 196.80075pt x 383.21901pt.
+(pdftex.def)             Requested size: 246.0pt x 238.90503pt.
  [3 <../theory_coalescence_Cd_B2_vert.png>]
 <../HbtRadiusParam.png, id=34, 700.6175pt x 476.78125pt>
 File: ../HbtRadiusParam.png Graphic file (type png)
@@ -354,7 +354,7 @@ File: ../HbtRadiusParam.png Graphic file (type png)
 Package pdftex.def Info: ../HbtRadiusParam.png  used on input line 153.
 (pdftex.def)             Requested size: 246.0pt x 167.40701pt.
  [4 <../HbtRadiusParam.png>]
-<../compareThermalAndCoalescence.png, id=38, 700.6175pt x 1375.1375pt>
+<../compareThermalAndCoalescence.png, id=39, 700.6175pt x 1375.1375pt>
 File: ../compareThermalAndCoalescence.png Graphic file (type png)
 <use ../compareThermalAndCoalescence.png>
 Package pdftex.def Info: ../compareThermalAndCoalescence.png  used on input lin
@@ -385,10 +385,10 @@ Underfull \hbox (badness 2680) in paragraph at lines 522--530
 
 ) [7] (./ahNucleiBA_apssamp.aux) ) 
 Here is how much of TeX's memory you used:
- 4902 strings out of 492649
- 64857 string characters out of 6129623
- 171468 words of memory out of 5000000
- 8688 multiletter control sequences out of 15000+600000
+ 4903 strings out of 492649
+ 64868 string characters out of 6129623
+ 162472 words of memory out of 5000000
+ 8689 multiletter control sequences out of 15000+600000
  16807 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,33p,900b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -415,7 +415,7 @@ b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on ahNucleiBA_apssamp.pdf (7 pages, 456655 bytes).
+Output written on ahNucleiBA_apssamp.pdf (7 pages, 475392 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
