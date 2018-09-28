@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  27 SEP 2018 21:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  28 SEP 2018 15:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -333,33 +333,40 @@ cument class option showpacs.
 Class revtex4-1 Warning: If you want your keywords to appear in your output, us
 e document class option showkeys.
 
-(./main.tex (./table1.tex) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdfte
-x/updmap/pdftex.map}]
+(./main.tex [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex
+.map}]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 52.
+(amsmath)                 on input line 64.
 
 [2]
-<../theory_coalescence_Cd_B2_vert.png, id=30, 800.9925pt x 777.90625pt>
+<../theory_coalescence_Cd_B2_vert.png, id=30, 1001.7425pt x 777.90625pt>
 File: ../theory_coalescence_Cd_B2_vert.png Graphic file (type png)
 <use ../theory_coalescence_Cd_B2_vert.png>
 Package pdftex.def Info: ../theory_coalescence_Cd_B2_vert.png  used on input li
-ne 103.
-(pdftex.def)             Requested size: 246.0pt x 238.90503pt.
- [3 <../theory_coalescence_Cd_B2_vert.png>]
-<../HbtRadiusParam.png, id=34, 700.6175pt x 476.78125pt>
+ne 114.
+(pdftex.def)             Requested size: 246.0pt x 191.02194pt.
+<../HbtRadiusParam.png, id=31, 800.9925pt x 577.15625pt>
 File: ../HbtRadiusParam.png Graphic file (type png)
 <use ../HbtRadiusParam.png>
-Package pdftex.def Info: ../HbtRadiusParam.png  used on input line 153.
-(pdftex.def)             Requested size: 246.0pt x 167.40701pt.
- [4 <../HbtRadiusParam.png>]
-<../compareThermalAndCoalescence.png, id=39, 700.6175pt x 1375.1375pt>
+Package pdftex.def Info: ../HbtRadiusParam.png  used on input line 164.
+(pdftex.def)             Requested size: 246.0pt x 177.25212pt.
+ [3 <../theory_coalescence_Cd_B2_vert.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
+ on input line 183.
+
+<../compareThermalAndCoalescence.png, id=35, 700.6175pt x 1375.1375pt>
 File: ../compareThermalAndCoalescence.png Graphic file (type png)
 <use ../compareThermalAndCoalescence.png>
 Package pdftex.def Info: ../compareThermalAndCoalescence.png  used on input lin
-e 203.
+e 198.
 (pdftex.def)             Requested size: 233.69925pt x 458.68579pt.
+[4 <../HbtRadiusParam.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
+ on input line 215.
 
 [5 <../compareThermalAndCoalescence.png>]) (./ahNucleiBA_apssamp.bbl
 Underfull \hbox (badness 4403) in paragraph at lines 72--80
@@ -368,54 +375,50 @@ Underfull \hbox (badness 4403) in paragraph at lines 72--80
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 95--102
+Underfull \hbox (badness 2409) in paragraph at lines 281--288
  []\OT1/cmr/m/n/9 P. J. Mohr, D. B. Newell,  and B. N. Tay-lor,
  []
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 285--293
- []\OT1/cmr/m/n/9 R. Bell-wied, S. Bor-sanyi, Z. Fodor, S. D. Katz,
- []
-
-[6]
-Underfull \hbox (badness 2680) in paragraph at lines 522--530
+Underfull \hbox (badness 2680) in paragraph at lines 465--473
  \OT1/cmr/m/n/9 ri-eri, Com-put. Phys. Com-mun. \OT1/cmr/bx/n/9 185\OT1/cmr/m/n
 /9 , 2056 (2014),
  []
 
-) [7] (./ahNucleiBA_apssamp.aux) ) 
+[6]) [7] (./ahNucleiBA_apssamp.aux) ) 
 Here is how much of TeX's memory you used:
- 4903 strings out of 492649
- 64868 string characters out of 6129623
- 162472 words of memory out of 5000000
- 8689 multiletter control sequences out of 15000+600000
+ 4882 strings out of 492649
+ 64407 string characters out of 6129623
+ 156110 words of memory out of 5000000
+ 8671 multiletter control sequences out of 15000+600000
  16807 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,33p,900b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.
-pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on ahNucleiBA_apssamp.pdf (7 pages, 475392 bytes).
+ 41i,9n,33p,900b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
+b>
+Output written on ahNucleiBA_apssamp.pdf (7 pages, 502341 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
