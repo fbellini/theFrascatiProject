@@ -66,7 +66,7 @@ void MakeUp(TGraphErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Sty
 void MakeUp(TGraphAsymmErrors* obj, Color_t color, Color_t Fill_Color, Int_t Fill_Style, Int_t Line_Style, Int_t Line_Width, Int_t Marker_Style, Float_t Marker_Size);
 
 //figure making
-void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
+void MakePaperFigure1(Bool_t plotLinX, Double_t pToA,
 		      TF1 *Cd_coalescence, TF1* Cd_coalescence_pointlike, TF1* Cd_coalescence_radius1third,  TF1* Cd_coalescence_largeradius,
 		      TGraphErrors * hB2_coalescence, TGraphErrors * hB2_coalescence_pointlike, TGraphErrors * hB2_coalescence_radius1third, TGraphErrors * hB2_coalescence_largeradius, Bool_t plotvert = 1);
 
@@ -299,7 +299,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   // ------------------
   // make the figure with coalescence only
   // ------------------
-  MakePaperFigure2(plotLinX, pToA,
+  MakePaperFigure1(plotLinX, pToA,
 		   Cd_coalescence, Cd_coalescence_pointlike, Cd_coalescence_radius1third, Cd_coalescence_largeradius,
 		   hB2_coalescence, hB2_coalescence_pointlike, hB2_coalescence_radius1third, hB2_coalescence_largeradius, kTRUE);
   if (plotOnlyCoalescence) return 0;
@@ -704,92 +704,86 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
 
 
-void MakePaperFigure2(Bool_t plotLinX, Double_t pToA,
+void MakePaperFigure1(Bool_t plotLinX, Double_t pToA,
 		      TF1 *Cd_coalescence, TF1* Cd_coalescence_pointlike, TF1* Cd_coalescence_radius1third,  TF1* Cd_coalescence_largeradius,
 		      TGraphErrors * hB2_coalescence, TGraphErrors * hB2_coalescence_pointlike, TGraphErrors * hB2_coalescence_radius1third, TGraphErrors * hB2_coalescence_largeradius, Bool_t plotvert) {
   //
   // Create the (pure theory) figure which plots <C_d> and B2 vs R
   // for different radii (PLOT COALESCENCE ONLY)
   //
-  TCanvas * coalcanv;
-  if (plotvert) {
-    coalcanv = new TCanvas("coalcanv", "coalescence", 800, 800);
-    coalcanv->Divide(1,2);
-  } else {
-    coalcanv = new TCanvas("coalcanv", "coalescence", 1600, 700);
-    coalcanv->Divide(2,1);
-  }
-  coalcanv->SetBottomMargin(0.1);
-  coalcanv->SetTopMargin(0.03);
-  coalcanv->SetLeftMargin(0.15);
-  coalcanv->SetRightMargin(0.02);
+  Float_t leftmargin = 0.15;
+  Float_t rightmargin = 0.05;
 
-  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 2e5, 0, 1.2);
+  TH2D * frame_cd = new TH2D("frame_cd", "#LTC_{d}#GT vs radius; #it{R} (fm); #LT#it{C}_{d}#GT", 1000, 0.01, 6.0, 120, -0.03, 1.2);
   frame_cd->GetXaxis()->SetTitleSize(0.07);
   frame_cd->GetYaxis()->SetTitleSize(0.07);
   frame_cd->GetXaxis()->SetLabelSize(0.07);
   frame_cd->GetYaxis()->SetLabelSize(0.07);
-  frame_cd->GetYaxis()->SetTitleOffset(1.);
+  frame_cd->GetYaxis()->SetTitleOffset(0.9);
+  frame_cd->GetXaxis()->SetRangeUser(0.01, 6.);
 
-  if (plotLinX) frame_cd->GetXaxis()->SetRangeUser(0.01, 8.5);
-  else  frame_cd->GetXaxis()->SetRangeUser(0.1, 10.5);
-  
-  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 1.e-4, 0.3);
+  TH2D * frame_coal = new TH2D("frame_coal", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2e5, 5.e-5, 0.3);
   frame_coal->GetXaxis()->SetTitleSize(0.07);
   frame_coal->GetYaxis()->SetTitleSize(0.07);
-  frame_coal->GetYaxis()->SetTitleOffset(1.);
+  frame_coal->GetYaxis()->SetTitleOffset(0.9);
   frame_coal->GetXaxis()->SetLabelSize(0.07);
   frame_coal->GetYaxis()->SetLabelSize(0.07);
-  if (plotLinX) frame_coal->GetXaxis()->SetRangeUser(0.01, 8.5);
-  else  frame_coal->GetXaxis()->SetRangeUser(0.1, 10.5);
-
-  TLine * lInflectionPoint = new TLine(1.3, 0.0, 1.3, 1.2);
+  frame_coal->GetXaxis()->SetRangeUser(0.01, 6.);
+ 
+  TLine * lInflectionPoint = new TLine(1.3, -0.03, 1.3, 1.2);
   lInflectionPoint->SetLineStyle(3);
-  lInflectionPoint->SetLineWidth(3);
+  lInflectionPoint->SetLineWidth(2);
   
   TLegend * legB2_coal;
-  if (plotLinX) legB2_coal = new TLegend(0.55, 0.9-5*0.06, 0.85, 0.9, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
-  else legB2_coal = new TLegend(0.2, 0.15, 0.75, 0.15+4*0.03, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
+  legB2_coal = new TLegend(0.52, 0.93-5*0.06, 0.85, 0.93, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
   legB2_coal->SetFillStyle(0);
-  legB2_coal->SetTextSize(0.055);
+  legB2_coal->SetTextSize(0.06);
   legB2_coal->SetBorderSize(0);
-  
   legB2_coal->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r_{d}} = 0 (point-like)", "l");
   legB2_coal->AddEntry(hB2_coalescence_radius1third, "#it{B}_{2} coalesc., #it{r_{d}} = 0.3 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r_{d}} = 3.2 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence_largeradius, "#it{B}_{2} coalesc., #it{r_{d}} = 10 fm", "l");
-  // add pT over A here as well
+  
+  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1000, 800);
+  //top pad
+  TPad * pad1 = new TPad("pad1","pad1", 0.01, 0.51, 0.99, 0.99);
+  pad1->SetFillColor(0);
+  pad1->SetBorderMode(0);
+  pad1->SetBorderSize(0);
+  pad1->SetMargin(leftmargin, rightmargin, 0.0, 0.05);
+  pad1->SetTicky();
+  pad1->SetTickx();
 
-  coalcanv->cd(1);
-  gPad->SetTickx();
-  gPad->SetTicky();
+  coalcanv->cd();
+  pad1->Draw();
+  pad1->cd();
   frame_cd->Draw();
   Cd_coalescence->Draw("same");
   Cd_coalescence_pointlike->Draw("same");
   Cd_coalescence_radius1third->Draw("same");
   Cd_coalescence_largeradius->Draw("same");
   lInflectionPoint->Draw();
+
+  //bottom pad
+  TPad * pad2 = new TPad("pad2","pad2", 0.01, 0.01, 0.99, 0.51); 
+  pad2->SetFillColor(0);
+  pad2->SetBorderMode(0);
+  pad2->SetBorderSize(0);
+  pad2->SetMargin(leftmargin, rightmargin, 0.15, 0.0);
+  pad2->SetLogy();
+  pad2->SetTicky();
+  pad2->SetTickx();
   
-  coalcanv->cd(2);
-  gPad->SetLogy();
-  gPad->SetTickx();
-  gPad->SetTicky();
+  coalcanv->cd();
+  pad2->Draw();
+  pad2->cd();
   frame_coal->Draw();
   hB2_coalescence->Draw("same");
   hB2_coalescence_pointlike->Draw("same");
   hB2_coalescence_radius1third->Draw("same");
   hB2_coalescence_largeradius->Draw("same");
   legB2_coal->Draw();
-
-  TPaveText * paveptCoalCanv = new TPaveText(0.5, 0.6, 0.9, 0.7, "NDC");
-  paveptCoalCanv->SetFillStyle(0);
-  paveptCoalCanv->SetTextFont(42);
-  paveptCoalCanv->SetBorderSize(0);
-  paveptCoalCanv->SetTextSize(0.04);
-  paveptCoalCanv->SetTextAlign(12);
-  paveptCoalCanv->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
-  // paveptCoalCanv->Draw();
-
+  
   if (plotvert) {
     coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2_vert.eps");
     coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2_vert.png");
@@ -1417,7 +1411,7 @@ TGraphErrors * getB2_pp7TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool_
   TFile * f0 = TFile::Open("oB2vsNch.root");
   if (!f0) return NULL;
 
-  TString gName = Form("B2_pToA=%.3f%s", pToA, (plotSys? "_sys" : ""));
+  TString gName = Form("B2_pToA=%0.3f%s", pToA, (plotSys? "_sys" : ""));
   TGraphErrors * graph = (TGraphErrors*) f0->Get(gName.Data());
   if (!graph) {
     Printf("Error: cannot retrieve graph. Check pt bin requested.");
@@ -1442,7 +1436,7 @@ TGraphErrors * getB2_pp13TeV(Bool_t plotSys, Double_t pToA, Int_t paramSet, Bool
   TFile * f0 = TFile::Open("customB2PtFixed75_A.root");
   if (!f0) return NULL;
 
-  TString gName = Form("pp13TeV%s", pToA, (plotSys? "Syst" : "Stat"));
+  TString gName = Form("pp13TeV%s", (plotSys? "Syst" : "Stat"));
   TGraphErrors * graph = (TGraphErrors*) f0->Get(gName.Data());
   if (!graph) {
     Printf("Error: cannot retrieve graph. Check pt bin requested.");
