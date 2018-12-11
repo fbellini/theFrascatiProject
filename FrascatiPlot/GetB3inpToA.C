@@ -2,7 +2,7 @@ void GetB3inpToA_PbPb5TeV();
 void GetB3inpToA_PbPb276TeV();
 void GetB3inpToA_pp7TeV();
 void GetB3LambdainpToA_PbPb276TeV();
-void GetB3inpToA_pPb5TeV(Double_t pToA = 0.733);
+void GetB3inpToA_pPb5TeV(Double_t pToA = 0.900);
 void GetB3inpToA_pPb5TeV_inelg0(Double_t pToA = 0.733);
 
 void GetB3inpToA_pp7TeV()
