@@ -7,6 +7,7 @@ FrascatiPlot/Paper/*.bbl
 FrascatiPlot/Paper/*.blg
 FrascatiPlot/Paper/*.lof
 FrascatiPlot/Paper/*.toc
+FrascatiPlot/Paper/*.zip
 .DS_Store
 FrascatiPlot/.DS_Store
 *.docx
