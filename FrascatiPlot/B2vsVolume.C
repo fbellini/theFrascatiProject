@@ -1210,8 +1210,7 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   if (paramSet == 3){
     //manual hack to reproduce Donigus, Ko arXiv:1812.05175 where HBT parameter is based on results for kT = 0.25
     radiusVal = 0.0 + 0.83 * multi3;
-  }
-  if (paramSet==2) {
+  } else if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     radiusVal = 0.190 + 0.380 * multi3;
   } else  if (paramSet==1) {

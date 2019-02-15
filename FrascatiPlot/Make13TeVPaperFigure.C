@@ -199,6 +199,10 @@ void getMultiFromR(Double_t * multi, Double_t * radius, Int_t paramSet)
   // We fit linearly the ALICE data at the kT = 0.887 
   Double_t radiusVal = radius[0];
   Double_t  multi3 = 0.0;
+  if (paramSet==3) {
+    //manual hack to have the data points fall onto the U. Heinz curve for 3He
+    multi3 = radiusVal/  0.83;
+  } else 
   if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     multi3 = (radiusVal - 0.190) /  0.380;

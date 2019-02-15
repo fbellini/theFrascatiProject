@@ -3,10 +3,10 @@
 void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
 void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
 void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
-void Make3HepPbPaperFigure(Bool_t plotLinX = 0, Double_t pToA = 0.733, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
+void Make3HepPbPaperFigure(Double_t pToA = 0.9, Bool_t plotLinX = 0, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
 
   
-void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, Bool_t plotcSHM, 
+void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, 
                           Bool_t plotPbPb5TeV)
 {
 
@@ -31,12 +31,21 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   for (Int_t jj = 0; jj < nParamSet; jj++){
     gB3vsR_pp7TeV[jj] = (TGraphErrors *) getB3_pp7TeVINELg0(kFALSE, 0.8, jj, kFALSE);
     gB3vsR_pp7TeV_sys[jj] = (TGraphErrors *) getB3_pp7TeVINELg0(kTRUE, 0.8, jj, kFALSE);
+    gB3vsR_pp7TeV_sys[jj]->SetFillStyle(1001);    
+    gB3vsR_pp7TeV_sys[jj]->SetFillColor(kGreen-10);
     // gB3vsR_pp13TeV[jj] = (TGraphErrors *) getB3_pp13TeV(kFALSE, pToA, jj, kFALSE);
     // gB3vsR_pp13TeV_sys[jj] = (TGraphErrors *) getB3_pp13TeV(kTRUE, pToA, jj, kFALSE);
     gB3vsR_pPb502TeV[jj] = (TGraphErrors *) getB3_pPb5TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_pPb502TeV_sys[jj] = (TGraphErrors *) getB3_pPb5TeV(kTRUE, pToA, jj, kFALSE);
+    gB3vsR_pPb502TeV_sys[jj]->SetFillStyle(1001);
+    gB3vsR_pPb502TeV_sys[jj]->SetFillColor(kBlue-10);
+    
+
     gB3vsR_PbPb276TeV[jj] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_PbPb276TeV_sys[jj] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToA, jj, kFALSE);
+    gB3vsR_PbPb276TeV_sys[jj]->SetFillStyle(1001);
+    gB3vsR_PbPb276TeV_sys[jj]->SetFillColor(kRed-10);
+
     gB3vsR_PbPb502TeV[jj] = (TGraphErrors *) getB3_PbPb5TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_PbPb502TeV_sys[jj] = (TGraphErrors *) getB3_PbPb5TeV(kTRUE, pToA, jj, kFALSE);
   }
@@ -48,18 +57,19 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
     //Thermal + blast-wave
   TGraphErrors* gB3blastvsR_PbPb276TeV[nParamSet];
   TGraphErrors* gB3blastvsR_PbPb276TeV_sys[nParamSet];
-
-  gB3blastvsR_PbPb276TeV[0] = (TGraphErrors *) getBlastB3_PbPb276TeV(kFALSE, pToA, 0, kFALSE);
-  gB3blastvsR_PbPb276TeV[0]->SetLineStyle(shmBlast_lineStyle);
-  gB3blastvsR_PbPb276TeV[0]->SetLineWidth(modelCurvesLineWidth);
-  gB3blastvsR_PbPb276TeV[0]->SetLineColor(kRed+2);
-
   TGraphErrors* gB3blastvsR_pPb5TeV[nParamSet];
+  for (Int_t jj = 0; jj < nParamSet; jj++){
 
-  gB3blastvsR_pPb5TeV[0] = (TGraphErrors *) getBlastB3_pPb5TeV(kFALSE, pToA, 0, kFALSE, plotcSHM);
-  gB3blastvsR_pPb5TeV[0]->SetLineStyle(shmBlast_lineStyle);
-  gB3blastvsR_pPb5TeV[0]->SetLineWidth(modelCurvesLineWidth);
-  gB3blastvsR_pPb5TeV[0]->SetLineColor(kBlue+2);
+    gB3blastvsR_PbPb276TeV[jj] = (TGraphErrors *) getBlastB3_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
+    gB3blastvsR_PbPb276TeV[jj]->SetLineStyle(shmBlast_lineStyle);
+    gB3blastvsR_PbPb276TeV[jj]->SetLineWidth(modelCurvesLineWidth);
+    gB3blastvsR_PbPb276TeV[jj]->SetLineColor(kRed+2);
+
+    gB3blastvsR_pPb5TeV[jj] = (TGraphErrors *) getBlastB3_pPb5TeV(kFALSE, pToA, jj, kFALSE, plotcSHM);
+    gB3blastvsR_pPb5TeV[jj]->SetLineStyle(shmBlast_lineStyle);
+    gB3blastvsR_pPb5TeV[jj]->SetLineWidth(modelCurvesLineWidth);
+    gB3blastvsR_pPb5TeV[jj]->SetLineColor(kBlue+2);
+  }
 //----------------------------
   //Get coalescence prediction
   //----------------------------
@@ -81,7 +91,7 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
 
   //Plot coalescence curve using same R->multi param. as Doenigus&Ko
   TGraphErrors * hB3_coalescenceParam3 = (TGraphErrors*) hB3_coalescence->Clone("hB3_coalescenceParam3");
-  convertRadiusToMulti(hB3_coalescenceParam1, 3);
+  convertRadiusToMulti(hB3_coalescenceParam3, 3);
   hB3_coalescenceParam3->SetLineColor(kOrange);
   hB3_coalescenceParam3->SetLineWidth(3);
   
@@ -91,7 +101,7 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   gStyle->SetOptStat(0);
   gStyle->SetOptTitle(0);
   gStyle->SetPadTopMargin(0.02);
-  gStyle->SetPadBottomMargin(0.15);
+  gStyle->SetPadBottomMargin(0.2);
   gStyle->SetPadLeftMargin(0.17);
   gStyle->SetPadRightMargin(0.02); 
   
@@ -125,7 +135,7 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   legB3data->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
 
   TCanvas * cb2opta = new TCanvas("B3vsR", "B3 vs R", 900, 800);
-  cb2opta->SetBottomMargin(0.15);
+  cb2opta->SetBottomMargin(0.17);
   cb2opta->SetTopMargin(0.05);
   cb2opta->SetLeftMargin(0.17);
   cb2opta->SetRightMargin(0.05);
@@ -135,15 +145,16 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
+  gB3vsR_pp7TeV_sys[ip]->Draw("p3");
+  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
   hB3_coalescence->Draw("l");
   
   gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
 
-  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
+  
   gB3vsR_pPb502TeV[ip]->Draw("samep");
 
-  gB3vsR_pp7TeV_sys[ip]->Draw("p3");
   gB3vsR_pp7TeV[ip]->Draw("samep");
   
   // gB3vsR_pp13TeV_sys[ip]->Draw("p3");
@@ -154,16 +165,17 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   
   //Alternative version -- all vs dN/deta
   //Map radius in coalescence to dN/deta
-  TH2D * hframeMult = new TH2D("hframeMult", "B_{3} vs mult; #LTd#it{N}_{ch}/d#it{#eta}#GT; #it{B}_{3} (GeV^{4}/#it{c}^{6})", 3000, 0., 3000.0, 2000, 1.e-9, 0.1);
+  TH2D * hframeMult = new TH2D("hframeMult", "B_{3} vs mult; #LTd#it{N}_{ch}/d#it{#eta_{lab}}#GT; #it{B}_{3} (GeV^{4}/#it{c}^{6})", 3000, 0., 3000.0, 2000, 1.e-9, 0.1);
   hframeMult->GetXaxis()->SetTitleSize(0.06);
   hframeMult->GetYaxis()->SetTitleSize(0.06);
-  hframeMult->GetXaxis()->SetTitleOffset(1.);
+  hframeMult->GetXaxis()->SetTitleOffset(1.2);
   hframeMult->GetXaxis()->SetLabelSize(0.05);
   hframeMult->GetYaxis()->SetLabelSize(0.05);
+  hframeMult->GetYaxis()->SetNdivisions(505);
   hframeMult->GetXaxis()->SetRangeUser(1., 3.E3);
   
   TCanvas * cb2vsdNdeta = new TCanvas("cb3vsdNdeta", "B3 vs R", 1000, 800);
-  cb2vsdNdeta->SetBottomMargin(0.15);
+  cb2vsdNdeta->SetBottomMargin(0.17);
   cb2vsdNdeta->SetTopMargin(0.05);
   cb2vsdNdeta->SetLeftMargin(0.17);
   cb2vsdNdeta->SetRightMargin(0.05);
@@ -191,7 +203,6 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   legB3dataMult->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
   legB3dataMult->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV (#it{p}_{T}/#it{A} = 0.8 GeV/#it{c})", "pf");
   //  legB3dataMult->AddEntry(gB3vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
-
   
   cb2vsdNdeta->cd();
   gPad->SetLogy();
@@ -200,6 +211,9 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   if (!plotLinX) gPad->SetLogx();
   
   hframeMult->Draw();
+  gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
+  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
+
   hB3_coalescenceParam0->Draw("l");
   hB3_coalescenceParam1->Draw("l");
   //hB3_coalescenceParam3->Draw("l"); 
@@ -209,10 +223,9 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
       gB3vsR_PbPb502TeV_sys[ip]->Draw("p3");
       gB3vsR_PbPb502TeV[ip]->Draw("samep");
   }
-  gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
+
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
 
-  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
   gB3vsR_pPb502TeV[ip]->Draw("samep");
   gB3blastvsR_pPb5TeV[0]->Draw("lsame");
   
@@ -230,6 +243,7 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, 
   cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.pdf", pToA*100));
   cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.eps", pToA*100));
   cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.png", pToA*100));
+  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.C", pToA*100));
   TString foutName = Form("paper3He/B3vsMult_R%i.root", RmappingParam);
   TFile * fout = new TFile(foutName.Data(), "recreate");
   fout->cd();
@@ -252,8 +266,7 @@ void getMultiFromR(Double_t * multi, Double_t * radius, Int_t paramSet)
   if (paramSet==3) {
     //manual hack to reproduce Donigus, Ko arXiv:1812.05175 where HBT parameteris is based on results for kT = 0.25
     multi3 = radiusVal / 0.83;
-  } else 
-  if (paramSet==2) {
+  } else if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     multi3 = (radiusVal - 0.190) /  0.380;
   } else  if (paramSet==1) {
