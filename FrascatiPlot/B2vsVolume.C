@@ -30,6 +30,7 @@ TGraphAsymmErrors * getBlastB2_pPb502TeV(Bool_t plotSys = 0, Double_t pToA = 0.7
 TGraphAsymmErrors * getBlastB2_pp7TeV(Bool_t plotSys = 0, Double_t pToA = 0.75, Int_t paramSet = 0);
 
 TGraphAsymmErrors * getBlastB3_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
+TGraphAsymmErrors * getBlastB3_pPb5TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0, Bool_t convertToR = kTRUE, Bool_t plotcSHM = 0);
 TGraphAsymmErrors * getBlastB3_pp7TeV(Bool_t plotSys = 0, Double_t pToAb3 = 0.733, Int_t paramSet = 0, Bool_t convertToR = kTRUE);
 
 TGraphAsymmErrors * getBlastB3Lambda_PbPb276TeV(Bool_t plotSys = 0, Double_t pToAb3Lambda = 1.0, Int_t paramSet = 0);
@@ -84,8 +85,7 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t 
 
 //main plotting for Frascati plot
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
-		 Double_t pToAb4Lambda = 0.75,
-		 Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 0, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 0)
+		 Double_t pToAb4Lambda = 0.75, Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 0, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 0)
 {
   //
   // main function which generates the plots of the Frascati project
@@ -94,7 +94,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //--------------------
   //data
   //--------------------
-  const Int_t nParamSet = 2;
+  const Int_t nParamSet = 4;
   TGraphErrors* gB2vsR_pp7TeV[nParamSet];
   TGraphErrors* gB2vsR_pp7TeV_sys[nParamSet];
   TGraphErrors* gB2vsR_pp7TeVINELg0[nParamSet];
@@ -398,7 +398,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   //---------------------------------------
   // PLOT FRASCATI PLOTS FOR SLIDES
   //---------------------------------------   
-  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 6.0, 2000, 1.e-4, 0.1);
+  TH2D * hframe = new TH2D("hframe", "B_{2} vs radius; #it{R} (fm); #it{B}_{2} (GeV^{2}/#it{c}^{3})", 1000, 0.01, 10.0, 2000, 1.e-4, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
   hframe->GetXaxis()->SetTitleOffset(0.8);
@@ -407,7 +407,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   if (plotLinX) hframe->GetXaxis()->SetRangeUser(0.01, 8.5);
   else  hframe->GetXaxis()->SetRangeUser(0.1, 10.5);
 
-  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 1.e-1);
+  TH2D * hframe3 = new TH2D("hframe3", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 10.0, 2000, 1.e-9, 1.e-1);
   hframe3->GetXaxis()->SetTitleSize(0.06);
   hframe3->GetYaxis()->SetTitleSize(0.06);
   hframe3->GetXaxis()->SetTitleOffset(0.8);
@@ -444,9 +444,20 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
 
 
   //Chose the set of parameterisation for the radii
-  Short_t ip = 1;
+  Short_t ip = 3;
 
-  //display
+//Pave for parameteriszatino of R --> multi 
+  TPaveText * paveparam = new TPaveText(0.1, 0.17, 0.7, 0.23, "NDC");
+  paveparam->SetFillStyle(0);
+  paveparam->SetTextFont(42);
+  paveparam->SetBorderSize(0);
+  paveparam->SetTextSize(0.05);
+  paveparam->SetTextAlign(12);
+  if (ip==1) paveparam->AddText(Form("R#rightarrow mult. constrained with ALICE B_{2}"));
+  if (ip==0) paveparam->AddText(Form("R#rightarrow mult. fit to ALICE HBT"));
+  if (ip==3) paveparam->AddText(Form("R#rightarrow mult. as in Ko et al., arXiv:1812.05175"));
+
+ //display
   TCanvas * cb2 = new TCanvas("cb2", "Frascati plot", 1600, 1000);
   cb2->SetBottomMargin(0.02);
   cb2->SetTopMargin(0.02);
@@ -608,7 +619,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB2data->Draw();
   legB2coal->Draw();
   legB2blast->Draw();
-
+  paveparam->Draw();  
   //--------------------
   //Alternative plotting with legends on the side -- B3
   //--------------------
@@ -670,11 +681,11 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   // gB3LambdavsR_PbPb276TeV_sys->Draw("samep2");
   // gB3LambdavsR_PbPb276TeV->Draw("samep");
 
-
   cb3opta->cd(2);
   legB3data->Draw();
   legB3coal->Draw();
   legB3blast->Draw();
+  paveparam->Draw();  
 
   TCanvas * cb3optaLambda = new TCanvas("cb3optaLambda", "Frascati plot B3 Lambda", 1000, 600);
   cb3optaLambda->SetBottomMargin(0.02);
@@ -697,7 +708,8 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   legB3data->Draw();
   legB3coal->Draw();
   legB3blast->Draw();
-
+  paveparam->Draw();  
+  
   
   return 0;  
 }
@@ -1195,6 +1207,10 @@ void getRadiusFromParameterisation(Double_t * multi, Double_t * radius, Int_t pa
   // VERSION (17th May 2018):
   // We fit linearly the ALICE data at the kT = 0.887 
   Double_t radiusVal = 0.0;
+  if (paramSet == 3){
+    //manual hack to reproduce Donigus, Ko arXiv:1812.05175 where HBT parameter is based on results for kT = 0.25
+    radiusVal = 0.0 + 0.83 * multi3;
+  }
   if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     radiusVal = 0.190 + 0.380 * multi3;
@@ -1844,6 +1860,29 @@ TGraphAsymmErrors * getBlastB3_pp7TeV(Bool_t plotSys, Double_t pToAb3, Int_t par
   // d/p from thermal model T = 156 MeV
  
   TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pp7TeV", "rms", "He3", pToAb3);
+  if (convertToR) convertMultiToRadius(graph, paramSet);
+  
+  graph->SetMarkerColor(kMagenta-2);
+  graph->SetLineColor(kMagenta-2);
+  graph->SetFillColorAlpha(kMagenta-2, 0.1);  
+  graph->SetFillStyle(1001);
+  graph->SetMarkerSize(1.5);
+  graph->SetMarkerStyle(33);
+  graph->SetLineWidth(2);
+  graph->SetLineStyle(2);
+  return graph;
+  
+}
+
+//---------------------------------------------------------
+//---------------------- Blast wave + thermal pPb 5 TeV
+TGraphAsymmErrors * getBlastB3_pPb5TeV(Bool_t plotSys, Double_t pToAb3, Int_t paramSet, Bool_t convertToR, Bool_t plotcSHM)
+{
+  // Final proton yield from paper spectra p-Pb 5 TeV
+  // Blast wave params from π,K,p published
+  // 3He/p from thermal model 
+ 
+  TGraphAsymmErrors* graph = (TGraphAsymmErrors *) generateBWpredictionsB2("pPb502TeV", "rms", "He3", pToAb3, plotcSHM);
   if (convertToR) convertMultiToRadius(graph, paramSet);
   
   graph->SetMarkerColor(kMagenta-2);
