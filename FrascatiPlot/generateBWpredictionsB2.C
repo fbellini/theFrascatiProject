@@ -140,14 +140,14 @@ void GetParams_pPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Doub
   //p+pbar
   Double_t dNdyProt[7]    = {2.280446, 1.853576, 1.577375, 1.221875, 0.8621290, 0.5341445, 0.2307767};
   Double_t dNdyErrProt[7] = {1.585968e-01, 1.284426e-01, 1.084793e-01, 8.190972e-02, 5.608663e-02, 3.408551e-02, 1.450569e-02};
-
   // pions
   Double_t dNdyPion[7]     = {4.080698e+01, 3.308405e+01, 2.805619e+01, 2.174798e+01, 1.529001e+01, 9.455217e+00, 4.313766e+00};
   Double_t dNdyErrPion[7]  = {1.985452e+00, 1.586469e+00, 1.329896e+00, 1.010231e+00, 7.081661e-01, 4.401432e-01, 1.950208e-01};
-
-
-
    
+  //const Double_t cSHM_pPb_pro[7] = {0.945991, 0.745373, 0.614709, 0.44634, 0.280718, 0.13722, 0.036778};
+  //const Double_t cSHM_pPb_3He[7] = {4.84968e-06, 3.21534e-06, 2.26874e-06, 1.20205e-06, 4.63773e-07, 1.06033e-07, 7.52572e-09};
+  //const Double_t mult_pPb[7] = { 45., 36.2, 30.5, 23.2, 16.1, 9.8, 4.4};
+
   for (Int_t j=0; j<7; j++){
     parT[j] = bt[j];
     parTerr[j] = bterr[j];
@@ -283,13 +283,14 @@ void GetParams_PbPb502TeV(Double_t *parT, Double_t *parTerr, Double_t *parN, Dou
 // Generate predictions for BA
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TString errType = "rms", TString particle = "deuteron", Double_t pToA = 0.)
+TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TString errType = "rms", TString particle = "deuteron", Double_t pToA = 0., Bool_t plotcSHM = 0)
 {
   //
   // Get the blast-wave function for a given particle type based on the pi/K/p parameters.
   // The normalisation is such that the pT-integrated yields of (anti-nuclei)
   // correspond to the thermal model expectation based on a fixed d/p or 3He/p ratio.
   //
+  //Grand Canonical thermal model GSI-Heidelberg
   const Double_t dOverPthermal = 0.00294824; // GSI-Heidelberg at 156 MeV
   const Double_t dOverPiThermal = 0.0001817; // GSI-Heidelberg at 156 MeV
   const Double_t He3OverPiThermal = 5.354e-07; // GSI-Heidelberg at 156 MeV
@@ -299,6 +300,12 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
   const Double_t mLambda = 1.115683; 
   const Double_t He4thermal = 7.e-7; //read off plot 
   const Double_t H4Lthermal = 2.e-7; //read off plot
+
+  //Canonical SHM
+  //yields from the CSM for the case Vc=dN/dy and 155 MeV (interpolated from the values calculated by Volodya):
+  const Double_t cSHM_pPb_pro[7] = {0.945991, 0.745373, 0.614709, 0.44634, 0.280718, 0.13722, 0.036778};
+  const Double_t cSHM_pPb_3He[7] = {4.84968e-06, 3.21534e-06, 2.26874e-06, 1.20205e-06, 4.63773e-07, 1.06033e-07, 7.52572e-09};
+  const Double_t mult_pPb[7] = { 45., 36.2, 30.5, 23.2, 16.1, 9.8, 4.4};
 
   //Set nucleus mass
   Double_t m = Mass(particle.Data());
@@ -390,7 +397,12 @@ TGraphAsymmErrors * generateBWpredictionsB2(TString system = "PbPb276TeV",  TStr
     //if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, protYield[j]*dOverPthermal/Inucleus); // normalisation to match yields
     //if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, protYield[j]*He3OverPthermal/Inucleus); // normalisation to match yields
     if (Inucleus>0 && particle.Contains("deuteron")) fNucleus->SetParameter(1, pionYield[j]*dOverPiThermal/Inucleus); // normalisation to match yields
-    if (Inucleus>0 && particle.Contains("He3")) fNucleus->SetParameter(1, pionYield[j]*He3OverPiThermal/Inucleus); // normalisation to match yields
+    if (Inucleus>0 && particle.Contains("He3")) {
+      if (system.Contains("pPb502TeV") && plotcSHM)
+        fNucleus->SetParameter(1, protYield[j]*(cSHM_pPb_3He[j]/cSHM_pPb_pro[j])/Inucleus); // normalisation to match yields
+      else
+        fNucleus->SetParameter(1, pionYield[j]*He3OverPiThermal/Inucleus); // normalisation to match yields
+    }
     if (Inucleus>0 && particle.Contains("hyper-triton")) {
       //Double_t he3Yield = protYield[j]*He3OverPthermal;
       Double_t he3Yield = pionYield[j]*He3OverPiThermal;
