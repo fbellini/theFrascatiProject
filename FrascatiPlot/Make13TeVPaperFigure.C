@@ -179,9 +179,9 @@ void Make13TeVPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   legB2dataMult->Draw();
   legB2coal->Draw();
 
-  cb2vsdNdeta->SaveAs("B2vsMult_w13TeV.pdf");
+  cb2vsdNdeta->SaveAs("paper13TeVpp/B2vsMult_w13TeV.pdf");
   //  TString foutName = Form("B2vsR_w13TeV_param%i.root", RmappingParam);
-  TString foutName = Form("B2vsMult_w13TeV.root", RmappingParam);
+  TString foutName = Form("paper13TeVpp/B2vsMult_w13TeV.root", RmappingParam);
   TFile * fout = new TFile(foutName.Data(), "recreate");
   fout->cd();
   cb2vsdNdeta->Write();

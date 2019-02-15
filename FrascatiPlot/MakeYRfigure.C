@@ -454,8 +454,8 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   if (plotPseudoData)
     masterLeg->AddEntry(gPseudo3He, "ALICE pseudo-data, Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "lp");
   
-  cr4->SaveAs("BAmodels.png");
-  cr4->SaveAs("BAmodels.eps");
+  cr4->SaveAs("yellowReport/BAmodels.png");
+  cr4->SaveAs("yellowReport/BAmodels.eps");
 
   //-------------------------------
   //-------------------------------
@@ -712,9 +712,9 @@ void MakeYRfigure(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Double_t
   pad[3][0]->cd();
   paveALICE->Draw();
  
-  cr5->SaveAs("BAmodels_pseudoUnc.png");
-  cr5->SaveAs("BAmodels_pseudoUnc.eps");
-  cr5->SaveAs("BAmodels_pseudoUnc.pdf");
+  cr5->SaveAs("yellowReport/BAmodels_pseudoUnc.png");
+  cr5->SaveAs("yellowReport/BAmodels_pseudoUnc.eps");
+  cr5->SaveAs("yellowReport/BAmodels_pseudoUnc.pdf");
 
   return;
   
@@ -865,3 +865,4 @@ void ConfigThreePanelsPad(TPad* pad1, TPad* pad2, TPad* pad3, Float_t leftmargin
   pad3->SetTickx();
   return;
 }
+
