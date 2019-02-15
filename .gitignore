@@ -9,3 +9,5 @@
 ./FrascatiPlot/Paper/*.toc
 .DS_Store
 ./FrascatiPlot/.DS_Store
+*.docx
+*.pptx
