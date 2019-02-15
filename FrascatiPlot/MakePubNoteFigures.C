@@ -428,9 +428,9 @@ void MakePubNoteFigures(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Do
   masterLeg4L->Draw();
   paveLab4L->Draw();
 
-  cr6->SaveAs("BA_models.png");
-  cr6->SaveAs("BA_models.eps");
-  cr6->SaveAs("BA_models.pdf");
+  cr6->SaveAs("pubNote/BA_models.png");
+  cr6->SaveAs("pubNote/BA_models.eps");
+  cr6->SaveAs("pubNote/BA_models.pdf");
 
 //-------------------------------------
   TCanvas * cr7 = new TCanvas("cr7", "projections", 1400, 700);
@@ -560,9 +560,9 @@ void MakePubNoteFigures(Double_t pToAb3 = 0.77, Double_t pToAb3Lambda = 1.17, Do
   pad_3opt[3][0]->cd();
   paveALICE->Draw();
  
-  cr7->SaveAs("BA_projected_pseudoUnc.png");
-  cr7->SaveAs("BA_projected_pseudoUnc.eps");
-  cr7->SaveAs("BA_projected_pseudoUnc.pdf");
+  cr7->SaveAs("pubNote/BA_projected_pseudoUnc.png");
+  cr7->SaveAs("pubNote/BA_projected_pseudoUnc.eps");
+  cr7->SaveAs("pubNote/BA_projected_pseudoUnc.pdf");
 
   return;
   
