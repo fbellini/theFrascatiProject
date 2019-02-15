@@ -3,18 +3,20 @@
 void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
 void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
 void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
-void Make3HepPbPaperFigure(Bool_t plotLinX = 0, Double_t pToA = 0.90, Int_t RmappingParam = 1);
+void Make3HepPbPaperFigure(Bool_t plotLinX = 0, Double_t pToA = 0.733, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
 
   
-void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
+void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam, Bool_t plotcSHM, 
+                          Bool_t plotPbPb5TeV)
 {
 
   Int_t ip = RmappingParam;
-
+  Float_t textLabelSize = 0.033;
+  Short_t modelCurvesLineWidth = 3;
   //----------------------------
   //Get data
   //----------------------------
-  const Int_t nParamSet = 2;
+  const Int_t nParamSet = 4;
   TGraphErrors* gB3vsR_pp7TeV[nParamSet];
   TGraphErrors* gB3vsR_pp7TeV_sys[nParamSet];
   // TGraphErrors* gB3vsR_pp13TeV[nParamSet];
@@ -25,10 +27,6 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   TGraphErrors* gB3vsR_PbPb276TeV_sys[nParamSet];
   TGraphErrors* gB3vsR_PbPb502TeV[nParamSet];
   TGraphErrors* gB3vsR_PbPb502TeV_sys[nParamSet];
-
-  //Thermal + blast-wave
-  TGraphErrors* gB3blastvsR_PbPb276TeV[nParamSet];
-  TGraphErrors* gB3blastvsR_PbPb276TeV_sys[nParamSet];
   
   for (Int_t jj = 0; jj < nParamSet; jj++){
     gB3vsR_pp7TeV[jj] = (TGraphErrors *) getB3_pp7TeVINELg0(kFALSE, 0.8, jj, kFALSE);
@@ -46,29 +44,47 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   //----------------------------
   //Get thermal + Blast-wave prediction
   //----------------------------
+  Short_t shmBlast_lineStyle = 9;
+    //Thermal + blast-wave
+  TGraphErrors* gB3blastvsR_PbPb276TeV[nParamSet];
+  TGraphErrors* gB3blastvsR_PbPb276TeV_sys[nParamSet];
+
   gB3blastvsR_PbPb276TeV[0] = (TGraphErrors *) getBlastB3_PbPb276TeV(kFALSE, pToA, 0, kFALSE);
-  gB3blastvsR_PbPb276TeV[0]->SetLineStyle(5);
-  gB3blastvsR_PbPb276TeV[0]->SetLineWidth(4);
+  gB3blastvsR_PbPb276TeV[0]->SetLineStyle(shmBlast_lineStyle);
+  gB3blastvsR_PbPb276TeV[0]->SetLineWidth(modelCurvesLineWidth);
   gB3blastvsR_PbPb276TeV[0]->SetLineColor(kRed+2);
 
-  //----------------------------
+  TGraphErrors* gB3blastvsR_pPb5TeV[nParamSet];
+
+  gB3blastvsR_pPb5TeV[0] = (TGraphErrors *) getBlastB3_pPb5TeV(kFALSE, pToA, 0, kFALSE, plotcSHM);
+  gB3blastvsR_pPb5TeV[0]->SetLineStyle(shmBlast_lineStyle);
+  gB3blastvsR_pPb5TeV[0]->SetLineWidth(modelCurvesLineWidth);
+  gB3blastvsR_pPb5TeV[0]->SetLineColor(kBlue+2);
+//----------------------------
   //Get coalescence prediction
   //----------------------------
   Double_t mT = TMath::Sqrt(pToA * pToA + 0.938 * 0.938);
   TGraphErrors* hB3_coalescence = (TGraphErrors*) MakeB3TheoryGraphCoalescence(mT);
   hB3_coalescence->SetMarkerStyle(20);
-  hB3_coalescence->SetLineWidth(3);
+  hB3_coalescence->SetLineWidth(modelCurvesLineWidth);
   hB3_coalescence->SetLineStyle(1);
 
   TGraphErrors * hB3_coalescenceParam0 = (TGraphErrors*) hB3_coalescence->Clone("hB3_coalescenceParam0");
   convertRadiusToMulti(hB3_coalescenceParam0, 0);
   hB3_coalescenceParam0->SetLineStyle(2);
+  hB3_coalescenceParam0->SetLineWidth(modelCurvesLineWidth);
   // hB3_coalescenceParam0->SetLineColor(kRed+2);
   // hB3_coalescenceParam0->SetMarkerColor(kRed+2);
 
   TGraphErrors * hB3_coalescenceParam1 = (TGraphErrors*) hB3_coalescence->Clone("hB3_coalescenceParam1");
   convertRadiusToMulti(hB3_coalescenceParam1, 1);
 
+  //Plot coalescence curve using same R->multi param. as Doenigus&Ko
+  TGraphErrors * hB3_coalescenceParam3 = (TGraphErrors*) hB3_coalescence->Clone("hB3_coalescenceParam3");
+  convertRadiusToMulti(hB3_coalescenceParam1, 3);
+  hB3_coalescenceParam3->SetLineColor(kOrange);
+  hB3_coalescenceParam3->SetLineWidth(3);
+  
   //----------------------------
   //plot
   //----------------------------
@@ -93,7 +109,7 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   pavept->SetFillStyle(0);
   pavept->SetTextFont(42);
   pavept->SetBorderSize(0);
-  pavept->SetTextSize(0.05);
+  pavept->SetTextSize(textLabelSize);
   pavept->SetTextAlign(12);
   pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
 
@@ -146,32 +162,33 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   hframeMult->GetYaxis()->SetLabelSize(0.05);
   hframeMult->GetXaxis()->SetRangeUser(1., 3.E3);
   
-  TCanvas * cb2vsdNdeta = new TCanvas("cb3vsdNdeta", "B3 vs R", 900, 800);
+  TCanvas * cb2vsdNdeta = new TCanvas("cb3vsdNdeta", "B3 vs R", 1000, 800);
   cb2vsdNdeta->SetBottomMargin(0.15);
   cb2vsdNdeta->SetTopMargin(0.05);
   cb2vsdNdeta->SetLeftMargin(0.17);
   cb2vsdNdeta->SetRightMargin(0.05);
 
-  TLegend * legB3coal = new TLegend(0.45, 0.8, 0.65, 0.95,"#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm");
+  TLegend * legB3coal = new TLegend(0.2, 0.78, 0.5, 0.92,"#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm");
   legB3coal->SetFillStyle(0);
-  legB3coal->SetTextSize(0.035);
+  legB3coal->SetTextSize(textLabelSize);
   legB3coal->SetBorderSize(0);
-  //legB3coal->AddEntry(hB3_coalescenceParam0, "param. A (fit to HBT radii)", "l");
-  legB3coal->AddEntry(hB3_coalescenceParam1, "param. B (constrained to ALICE #it{B}_{2})", "l");
+  legB3coal->AddEntry(hB3_coalescenceParam0, "fit to HBT radii", "l");
+  legB3coal->AddEntry(hB3_coalescenceParam1, "constrained to ALICE #it{B}_{2}", "l");
 
-  TLegend * legB3therm = new TLegend(0.45, 0.7, 0.65, 0.8,"GSI-Heid.+ Blast wave (#piKp)");
+  TLegend * legB3therm = new TLegend(0.55, 0.78, 0.83, 0.92,"SHM + blast-wave (ALICE #piKp)");
   legB3therm->SetFillStyle(0);
-  legB3therm->SetTextSize(0.035);
+  legB3therm->SetTextSize(textLabelSize);
   legB3therm->SetBorderSize(0);
-  legB3therm->AddEntry(gB3blastvsR_PbPb276TeV[0], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "l");
+  legB3therm->AddEntry(gB3blastvsR_PbPb276TeV[0], "GC GSI-Heid. (T = 156 MeV)", "l");
+  legB3therm->AddEntry(gB3blastvsR_pPb5TeV[0], "CSM (T = 155 MeV)", "l");
  
   TLegend * legB3dataMult = new TLegend(0.2, 0.25, 0.45, 0.25+5*0.05,"ALICE");
   legB3dataMult->SetFillStyle(0);
-  legB3dataMult->SetTextSize(0.035);
+  legB3dataMult->SetTextSize(0.033);
   legB3dataMult->SetBorderSize(0);
   legB3dataMult->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  legB3dataMult->AddEntry(gB3vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, preliminary", "pf");
-  legB3dataMult->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, this analysis", "pf");
+  if (plotPbPb5TeV)  legB3dataMult->AddEntry(gB3vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, preliminary", "pf");
+  legB3dataMult->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
   legB3dataMult->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV (#it{p}_{T}/#it{A} = 0.8 GeV/#it{c})", "pf");
   //  legB3dataMult->AddEntry(gB3vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
 
@@ -185,17 +202,20 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   hframeMult->Draw();
   hB3_coalescenceParam0->Draw("l");
   hB3_coalescenceParam1->Draw("l");
+  //hB3_coalescenceParam3->Draw("l"); 
   gB3blastvsR_PbPb276TeV[0]->Draw("lsame");
   
-  gB3vsR_PbPb502TeV_sys[ip]->Draw("p3");
-  gB3vsR_PbPb502TeV[ip]->Draw("samep");
-
+  if (plotPbPb5TeV) {
+      gB3vsR_PbPb502TeV_sys[ip]->Draw("p3");
+      gB3vsR_PbPb502TeV[ip]->Draw("samep");
+  }
   gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
 
   gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
   gB3vsR_pPb502TeV[ip]->Draw("samep");
-
+  gB3blastvsR_pPb5TeV[0]->Draw("lsame");
+  
   gB3vsR_pp7TeV_sys[ip]->Draw("p3");
   gB3vsR_pp7TeV[ip]->Draw("samep");
   
@@ -207,8 +227,10 @@ void Make3HepPbPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   legB3coal->Draw();
   legB3therm->Draw();
   
-  cb2vsdNdeta->SaveAs("B3vsMult.pdf");
-  TString foutName = Form("B3vsMult_R%i.root", RmappingParam);
+  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.pdf", pToA*100));
+  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.eps", pToA*100));
+  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.png", pToA*100));
+  TString foutName = Form("paper3He/B3vsMult_R%i.root", RmappingParam);
   TFile * fout = new TFile(foutName.Data(), "recreate");
   fout->cd();
   cb2vsdNdeta->Write();
@@ -226,6 +248,11 @@ void getMultiFromR(Double_t * multi, Double_t * radius, Int_t paramSet)
   // We fit linearly the ALICE data at the kT = 0.887 
   Double_t radiusVal = radius[0];
   Double_t  multi3 = 0.0;
+
+  if (paramSet==3) {
+    //manual hack to reproduce Donigus, Ko arXiv:1812.05175 where HBT parameteris is based on results for kT = 0.25
+    multi3 = radiusVal / 0.83;
+  } else 
   if (paramSet==2) {
     //manual hack to have the data points fall onto the U. Heinz curve for 3He
     multi3 = (radiusVal - 0.190) /  0.380;
