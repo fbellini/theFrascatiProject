@@ -1,5 +1,6 @@
 ./FrascatiPlot/Paper/*.aux
 ./FrascatiPlot/Paper/*.log
+./FrascatiPlot/Paper/aps/*.log
 ./FrascatiPlot/Paper/*.out
 ./FrascatiPlot/Paper/*.synctex.gz
 ./FrascatiPlot/Paper/*.bbl
@@ -7,3 +8,4 @@
 ./FrascatiPlot/Paper/*.lof
 ./FrascatiPlot/Paper/*.toc
 .DS_Store
+./FrascatiPlot/.DS_Store
