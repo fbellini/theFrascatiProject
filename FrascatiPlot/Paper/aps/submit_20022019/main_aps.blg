@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main_aps.aux
+The style file: apsrev4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main_apsNotes.bib
+Database file #2: main_aps.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev41Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+Warning--missing journal in Bazak:2018hgl
+Warning--missing journal in Zhao:2018lyf
+Warning--missing journal in Oliinychenko:2018ugs
+Warning--missing journal in Xu:2018jff
+Warning--empty year in HeinzTorino
+Warning--missing journal in Sun:2018mqq
+Warning--missing journal in Poulin:2018wzu
+Warning--empty year in AMS100
+You've used 60 entries,
+            5847 wiz_defined-function locations,
+            2115 strings with 28075 characters,
+and the built_in function-call counts, 56544 in all, are:
+= -- 3787
+> -- 1283
+< -- 362
++ -- 423
+- -- 313
+* -- 9013
+:= -- 5622
+add.period$ -- 60
+call.type$ -- 60
+change.case$ -- 234
+chr.to.int$ -- 62
+cite$ -- 68
+duplicate$ -- 5383
+empty$ -- 4231
+format.name$ -- 787
+if$ -- 11075
+int.to.chr$ -- 7
+int.to.str$ -- 67
+missing$ -- 675
+newline$ -- 278
+num.names$ -- 174
+pop$ -- 2093
+preamble$ -- 1
+purify$ -- 288
+quote$ -- 0
+skip$ -- 1992
+stack$ -- 0
+substring$ -- 1404
+swap$ -- 5087
+text.length$ -- 125
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 797
+warning$ -- 9
+while$ -- 174
+width$ -- 0
+write$ -- 600
+(There were 9 warnings)

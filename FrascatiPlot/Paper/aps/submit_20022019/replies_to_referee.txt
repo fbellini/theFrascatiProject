@@ -1,0 +1,153 @@
+Dear Editor and referees,
+
+    we are gratefult for having considered and reviewed our manuscript.
+In the following we hope to address your concerns and we provide replies 
+to the main issues as well as an updated version of the manuscript.
+We do hope that based on our replies, the two referees will reconsider their judgement 
+regarding the suitability for publication in PRL. 
+At the same time we tried to improve the readability of the paper, which was one of the 
+main criticisms of the first referee.
+In addition, we shortened the text in order to fit within the word limit.
+
+With kind regards,
+
+     A. Kalweit and F. Bellini
+
+
+------------------------------------------------------------------------
+Replies to referees
+------------------------------------------------------------------------
+Re: LW16156
+    Testing production scenarios for (anti-)(hyper-)nuclei and exotica at
+    LHC energies
+    by Francesca Bellini and Alexander P. Kalweit
+
+----------------------------------------------------------------------
+Report of Referee A -- LW16156/Bellini
+----------------------------------------------------------------------
+
+R: I recommend against publication of the manuscript in PRL. The topic is
+certainly of interest, although to a small community. 
+
+A: We do believe that the paper is of interest for a large community that spans several 
+fields of physics: 
+- nuclear physics (it addresses special nature of hypertriton and uses state-of the art knowledge 
+of nuclear properties)
+- heavy-ion physics (it addresses the "anti-nuclei puzzle" as described in the manuscript) 
+- hadron spectroscopy (the hypertriton could serve as a test case for new studies on X(3872) and 
+hadron-molecule states in general) 
+- dark matter searches and astroparticle physics (production mechanisms of anti-nuclei need to be 
+understood for the determination of the secondary cosmic ray background for space-based experiments 
+like AMS-02, GAPS, ...) 
+- nuclear astrophysics (understanding hypernuclei production and properties adds to the study of the 
+hyperon-nucleon interactions that are relevant to understand and model the equation of state of 
+neutron stars)
+
+R: The techniques are rather standard, and the ideas have been discussed previously.
+Non-zero-extent wave functions have been applied to deuteron production, but to my knowledge this is 
+the first time I've seen it applied to A>2 coalescence.
+
+R: Unfortunately, the paper is not well written. I had to re-read several
+sections numerous times to understand what was meant by the various
+formalisms. The model descriptions "thermal", "blast-wave" and
+"thermal+blast-wave" seemed to be applied to the same line in Figure 3
+depending on what was being read in the manuscript. The ordering of
+the various subsections made it hard to follow where the authors were
+going, or to discern the main point of the paper.
+
+R: The conclusions were insufficiently compelling to warrant publication
+in PRL, even if the paper was rewritten. Stating that one model fit
+the data better than another is publishable, but not as a PRL.
+
+
+R: If the paper was rewritten and submitted to PRC, it would benefit from
+a more physical comparison between models. Foregoing the
+finite-extent-wave-function corrections, coalescence and thermal
+models should provide identical answers apart from a modest Boltzmann
+correction, exp(-B/T). Additionally, in this paper, the coalescence
+prescription used a Gaussian assumption for the spatial shape of the
+phase space density. By comparing the phase space distributions (for a
+given momentum) in the blast-wave to that assumed in the coalescence
+prescription, one should be able to understand why the two models
+differed so greatly in the lower panel of Figure 3. Was the problem
+that the shape of the phase space distribution was non-Gaussian, or
+was the Gaussian radii incorrect? Aside, I assumed both models used
+the same non-zero-extent wave function corrections.
+
+Finally, I list two physics questions the authors should consider
+should they rewrite the paper for PRC.
+
+1. Many of the hadrons come from longer-lived decays. How does this
+affect the various B_A parameters?
+
+2. For coalescence, the HBT radii used should be those that
+characterize the phase space distribution in the pair frame, not the
+lab frame. In the pair frame, Rout is larger than Rside by an
+additional gamma factor. This could increase the product of the three
+radii by nearly a factor of 2.
+
+----------------------------------------------------------------------
+Report of Referee B -- LW16156/Bellini
+----------------------------------------------------------------------
+
+In this paper the authors study the coalescence model for the
+production of light (anti)-nuclei in heavy ion collisions. The authors
+emphasize the special role of the hyper triton since, due to it every
+small separation energy and associated large size, it provides the
+most sensitivity for testing the coalescence model. The authors imply
+a simple model for the nuclei and use the quantum improved formulas of
+Ref. 7 to calculate the coalescence parameter B2 for various system.
+They argue, more or less correctly, that a measurement of the
+hyper-triton for smaller colliding systems would be very helpful in
+testing the coalescence model and/or the structure of the hyper
+triton.
+
+In principle this paper would potentially be suitable for PRL is the
+following comments are properly addressed:
+
+1) The authors admit that they use a simple (oscillator) model for the
+nuclear "wave function" i.e. rms. While this is probably fine for d
+and He, it is by no means clear if it will not be misleading for the
+hyper-triton. As shown in Ref. 2 the hyper-triton is closer to a
+"deuteron"+ weakly bound Lambda than the simple three baryon
+oscillator state the authors assume. This is also demonstrated in Ref.
+33, where the authors of that paper are able to reproduce the measured
+hyper-triton yield by talking into account, in addition to three
+baryon coalescence, the deuteron - Lambda coalescence. Incidentally,
+the authors of Ref. 33 state that by using p+n+Lambda coalescence only
+they get about 50% of the measured hyper-triton yield. The present
+paper, on the other hand, seems to be almost a factor of ten below the
+data (see Fig. 3). This obvious discrepancy needs to be addressed. In
+addition the authors also need to provide an estimate how the
+dependence of the source size R changes if one were to include the
+aforementioned "deuteron"-Lambda coalescence.
+
+2) The authors concentrate on the system size and argue for
+measurements with smaller systems. However, coalescence being a
+phasespace effect can equally be tested by looking at the momentum
+dependence of B_2. Or in other words, it is known from HBT
+measurements the the effective source size (region of homogeneity)
+drops with increasing momentum. Thus one would expect that a similar
+effect as shown in Fig. 3 should also be seen if one looks at the
+momentum dependence of the coalescence parameter B2. The authors need
+to discuss this and give credible arguments why the momentum
+dependence is less suitable (if this is the case) (Incidentally the
+measured pt dependence of the the B2 parameter shows already this
+effect)
+
+3) The authors use a blast wave model for to calculate the spectrum
+for the thermal model. What are the blast wave parameters used? They
+should be provided.
+
+4) In the introduction the authors list three approaches, (a)-(c), to
+address the production of light (anti)-nuclei. They miss a fourth, and
+likely most realistic one, which has recently been developed by
+Oliinychenko et al. (arXiv:1809.03071) In this approach, which was
+restricted to deuteron, the destruction and production of deuteron
+after chemical freeze out was studied in kinetic theory and the
+measured B2 parameters were well reproduced.
+
+5) Section V needs to be rewritten. After reading this several times I
+still have no idea what these models A and B are supposed to be. Also,
+the average reader will not necessarily know what INEL>0 is supposed
+to mean.
