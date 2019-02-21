@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  20 FEB 2019 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  21 FEB 2019 19:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -337,76 +337,108 @@ File: theory_coalescence_Cd_B2_vert.png Graphic file (type png)
 Package pdftex.def Info: theory_coalescence_Cd_B2_vert.png  used on input line 
 191.
 (pdftex.def)             Requested size: 246.0pt x 191.02194pt.
-<HbtRadiusParam.png, id=31, 800.9925pt x 577.15625pt>
-File: HbtRadiusParam.png Graphic file (type png)
-<use HbtRadiusParam.png>
-Package pdftex.def Info: HbtRadiusParam.png  used on input line 240.
-(pdftex.def)             Requested size: 246.0pt x 177.25212pt.
  [3 <./theory_coalescence_Cd_B2_vert.png>]
-<compareThermalAndCoalescence.png, id=35, 700.6175pt x 1375.1375pt>
+<compareThermalAndCoalescence.png, id=34, 700.6175pt x 1375.1375pt>
 File: compareThermalAndCoalescence.png Graphic file (type png)
 <use compareThermalAndCoalescence.png>
 Package pdftex.def Info: compareThermalAndCoalescence.png  used on input line 2
-74.
+63.
 (pdftex.def)             Requested size: 233.69925pt x 458.68579pt.
- [4 <./HbtRadiusParam.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 290.
 
-[5 <./compareThermalAndCoalescence.png>] (./main_aps.bbl
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--279
+[]\OT1/cmr/m/n/10 In Fig. 2[], the avail-able LHC data for
+ []
+
+
+Underfull \hbox (badness 3029) in paragraph at lines 270--279
+[] \OT1/cmr/m/n/10 [[], [], []] are com-pared to
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 270--279
+\OT1/cmr/m/n/10 co-a-les-cence and to the ther-mal model+blast wave
+ []
+
+[4 <./compareThermalAndCoalescence.png>] (./main_aps.bbl
 Underfull \hbox (badness 4403) in paragraph at lines 72--80
  \OT1/cmr/m/n/9 Prog. Theor. Phys. \OT1/cmr/bx/n/9 103\OT1/cmr/m/n/9 , 929 (200
 0), arXiv:nucl-
  []
 
-
+[5]
 Underfull \hbox (badness 2409) in paragraph at lines 311--318
  []\OT1/cmr/m/n/9 P. J. Mohr, D. B. Newell,  and B. N. Tay-lor,
  []
 
-[6]
-Underfull \hbox (badness 2680) in paragraph at lines 504--512
+
+Underfull \hbox (badness 2680) in paragraph at lines 445--453
  \OT1/cmr/m/n/9 ri-eri, Com-put. Phys. Com-mun. \OT1/cmr/bx/n/9 185\OT1/cmr/m/n
 /9 , 2056 (2014),
  []
 
-) [7] (./main_aps.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--550
+ []\OT1/cmr/m/n/9 To match the Bertsch-Pratt pa-ram-e-ter-i-sa-tion
+ []
+
+
+Underfull \hbox (badness 3536) in paragraph at lines 547--550
+ \OT1/cmr/m/n/9 ($\OML/cmm/m/it/9 R[]; R[]; R[]$\OT1/cmr/m/n/9 ) em-ployed by e
+x-per-i-ments, with
+ []
+
+
+Underfull \hbox (badness 5274) in paragraph at lines 547--550
+ \OT1/cmr/m/n/9 the Yano-Koonin-Podgoretskii ($\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n
+/9 , $\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n/9 , $\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n/9 
+) pa-
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 547--550
+ \OT1/cmr/m/n/9 ram-e-ter-i-sa-tion used in the co-a-les-cence model, we
+ []
+
+[6]) [7] (./main_aps.aux) ) 
 Here is how much of TeX's memory you used:
- 4892 strings out of 492649
- 64535 string characters out of 6129623
- 155351 words of memory out of 5000000
- 8687 multiletter control sequences out of 15000+600000
+ 4889 strings out of 492649
+ 64424 string characters out of 6129623
+ 168025 words of memory out of 5000000
+ 8685 multiletter control sequences out of 15000+600000
  16807 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,33p,887b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
-fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main_aps.pdf (7 pages, 505588 bytes).
+ 41i,15n,29p,1030b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main_aps.pdf (7 pages, 465438 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
+ 122 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

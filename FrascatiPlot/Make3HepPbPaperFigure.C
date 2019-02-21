@@ -3,7 +3,7 @@
 void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
 void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
 void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
-void Make3HepPbPaperFigure(Double_t pToA = 0.9, Bool_t plotLinX = 0, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
+void Make3HepPbPaperFigure(Double_t pToA = 0.9, Bool_t plotLinX = 0, Int_t RmappingParam = 3, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
 
   
 void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, 
@@ -216,7 +216,7 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
 
   hB3_coalescenceParam0->Draw("l");
   hB3_coalescenceParam1->Draw("l");
-  //hB3_coalescenceParam3->Draw("l"); 
+  if (RmappingParam==3) hB3_coalescenceParam3->Draw("l"); 
   gB3blastvsR_PbPb276TeV[0]->Draw("lsame");
   
   if (plotPbPb5TeV) {

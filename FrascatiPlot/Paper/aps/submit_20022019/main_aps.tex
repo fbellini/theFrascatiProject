@@ -217,69 +217,58 @@ Quite naturally, the allowed momentum difference between the coalescing nucleons
 For a large source where $R \gg r_A$, the coalescence probability is dominated by the classical phase-space separation, thus decreases for large distances in configuration space. 
 %
 
-\section{Source volume} \label{SecSourceVolume}
-We identify the source volume as the effective sub-volume of the whole system that is governed by the homogeneity length of the interacting nucleons (as in \cite{Scheibl:1998tk}) and experimentally accessible with Hanbury-Brown-Twiss (HBT) interferometry. 
-To match the Bertsch-Pratt parameterisation ($R_{out}, R_{side}, R_{long}$) employed by experiments, with the Yano-Koonin-Podgoretskii (\rperp, \rpar, $R_{0}$) parameterisation used in the coalescence model,  we identify $\rperp = R_{side}$, $\rpar = R_{long}$ and then take $R = (\rperp^{2}\rpar)^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.
-%
-Experimentally, $R$ can be controlled by selecting different collision geometries, i.e. different centralities \cite{Abelev:2013qoq}. 
-The HBT radii scale with the cubic root of the average charged-particle multiplicity density \avdNdeta$^{1/3}$ \cite{Adam:2015vna}, and depend on the pair average transverse momentum $\langle k_{\mathrm{T}}\rangle$ \cite{Aamodt:2011mr}. We make the simplifying assumption that the scaling with \avdNdeta$^{1/3}$ holds across collision systems, which is approximately fulfilled in data \cite{Adam:2015pya}. 
-In contrast to \cite{Blum:2017qnn}, we do not explicitly use the measured HBT radii in our study. We derive $R$ from the measured \avdNdeta~according to
+\section{Statistical-thermal approach combined with blast-wave}\label{sec:thermal}
+In the statistical-thermal approach \cite{Petran:2013dva,Wheaton:2004qb,Andronic:2005yp}, the yields (d$N$/d$y$) of light anti- and hyper-nuclei are very sensitive to $T_{chem}$ due to their large mass and approximately scale as d$N$/d$y \propto \exp(-m/T_{chem})$. 
+At the LHC, the chemical potentials which ensure the conservation of baryon number, strangeness, and electric charge are negligible.
+The thermal model implements eigenvolume corrections by fixing the object radius as an external parameter.
+We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light \mbox{(anti-)(hyper-)}nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production as compact quark bags~\cite{Andronic:2017}.
+
+In contrast to coalescence, the statistical-thermal models provide only \pt-integrated yields. 
+Therefore, we use in addition a blast-wave~\cite{Schnedermann:1993ws} parameterization to model the \pt-dependence, with parameters obtained from the simultaneous fit to pion, kaon and proton spectra measured in Pb--Pb collisions by ALICE for several centralities~\cite{Abelev:2013vea}.  
+ As discussed in the following section, centrality-dependent parameters allow one to extract spectral distributions for a given source size. 
+The object size does not enter in the formulation of the blast-wave model.
+
+The normalisation of the resulting spectra is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg implementation of the statistical-thermal model with $T_{chem} = 156$ MeV, multiplied by the measured pion yield~\cite{Abelev:2013vea}. 
+This choice, as opposed to using the ratio to protons, is motivated by the fact that the measured proton yield is seen to be slightly overestimated by the thermal model~\cite{Abelev:2012wca}.
+For hyper-triton, the normalisation is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3} = { _{\Lambda}^{3}\mathrm{H} / ^{3}{\mathrm{He}} \over \Lambda/p}$ multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. 
+With the resulting spectra, we calculate \bA~for a given \pt/$A$ and compare it with coalescence expectations. 
+In the following, we label this model as ``thermal+blast-wave''.
+
+\section{Mapping event multiplicity into source size} \label{sec:radiiParamet}
+In order to compare the source radius-dependent predictions from coalescence with the centrality-dependent data and with predictions from the thermal+blast-wave model, we map the average charged particle multiplicity density (\avdNdeta) in each centrality (or multiplicity) event class into the system size. 
+Experimentally, the source size can be controlled by selecting different collision geometries, i.e. different centralities \cite{Abelev:2013qoq}. 
+This mapping is based on the following parameterisation:
 %
 \begin{equation}
-R = a \avdNdeta^{1/3} + b \;\;.
+R = a \avdNdeta^{1/3}\;\;
 \label{eq:radiusParameterisation}
 \end{equation}
 %
-The coefficients, $a = 0.339$ and $b = 0.128$ (in units of fm), have been determined by fitting linearly the ALICE data, as shown in Fig. \ref{fig:radiiparam}. 
-The values we obtain by interpolating the geometric mean of the measured radii are consistent with the radii from kaon femtoscopy for $m_{\mathrm{T}} \approx 1$ \GeVc~in low-multiplicity pp collisions \cite{Abelev:2012sq} and the radii from pion femtoscopy in high-multiplicity \PbPb~collisions at the highest available $k_{\mathrm{T}} \approx 0.9$ \GeVc~\cite{Adam:2015vna}. 
-The highest $k_{\mathrm{T}}$ was chosen as it is closest in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon (\pt/$A \approx 0.8$ \GeVc) accessible by ALICE for the measurement of nuclei production. 
-Ideally, one would use the proton femtoscopic radii, but given the unavailability of these measurements in every collision system and centrality, we assume that $m_{\mathrm{T}}$-scaling holds~\cite{Adam:2015vja}. 
+\noindent where $R$ is the source radius and $a = 0.473$ fm. 
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\columnwidth]{HbtRadiusParam.png}
-\caption{Parameterisation A of the dependence of the source radius on multiplicity compared to HBT data from \cite{Adam:2015vna, Adam:2015pya, Abelev:2012sq}. The radius $R$ and the parameters $a$ and $b$ are in units of fm.}
-\label{fig:radiiparam}
-\end{center}
-\end{figure}
+The value of the empirical parameter $a$ is obtained by tuning the parameterisation such that the measured (anti-)deuteron \btwo~in the most central \PbPb~class falls onto the coalescence prediction. 
+In this way, we constrain the coalescence volume with the more differential (anti-)deuteron data and assume that it is the same for all anti- and hyper-nuclei. 
+We justify the choice of Eq.~\ref{eq:radiusParameterisation} by identifying the source volume as the effective sub-volume of the whole system that is governed by the homogeneity length of the interacting nucleons (as in \cite{Scheibl:1998tk}) and experimentally accessible with Hanbury-Brown-Twiss (HBT) interferometry~\footnote{To match the Bertsch-Pratt parameterisation ($R_{out}, R_{side}, R_{long}$) employed by experiments, with the Yano-Koonin-Podgoretskii (\rperp, \rpar, $R_{0}$) parameterisation used in the coalescence model,  we identify $\rperp = R_{side}$, $\rpar = R_{long}$ and then take $R = (\rperp^{2}\rpar)^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.}.
+The HBT radii scale with \avdNdeta$^{1/3}$ and we make the simplifying assumption that this scaling holds across collision systems, which is approximately fulfilled in data \cite{Adam:2015vna,Adam:2015pya}. 
+We also note that the HBT radii, and thus also the source size, depend on the pair average transverse momentum $\langle k_{\mathrm{T}}\rangle$~\cite{Aamodt:2011mr}. 
+In contrast to \cite{Blum:2017qnn}, we do not explicitly use the measured HBT radii in our study because using a linear fit to the ALICE HBT-data \cite{Abelev:2012sq,Adam:2015vna} would result in a smaller source size ($\approx$~4~fm) than required by the measured \btwo~to agree with the coalescence prediction ($\approx$~5.5~fm)~
+\footnote{For this comparison, the highest available $k_{\mathrm{T}}$ ($\approx$ 0.9 \GeVc) was chosen as it is closest in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon ($p_{\mathrm{T}} \approx$ 0.8 \GeVc) accessible by ALICE for the measurement of nuclei production. 
+Ideally, one would use the proton femtoscopic radii, but given the availability of these measurements in only some of the collision systems and centralities, 
+we assume that $m_{\mathrm{T}}$-scaling holds.}.
 
-\section{Statistical-thermal approach and blast-wave}\label{sec:thermal}
-In the statistical-thermal approach \cite{Petran:2013dva,Wheaton:2004qb,Andronic:2005yp}, the yields (d$N$/d$y$) of light anti- and hyper-nuclei are very sensitive to $T_{chem}$ due to their large mass and approximately scale as d$N$/d$y \propto \exp(-m/T_{chem})$. 
-At the LHC, the chemical potentials which ensure the conservation of baryon number, strangeness, and electric charge are negligible.
-In contrast to coalescence, the statistical-thermal models provide only \pt-integrated yields. 
-We use a blast-wave~\cite{Schnedermann:1993ws} parameterization to model the \pt-dependence, with parameters obtained from the simultaneous fit to pion, kaon and proton spectra measured in Pb--Pb collisions by ALICE~\cite{Abelev:2013vea}. 
-The normalisation is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg model with $T_{chem} = 156$ MeV, multiplied by the measured pion yield~\cite{Abelev:2013vea}. 
-This choice, as opposed to using the ratio to proton, is motivated by the fact that the measured proton yield is seen to be slightly overestimated by the thermal model~\cite{Abelev:2012wca}.
-For hyper-triton, the normalisation is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3} = { _{\Lambda}^{3}\mathrm{H} / ^{3}{\mathrm{He}} \over \Lambda/p}$ multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. 
-With the resulting spectra, we calculate \bA~for a given \pt/$A$ and compare it with coalescence expectations. 
-We use the corresponding \avdNdeta~in each class to estimate the system radius based on the parameterisation discussed in Sec.~\ref{SecSourceVolume}. 
-In contrast to the coalescence approach, the object size does not enter in the formulation of the blast-wave model.
-The thermal model on the other hand, implements eigenvolume corrections by fixing the object radius as an external parameter.
-We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light \mbox{(anti-)(hyper-)}nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production as compact quark bags~\cite{Andronic:2017}.
+\section{Comparison with data}
 
-\section{Constraining the source volume with data}\label{sec:radiiParamet}
-
-Multiplicity-differential data on anti- and hyper-nuclei production at the LHC have been released by ALICE \cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Acharya:2017dmc, Adam:2015yta}. 
-To facilitate the comparison with multiplicity-dependent data given in the INEL$>$0 class, we have rescaled the inelastic pp collision data in \cite{ALICE:nucleipp2017} by the ratio of \avdNdeta~in these two event classes \cite{Adam:2015gka}.
-In order to map \avdNdeta~to the source size we first used the parameterisation (labeled as ``A'') from the fit to the HBT data shown in Fig.~\ref{fig:radiiparam}. 
-When comparing to data, we found a discrepancy between the coalescence volume from parameterisation A and the coalescence curve. 
-In particular, the model would require a larger radius for a given value of \btwo~in Pb--Pb collisions.
-In a second step we tuned the parameterisation (labeled as ``B'') such that the data points for (anti-)deuterons fall onto the coalescence prediction, finding the values $a = 0.473$ and $b = 0$ for Eq.~\ref{eq:radiusParameterisation}. 
-
-With parameterisation B, we compare models to data, thus constraining the coalescence volume with the more differential (anti-)deuteron data and assuming that it is the same for all anti- and hyper-nuclei. 
-The necessity of introducing a second parameterisation might suggest that the kinetic freeze-out volume relevant for coalescence is not given by the $m_{T}$-scaled pion HBT radius considered in parameterisation A, but by a slightly larger system as from parameterisation B.  
-
- \begin{figure}[ht]
+\begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=.95\columnwidth]{compareThermalAndCoalescence.png}
-		\caption{Comparison of the coalescence parameters measured by ALICE (solid markers) for deuterons (upper panel), \hethree\ (middle panel) and \hthreelambda\ (lower panel) in pp \cite{ALICE:nucleipp2017} and Pb--Pb~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta} collisions with the  thermal+blast-wave model expectations (dotted line) and the coalescence predictions (solid lines). Parameterisation B has been used to map \avdNdeta~into the radius $R$ of the source. The dashed line in the lower right panel corresponds to the coalescence prediction for the \hthreelambda\ with a larger radius.}
+		\caption{Comparison of the coalescence parameters measured by ALICE (solid markers) for deuterons (upper panel), \hethree\ (middle panel) and \hthreelambda\ (lower panel) in pp \cite{ALICE:nucleipp2017} and Pb--Pb~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta} collisions with the  thermal+blast-wave model expectations (dotted line) and the coalescence predictions (solid lines). The dashed line in the lower right panel corresponds to the coalescence prediction for the \hthreelambda\ with a larger radius. We have rescaled the inelastic pp collision data in \cite{ALICE:nucleipp2017} to match the so-called INEL$>$0 class by the ratio of \avdNdeta~in these two event classes, see~\cite{Adam:2015gka} for details. 
+		}
 		\label{fig:CompareThermalAndCoalescence}
 	\end{center}
 \end{figure}
 
-\section{Comparison with data}
-In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available LHC data for (anti-)(hyper-)nuclei \cite{ALICE:nucleipp2017, ALICE:deuteronppPbPb2015, Adam:2015yta} are compared to coalescence and to the thermal model+blast wave predictions described in Sec.~\ref{sec:thermal}.
-For the latter and for data, the radius parameterisation B is used, see Sec.~\ref{sec:radiiParamet}. 
+In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available LHC data for \mbox{(anti-)(hyper-)nuclei} \cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Adam:2015yta} are compared to coalescence and to the thermal model+blast wave predictions described in Sec.~\ref{sec:thermal}.
+For the latter and for data, the radius parameterisation given by Eq.~\ref{eq:radiusParameterisation} is used.
 For deuterons, both approaches lead to similar predictions and describe reasonably the data for $R \gtrsim 1.6$ fm. 
 For \hethree, the models exhibit a qualitatively similar $R$-dependence but differ by a factor of about 1.5 to 2. 
 The currently available data are consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on data. 

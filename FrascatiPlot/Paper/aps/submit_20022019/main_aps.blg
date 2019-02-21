@@ -31,45 +31,45 @@ Warning--empty year in HeinzTorino
 Warning--missing journal in Sun:2018mqq
 Warning--missing journal in Poulin:2018wzu
 Warning--empty year in AMS100
-You've used 60 entries,
+You've used 61 entries,
             5847 wiz_defined-function locations,
-            2115 strings with 28075 characters,
-and the built_in function-call counts, 56544 in all, are:
-= -- 3787
-> -- 1283
-< -- 362
-+ -- 423
-- -- 313
-* -- 9013
-:= -- 5622
-add.period$ -- 60
-call.type$ -- 60
-change.case$ -- 234
-chr.to.int$ -- 62
-cite$ -- 68
-duplicate$ -- 5383
-empty$ -- 4231
-format.name$ -- 787
-if$ -- 11075
-int.to.chr$ -- 7
-int.to.str$ -- 67
-missing$ -- 675
-newline$ -- 278
-num.names$ -- 174
-pop$ -- 2093
+            2113 strings with 28955 characters,
+and the built_in function-call counts, 56100 in all, are:
+= -- 3780
+> -- 1265
+< -- 357
++ -- 420
+- -- 309
+* -- 8922
+:= -- 5590
+add.period$ -- 61
+call.type$ -- 61
+change.case$ -- 240
+chr.to.int$ -- 64
+cite$ -- 69
+duplicate$ -- 5329
+empty$ -- 4188
+format.name$ -- 775
+if$ -- 10980
+int.to.chr$ -- 6
+int.to.str$ -- 68
+missing$ -- 666
+newline$ -- 280
+num.names$ -- 171
+pop$ -- 2083
 preamble$ -- 1
-purify$ -- 288
+purify$ -- 291
 quote$ -- 0
-skip$ -- 1992
+skip$ -- 1980
 stack$ -- 0
-substring$ -- 1404
-swap$ -- 5087
-text.length$ -- 125
+substring$ -- 1400
+swap$ -- 5026
+text.length$ -- 124
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 797
+type$ -- 806
 warning$ -- 9
-while$ -- 174
+while$ -- 171
 width$ -- 0
-write$ -- 600
+write$ -- 598
 (There were 9 warnings)

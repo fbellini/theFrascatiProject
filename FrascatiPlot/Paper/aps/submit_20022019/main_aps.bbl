@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{58}%
+\begin{thebibliography}{59}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -435,65 +435,6 @@
   {} {\  (\bibinfo {year} {2018})},\ \Eprint {http://arxiv.org/abs/1812.05175}
   {arXiv:1812.05175 [nucl-th]} \BibitemShut {NoStop}%
 %%CITATION = ARXIV:1812.05175;%%
-\bibitem [{\citenamefont {Abelev}\ \emph
-  {et~al.}(2013{\natexlab{b}})\citenamefont {Abelev} \emph
-  {et~al.}}]{Abelev:2013qoq}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
-  {Abelev}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
-  {\doibase 10.1103/PhysRevC.88.044909} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C88}},\ \bibinfo {pages}
-  {044909} (\bibinfo {year} {2013}{\natexlab{b}})},\ \Eprint
-  {http://arxiv.org/abs/1301.4361} {arXiv:1301.4361 [nucl-ex]} \BibitemShut
-  {NoStop}%
-%%CITATION = ARXIV:1301.4361;%%
-\bibitem [{\citenamefont {Aamodt}\ \emph {et~al.}(2011)\citenamefont {Aamodt}
-  \emph {et~al.}}]{Aamodt:2011mr}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
-  {Aamodt}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
-  {\doibase 10.1016/j.physletb.2010.12.053} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B696}},\ \bibinfo
-  {pages} {328} (\bibinfo {year} {2011})},\ \Eprint
-  {http://arxiv.org/abs/1012.4035} {arXiv:1012.4035 [nucl-ex]} \BibitemShut
-  {NoStop}%
-%%CITATION = ARXIV:1012.4035;%%
-\bibitem [{\citenamefont {Adam}\ \emph
-  {et~al.}(2015{\natexlab{a}})\citenamefont {Adam} \emph
-  {et~al.}}]{Adam:2015pya}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Adam}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href {\doibase
-  10.1103/PhysRevC.91.034906} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
-  Rev.}\ }\textbf {\bibinfo {volume} {C91}},\ \bibinfo {pages} {034906}
-  (\bibinfo {year} {2015}{\natexlab{a}})},\ \Eprint
-  {http://arxiv.org/abs/1502.00559} {arXiv:1502.00559 [nucl-ex]} \BibitemShut
-  {NoStop}%
-%%CITATION = ARXIV:1502.00559;%%
-\bibitem [{\citenamefont {Abelev}\ \emph
-  {et~al.}(2013{\natexlab{c}})\citenamefont {Abelev} \emph
-  {et~al.}}]{Abelev:2012sq}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
-  {Abelev}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
-  {\doibase 10.1103/PhysRevD.87.052016} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D87}},\ \bibinfo {pages}
-  {052016} (\bibinfo {year} {2013}{\natexlab{c}})},\ \Eprint
-  {http://arxiv.org/abs/1212.5958} {arXiv:1212.5958 [hep-ex]} \BibitemShut
-  {NoStop}%
-%%CITATION = ARXIV:1212.5958;%%
-\bibitem [{\citenamefont {Adam}\ \emph
-  {et~al.}(2015{\natexlab{b}})\citenamefont {Adam} \emph
-  {et~al.}}]{Adam:2015vja}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Adam}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href {\doibase
-  10.1103/PhysRevC.92.054908} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
-  Rev.}\ }\textbf {\bibinfo {volume} {C92}},\ \bibinfo {pages} {054908}
-  (\bibinfo {year} {2015}{\natexlab{b}})},\ \Eprint
-  {http://arxiv.org/abs/1506.07884} {arXiv:1506.07884 [nucl-ex]} \BibitemShut
-  {NoStop}%
-%%CITATION = ARXIV:1506.07884;%%
 \bibitem [{\citenamefont {Petran}\ \emph {et~al.}(2014)\citenamefont {Petran},
   \citenamefont {Letessier}, \citenamefont {Rafelski},\ and\ \citenamefont
   {Torrieri}}]{Petran:2013dva}%
@@ -532,6 +473,20 @@
   {http://arxiv.org/abs/nucl-th/0511071} {arXiv:nucl-th/0511071 [nucl-th]}
   \BibitemShut {NoStop}%
 %%CITATION = NUCL-TH/0511071;%%
+\bibitem [{\citenamefont {Vovchenko}\ and\ \citenamefont
+  {Stoecker}(2017)}]{Vovchenko:2016mwg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Vovchenko}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Stoecker}},\ }\bibfield  {booktitle} {\emph {\bibinfo {booktitle}
+  {{Proceedings, 16th International Conference on Strangeness in Quark Matter
+  (SQM 2016): Berkeley, California, United States}}},\ }\href {\doibase
+  10.1088/1742-6596/779/1/012078} {\bibfield  {journal} {\bibinfo  {journal}
+  {J. Phys. Conf. Ser.}\ }\textbf {\bibinfo {volume} {779}},\ \bibinfo {pages}
+  {012078} (\bibinfo {year} {2017})},\ \Eprint
+  {http://arxiv.org/abs/1610.02346} {arXiv:1610.02346 [nucl-th]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1610.02346;%%
 \bibitem [{\citenamefont {Schnedermann}\ \emph {et~al.}(1993)\citenamefont
   {Schnedermann}, \citenamefont {Sollfrank},\ and\ \citenamefont
   {Heinz}}]{Schnedermann:1993ws}%
@@ -557,31 +512,83 @@
   {NoStop}%
 %%CITATION = ARXIV:1208.1974;%%
 \bibitem [{\citenamefont {Abelev}\ \emph
-  {et~al.}(2013{\natexlab{d}})\citenamefont {Abelev} \emph
+  {et~al.}(2013{\natexlab{b}})\citenamefont {Abelev} \emph
   {et~al.}}]{Abelev:2013xaa}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~B.}\ \bibnamefont
   {Abelev}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
   {\doibase 10.1103/PhysRevLett.111.222301} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo
-  {pages} {222301} (\bibinfo {year} {2013}{\natexlab{d}})},\ \Eprint
+  {pages} {222301} (\bibinfo {year} {2013}{\natexlab{b}})},\ \Eprint
   {http://arxiv.org/abs/1307.5530} {arXiv:1307.5530 [nucl-ex]} \BibitemShut
   {NoStop}%
 %%CITATION = ARXIV:1307.5530;%%
-\bibitem [{\citenamefont {Vovchenko}\ and\ \citenamefont
-  {Stoecker}(2017)}]{Vovchenko:2016mwg}%
+\bibitem [{\citenamefont {Abelev}\ \emph
+  {et~al.}(2013{\natexlab{c}})\citenamefont {Abelev} \emph
+  {et~al.}}]{Abelev:2013qoq}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
-  {Vovchenko}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Stoecker}},\ }\bibfield  {booktitle} {\emph {\bibinfo {booktitle}
-  {{Proceedings, 16th International Conference on Strangeness in Quark Matter
-  (SQM 2016): Berkeley, California, United States}}},\ }\href {\doibase
-  10.1088/1742-6596/779/1/012078} {\bibfield  {journal} {\bibinfo  {journal}
-  {J. Phys. Conf. Ser.}\ }\textbf {\bibinfo {volume} {779}},\ \bibinfo {pages}
-  {012078} (\bibinfo {year} {2017})},\ \Eprint
-  {http://arxiv.org/abs/1610.02346} {arXiv:1610.02346 [nucl-th]} \BibitemShut
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Abelev}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
+  {\doibase 10.1103/PhysRevC.88.044909} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {C88}},\ \bibinfo {pages}
+  {044909} (\bibinfo {year} {2013}{\natexlab{c}})},\ \Eprint
+  {http://arxiv.org/abs/1301.4361} {arXiv:1301.4361 [nucl-ex]} \BibitemShut
   {NoStop}%
-%%CITATION = ARXIV:1610.02346;%%
+%%CITATION = ARXIV:1301.4361;%%
+\bibitem [{Note1()}]{Note1}%
+  \BibitemOpen
+  \bibinfo {note} {To match the Bertsch-Pratt parameterisation ($R_{out},
+  R_{side}, R_{long}$) employed by experiments, with the
+  Yano-Koonin-Podgoretskii (\protect \ensuremath {R_{\perp }}, \protect
+  \ensuremath {R_{\delimiter "026B30D }}, $R_{0}$) parameterisation used in the
+  coalescence model, we identify $\protect \ensuremath {R_{\perp }}= R_{side}$,
+  $\protect \ensuremath {R_{\delimiter "026B30D }}= R_{long}$ and then take $R
+  = (\protect \ensuremath {R_{\perp }}^{2}\protect \ensuremath {R_{\delimiter
+  "026B30D }})^{1/3} \approx (R_{side}^{2}R_{long})^{1/3}$.}\BibitemShut
+  {Stop}%
+\bibitem [{\citenamefont {Adam}\ \emph {et~al.}(2015)\citenamefont {Adam} \emph
+  {et~al.}}]{Adam:2015pya}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Adam}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href {\doibase
+  10.1103/PhysRevC.91.034906} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C91}},\ \bibinfo {pages} {034906}
+  (\bibinfo {year} {2015})},\ \Eprint {http://arxiv.org/abs/1502.00559}
+  {arXiv:1502.00559 [nucl-ex]} \BibitemShut {NoStop}%
+%%CITATION = ARXIV:1502.00559;%%
+\bibitem [{\citenamefont {Aamodt}\ \emph {et~al.}(2011)\citenamefont {Aamodt}
+  \emph {et~al.}}]{Aamodt:2011mr}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Aamodt}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
+  {\doibase 10.1016/j.physletb.2010.12.053} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B696}},\ \bibinfo
+  {pages} {328} (\bibinfo {year} {2011})},\ \Eprint
+  {http://arxiv.org/abs/1012.4035} {arXiv:1012.4035 [nucl-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1012.4035;%%
+\bibitem [{\citenamefont {Abelev}\ \emph
+  {et~al.}(2013{\natexlab{d}})\citenamefont {Abelev} \emph
+  {et~al.}}]{Abelev:2012sq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Abelev}} \emph {et~al.} (\bibinfo {collaboration} {ALICE}),\ }\href
+  {\doibase 10.1103/PhysRevD.87.052016} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {D87}},\ \bibinfo {pages}
+  {052016} (\bibinfo {year} {2013}{\natexlab{d}})},\ \Eprint
+  {http://arxiv.org/abs/1212.5958} {arXiv:1212.5958 [hep-ex]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1212.5958;%%
+\bibitem [{Note2()}]{Note2}%
+  \BibitemOpen
+  \bibinfo {note} {For this comparison, the highest available $k_{\protect
+  \mathrm {T}}$ ($\approx $ 0.9 GeV/$c$) was chosen as it is closest in
+  $m_{\protect \mathrm {T}}$ to the lowest transverse momentum per nucleon
+  ($p_{\protect \mathrm {T}} \approx $ 0.8 GeV/$c$) accessible by ALICE for the
+  measurement of nuclei production. Ideally, one would use the proton
+  femtoscopic radii, but given the availability of these measurements in only
+  some of the collision systems and centralities, we assume that $m_{\protect
+  \mathrm {T}}$-scaling holds.}\BibitemShut {Stop}%
 \bibitem [{\citenamefont {Adam}\ \emph {et~al.}(2017)\citenamefont {Adam} \emph
   {et~al.}}]{Adam:2015gka}%
   \BibitemOpen
