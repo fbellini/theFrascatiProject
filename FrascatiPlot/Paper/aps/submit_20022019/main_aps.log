@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  21 FEB 2019 19:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  21 FEB 2019 20:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -342,28 +342,34 @@ Package pdftex.def Info: theory_coalescence_Cd_B2_vert.png  used on input line
 File: compareThermalAndCoalescence.png Graphic file (type png)
 <use compareThermalAndCoalescence.png>
 Package pdftex.def Info: compareThermalAndCoalescence.png  used on input line 2
-63.
+60.
 (pdftex.def)             Requested size: 233.69925pt x 458.68579pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--279
+Underfull \hbox (badness 10000) in paragraph at lines 267--276
 []\OT1/cmr/m/n/10 In Fig. 2[], the avail-able LHC data for
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 270--279
+Underfull \hbox (badness 3029) in paragraph at lines 267--276
 [] \OT1/cmr/m/n/10 [[], [], []] are com-pared to
  []
 
 
-Underfull \hbox (badness 2142) in paragraph at lines 270--279
-\OT1/cmr/m/n/10 co-a-les-cence and to the ther-mal model+blast wave
+Underfull \hbox (badness 2111) in paragraph at lines 267--276
+\OT1/cmr/m/n/10 a qual-i-ta-tively sim-i-lar $\OML/cmm/m/it/10 R$\OT1/cmr/m/n/1
+0 -dependence but dif-fer by
  []
 
-[4 <./compareThermalAndCoalescence.png>] (./main_aps.bbl
+[4 <./compareThermalAndCoalescence.png>]
+Underfull \hbox (badness 1248) in paragraph at lines 286--287
+ []\OT1/cmr/m/n/10 In [] col-li-sions, the very lim-ited amount
+ []
+
+(./main_aps.bbl
 Underfull \hbox (badness 4403) in paragraph at lines 72--80
  \OT1/cmr/m/n/9 Prog. Theor. Phys. \OT1/cmr/bx/n/9 103\OT1/cmr/m/n/9 , 929 (200
 0), arXiv:nucl-
@@ -406,8 +412,8 @@ Underfull \hbox (badness 2875) in paragraph at lines 547--550
 [6]) [7] (./main_aps.aux) ) 
 Here is how much of TeX's memory you used:
  4889 strings out of 492649
- 64424 string characters out of 6129623
- 168025 words of memory out of 5000000
+ 64426 string characters out of 6129623
+ 167337 words of memory out of 5000000
  8685 multiletter control sequences out of 15000+600000
  16807 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -435,7 +441,7 @@ ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main_aps.pdf (7 pages, 465438 bytes).
+Output written on main_aps.pdf (7 pages, 465135 bytes).
 PDF statistics:
  122 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream

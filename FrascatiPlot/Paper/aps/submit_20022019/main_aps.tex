@@ -194,24 +194,23 @@ As shown in Fig. \ref{fig:radiusDependence}, $\langle C_{d} \rangle$ suppresses 
 \end{center}
 \end{figure}   
 
-Following the discussion in~\cite{Blum:2017qnn}, Eq.~\ref{eq:Cd} may be generalised as 
+Following the discussion in~\cite{Scheibl:1998tk, Blum:2017qnn}, Eq.~\ref{eq:Cd} may be generalised as 
 %
 \begin{equation}
 \langle C_{A} \rangle = \prod_{i=1,2,3} \left(1 + \frac{r^2}{4R_{i}^2} \right)^{-\frac{1}{2}(A-1)} \;\; .
 \label{eq:CA_general}
 \end{equation}
 %
-Similarly, the coalescence parameter \bA~for a nucleus with mass number $A$ and spin $J_{A}$ is generalised by Eq. 6.2 of~\cite{Scheibl:1998tk}.
-For the case of \hethree, the latter becomes Eq. 9 of~\cite{Blum:2017qnn}.
-
-In summary, under the assumption $R_1\approx R_2 \approx R_3 \approx R$ as in \cite{Blum:2017qnn} and by combining Eq. 6.2 in \cite{Scheibl:1998tk} with our Eq.~\ref{eq:CA_general}, we obtain:
+%Similarly, the coalescence parameter \bA~for a nucleus with mass number $A$ and spin $J_{A}$ is generalised by Eq. 6.2 of~\cite{Scheibl:1998tk}.
+%For the case of \hethree, the latter becomes Eq. 9 of~\cite{Blum:2017qnn}.
+Under the assumption $R_1\approx R_2 \approx R_3 \approx R$ as in \cite{Blum:2017qnn} and by combining Eq. 6.2 in \cite{Scheibl:1998tk} with our Eq.~\ref{eq:CA_general}, 
+we obtain:
 %
 \begin{equation}
 	\boxed {  B_{A} = {2J_{A} + 1 \over 2^{A}} {1 \over \sqrt{A}} {1 \over m_{T}^{A-1}} \Bigl({2\pi \over R^2 + ({r_A \over 2})^2 }\Bigr)^{3/2(A-1)} } \;.
 \end{equation}
 %
 This general formula can be used to compare the predicted $B_{A}$ with data directly.
- 
 For small sources, as $R \rightarrow 0$, the coalescence probability is anti-proportional to the harmonic oscillator size parameter, and thus proportional to the depth of the attractive potential in the harmonic oscillator picture (and thus to the nucleus binding energy).
 Quite naturally, the allowed momentum difference between the coalescing nucleons is larger for more attractive, i.e. deeper, potentials. 
 For a large source where $R \gg r_A$, the coalescence probability is dominated by the classical phase-space separation, thus decreases for large distances in configuration space. 
@@ -219,18 +218,16 @@ For a large source where $R \gg r_A$, the coalescence probability is dominated b
 
 \section{Statistical-thermal approach combined with blast-wave}\label{sec:thermal}
 In the statistical-thermal approach \cite{Petran:2013dva,Wheaton:2004qb,Andronic:2005yp}, the yields (d$N$/d$y$) of light anti- and hyper-nuclei are very sensitive to $T_{chem}$ due to their large mass and approximately scale as d$N$/d$y \propto \exp(-m/T_{chem})$. 
-At the LHC, the chemical potentials which ensure the conservation of baryon number, strangeness, and electric charge are negligible.
 The thermal model implements eigenvolume corrections by fixing the object radius as an external parameter.
 We refer to the literature for the extensive discussions on the validity of the eigenvolume correction for light \mbox{(anti-)(hyper-)}nuclei~\cite{Vovchenko:2016mwg} and the relation with the possible production as compact quark bags~\cite{Andronic:2017}.
-
 In contrast to coalescence, the statistical-thermal models provide only \pt-integrated yields. 
 Therefore, we use in addition a blast-wave~\cite{Schnedermann:1993ws} parameterization to model the \pt-dependence, with parameters obtained from the simultaneous fit to pion, kaon and proton spectra measured in Pb--Pb collisions by ALICE for several centralities~\cite{Abelev:2013vea}.  
  As discussed in the following section, centrality-dependent parameters allow one to extract spectral distributions for a given source size. 
 The object size does not enter in the formulation of the blast-wave model.
 
-The normalisation of the resulting spectra is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg implementation of the statistical-thermal model with $T_{chem} = 156$ MeV, multiplied by the measured pion yield~\cite{Abelev:2013vea}. 
+The normalisation of the predicted blast-wave spectra for nuclei is fixed using the \pt-integrated deuteron-to-pion ratio and \hethree-to-pion ratio predicted by the GSI-Heidelberg implementation of the statistical-thermal model with $T_{chem} = 156$ MeV, multiplied by the measured pion yield~\cite{Abelev:2013vea}. 
 This choice, as opposed to using the ratio to protons, is motivated by the fact that the measured proton yield is seen to be slightly overestimated by the thermal model~\cite{Abelev:2012wca}.
-For hyper-triton, the normalisation is extracted from the statistical-thermal model prediction of the strangeness population factor $S_{3} = { _{\Lambda}^{3}\mathrm{H} / ^{3}{\mathrm{He}} \over \Lambda/p}$ multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. 
+For hyper-triton, the normalisation is extracted from the statistical-thermal model prediction of the strangeness population factor \mbox{$S_{3} = { _{\Lambda}^{3}\mathrm{H} / ^{3}{\mathrm{He}} \over \Lambda/p}$} multiplied by the measured $\Lambda/p$ ratio~\cite{Abelev:2013vea,Abelev:2013xaa} and \hethree~yield~\cite{ALICE:deuteronppPbPb2015}. 
 With the resulting spectra, we calculate \bA~for a given \pt/$A$ and compare it with coalescence expectations. 
 In the following, we label this model as ``thermal+blast-wave''.
 
@@ -267,13 +264,13 @@ we assume that $m_{\mathrm{T}}$-scaling holds.}.
 	\end{center}
 \end{figure}
 
-In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available LHC data for \mbox{(anti-)(hyper-)nuclei} \cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Adam:2015yta} are compared to coalescence and to the thermal model+blast wave predictions described in Sec.~\ref{sec:thermal}.
+In Fig.~\ref{fig:CompareThermalAndCoalescence}, the available LHC data for \mbox{(anti-)(hyper-)nuclei} \cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Adam:2015yta} are compared to coalescence and to the thermal+blast-wave predictions.
 For the latter and for data, the radius parameterisation given by Eq.~\ref{eq:radiusParameterisation} is used.
 For deuterons, both approaches lead to similar predictions and describe reasonably the data for $R \gtrsim 1.6$ fm. 
 For \hethree, the models exhibit a qualitatively similar $R$-dependence but differ by a factor of about 1.5 to 2. 
 The currently available data are consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on data. 
 Both approaches show large differences (a factor 5 to 6 for central Pb--Pb collisions and a factor larger than 50 for $R < 2$ fm) for the \hthreelambda\ caused by the significantly larger size of \hthreelambda\ with respect to \hethree. 
-The only data point available so far in Pb--Pb collisions is in agreement with the thermal model but differs by 6$\sigma$ from coalescence, albeit the validity of our assumptions (\textit{in primis} the usage of a gaussian wave-function).
+The only data point available so far in Pb--Pb collisions is in agreement with the thermal+blast-wave model but differs by 6$\sigma$ from coalescence, albeit the validity of our assumptions (\textit{in primis} the usage of a gaussian wave-function).
 In \cite{Zhang:2018euf} it is argued that the difference between data and coalescence might be explained by a later formation through coalescence of $\Lambda$s and deuterons. 
 A possible difference attributable to the presence of excited states with $J=3/2$ of \hthreelambda~is not considered here as there is no evidence for its existence~\cite{Mart:1996ay}. 
 
@@ -284,10 +281,11 @@ The curves presented here explicitly allow for an estimate of the hyper-triton p
 \section{Conclusions and outlook}
 We summarise our main conclusions as follows:
 \begin{enumerate}
-	\item For the production of $A=2$ and $A=3$ \mbox{(anti-)nuclei} in heavy-ion collisions, thermal and coalescence models give similar predictions for a source volume that is constrained by experimental data on d, $\bar{\mathrm{d}}$~production in central Pb--Pb collisions.
-	\item For the production of hyper-triton, thermal and coalescence models give very different predictions as a function of source volume. In particular, the yield of hyper-triton appears to be suppressed by about two orders of magnitude in pp collisions with respect to \hethree. The very limited amount of data available favours the thermal model prediction within our assumptions.
+	\item For the production of $A=2$ and $A=3$ \mbox{(anti-)nuclei} in heavy-ion collisions, thermal+blast-wave and coalescence models give similar predictions for a source volume that is constrained by experimental data on d, $\bar{\mathrm{d}}$~production in central Pb--Pb collisions.
+	\item For hyper-triton, the two models give very different predictions as a function of source volume. In particular, the yield of hyper-triton appears to be suppressed by about two orders of magnitude in pp collisions with respect to \hethree~due to its wider wave-function. 
+	\item In \PbPb~collisions, the very limited amount of data available favours the thermal+blast-wave model prediction within our assumptions.
 	\item Systematic measurements in pp, p--Pb, and Pb--Pb collisions at LHC energies have a unique potential to clarify the production mechanism and the nature of composite QCD objects. Ideally, such measurements are accompanied by systematic measurements of the HBT radii in the same multiplicity/centrality classes and collision systems.
-	\item Our findings suggest a clear experimental path to be pursued with high-precision measurements at the upcoming phase of the LHC in the next ten years, which will finally provide sufficient integrated luminosity for the studies proposed here \cite{Citron:2018lsq}.
+	\item Our findings suggest a clear experimental path to be pursued with high-precision measurements at the upcoming phase of the LHC in the next ten years, which will finally provide sufficient integrated luminosity for the studies proposed here~\cite{Citron:2018lsq}.
 % will provide a unique opportunity for the final understanding of \mbox{(anti-)(hyper-)nuclei} production.
 
 \end{enumerate}
