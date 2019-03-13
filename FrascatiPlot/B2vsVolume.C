@@ -323,7 +323,7 @@ Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.
   Color_t color[]      = {kGreen+2, kOrange-3, kBlue+2, kRed, kRed+2,
 			  kGreen+2, kBlue+2, kBlue+1, kRed+2,
 			  kGreen+2, kBlue+2, kRed, kRed+2, kRed,
-			  kBlue-5, kBlue-7, kBlue+1, kRed+2, kBlue+1};
+			  kBlue-5, kBlue-7, kBlue+1, kRed+2, kAzure+1};
   
   Int_t Marker_Style[] = { 21, 33, 22, 20, 23,
 			   21, 22, 20, 23,

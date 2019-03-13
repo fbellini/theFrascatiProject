@@ -25,7 +25,7 @@ void HbtRadii() {
   gStyle->SetPadTopMargin(0.05);
 
   TCanvas * canvHbtPlot = new TCanvas("canvHbtPlot","canvHbtPlot", 800, 600);
-  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{N}_{ch}/d#it{#eta}#GT^{1/3}; #it{R} (fm)",200,0.0,13.0,200,0.0,6.0);
+  TH2D * histFrame = new TH2D("histFrame","radius vs mult; #LTd#it{N}_{ch}/d#it{#eta}#GT^{1/3}; #it{R} (fm)",200,0.0,13.0,200,0.0,12.0);
   histFrame->GetXaxis()->SetTitleSize(0.06);
   histFrame->GetXaxis()->SetLabelSize(0.045);
   histFrame->GetXaxis()->SetTitleOffset(1.1);
@@ -38,26 +38,34 @@ void HbtRadii() {
   histFrame->Draw();
   //
   const Long_t nPoints = 500;
-  Double_t xP[nPoints];
-  Double_t yP[nPoints];
-  for (int i = 0; i<nPoints; i++){
-    xP[i] = 15.0 * i / nPoints; 
-    Double_t multi[2] = {xP[i]*xP[i]*xP[i], 0.0};
-    Double_t radius[2] = {0.0, 0.0};
-    getRadiusFromParameterisation(multi, radius);
-    yP[i] = radius[0];
-    //
+  const Int_t nPrmtz = 4;
+  Double_t xP[nPrmtz][nPoints];
+  Double_t yP[nPrmtz][nPoints];
+  
+  
+  for (int j = 0; j<nPrmtz; j++){
+    for (int i = 0; i<nPoints; i++){
+      xP[j][i] = 15.0 * i / nPoints; 
+      Double_t multi[2] = {xP[j][i]*xP[j][i]*xP[j][i], 0.0};
+      Double_t radius[2] = {0.0, 0.0};
+      getRadiusFromParameterisation(multi, radius, j);
+      yP[j][i] = radius[0];
+    }
   }
   //
-  // TGraph * grRadiusVsMult = new TGraph(nPoints, xP, yP);
-  // grRadiusVsMult->SetMarkerColor(kBlack);
-  // grRadiusVsMult->SetLineColor(kBlack);
-  // grRadiusVsMult->SetLineWidth(3);
-  // grRadiusVsMult->SetLineStyle(9);
+  TGraph * grRadiusVsMult_Ko = new TGraph(nPoints, xP[3], yP[3]);
+  grRadiusVsMult_Ko->SetMarkerColor(kAzure-5);
+  grRadiusVsMult_Ko->SetLineColor(kAzure-5);
+  grRadiusVsMult_Ko->SetLineWidth(2);
+  grRadiusVsMult_Ko->SetLineStyle(9);
+  grRadiusVsMult_Ko->Draw("L");
   //
-  //grRadiusVsMult->Draw("L");
-  //
-
+  TGraph * grRadiusVsMult_B2 = new TGraph(nPoints, xP[1], yP[1]);
+  grRadiusVsMult_B2->SetMarkerColor(kBlack);
+  grRadiusVsMult_B2->SetLineColor(kBlack);
+  grRadiusVsMult_B2->SetLineWidth(2);
+  grRadiusVsMult_B2->SetLineStyle(1);
+  grRadiusVsMult_B2->Draw("L");
   // add PPB points
   //
   TGraphErrors * grHbtRadiusPPB = GetPPbHbtRadius0887KT();
@@ -89,10 +97,10 @@ void HbtRadii() {
 
     //canvHbtPlot->BuildLegend()
   TF1 * poly1 = new TF1("poly1", "[0]*x + [1]", 0., 13.);
-  poly1->SetMarkerColor(kBlack);
-  poly1->SetLineColor(kBlack);
+  poly1->SetMarkerColor(kGray+1);
+  poly1->SetLineColor(kGray+1);
   poly1->SetLineWidth(3);
-  poly1->SetLineStyle(9);
+  poly1->SetLineStyle(2);
   poly1->SetParameter(1, 0.0);
 
   TMultiGraph * multig = new TMultiGraph("multig", "multigraph");
@@ -106,13 +114,18 @@ void HbtRadii() {
   grHbtRadiusPPB->Draw("PZ");
   grHbtRadiusPBPB->Draw("PZ");
 
-  TLegend * leg1 = new TLegend(0.2, 0.82, 0.5, 0.92, "Our parameterisation:");
+  TLegend * leg1 = new TLegend(0.2, 0.77, 0.5, 0.92);
   leg1->SetBorderSize(0);
   leg1->SetFillStyle(0);
   leg1->SetTextSize(0.04);
-  leg1->AddEntry(poly1, "#it{R} = #it{a} #times #LTd#it{N}_{ch}/ d#it{#eta}#GT^{1/3} + #it{b}", "l");
+  leg1->AddEntry(poly1, "Fit to ALICE HBT", "l");
+  //#it{R} = a #LTd#it{N}_{ch}/ d#it{#eta}#GT^{1/3} + b
+  leg1->AddEntry(grRadiusVsMult_Ko, "Sun, Ko, Doenigus, 1812.05175", "l");
+  leg1->AddEntry(grRadiusVsMult_B2, "Constrained to ALICE Pb-Pb 0-10% B_{2}", "l");
   leg1->Draw();
-  TLegend * leg = new TLegend(0.2, 0.56, 0.5, 0.8, "ALICE, #it{k}_{T} = 0.887 GeV/#it{c}");
+
+
+  TLegend * leg = new TLegend(0.2, 0.56, 0.5, 0.77, "ALICE HBT, #it{k}_{T} = 0.887 GeV/#it{c}");
   leg->SetBorderSize(0);
   leg->SetFillStyle(0);
   leg->SetTextSize(0.04);
@@ -129,10 +142,11 @@ void HbtRadii() {
   pave->SetTextFont(42);
   pave->SetTextSize(0.04);
   pave->InsertText(text.Data());
-  pave->Draw();
+  //pave->Draw();
 
   canvHbtPlot->Print("Paper/HbtRadiusParam.eps");
   canvHbtPlot->Print("Paper/HbtRadiusParam.png");
+  canvHbtPlot->Print("Paper/HbtRadiusParam.pdf");
 }
 
 TGraphErrors * GetPbPbHbtRadius0887KT() {

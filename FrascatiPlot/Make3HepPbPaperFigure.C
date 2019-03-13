@@ -6,8 +6,7 @@ void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t para
 void Make3HepPbPaperFigure(Double_t pToA = 0.9, Bool_t plotLinX = 0, Int_t RmappingParam = 3, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
 
   
-void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, 
-                          Bool_t plotPbPb5TeV)
+void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, Bool_t plotPbPb5TeV)
 {
 
   Int_t ip = RmappingParam;
