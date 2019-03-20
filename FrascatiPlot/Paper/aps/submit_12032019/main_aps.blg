@@ -34,43 +34,43 @@ Warning--missing journal in Poulin:2018wzu
 Warning--empty year in AMS100
 You've used 62 entries,
             5847 wiz_defined-function locations,
-            2118 strings with 29121 characters,
-and the built_in function-call counts, 56898 in all, are:
-= -- 3830
-> -- 1282
-< -- 361
-+ -- 426
-- -- 313
-* -- 9046
-:= -- 5676
+            2124 strings with 28869 characters,
+and the built_in function-call counts, 57661 in all, are:
+= -- 3866
+> -- 1308
+< -- 367
++ -- 432
+- -- 319
+* -- 9184
+:= -- 5742
 add.period$ -- 62
 call.type$ -- 62
-change.case$ -- 244
+change.case$ -- 243
 chr.to.int$ -- 65
 cite$ -- 71
-duplicate$ -- 5410
-empty$ -- 4252
-format.name$ -- 787
-if$ -- 11130
+duplicate$ -- 5489
+empty$ -- 4312
+format.name$ -- 802
+if$ -- 11283
 int.to.chr$ -- 6
 int.to.str$ -- 69
-missing$ -- 675
-newline$ -- 284
-num.names$ -- 174
-pop$ -- 2121
+missing$ -- 686
+newline$ -- 285
+num.names$ -- 177
+pop$ -- 2149
 preamble$ -- 1
-purify$ -- 296
+purify$ -- 297
 quote$ -- 0
-skip$ -- 2005
+skip$ -- 2028
 stack$ -- 0
-substring$ -- 1413
-swap$ -- 5094
-text.length$ -- 125
+substring$ -- 1422
+swap$ -- 5176
+text.length$ -- 128
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 819
+type$ -- 822
 warning$ -- 10
-while$ -- 173
+while$ -- 176
 width$ -- 0
-write$ -- 606
+write$ -- 612
 (There were 10 warnings)

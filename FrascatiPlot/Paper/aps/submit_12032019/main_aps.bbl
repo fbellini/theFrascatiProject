@@ -587,16 +587,6 @@
   {http://arxiv.org/abs/1212.5958} {arXiv:1212.5958 [hep-ex]} \BibitemShut
   {NoStop}%
 %%CITATION = ARXIV:1212.5958;%%
-\bibitem [{Note2()}]{Note2}%
-  \BibitemOpen
-  \bibinfo {note} {For this comparison, the highest available $k_{\protect
-  \mathrm {T}}$ ($\approx $ 0.9 GeV/$c$) was chosen as it is closest in
-  $m_{\protect \mathrm {T}}$ to the lowest transverse momentum per nucleon
-  ($p_{\protect \mathrm {T}} \approx $ 0.8 GeV/$c$) accessible by ALICE for the
-  measurement of nuclei production. Ideally, one would use the proton
-  femtoscopic radii, but given the availability of these measurements in only
-  some of the collision systems and centralities, we assume that $m_{\protect
-  \mathrm {T}}$-scaling holds.}\BibitemShut {Stop}%
 \bibitem [{\citenamefont {Adam}\ \emph {et~al.}(2017)\citenamefont {Adam} \emph
   {et~al.}}]{Adam:2015gka}%
   \BibitemOpen
@@ -621,6 +611,19 @@
   {http://arxiv.org/abs/nucl-th/9610038} {arXiv:nucl-th/9610038 [nucl-th]}
   \BibitemShut {NoStop}%
 %%CITATION = NUCL-TH/9610038;%%
+\bibitem [{\citenamefont {Vovchenko}\ \emph {et~al.}(2018)\citenamefont
+  {Vovchenko}, \citenamefont {Doenigus},\ and\ \citenamefont
+  {Stoecker}}]{Vovchenko:2018fiy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Vovchenko}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Doenigus}},
+  \ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Stoecker}},\
+  }\href {\doibase 10.1016/j.physletb.2018.08.041} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B785}},\
+  \bibinfo {pages} {171} (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/1808.05245} {arXiv:1808.05245 [hep-ph]} \BibitemShut
+  {NoStop}%
+%%CITATION = ARXIV:1808.05245;%%
 \bibitem [{\citenamefont {Citron}\ \emph {et~al.}(2018)\citenamefont {Citron}
   \emph {et~al.}}]{Citron:2018lsq}%
   \BibitemOpen

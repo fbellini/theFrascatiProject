@@ -206,8 +206,8 @@ Following the discussion in~\cite{Scheibl:1998tk, Blum:2017qnn}, Eq.~\ref{eq:Cd}
 Under the assumption $R_1\approx R_2 \approx R_3 \approx R$ as in \cite{Blum:2017qnn} and by combining Eq. 6.2 in \cite{Scheibl:1998tk} with our Eq.~\ref{eq:CA_general}, 
 we obtain:
 %
-\begin{equation}
-	\boxed {  B_{A} = {2J_{A} + 1 \over 2^{A}} {1 \over \sqrt{A}} {1 \over m_{T}^{A-1}} \Bigl({2\pi \over R^2 + ({r_A \over 2})^2 }\Bigr)^{3/2(A-1)} } \;.
+\begin{equation}\label{eq:master}
+	\boxed {  B_{A} = {2J_{A} + 1 \over 2^{A}} {1 \over \sqrt{A}} {1 \over m_{T}^{A-1}} \Bigl({2\pi \over R^2 + ({r_A \over 2})^2 }\Bigr)^{\frac{3}{2}(A-1)} } \;.
 \end{equation}
 %
 This general formula can be used to compare the predicted $B_{A}$ with data directly.
@@ -249,15 +249,13 @@ We justify the choice of Eq.~\ref{eq:radiusParameterisation} by identifying the 
 The HBT radii scale with \avdNdeta$^{1/3}$ and we make the simplifying assumption that this scaling holds across collision systems, which is approximately fulfilled in data \cite{Adam:2015vna,Adam:2015pya}. 
 We also note that the HBT radii, and thus also the source size, depend on the pair average transverse momentum $\langle k_{\mathrm{T}}\rangle$~\cite{Aamodt:2011mr}. 
 In contrast to \cite{Blum:2017qnn}, we do not explicitly use the measured HBT radii in our study because using a linear fit to the ALICE HBT-data \cite{Abelev:2012sq,Adam:2015vna} would result in a smaller source size ($\approx$~4~fm) than required by the measured \btwo~to agree with the coalescence prediction ($\approx$~5.5~fm) in central \PbPb~collisions.
-We do however take into account the experimentally observed $\langle k_{\mathrm{T}}\rangle$ dependence on the source volume, in contrast to a similar coalescence study shown in \cite{Sun:2018mqq} (for a detailed discussion on possible alternative source volume parameterisations, see Appendix \ref{appendixA}). 
+We do however take into account the experimentally observed $\langle k_{\mathrm{T}}\rangle$ dependence of the source volume, in contrast to a similar coalescence study shown in \cite{Sun:2018mqq} (for a detailed discussion on possible alternative source volume parameterisations, see Appendix \ref{appendixA}). 
 %
 Production via coalescence could also be investigated by looking at the transverse momentum dependence of the coalescence parameter. However, 
 the advantage of studying these effects as a function of multiplicity/centrality is that system size offers a larger lever arm. 
 For a fixed \pt/$A$, \btwo~changes by about a factor 50 going from pp to central \PbPb~collisions, whereas \btwo~changes by a factor two going from \pt/$A$~=~0.4~GeV/$c$ to \pt/$A$~=~2.2~GeV/$c$  in most central \PbPb~collisions \cite{ALICE:deuteronppPbPb2015}, and by less than a factor two in the measured \pt/$A$ range in pp collisions \cite{ALICE:nucleipp2017, Acharya:2019rgc}.
 
-%As a matter of fact, the momentum dependence is a crucial element in the discussion presented here, because one might argue that However, a study as a function of centrality/multiplicity based on different collision systems turns out to be more sensitive due to the larger lever arm in system size: for a fixed \pt/$A$, e.g. 0.75 GeV/$c$ as in Fig.~\ref{fig:CompareThermalAndCoalescence}, \btwo~changes by about a factor 50 going from pp to central \PbPb~collisions. 
-
-\section{Comparison with data}
+\section{Comparison with data}\label{sec:results}
 
 \begin{figure}[!h]
 	\begin{center}
@@ -274,13 +272,33 @@ For deuterons, both approaches lead to similar predictions and describe reasonab
 For \hethree, the models exhibit a qualitatively similar $R$-dependence but differ by a factor of about 1.5 to 2. 
 The currently available data are consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on data. 
 Both approaches show large differences (a factor 5 to 6 for central Pb--Pb collisions and a factor larger than 50 for $R < 2$ fm) for the \hthreelambda\ caused by the significantly larger size of \hthreelambda\ with respect to \hethree. 
-The only data point available so far in Pb--Pb collisions is in agreement with the thermal+blast-wave model but differs by 6$\sigma$ from coalescence, albeit the validity of our assumptions (\textit{in primis} the usage of a gaussian wave-function).
+The only data point available so far in Pb--Pb collisions is in agreement with the thermal+blast-wave model but differs by 6$\sigma$ from our coalescence calculation. This discrepancy might differ for calculations that use a more realistic (non-gaussian) wave-function.
 In \cite{Zhang:2018euf} it is argued that the difference between data and coalescence might be explained by a later formation through coalescence of $\Lambda$s and deuterons. 
 A possible difference attributable to the presence of excited states with $J=3/2$ of \hthreelambda~is not considered here as there is no evidence for its existence~\cite{Mart:1996ay}. 
 
 Most importantly, Fig.~\ref{fig:CompareThermalAndCoalescence} shows that the difference between the two approaches increases with decreasing $R$, underlining the need for additional multiplicity-differential data to distinguish between the two production scenarios. 
 For \hthreelambda~we considered also a prediction from coalescence for a wider wave-function (see Fig. \ref{fig:CompareThermalAndCoalescence}), which results in even lower production probabilities. This behaviour highlights the unique potential to constrain the wave-function of (hyper-)nuclei via precise measurements of the $R$-dependent coalescence parameter. 
 The curves presented here explicitly allow for an estimate of the hyper-triton production in pp collisions, which is expected to be suppressed by about two orders of magnitude with respect to that of \hethree, making this measurement a prime candidate for future experimental studies.
+
+\section{(Anti-)triton production}
+For isobars with same spin but different wave-function, like \tritium~(\antitritium)~and \hethree~(\antihethree), Eq.~\ref{eq:master} provides as corollary a relation between the relative coalescence probabilities:
+
+\begin{equation} \label{eq:rho}
+\rho (\pt) \equiv \frac{B_{A}(\tritium)}{B_{A}(\hethree)}(\pt) = \bigg( \frac{R(\pt)^{2} + \frac{r_{\hethree}^{2}}{4}} {R(\pt)^{2} + \frac{r_{\tritium}^{2}}{4}} \bigg)^{3}
+\end{equation}
+
+\noindent Under the assumption that the distributions of protons and neutrons are identical, this is equivalent to the ratio of \tritium~yield relative to that of \hethree~(or \antitritium/\antihethree) at a given transverse momentum. It is to be noted that the transverse momentum dependence of this ratio originates solely from the \pt-dependence of the source volume. 
+The ratio $\rho$ is reported in Fig.~\ref{fig:sourceVolume} for \pt/$A$~=~0.75 \GeVc~of the two isobars and as a function of the average charged particle multiplicity. Multiplicity is obtained from the system radius by inverting Eq.~\ref{eq:radiusParameterisation} in the aforementioned parameterisation constrained to \btwo.
+The coalescence model predicts a dependence of $\rho$ on the system size and thus on the charged particle multiplicity. In particular, the production of \tritium~(\antitritium) is expected to be up to a factor two more abundant than the production of \hethree~(\antihethree) in small systems. Such an excess of (anti-)tritons is not expected in thermal-statistical hadronisation. Since the two isobars have the same mass, spin and baryon number, the Grand Canonical thermal model~\cite{Andronic:2010qu,Andronic:2017} predicts a \tritium/\hethree~ratio equal to unity. The same holds true when taking into account the potential suppression of \mbox{(anti-)nuclei} yields due to explicit conservation of baryon number, as in Canonical Statistical Model calculations~\cite{Vovchenko:2018fiy}.
+Existing (anti-)triton measurements in pp collisions~\cite{ALICE:nucleipp2017} are limited by statistical precision and thus do not allow yet for a distinction between the two scenarios.
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{RhoTritiumOver3HeliumVsMulti.png}
+		\caption{Yield of \tritium~relative to \hethree~for \pt/$A$~=~0.75~\GeVc~as defined by Eq.~\ref{eq:rho} in the coalescence picture (black line). The source radius has been mapped into average charged particle multiplicity by using the parameterisation constrained to the ALICE \btwo~measurement described in Sec.~\ref{sec:radiiParamet}. The orange dashed line represents the expectation from statistical hadronisation models. Colored arrows highlight the multiplicity range spanned by ALICE measurements in different collision systems.}
+		\label{fig:sourceVolume}
+	\end{center}
+\end{figure}
 
 \section{Conclusions and outlook}
 We summarise our main conclusions as follows:
@@ -300,11 +318,12 @@ Setting a final word on the production mechanisms also has a broader application
 
 
 \appendix
-\section{Comparison of alternative source volume parameterisations} \label{appendixA}
-For this comparison, the highest available $k_{\mathrm{T}}$ ($\approx$ 0.9 \GeVc) was chosen as it is closest in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon ($p_{\mathrm{T}} \approx$ 0.8 \GeVc) accessible by ALICE for the measurement of nuclei production. 
-Ideally, one would use the proton femtoscopic radii, but given the availability of these measurements in only some of the collision systems and centralities, 
-we assume that $m_{\mathrm{T}}$-scaling holds.
-
+\section{Comparison of alternative source volume parameterisations} \label{appendixA} 
+For the considerations discussed in this work and in similar ones, one crucial aspect has to be taken into account, namely how the source radius is parameterised as a function of multiplicity and transverse momentum.
+As discussed in Sec.~\ref{sec:radiiParamet}, for our main result we rely on the parameterisation given by Eq.~\ref{eq:radiusParameterisation}, which assumes a linear dependence between the cubic root of the measured average charged particle multiplicity density and the radius of the source. 
+In order to extract the $a$ and $b$ coefficients of Eq.~\ref{eq:radiusParameterisation}, several solutions can be adopted. 
+One possibility is to fix the coefficients by fitting the available HBT data from ALICE~\cite{Adam:2015vna, Adam:2015pya, Abelev:2012sq} with Eq.~\ref{eq:radiusParameterisation}, as shown in Fig.~\ref{fig:sourceVolume} by the data points fitted with the gray dotted line. 
+%
 \begin{figure}[!h]
 	\begin{center}
 		\includegraphics[width=\columnwidth]{HbtRadiusParam.png}
@@ -314,11 +333,26 @@ we assume that $m_{\mathrm{T}}$-scaling holds.
 		\label{fig:sourceVolume}
 	\end{center}
 \end{figure}
+%
+In order to preserve the momentum dependence of the source volume, the highest available $k_{\mathrm{T}}$ ($\approx$ 0.9 \GeVc) from pion HBT is chosen as it is closest in $m_{\mathrm{T}}$ to the lowest transverse momentum per nucleon ($p_{\mathrm{T}} \approx$ 0.8 \GeVc) accessible by ALICE for the measurement of nuclei production. 
+Ideally, one would use the proton femtoscopic radii, but given the availability of these measurements in only some of the collision systems and centralities, we assume that $m_{\mathrm{T}}$-scaling holds.
+The fit to the ALICE data results in $a$~=~0.339~fm and $b$~=~0.128~fm.
+However, this approach does not describe the deuteron \btwo~data: we observe that in order for the measured \btwo~to agree with the coalescence prediction in most central \PbPb~collisions, a larger source radius of $R \approx 5.5$ fm is required instead of $R \approx 4$ fm as resulting from the HBT fit.
+This might also indicate that the volume relevant for the coalescence process is slightly larger than the homogeneity volume that can be extracted from HBT studies.
+Because of this, we chose to constrain the parameterisation to the measured \btwo~in central \PbPb~collisions for \pt~=~0.75 \GeVc~as well as to the origin ($b = 0$). 
+The resulting parameterisation, with $a = 0.473$ fm, is reported in Fig.~\ref{fig:sourceVolume} with a continuous black line, and it is used for the results of our study discussed in Sec.~\ref{sec:results}.
 
 
+The authors of \cite{Sun:2018mqq} assume the same functional dependence as we do in Eq.~\ref{eq:radiusParameterisation}. 
+However, their approach deviates from ours as they neglect the momentum dependence of the source volume and constrain it with HBT data at low momentum ($k_{\rm T} = 0.25$ \GeVc). 
+The parameterisation from \cite{Sun:2018mqq} ($a$~=~0.83~fm and $b$~=~0) is shown for comparison in Fig.~\ref{fig:sourceVolume} as the blue dashed line.
+While this choice allows for a good description of \pt-integrated yield ratios (e.g. d/p, \hethree/p, \hthreelambda/$\Lambda$)~\cite{Sun:2018mqq}, using this parameterisation for the \pt-differential study would lead to a significantly lower coalescence probability than measured caused by a much larger source volume (e.g. a \btwo~lower by a factor 5.6 for \pt~=~0.75~\GeVc, corresponding to a a factor two larger radius). 
+In other words, by integrating over transverse momentum, one looses sensitivity to the \pt-dependence of the coalescence probability as the object radius becomes dominated by the large source volumina for small $k_{\rm T}$ (see Eq.~\ref{eq:master}).
 
+\bigskip
+ 
 \begin{acknowledgments}
-We would like to thank Kfir Blum for inspiring this work. We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions, and with Eulogio Serradilla Rodriguez. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Marco Van Leuween, Maximiliano Puccio, Roman Lietava, Natasha Sharma and the colleagues from the ALICE Collaboration for their valuable input. 
+We would like to thank Kfir Blum for inspiring this work. We thank U. Heinz for the useful discussions and the clarification on the equivalence of the Bertsch-Pratt and Yano-Koonin-Podgoretskii parameterisations of the HBT radii. We further acknowledge discussions with Benjamin Doenigus, in particular about the production of \hthreelambda\ in pp collisions, and with Eulogio Serradilla Rodriguez. In addition, we would like to thank Juergen Schukraft, Peter Braun-Munzinger, Marco Van Leuween, Maximiliano Puccio, Roman Lietava, Natasha Sharma, Sebastian Hornung and the colleagues from the ALICE Collaboration for their valuable input. 
 \end{acknowledgments}
 
 \bibliography{main_aps}
