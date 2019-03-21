@@ -85,7 +85,7 @@ void MakePaperFigure4(Bool_t plotLinX, Double_t pToA, Double_t pToAb3, Double_t 
 
 //main plotting for Frascati plot
 Int_t B2vsVolume(Bool_t plotLinX = 1, Double_t pToA = 0.75, Double_t pToAb3 = 0.733, Double_t pToAb3pp = 0.800, Double_t pToAb3Lambda = 1., Double_t pToAb4 = 0.75,
-		 Double_t pToAb4Lambda = 0.75, Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 0, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 0)
+		 Double_t pToAb4Lambda = 0.75, Bool_t plotOnlyCoalescence = kFALSE, Bool_t plotPaperFigures = 1, Bool_t plotYRFigure = 0, Bool_t plotPseudoData = 0)
 {
   //
   // main function which generates the plots of the Frascati project
@@ -749,14 +749,14 @@ void MakePaperFigure1(Bool_t plotLinX, Double_t pToA,
   TLegend * legB2_coal;
   legB2_coal = new TLegend(0.52, 0.93-5*0.06, 0.85, 0.93, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
   legB2_coal->SetFillStyle(0);
-  legB2_coal->SetTextSize(0.06);
+  legB2_coal->SetTextSize(0.05);
   legB2_coal->SetBorderSize(0);
   legB2_coal->AddEntry(hB2_coalescence_pointlike, "#it{B}_{2} coalesc., #it{r_{d}} = 0 (point-like)", "l");
   legB2_coal->AddEntry(hB2_coalescence_radius1third, "#it{B}_{2} coalesc., #it{r_{d}} = 0.3 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r_{d}} = 3.2 fm", "l");
   legB2_coal->AddEntry(hB2_coalescence_largeradius, "#it{B}_{2} coalesc., #it{r_{d}} = 10 fm", "l");
   
-  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 1000, 800);
+  TCanvas * coalcanv = new TCanvas("coalcanv", "coalescence", 800, 1800);
   //top pad
   TPad * pad1 = new TPad("pad1","pad1", 0.01, 0.51, 0.99, 0.99);
   pad1->SetFillColor(0);

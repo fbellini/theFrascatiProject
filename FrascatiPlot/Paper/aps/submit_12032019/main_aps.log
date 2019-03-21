@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  20 MAR 2019 18:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  21 MAR 2019 11:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -334,12 +334,12 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on input line 141.
 
 [2]
-<theory_coalescence_Cd_B2_vert.png, id=30, 1001.7425pt x 777.90625pt>
+<theory_coalescence_Cd_B2_vert.png, id=30, 800.9925pt x 833.1125pt>
 File: theory_coalescence_Cd_B2_vert.png Graphic file (type png)
 <use theory_coalescence_Cd_B2_vert.png>
 Package pdftex.def Info: theory_coalescence_Cd_B2_vert.png  used on input line 
 191.
-(pdftex.def)             Requested size: 246.0pt x 191.02194pt.
+(pdftex.def)             Requested size: 246.0pt x 255.85959pt.
  [3 <./theory_coalescence_Cd_B2_vert.png>]
 <compareThermalAndCoalescence.png, id=34, 700.6175pt x 1375.1375pt>
 File: compareThermalAndCoalescence.png Graphic file (type png)
@@ -347,10 +347,6 @@ File: compareThermalAndCoalescence.png Graphic file (type png)
 Package pdftex.def Info: compareThermalAndCoalescence.png  used on input line 2
 62.
 (pdftex.def)             Requested size: 233.69925pt x 458.68579pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 269--278
 []\OT1/cmr/m/n/10 In Fig. 2[], the avail-able LHC data for
@@ -388,36 +384,36 @@ Underfull \hbox (badness 4403) in paragraph at lines 72--80
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 311--318
+Underfull \hbox (badness 2409) in paragraph at lines 320--327
  []\OT1/cmr/m/n/9 P. J. Mohr, D. B. Newell,  and B. N. Tay-lor,
  []
 
 [7]
-Underfull \hbox (badness 2680) in paragraph at lines 453--461
+Underfull \hbox (badness 2680) in paragraph at lines 462--470
  \OT1/cmr/m/n/9 ri-eri, Com-put. Phys. Com-mun. \OT1/cmr/bx/n/9 185\OT1/cmr/m/n
 /9 , 2056 (2014),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 555--558
+Underfull \hbox (badness 10000) in paragraph at lines 564--567
  []\OT1/cmr/m/n/9 To match the Bertsch-Pratt pa-ram-e-ter-i-sa-tion
  []
 
 
-Underfull \hbox (badness 3536) in paragraph at lines 555--558
+Underfull \hbox (badness 3536) in paragraph at lines 564--567
  \OT1/cmr/m/n/9 ($\OML/cmm/m/it/9 R[]; R[]; R[]$\OT1/cmr/m/n/9 ) em-ployed by e
 x-per-i-ments, with
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 555--558
+Underfull \hbox (badness 5274) in paragraph at lines 564--567
  \OT1/cmr/m/n/9 the Yano-Koonin-Podgoretskii ($\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n
 /9 , $\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n/9 , $\OML/cmm/m/it/9 R[]$\OT1/cmr/m/n/9 
 ) pa-
  []
 
 
-Underfull \hbox (badness 2875) in paragraph at lines 555--558
+Underfull \hbox (badness 2875) in paragraph at lines 564--567
  \OT1/cmr/m/n/9 ram-e-ter-i-sa-tion used in the co-a-les-cence model, we
  []
 
@@ -427,10 +423,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4904 strings out of 492649
- 64849 string characters out of 6129623
- 161527 words of memory out of 5000000
- 8699 multiletter control sequences out of 15000+600000
+ 4907 strings out of 492649
+ 64923 string characters out of 6129623
+ 162565 words of memory out of 5000000
+ 8702 multiletter control sequences out of 15000+600000
  16461 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,33p,1056b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -456,7 +452,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf
 ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main_aps.pdf (8 pages, 587841 bytes).
+Output written on main_aps.pdf (8 pages, 611805 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  86 compressed objects within 1 object stream

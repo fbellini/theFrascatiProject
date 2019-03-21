@@ -26,51 +26,52 @@ Control: production of eprint (0) enabled
 Warning--missing journal in Bazak:2018hgl
 Warning--missing journal in Zhao:2018lyf
 Warning--missing journal in Oliinychenko:2018ugs
+Warning--missing journal in Castorina:2019pnb
 Warning--missing journal in Xu:2018jff
 Warning--empty year in HeinzTorino
 Warning--missing journal in Acharya:2019rgc
 Warning--missing journal in Sun:2018mqq
 Warning--missing journal in Poulin:2018wzu
 Warning--empty year in AMS100
-You've used 62 entries,
+You've used 63 entries,
             5847 wiz_defined-function locations,
-            2124 strings with 28869 characters,
-and the built_in function-call counts, 57661 in all, are:
-= -- 3866
-> -- 1308
-< -- 367
-+ -- 432
-- -- 319
-* -- 9184
-:= -- 5742
-add.period$ -- 62
-call.type$ -- 62
-change.case$ -- 243
-chr.to.int$ -- 65
-cite$ -- 71
-duplicate$ -- 5489
-empty$ -- 4312
-format.name$ -- 802
-if$ -- 11283
+            2130 strings with 29039 characters,
+and the built_in function-call counts, 58461 in all, are:
+= -- 3916
+> -- 1326
+< -- 372
++ -- 438
+- -- 323
+* -- 9305
+:= -- 5826
+add.period$ -- 63
+call.type$ -- 63
+change.case$ -- 247
+chr.to.int$ -- 66
+cite$ -- 73
+duplicate$ -- 5569
+empty$ -- 4374
+format.name$ -- 815
+if$ -- 11433
 int.to.chr$ -- 6
-int.to.str$ -- 69
-missing$ -- 686
-newline$ -- 285
-num.names$ -- 177
-pop$ -- 2149
+int.to.str$ -- 70
+missing$ -- 695
+newline$ -- 289
+num.names$ -- 180
+pop$ -- 2192
 preamble$ -- 1
-purify$ -- 297
+purify$ -- 302
 quote$ -- 0
-skip$ -- 2028
+skip$ -- 2054
 stack$ -- 0
-substring$ -- 1422
-swap$ -- 5176
-text.length$ -- 128
+substring$ -- 1435
+swap$ -- 5244
+text.length$ -- 130
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 822
-warning$ -- 10
-while$ -- 176
+type$ -- 835
+warning$ -- 11
+while$ -- 178
 width$ -- 0
-write$ -- 612
-(There were 10 warnings)
+write$ -- 620
+(There were 11 warnings)
