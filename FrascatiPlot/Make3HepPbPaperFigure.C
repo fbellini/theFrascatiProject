@@ -1,10 +1,14 @@
 #include "./B2vsVolume.C"
+#include "./GetB3inpToA.C"
 
 TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA = 0.733, Bool_t plotLinX = 0, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0, Bool_t plotpPb = 0);
 
   
 TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, Bool_t plotPbPb5TeV, Bool_t plotpPb)
 {
+
+  //prepare input file
+  GetB3inpToA_pPb5TeV(pToA, "B3_Average_pPb_5TeV_15032019.root");
 
   Int_t ip = RmappingParam;
   Float_t textLabelSize = 0.033;

@@ -179,9 +179,10 @@ void GetB3inpToA_PbPb5TeV()
 }
 
 
-void GetB3inpToA_pPb5TeV(Double_t pToA = 0.9)
+void GetB3inpToA_pPb5TeV(Double_t pToA = 0.9, 
+                         TString dataFile = "B3_Average_pPb_5TeV_08022019.root")
 {
-  TFile * fin = TFile::Open("B3_Average_pPb_5TeV_08022019.root");
+  TFile * fin = TFile::Open(dataFile.Data());
   if (!fin) return;
 
   Int_t cent[5] = {0, 10, 20, 40, 100}; 
