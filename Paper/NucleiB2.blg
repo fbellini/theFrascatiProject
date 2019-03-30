@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: NucleiB2.aux
+The style file: utphys.bst
+Database file #1: NucleiB2.bib
+You've used 60 entries,
+            2328 wiz_defined-function locations,
+            1098 strings with 17731 characters,
+and the built_in function-call counts, 20803 in all, are:
+= -- 2189
+> -- 579
+< -- 0
++ -- 216
+- -- 156
+* -- 2068
+:= -- 2353
+add.period$ -- 114
+call.type$ -- 60
+change.case$ -- 66
+chr.to.int$ -- 0
+cite$ -- 60
+duplicate$ -- 1136
+empty$ -- 1994
+format.name$ -- 156
+if$ -- 5468
+int.to.chr$ -- 0
+int.to.str$ -- 60
+missing$ -- 228
+newline$ -- 291
+num.names$ -- 60
+pop$ -- 266
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 887
+stack$ -- 0
+substring$ -- 1047
+swap$ -- 608
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 142
+width$ -- 62
+write$ -- 536
