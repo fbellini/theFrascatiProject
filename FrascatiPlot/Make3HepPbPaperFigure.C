@@ -1,12 +1,9 @@
 #include "./B2vsVolume.C"
 
-void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
-void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
-void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
-void Make3HepPbPaperFigure(Double_t pToA = 0.9, Bool_t plotLinX = 0, Int_t RmappingParam = 3, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0);
+TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA = 0.733, Bool_t plotLinX = 0, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0, Bool_t plotpPb = 0);
 
   
-void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, Bool_t plotPbPb5TeV)
+TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, Bool_t plotPbPb5TeV, Bool_t plotpPb)
 {
 
   Int_t ip = RmappingParam;
@@ -38,7 +35,6 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
     gB3vsR_pPb502TeV_sys[jj] = (TGraphErrors *) getB3_pPb5TeV(kTRUE, pToA, jj, kFALSE);
     gB3vsR_pPb502TeV_sys[jj]->SetFillStyle(1001);
     gB3vsR_pPb502TeV_sys[jj]->SetFillColor(kBlue-10);
-    
 
     gB3vsR_PbPb276TeV[jj] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_PbPb276TeV_sys[jj] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToA, jj, kFALSE);
@@ -128,7 +124,7 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   legB3data->SetTextSize(0.035);
   legB3data->SetBorderSize(0);
   legB3data->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  legB3data->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
+  if (plotpPb) legB3data->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
   legB3data->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, paper in prep.", "pf");
   //  legB3data->AddEntry(gB3vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
   legB3data->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
@@ -145,20 +141,15 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
   gB3vsR_pp7TeV_sys[ip]->Draw("p3");
-  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
+  if (plotpPb) gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
   hB3_coalescence->Draw("l");
-  
   gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
-
-  
-  gB3vsR_pPb502TeV[ip]->Draw("samep");
-
+  if (plotpPb) gB3vsR_pPb502TeV[ip]->Draw("samep");
   gB3vsR_pp7TeV[ip]->Draw("samep");
   
   // gB3vsR_pp13TeV_sys[ip]->Draw("p3");
   // gB3vsR_pp13TeV[ip]->Draw("samep");
-
   pavept->Draw();
   legB3data->Draw();
   
@@ -183,7 +174,7 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   legB3coal->SetFillStyle(0);
   legB3coal->SetTextSize(textLabelSize);
   legB3coal->SetBorderSize(0);
-  legB3coal->AddEntry(hB3_coalescenceParam0, "fit to HBT radii", "l");
+  if (plotpPb) legB3coal->AddEntry(hB3_coalescenceParam0, "fit to HBT radii", "l");
   legB3coal->AddEntry(hB3_coalescenceParam1, "constrained to ALICE #it{B}_{2}", "l");
 
   TLegend * legB3therm = new TLegend(0.55, 0.78, 0.83, 0.92,"SHM + blast-wave (ALICE #piKp)");
@@ -193,14 +184,14 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   legB3therm->AddEntry(gB3blastvsR_PbPb276TeV[0], "GC GSI-Heid. (T = 156 MeV)", "l");
   legB3therm->AddEntry(gB3blastvsR_pPb5TeV[0], "CSM (T = 155 MeV)", "l");
  
-  TLegend * legB3dataMult = new TLegend(0.2, 0.25, 0.45, 0.25+5*0.05,"ALICE");
+  TLegend * legB3dataMult = new TLegend(0.2, 0.25, 0.45, 0.25+3*0.05,"ALICE");
   legB3dataMult->SetFillStyle(0);
   legB3dataMult->SetTextSize(0.033);
   legB3dataMult->SetBorderSize(0);
-  legB3dataMult->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  if (plotPbPb5TeV)  legB3dataMult->AddEntry(gB3vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, preliminary", "pf");
-  legB3dataMult->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
-  legB3dataMult->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV (#it{p}_{T}/#it{A} = 0.8 GeV/#it{c})", "pf");
+  legB3dataMult->AddEntry(gB3vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "p");
+  if (plotPbPb5TeV)  legB3dataMult->AddEntry(gB3vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, preliminary", "p");
+  if (plotpPb) legB3dataMult->AddEntry(gB3vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "p");
+  legB3dataMult->AddEntry(gB3vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV (#it{p}_{T}/#it{A} = 0.8 GeV/#it{c})", "p");
   //  legB3dataMult->AddEntry(gB3vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
   
   cb2vsdNdeta->cd();
@@ -211,9 +202,10 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   
   hframeMult->Draw();
   gB3vsR_PbPb276TeV_sys[ip]->Draw("p3");
-  gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
 
-  hB3_coalescenceParam0->Draw("l");
+  if (plotpPb) gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
+
+  if (plotpPb) hB3_coalescenceParam0->Draw("l");
   hB3_coalescenceParam1->Draw("l");
   if (RmappingParam==3) hB3_coalescenceParam3->Draw("l"); 
   gB3blastvsR_PbPb276TeV[0]->Draw("lsame");
@@ -225,7 +217,7 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
 
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
 
-  gB3vsR_pPb502TeV[ip]->Draw("samep");
+  if (plotpPb) gB3vsR_pPb502TeV[ip]->Draw("samep");
   gB3blastvsR_pPb5TeV[0]->Draw("lsame");
   
   gB3vsR_pp7TeV_sys[ip]->Draw("p3");
@@ -239,89 +231,29 @@ void Make3HepPbPaperFigure(Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, 
   legB3coal->Draw();
   legB3therm->Draw();
   
-  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.pdf", pToA*100));
-  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.eps", pToA*100));
-  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.png", pToA*100));
-  cb2vsdNdeta->SaveAs(Form("paper3He/B3vsMult_pt%03.0f.C", pToA*100));
-  TString foutName = Form("paper3He/B3vsMult_R%i.root", RmappingParam);
-  TFile * fout = new TFile(foutName.Data(), "recreate");
-  fout->cd();
-  cb2vsdNdeta->Write();
-  fout->Close();
-  return;
+  if (plotpPb) {
+    figPath = "./paper3He";
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.pdf", figPath.Data(), pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.eps", figPath.Data(), pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.png", figPath.Data(), pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.C", figPath.Data(), pToA*100));
+    TString foutName = Form("%s/B3vsMult_R%i.root", figPath.Data(), RmappingParam);
+    TFile * fout = new TFile(foutName.Data(), "recreate");
+    fout->cd();
+    cb2vsdNdeta->Write();
+    fout->Close();
+  } else
+  {
+    figPath = "../EPIPHANY2019proceedings/";
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult%03.0f.pdf", figPath.Data(),pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult%03.0f.eps", figPath.Data(),pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult%03.0f.png", figPath.Data(),pToA*100));
+  }
+  
+
+  return cb2vsdNdeta;
   
 }
-
-void getMultiFromR(Double_t * multi, Double_t * radius, Int_t paramSet)
-{
-  // Here is the crucial mapping between HBT radii and multi^(1/3)
-  if (!multi || !radius) return;
-  //
-  // VERSION (17th May 2018):
-  // We fit linearly the ALICE data at the kT = 0.887 
-  Double_t radiusVal = radius[0];
-  Double_t  multi3 = 0.0;
-
-  if (paramSet==3) {
-    //manual hack to reproduce Donigus, Ko arXiv:1812.05175 where HBT parameteris is based on results for kT = 0.25
-    multi3 = radiusVal / 0.83;
-  } else if (paramSet==2) {
-    //manual hack to have the data points fall onto the U. Heinz curve for 3He
-    multi3 = (radiusVal - 0.190) /  0.380;
-  } else  if (paramSet==1) {
-    //manual hack to have the data points fall onto the U. Heinz curve for deuteron
-    multi3 = radiusVal / 0.472949; //radius = 0 at 0 dN/deta
-    //radiusVal = 0.07412 + 0.46637 * multi3; //radius = 0.85 fm for pp, dN/deta = 4.60 (INELg0)
-    //radiusVal = -0.009 + 0.4738 * multi3; //radius = 0.85 fm for pp, dN/deta = 5.98 (INELg0>0)
-    //radiusVal = -0.3949 + 0.507865 * multi3; //most central and peripheral PbPb 2.76 TeV on the curve
-  } else {
-    //fit to the HBT data, kT = 0.887
-    multi3 = (radiusVal - 0.128) / 0.339; 
-  }
-  multi[0] = TMath::Power(multi3, 3);
-  multi[1] = 0.0; //error on multi set to 0
-  return; 
-}
-
-void convertRadiusToMulti(TGraphErrors * graph, Int_t paramSet)
-{
-  //convert multiplicity dN/deta into radius with parameterisation
-  if (!graph) return;
-  
-  for (Int_t ip = 0; ip < graph->GetN(); ip++){
-    Double_t xold[2];
-    xold[0] = graph->GetX()[ip];
-    xold[1] = graph->GetEX()[ip];
-    Double_t xnew[2] = {-1.0, -1.0};
-    getMultiFromR(xnew, xold, paramSet);
-    graph->GetX()[ip] = xnew[0];
-    graph->GetEX()[ip] = xnew[1];
-  }
-
-  return;
-}
-
-
-void convertRadiusToMulti(TGraphAsymmErrors * graph, Int_t paramSet)
-{
-  //convert multiplicity dN/deta into radius with parameterisation
-  if (!graph) return;
-  
-  for (Int_t ip = 0; ip < graph->GetN(); ip++){
-    Double_t xold[2];
-    xold[0] = graph->GetX()[ip];
-    xold[1] = graph->GetEXlow()[ip];
-    Double_t xnew[2] = {-1.0, -1.0};
-    getMultiFromR(xnew, xold, paramSet);
-    graph->GetX()[ip] = xnew[0];
-    graph->GetEXlow()[ip] = xnew[1];
-    graph->GetEXhigh()[ip] = xnew[1];
-	
-  }
-
-  return;
-}
-
 
 Double_t GetB3ratioTritiumToHe(Double_t Rsource = 0.77) // fm pp 7 TeV INEL HBT param A
 {

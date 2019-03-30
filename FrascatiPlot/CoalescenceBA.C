@@ -8,7 +8,7 @@
 #include "./B2vsVolume.C"
 
 //coalescence
-void    CoalescenceBA(Double_t pToA = 0.75);
+void    CoalescenceBA(Double_t pToA = 0.75, TString figPath = ".");
 Double_t getBAfunc(Double_t *x, Double_t *par);
 Double_t getBAfromCoalescence(Double_t A, Double_t JA, Double_t mT, Double_t homogR,  Double_t objSize);
 TGraphErrors * MakeBATheoryGraphCoalescence(Double_t A, Double_t JA, Double_t mT, Double_t objSize);
@@ -489,7 +489,7 @@ TH1D * GetProtonIn010CentBinBlast()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Make plot with coalescence BA predictions for different (hyper-)nuclear species
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-void CoalescenceBA(Double_t pToA = 0.75)
+void CoalescenceBA(Double_t pToA, TString figPath)
 {
   //set style
   gStyle->SetOptStat(0);
@@ -510,26 +510,39 @@ void CoalescenceBA(Double_t pToA = 0.75)
   for(Int_t j=0; j<8; j++) {
     hBA_coalescence[j] = (TGraphErrors*) MakeBATheoryGraphCoalescence(nucleiA[j], spin[j], pToA, objRadius[j]);
     hBA_coalescence[j]->SetMarkerStyle(1);
-    hBA_coalescence[j]->SetLineWidth(2);
+    hBA_coalescence[j]->SetLineWidth(3);
     hBA_coalescence[j]->SetLineStyle(line[j]);
     hBA_coalescence[j]->SetLineColor(color[j]);
   }
 
   TH1D * hframe4 = CreateFrameBA();
-  
+  hframe4->GetYaxis()->SetTitleOffset(1.4);
+  hframe4->GetYaxis()->SetTitleSize(0.06);
+  hframe4->GetYaxis()->SetRangeUser(1e-13, .1);
   //Define pT/A labels only once
   TPaveText * pavept = new TPaveText(0.47, 0.87, 0.87, 0.92, "NDC");
   pavept->SetFillStyle(0);
   pavept->SetTextFont(42);
   pavept->SetBorderSize(0);
-  pavept->SetTextSize(0.04);
+  pavept->SetTextSize(0.03);
   pavept->SetTextAlign(12);
   pavept->AddText(Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
 
-  TLegend * masterLeg = new TLegend(0.1, 0.3, 0.5, 0.9, "");
+  TPaveText * paveA[3];
+  for (Int_t j = 2; j<5; j++) {
+      paveA[j-2] = new TPaveText(0.8, 0.82-0.21*(j-2), 0.95, 0.82-0.27*(j-2), "NDC");
+      paveA[j-2]->SetFillStyle(0);
+      paveA[j-2]->SetTextFont(42);
+      paveA[j-2]->SetBorderSize(0);
+      paveA[j-2]->SetTextSize(0.04);
+      paveA[j-2]->SetTextAlign(12);
+      paveA[j-2]->AddText(Form("#it{A} = %i", j));
+  }
+  TLegend * masterLeg = new TLegend(0.02, 0.5, 0.9, 0.95, Form("#it{p}_{T}/#it{A} = %3.2f GeV/#it{c}", pToA));
   masterLeg->SetFillStyle(0);
-  masterLeg->SetTextSize(0.05);
+  masterLeg->SetTextSize(0.1);
   masterLeg->SetBorderSize(0);
+  masterLeg->SetNColumns(1);
   masterLeg->AddEntry(hBA_coalescence[0], "d, #it{r} = 3.2 fm", "l");
   masterLeg->AddEntry(hBA_coalescence[1], "^{3}H, #it{r} = 2.15 fm", "l");
   masterLeg->AddEntry(hBA_coalescence[2], "^{3}He, #it{r} = 2.48 fm", "l");
@@ -539,20 +552,40 @@ void CoalescenceBA(Double_t pToA = 0.75)
   masterLeg->AddEntry(hBA_coalescence[6], "^{4} _{#Lambda#Lambda}H, #it{r} = 5.5 fm", "l");
   masterLeg->AddEntry(hBA_coalescence[7], "^{4} _{#Lambda}He, #it{r} = 2.4 fm", "l");
 
-  TCanvas * cr4 = new TCanvas("cr4", "compare thermal with coalescence", 1600, 900);
-  cr4->Divide(2,1);
-  cr4->cd(1);
-  gPad->SetLogy();
-  gPad->SetTicky();
-  gPad->SetTickx();
+
+
+  TCanvas * cr4 = new TCanvas("cr4", "coalescence", 900, 700);
+  cr4->cd();
+  TPad * pad1 = new TPad("pad1","This is pad1",0.001, 0.001, 0.75,0.999);
+  pad1->SetFillColor(0);
+  pad1->SetBorderMode(0);
+  pad1->SetBorderSize(0);
+  pad1->SetMargin(0.2,0.05,0.15,0.05);
+  pad1->SetLogy();
+  pad1->SetTicky();
+  pad1->SetTickx();
+
+  cr4->cd();
+  TPad * pad2 = new TPad("pad2","This is pad2",0.75, 0.001, 0.999,0.9999);
+  pad2->SetFillColor(0);
+  pad2->SetBorderMode(0);
+  pad2->SetBorderSize(0);
+  pad2->SetMargin(0.05,0.05,0.15,0.05);
+  pad1->Draw();
+  pad2->Draw();
+
+  pad1->cd();
   hframe4->Draw();
- for(Int_t j=0; j<8; j++) {
+
+for(Int_t j=0; j<8; j++) {
    hBA_coalescence[j]->Draw("samel");
+   if (j<3) paveA[j]->Draw();
  }
- pavept->Draw();
- cr4->cd(2);
+ pad2->cd();
+  //pavept->Draw();
  masterLeg->Draw();
- cr4->SaveAs(Form("coalescenceBA_%3.2f.pdf", pToA));
+ cr4->SaveAs(Form("%s/coalescenceBA%03.0f.pdf", figPath.Data(), pToA*100));
+ cr4->SaveAs(Form("%s/coalescenceBA%03.0f.eps", figPath.Data(), pToA*100));
  
  return;
 }
@@ -642,7 +675,7 @@ TH1D * CreateFrameUncertainty()
 
 TH1D * CreateFrameBA()
 {
-  TH1D * hframeBA = new TH1D("hframeBA", "B_{A} vs radius; #it{R} (fm); #it{B}_{A}", 3500, 0.01, 7.01);
+  TH1D * hframeBA = new TH1D("hframeBA", "B_{A} vs radius; #it{R} (fm); #it{B}_{A}   [(GeV^{2}/#it{c}^{3})^{A-1}]", 3500, 0.01, 7.01);
   hframeBA->GetXaxis()->SetTitleSize(0.06);
   hframeBA->GetYaxis()->SetTitleSize(0.06);
   hframeBA->GetYaxis()->SetTitleOffset(1.3);
@@ -664,3 +697,4 @@ void SetCanvasStyle()
   gStyle->SetPadRightMargin(0.05);
   return;
 }
+
