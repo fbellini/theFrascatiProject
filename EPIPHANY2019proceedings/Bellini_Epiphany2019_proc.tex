@@ -42,31 +42,28 @@ While it is often argued that the coalescence and the thermal model approach giv
 
 %\PACS{PACS numbers come here}
   
-\section{Introduction and motivation}
+\section{Introduction: the ''anti-nuclei'' puzzle}
 The formation of light anti- and hyper-nuclei in high energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions provides unique observables for the study of the system created in these reactions, and can be used to understand both the internal structure and the formation mechanisms of loosely-bound composite objects. 
-The production of (anti-)(hyper-)nuclei in high-energy collisions is commonly described by following two distinct approaches: formation by nucleon coalescence at the system (kinetic) freeze-out \cite{Butler:1963, Kapusta:1980, Sato:1981ez, Nagle:1996vp, Scheibl:1998tk, Blum:2017qnn} or thermal-statistical production at the chemical freeze-out \cite{Andronic:2010qu,Andronic:2017}.
+The production of (anti-)(hyper-)nuclei in high-energy collisions is commonly described by following two distinct approaches: formation by nucleon coalescence at the system (kinetic) freeze-out~\cite{Butler:1963, Kapusta:1980, Sato:1981ez, Nagle:1996vp, Scheibl:1998tk, Blum:2017qnn} or thermal-statistical production at the chemical freeze-out~\cite{Andronic:2010qu,Andronic:2017}.
 Thanks to the large data samples of pp, \pPb~and \PbPb~collisions collected during the first ten years of operations of the CERN Large Hadron Collider (LHC), A Large Ion Collider Experiment (ALICE) Collaboration 
-has measured the production of light nuclei and anti-nuclei at several centre-of-mass energies \cite{ALICE:deuteronppPbPb2015, Adam:2015yta, anielski-HQ14, Puccio:2019oyd, ALICE:nucleipp2017, Acharya:2017dmc, Acharya:2019rgc}, thus providing a crucial experimental input and boost to theoretical and phenomenological investigations \cite{Mrowczynski:2016xqm, Bellini:2018epz, Bazak:2018hgl, Zhao:2018lyf, Sun:2018mqq, Xu:2018jff, Oliinychenko:2018ugs}.
+has measured the production of light nuclei and anti-nuclei at several centre-of-mass energies~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta, anielski-HQ14, Puccio:2019oyd, ALICE:nucleipp2017, Acharya:2017dmc, Acharya:2019rgc}, thus providing a crucial experimental input and a boost to theoretical and phenomenological investigations~\cite{Mrowczynski:2016xqm, Bellini:2018epz, Bazak:2018hgl, Zhao:2018lyf, Sun:2018mqq, Xu:2018jff, Oliinychenko:2018ugs}. 
+In small collision systems, the experimental results seem to confirm the validity of the coalescence picture, with the most recent multiplicity-differential measurements pointing toward a dependence of the coalescence process on the volume of the particle-emitting source (''source size'' hereafter). 
+In heavy-ion collisions, coalescence approaches that do not take into account the source size are not able to reproduce the data. 
+At the same time, the production of light nuclei, anti-nuclei and hypertriton as measured in \PbPb~collisions is found to be consistent with statistical-thermal model predictions and a non-zero deuteron elliptic flow is observed.
+This is surprising as (anti-)nuclei produced at chemical freeze-out are not expected to survive the hadronic phase: the deuteron is a ``fragile object'' when surrounded by the fireball created in heavy-ion collisions, because its binding energy ($B_E = 2.2$ MeV) is much lower than the characteristic temperatures of the system ($T_{chem} \approx 153$ MeV, $T_{kin} \approx 100$ MeV). Moreover, the cross-section for pion-induced deuteron breakup is significantly larger than the typical (pseudo)-elastic cross-sections for the re-scattering of hadronic resonance decay products \cite{Garcilazo:1982yc, Bass:1998ca, Schukraft:2017nbn, Oliinychenko:2018ugs}. 
+These observations pose the ``(anti-)nuclei puzzle'': how can loosely-bound composite objects survive in the 
+dense and hot fireball, freeze-out and develop collective flow like the other light-flavour non-composite hadrons? 
 
-It is to be stressed, that a comprehension of (anti-)nuclei production mechanisms is not only relevant for nuclear and hadronic physics, but has applications in astrophysics and indirect Dark Matter searches \cite{Aramaki:2015pii}. In recent years, it has been suggested that the detection of light anti-nuclei in space could provide a signature for the presence of Dark Matter in the Cosmos, see for instance \cite{Cirelli:2014qia, Korsmeier:2017xzj}. 
+In our study~\cite{Bellini:2018epz} we have extended and combined known formalisms used to describe (anti-)(hyper-)nuclei production in order to allow, for the first time, a direct comparison of the thermal and coalescence models as well as a direct comparison to the ALICE data. 
+Identifying the coalescence parameter ($B_A$) as the key observable, we present a consistent picture across different collision systems (pp, \pPb, \PbPb) for light (anti-)(hyper-)nuclei with mass number $A = 2, 3$ and 4.
+We also suggest to address the open questions by looking at the production of nuclei and hyper-nuclei up to $A = 4$ that differ by size and properties, measured as a function of multiplicity used as a proxy for the source size. 
+Whereas the (anti-)deuteron production has been measured multi-differentially and quite precisely with the LHC Run 1 and 2 data, the study of heavier objects with $A=3$ and 4 will greatly profit from the increase in integrated luminosity foreseen at the LHC Runs 3 and 4 in all collision systems~\cite{Citron:2018lsq}. 
+A comprehension of (anti-)nuclei production mechanisms is not only relevant for nuclear and hadronic physics, but has applications in astrophysics and indirect Dark Matter searches~\cite{Aramaki:2015pii}. In recent years, it has been suggested that the detection of light anti-nuclei in space could provide a signature for the presence of Dark Matter in the Cosmos, see for instance~\cite{Cirelli:2014qia, Korsmeier:2017xzj}. 
 Anti-deuterons and \antihethree~might indeed be produced by coalescence of antiprotons and antineutrons coming from the annihilation of Weakly Interacting Massive Particles into Standard Model particles, for which anti-nuclei created in reactions between primary cosmic ray protons and interstellar matter (pp, pA collisions) represent a source of background.
 
-STOP HERE FOR NOW.
+The main features of the theoretical frameworks employed for our study are briefly summarised in Sec.~\ref{sec:prod}, whereas we address the reader to~\cite{Bellini:2018epz} for the full details. Section~\ref{sec:results} presents the main results and conclusions follow.
 
-\section{Production models}
-Thermal-statistical models have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC.
-In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV.
-Particle abundances are fixed at chemical freeze-out, when inelastic collisions cease. Further elastic and pseudo-elastic collisions occur among the components of the expanding fireball, that affect the spectral shapes and the measurable yields of short-lived (strongly decaying) hadronic resonances. 
-Once the mean free path for elastic collisions is larger than the system size, the fireball freezes-out kinetically at $T_{kin} \approx$ 90 MeV~\cite{Abelev:2013vea}. 
-In such a dense and hot environment, composite objects with binding energies that are small with respect to the temperature of the system, appear as ``fragile''. 
-For instance, the binding energy of the deuteron is $B_{E, d}$ = 2.2~MeV~$\ll~T_{chem},~T_{kin}$.
-The cross-section for pion-induced deuteron breakup is significantly larger than the typical (pseudo)-elastic cross-sections for the re-scattering of hadronic resonance decay products \cite{Garcilazo:1982yc, Bass:1998ca, Schukraft:2017nbn, Oliinychenko:2018ugs}. 
-Similarly, the elastic cross-section driving deuteron spectra to kinetic equilibration in central heavy-ion collisions \cite{Acharya:2017dmc} is smaller than the breakup cross-section \cite{Garcilazo:1982yc, Bass:1998ca, Schukraft:2017nbn, Oliinychenko:2018ugs}   
-(Anti-)nuclei produced at chemical freeze-out are not expected to survive the hadronic phase, yet their measured production is consistent with statistical-thermal model predictions and a non-zero elliptic flow is observed \cite{Acharya:2017dmc, Puccio:2019oyd}. 
-Several solutions have been proposed to solve this ``(anti-)nuclei puzzle'': (a.) a sudden freeze-out at the QGP-hadron phase boundary \cite{Castorina:2019pnb}, (b.) the thermal production of these objects as compact quark bags \cite{Andronic:2017}, (c.) the continuous interplay of breakup and formation reactions resulting in the coincidence of thermal and kinetic equilibration \cite{Oliinychenko:2018ugs, Xu:2018jff}, (d.) the coincidence of coalescence and thermal production \cite{Scheibl:1998tk, HeinzTorino}.
-Data from rescattering of short-lived hadronic resonances suggest a long-lasting hadronic phase \cite{Abelev:2014uua}, thus strongly disfavouring hypothesis (a.). 
-Hypothesis (b.) cannot presently be tested beyond the agreement of measured (anti-)nuclei yields with statistical-thermal model predictions. Calculations for (c.) are currently available only for deuterons. Hypothesis (d.) is scrutinised in this letter.
-To this purpose, we propose a new method to compare models that also allows for a direct comparison with LHC data. 
+\section{Modelling Light (anti-)(hyper-)nuclei production} \label{sec:prod}
 
 Nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (pions, protons, etc.), because their size is comparable to a fraction or the whole system created in high-energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions~\cite{Adam:2015vna}.  
 Their size is typically defined as the rms of their (charge) wave-function, corresponding to about 2 fm for light (anti-)nuclei as obtained from electron scattering experiments. 
@@ -95,6 +92,10 @@ The properties of the objects under study here are summarised in Tab. \ref{tab:n
 \label{tab:nucleusradii}
 \end{table}
 
+\subsection{Thermal-statistical models} 
+Thermal-statistical models ~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC.
+In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV.
+
 \subsection{The coalescence approach}
 
 Starting from the model described in~\cite{Scheibl:1998tk, Blum:2017qnn}, we have obtained in \cite{Bellini:2018epz} a generalised expression for the coalescence parameter $B_A$
@@ -115,7 +116,7 @@ Figure \ref{Fig:BA} shows the source radius dependence of $B_A$ for different co
 \end{center}
 \end{figure} 
 
-\section{Comparison with data}
+\section{Comparison with data} \label{sec:results}
 
 \begin{figure}[htb]
 \begin{center}

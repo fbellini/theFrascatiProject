@@ -134,6 +134,37 @@ D.~Oliinychenko, L.-G. Pang, H.~Elfner, and V.~Koch
 \href{http://arxiv.org/abs/1809.03071}{{\ttfamily arXiv:1809.03071 [hep-ph]}}.
 %%CITATION = ARXIV:1809.03071;%%.
 
+\bibitem{Garcilazo:1982yc}
+H.~Garcilazo
+\href{http://dx.doi.org/10.1103/PhysRevLett.48.577}{{\em Phys. Rev. Lett.}
+  {\bfseries 48} (1982) 577--580}.
+%%CITATION = PRLTA,48,577;%%.
+
+\bibitem{Bass:1998ca}
+S.~A. Bass {\em et~al.}
+  \href{http://dx.doi.org/10.1016/S0146-6410(98)00058-1}{{\em Prog. Part. Nucl.
+  Phys.} {\bfseries 41} (1998) 255--369},
+\href{http://arxiv.org/abs/nucl-th/9803035}{{\ttfamily arXiv:nucl-th/9803035
+  [nucl-th]}}.
+%%CITATION = NUCL-TH/9803035;%%.
+
+\bibitem{Schukraft:2017nbn}
+J.~Schukraft \href{http://dx.doi.org/10.1016/j.nuclphysa.2017.05.036}{{\em
+  Nucl. Phys.} {\bfseries A967} (2017) 1--10},
+\href{http://arxiv.org/abs/1705.02646}{{\ttfamily arXiv:1705.02646 [hep-ex]}}.
+%%CITATION = ARXIV:1705.02646;%%.
+
+\bibitem{Citron:2018lsq}
+Z.~Citron {\em et~al.}, ``{Future physics opportunities for high-density QCD at
+  the LHC with heavy-ion and proton beams},'' in {\em {HL/HE-LHC Workshop:
+  Workshop on the Physics of HL-LHC, and Perspectives at HE-LHC Geneva,
+  Switzerland, June 18-20, 2018}}.
+\newblock 2018.
+\newblock
+\href{http://arxiv.org/abs/1812.06772}{{\ttfamily arXiv:1812.06772 [hep-ph]}}.
+\newblock
+%%CITATION = ARXIV:1812.06772;%%.
+
 \bibitem{Aramaki:2015pii}
 T.~Aramaki {\em et~al.}
   \href{http://dx.doi.org/10.1016/j.physrep.2016.01.002}{{\em Phys. Rept.}
@@ -162,26 +193,6 @@ M.~Korsmeier, F.~Donato, and N.~Fornengo
   {\bfseries C88} (2013) 044910},
 \href{http://arxiv.org/abs/1303.0737}{{\ttfamily arXiv:1303.0737 [hep-ex]}}.
 %%CITATION = ARXIV:1303.0737;%%.
-
-\bibitem{Garcilazo:1982yc}
-H.~Garcilazo
-\href{http://dx.doi.org/10.1103/PhysRevLett.48.577}{{\em Phys. Rev. Lett.}
-  {\bfseries 48} (1982) 577--580}.
-%%CITATION = PRLTA,48,577;%%.
-
-\bibitem{Bass:1998ca}
-S.~A. Bass {\em et~al.}
-  \href{http://dx.doi.org/10.1016/S0146-6410(98)00058-1}{{\em Prog. Part. Nucl.
-  Phys.} {\bfseries 41} (1998) 255--369},
-\href{http://arxiv.org/abs/nucl-th/9803035}{{\ttfamily arXiv:nucl-th/9803035
-  [nucl-th]}}.
-%%CITATION = NUCL-TH/9803035;%%.
-
-\bibitem{Schukraft:2017nbn}
-J.~Schukraft \href{http://dx.doi.org/10.1016/j.nuclphysa.2017.05.036}{{\em
-  Nucl. Phys.} {\bfseries A967} (2017) 1--10},
-\href{http://arxiv.org/abs/1705.02646}{{\ttfamily arXiv:1705.02646 [hep-ex]}}.
-%%CITATION = ARXIV:1705.02646;%%.
 
 \bibitem{Castorina:2019pnb}
 P.~Castorina and H.~Satz
