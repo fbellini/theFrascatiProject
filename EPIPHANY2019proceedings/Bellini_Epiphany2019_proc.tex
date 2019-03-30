@@ -1,0 +1,105 @@
+\documentclass{appolb}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tabularx} 
+\usepackage{rotating,graphicx} 
+\usepackage{appendix} 
+\usepackage{makecell}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[amssymb]{SIunits}
+\usepackage{hyperref}
+
+\usepackage{lineno}
+\linenumbers
+
+% graphicx package included for placing figures in the text
+%------------------------------------------------------
+\input{./commands.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                %
+%    BEGINNING OF TEXT                           %
+%                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% \eqsec  % uncomment this line to get equations numbered by (sec.num)
+\title{Testing production scenarios for (anti-)(hyper-)nuclei with multiplicity-dependent measurements at the LHC}
+\author{F. Bellini (CERN, Geneva) \\and A. P. Kalweit (CERN, Geneva)}
+\thanks{Proceedings of the XXV Cracow EPIPHANY Conference on Advances in Heavy Ion Physics}%
+\address{Contact: francesca.bellini@cern.ch}
+
+\maketitle
+\begin{abstract}
+The production of light anti- and hyper-nuclei provides unique observables to characterise the system created in high energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions. In particular, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (such as pions, kaons, protons, etc.), because their size is comparable to a fraction or the whole system created in the collision. Their formation is typically described within the framework of coalescence and thermal-statistical production models. 
+In order to distinguish between the two production scenarios, we propose to measure the coalescence parameter $B_A$ for different anti- and hyper-nuclei (that differ by mass, size and internal wave-function) as a function of the size of the particle emitting source. 
+The latter can be controlled by performing systematic measurements of light anti- hyper- nuclei in different collision systems (pp, pA, AA) and as a function of the multiplicity of particles created in the collision. 
+While it is often argued that the coalescence and the thermal model approach give very similar predictions for the production of light nuclei in heavy-ion collisions, our study shows that large differences can be expected for hyper-nuclei with extended wave-functions, as the hyper-triton. We compare the model predictions with data from the ALICE experiment and we discuss perspectives for future measurements with the upgraded detectors during the High-Luminosity LHC phase in the next decade. 
+\end{abstract}
+
+%\PACS{PACS numbers come here}
+  
+\section{Introduction}
+In the last few years A Large Ion Collider Experiment (ALICE) Collaboration has reported on the measurement of the production of light nuclei in pp, p--Pb and Pb--Pb collisions at TeV centre-of-mass energies \cite{}, based on data collected during the first ten years of operations of the CERN Large Hadron Collider (LHC). 
+The measurements of deuteron, , 
+
+\begin{table}[htb]
+\resizebox{\textwidth}{!}{%
+\centering
+\begin{tabularx}{1.25\textwidth}{cccccccc}
+\hline \hline \\[-2ex]
+\makecell{Mass \\number } & Nucleus           &  \makecell{Compo-\\sition}               & $B_{E}$ (MeV)   & \makecell{Spin \\$J_{A}$} & \makecell{(Charge) \\rms radius \\ \rmsradius$^{meas}$~(fm)} &  \makecell{Harmonic \\ oscillator \\ size \\ parameter \\$r_{A}$ (fm) } & Refs. \\[1ex]  \hline \\[-2ex] 
+      A = 2                     & d                                    & pn                                  &   2.224575 (9)     &     1   & 2.1413 $\pm$ 0.0025      &  3.2    &   \cite{VanDerLeun:1982bhg,Mohr:2015ccw}     \\[0.5ex]  \hline \\[-2ex]
+\multirow{3}{*}{A = 3}  & \tritium 	                  & pnn                               &    8.4817986 (20) & 1/2   &  1.755  $\pm$ 0.086        &  2.15   &   \cite{Purcell:2015gtm}           \\
+                                   & \hethree                         & ppn                                &   7.7180428  (23) & 1/2  & 1.959 $\pm$  0.030         &   2.48  &   \cite{Purcell:2015gtm} \\
+                                   & \hthreelambda               & p$\Lambda$n                &    0.13 $\pm$ 0.05 & 1/2  &  4.9 --  10.0                    &  6.8 -- 14.1 & \cite{Davis:2005mb,Nemura:1999qp} \\[0.5ex]  \hline \\[-2ex]
+\multirow{4}{*}{A = 4}  & \hefour                          & ppnn                              &    28.29566   (20)  &      0  &  1.6755 $\pm$ 0.0028  &  1.9  & \cite{1674-1137-41-3-030003,Angeli:2013epw} \\
+                                   & \hfourlambda                & p$\Lambda$nn              &  2.04 $\pm$0.04   &   0   &    2.0 -- 3.8             & 2.4 -- 4.9  & \cite{Davis:2005mb,Nemura:1999qp} \\
+                                   & \hfourtwolambda          &  p$\Lambda\Lambda$n &   0.39 -- 0.51         &    1     &    4.2 -- 7.1          & 5.5 -- 9.4  &   \cite{Nemura:1999qp} \\
+                                   & \hefourlambda              & pp$\Lambda$n              &  2.39 $\pm$ 0.03  &    0   &    2.0 -- 3.8            & 2.4 -- 4.9  & \cite{Davis:2005mb,Nemura:1999qp}\\[0.5ex]  \hline \hline
+\end{tabularx}
+}
+\caption{Properties of nuclei and hyper-nuclei with mass number $A \leq 4$. $B_{E}$ is the binding energy in MeV. The size of the nucleus is given in terms of the (charge) rms radius of the wave-function, \rmsradius. The size parameter of the wave-function of the harmonic oscillator potential,  $r_{A}$, is chosen such that the measured/expected rms is approximately reproduced. Please note that the proton rms charge radius $\lambda_{p} = 0.879(8)$ fm \cite{bernauer10} is subtracted quadratically from the measured rms charge radius $\rmsradius^{meas}$ of the nucleus $\rmsradius = \sqrt{(\rmsradius^{meas})^2 - {\lambda_{p}^2}}$ to account for the finite extension of the constituents. Implicitly we assume here that $\lambda_{\Lambda}\approx \lambda_{n}\approx \lambda_{p}$.
+ References are given in the last column. The spin of \hfourtwolambda\ is discussed in the text of~\cite{Nemura:1999qp}.}
+\label{tab:nucleusradii}
+\end{table}
+
+\section{The coalescence approach}
+
+
+Starting from the model described in~\cite{Scheibl:1998tk, Blum:2017qnn}, we have obtained in \cite{Bellini:2018epz} a generalised expression for the coalescence parameter $B_A$
+
+\begin{equation}\label{eq:master}
+	\boxed {  B_{A} = {2J_{A} + 1 \over 2^{A}} {1 \over \sqrt{A}} {1 \over m_{T}^{A-1}} \Bigl({2\pi \over R^2 + ({r_A \over 2})^2 }\Bigr)^{\frac{3}{2}(A-1)} } \;\;,
+\end{equation}
+
+\noindent which is a function of the spin of the particle $J_A$, its transverse mass $m_{\rm T}$, its size parameter $r_A$ and the source radius $R$.
+Figure \ref{Fig:BA} shows the source radius dependence of $B_A$ for different composite objects, including the nuclei and hyper-nuclei with $A = 2, 3$ and 4 whose properties are reported in Tab.~\ref{tab:nucleusradii}.
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{coalescenceBA075.eps}
+\caption{(Color online) Coalescence parameter $B_A$ as a function of the source radius $R$ as predicted from the coalescence model (Eq.~\ref{eq:master}) for various composite objects with \pt$/A$~=~0.75~\GeVc. For each (hyper-)nucleus, the radius $r$ used for the calculation is reported in the legend.}
+\label{Fig:BA}
+\end{center}
+\end{figure} 
+
+\subsection{Comparison with data}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=\textwidth]{coal2Thermal2alice.png}
+\caption{(Color online) Coalescence parameter $B_A$ as a function of the average charged particle multiplicity density for various (hyper-)nuclei, up to $A = 4$. The coalescence calculations (continuous or dashed-dotted black lines) are compared to the thermal+blast-wave predictions (dashed blue line), as well as to pp (green square) and \PbPb~(red circles) collision data from ALICE~\cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Adam:2015yta}. }
+\label{Fig:BA}
+\end{center}
+\end{figure} 
+
+
+\bibliographystyle{utphys} 	
+\bibliography{biblio}
+\end{document}
+

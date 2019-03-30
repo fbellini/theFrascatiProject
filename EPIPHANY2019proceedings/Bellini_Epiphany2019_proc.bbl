@@ -1,0 +1,109 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{VanDerLeun:1982bhg}
+C.~Van Der~Leun and C.~Alderliesten, ``{The deuteron binding energy},''
+\href{http://dx.doi.org/10.1016/0375-9474(82)90105-1}{{\em Nucl. Phys.}
+  {\bfseries A380} (1982) 261--269}.
+%%CITATION = NUPHA,A380,261;%%.
+
+\bibitem{Mohr:2015ccw}
+P.~J. Mohr, D.~B. Newell, and B.~N. Taylor, ``{CODATA Recommended Values of the
+  Fundamental Physical Constants: 2014},''
+  \href{http://dx.doi.org/10.1103/RevModPhys.88.035009}{{\em Rev. Mod. Phys.}
+  {\bfseries 88} no.~3, (2016) 035009},
+\href{http://arxiv.org/abs/1507.07956}{{\ttfamily arXiv:1507.07956
+  [physics.atom-ph]}}.
+%%CITATION = ARXIV:1507.07956;%%.
+
+\bibitem{Purcell:2015gtm}
+J.~E. Purcell and C.~G. Sheu, ``{Nuclear Data Sheets for A = 3},''
+\href{http://dx.doi.org/10.1016/j.nds.2015.11.001}{{\em Nucl. Data Sheets}
+  {\bfseries 130} (2015) 1--20}.
+%%CITATION = NDTSB,130,1;%%.
+
+\bibitem{Davis:2005mb}
+D.~H. Davis, ``{50 years of hypernuclear physics. I. The early experiments},''
+\href{http://dx.doi.org/10.1016/j.nuclphysa.2005.01.002}{{\em Nucl. Phys.}
+  {\bfseries A754} (2005) 3--13}.
+%%CITATION = NUPHA,A754,3;%%.
+
+\bibitem{Nemura:1999qp}
+H.~Nemura, Y.~Suzuki, Y.~Fujiwara, and C.~Nakamoto, ``{Study of light Lambda
+  and Lambda-Lambda hypernuclei with the stochastic variational method and
+  effective Lambda N potentials},''
+  \href{http://dx.doi.org/10.1143/PTP.103.929}{{\em Prog. Theor. Phys.}
+  {\bfseries 103} (2000) 929--958},
+\href{http://arxiv.org/abs/nucl-th/9912065}{{\ttfamily arXiv:nucl-th/9912065
+  [nucl-th]}}.
+%%CITATION = NUCL-TH/9912065;%%.
+
+\bibitem{1674-1137-41-3-030003}
+M.~Wang, G.~Audi, F.~Kondev, W.~Huang, S.~Naimi, and X.~Xu, ``{The AME2016
+  atomic mass evaluation (II). Tables, graphs and references},'' {\em Chinese
+  Physics C} {\bfseries 41} no.~3, (2017) 030003.
+
+\bibitem{Angeli:2013epw}
+I.~Angeli and K.~P. Marinova, ``{Table of experimental nuclear ground state
+  charge radii: An update},''
+\href{http://dx.doi.org/10.1016/j.adt.2011.12.006}{{\em Atom. Data Nucl. Data
+  Tabl.} {\bfseries 99} no.~1, (2013) 69--95}.
+%%CITATION = ADNDA,99,69;%%.
+
+\bibitem{bernauer10}
+{\bfseries {A1}} Collaboration, J.~C. Bernauer {\em et~al.}, ``High-precision
+  determination of the electric and magnetic form factors of the proton,''
+  \href{http://dx.doi.org/10.1103/PhysRevLett.105.242001}{{\em Phys. Rev.
+  Lett.} {\bfseries 105} (Dec, 2010) 242001}.
+
+\bibitem{Scheibl:1998tk}
+R.~Scheibl and U.~W. Heinz, ``{Coalescence and flow in ultrarelativistic heavy
+  ion collisions},'' \href{http://dx.doi.org/10.1103/PhysRevC.59.1585}{{\em
+  Phys. Rev.} {\bfseries C59} (1999) 1585--1602},
+\href{http://arxiv.org/abs/nucl-th/9809092}{{\ttfamily arXiv:nucl-th/9809092
+  [nucl-th]}}.
+%%CITATION = NUCL-TH/9809092;%%.
+
+\bibitem{Blum:2017qnn}
+K.~Blum, K.~C.~Y. Ng, R.~Sato, and M.~Takimoto, ``{Cosmic rays, antihelium, and
+  an old navy spotlight},''
+  \href{http://dx.doi.org/10.1103/PhysRevD.96.103021}{{\em Phys. Rev.}
+  {\bfseries D96} no.~10, (2017) 103021},
+\href{http://arxiv.org/abs/1704.05431}{{\ttfamily arXiv:1704.05431
+  [astro-ph.HE]}}.
+%%CITATION = ARXIV:1704.05431;%%.
+
+\bibitem{Bellini:2018epz}
+F.~Bellini and A.~P. Kalweit, ``{Testing coalescence and statistical-thermal
+  production scenarios for (anti-)(hyper-)nuclei and exotic QCD objects at LHC
+  energies},''
+\href{http://arxiv.org/abs/1807.05894}{{\ttfamily arXiv:1807.05894 [hep-ph]}}.
+%%CITATION = ARXIV:1807.05894;%%.
+
+\bibitem{ALICE:nucleipp2017}
+{\bfseries ALICE} Collaboration, S.~Acharya {\em et~al.}, ``{Production of
+  deuterons, tritons, $^{3}$He nuclei and their anti-nuclei in pp collisions at
+  $\mathbf{\sqrt{{\textit s}}}$ = 0.9, 2.76 and 7 TeV},''
+  \href{http://dx.doi.org/10.1103/PhysRevC.97.024615}{{\em Phys. Rev.}
+  {\bfseries C97} no.~2, (2018) 024615},
+\href{http://arxiv.org/abs/1709.08522}{{\ttfamily arXiv:1709.08522 [nucl-ex]}}.
+%%CITATION = ARXIV:1709.08522;%%.
+
+\bibitem{ALICE:deuteronppPbPb2015}
+{\bfseries ALICE} Collaboration, J.~Adam {\em et~al.}, ``{Production of light
+  nuclei and anti-nuclei in pp and Pb-Pb collisions at energies available at
+  the CERN Large Hadron Collider},''
+  \href{http://dx.doi.org/10.1103/PhysRevC.93.024917}{{\em Phys. Rev.}
+  {\bfseries C93} no.~2, (2016) 024917},
+\href{http://arxiv.org/abs/1506.08951}{{\ttfamily arXiv:1506.08951 [nucl-ex]}}.
+%%CITATION = ARXIV:1506.08951;%%.
+
+\bibitem{Adam:2015yta}
+{\bfseries ALICE} Collaboration, J.~Adam {\em et~al.},
+  ``{$^{3}_{\Lambda}\mathrm H$ and $^{3}_{\bar{\Lambda}} \overline{\mathrm H}$
+  production in Pb-Pb collisions at $\sqrt{s_{\mathrm{NN}}} =$ 2.76 TeV},''
+  \href{http://dx.doi.org/10.1016/j.physletb.2016.01.040}{{\em Phys. Lett.}
+  {\bfseries B754} (2016) 360--372},
+\href{http://arxiv.org/abs/1506.08453}{{\ttfamily arXiv:1506.08453 [nucl-ex]}}.
+%%CITATION = ARXIV:1506.08453;%%.
+
+\end{thebibliography}\endgroup
