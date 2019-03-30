@@ -792,11 +792,11 @@ void MakePaperFigure1(Bool_t plotLinX, Double_t pToA,
   legB2_coal->Draw();
   
   if (plotvert) {
-    coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2_vert.eps");
-    coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2_vert.png");
+    coalcanv->SaveAs("../Paper/theory_coalescence_Cd_B2_vert.eps");
+    coalcanv->SaveAs("../Paper/theory_coalescence_Cd_B2_vert.png");
   } else {
-    coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.eps");
-    coalcanv->SaveAs("Paper/theory_coalescence_Cd_B2.png");
+    coalcanv->SaveAs("../Paper/theory_coalescence_Cd_B2.eps");
+    coalcanv->SaveAs("../Paper/theory_coalescence_Cd_B2.png");
   }
   return;
 }
