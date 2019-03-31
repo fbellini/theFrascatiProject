@@ -44,9 +44,9 @@ While it is often argued that the coalescence and the thermal model approach giv
   
 \section{Introduction: the ``anti-nuclei'' puzzle}
 The formation of light anti- and hyper-nuclei in high energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions provides unique observables for the study of the system created in these reactions, and can be used to understand both the internal structure and the formation mechanisms of loosely-bound composite objects. 
-The production of (anti-)(hyper-)nuclei in high-energy collisions is commonly described by following two distinct approaches: formation by nucleon coalescence at the system (kinetic) freeze-out~\cite{Butler:1963, Kapusta:1980, Sato:1981ez, Nagle:1996vp, Scheibl:1998tk, Blum:2017qnn} or thermal-statistical production at the chemical freeze-out~\cite{Andronic:2010qu,Andronic:2017}.
+The production of (anti-)(hyper-)nuclei in high-energy collisions is commonly described by following two distinct approaches: formation by nucleon coalescence at the system (kinetic) freeze-out~\cite{Butler:1963, Kapusta:1980, Scheibl:1998tk, Blum:2017qnn} or thermal-statistical production at the chemical freeze-out~\cite{Andronic:2010qu,Andronic:2017}.
 Thanks to the large data samples of pp, \pPb~and \PbPb~collisions collected during the first ten years of operations of the CERN Large Hadron Collider (LHC), A Large Ion Collider Experiment (ALICE) Collaboration 
-has measured the production of light nuclei and anti-nuclei at several centre-of-mass energies~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta, anielski-HQ14, Puccio:2019oyd, ALICE:nucleipp2017, Acharya:2017dmc, Acharya:2019rgc}, thus providing a crucial experimental input and a boost to theoretical and phenomenological investigations~\cite{Mrowczynski:2016xqm, Bellini:2018epz, Bazak:2018hgl, Zhao:2018lyf, Sun:2018mqq, Xu:2018jff, Oliinychenko:2018ugs}. 
+has measured the production of light nuclei and anti-nuclei at several centre-of-mass energies~\cite{ALICE:deuteronppPbPb2015, Adam:2015yta, ALICE:nucleipp2017, Acharya:2017dmc, Puccio:2019oyd, Acharya:2019rgc}, thus providing a crucial experimental input and a boost to theoretical and phenomenological investigations~\cite{Mrowczynski:2016xqm, Bellini:2018epz, Bazak:2018hgl, Zhao:2018lyf, Sun:2018mqq, Xu:2018jff, Oliinychenko:2018ugs}. 
 In small collision systems, the experimental results seem to confirm the validity of the coalescence picture, with the most recent multiplicity-differential measurements pointing toward a dependence of the coalescence process on the volume of the particle-emitting source (''source size'' hereafter). 
 In heavy-ion collisions, coalescence approaches that do not take into account the source size are not able to reproduce the data. 
 At the same time, the production of light nuclei, anti-nuclei and hypertriton as measured in \PbPb~collisions is found to be consistent with statistical-thermal model predictions and a non-zero deuteron elliptic flow is observed.
@@ -97,7 +97,7 @@ The large size and the low binding energy of the \hthreelambda~with respect to t
 
 
 \subsection{The coalescence approach}
-In the coalescence picture, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963, Kapusta:1980, Sato:1981ez, Nagle:1996vp, Scheibl:1998tk}.
+In the coalescence picture, nucleons produced in the collision coalesce into nuclei if they are close in space and have similar velocities \cite{Butler:1963, Kapusta:1980, Scheibl:1998tk}.
 The coalescence probability is encoded in the coalescence parameter, $B_{A}$.
 Considering that at LHC energies the number of produced protons and neutrons at midrapidity as well as their momentum distributions are expected to be equal, $B_{A}$ is defined as
 %
@@ -137,18 +137,20 @@ We observe that the coalescence probability decreases with increasing mass numbe
 For a given $A$, the larger the object radius, the lower is $B_A$, as clearly visible by comparing \hethree~and \hthreelambda. 
 For objects with same $A$, mass and spin (e.g. the isobars \tritium~and \hethree), $B_A$ differs only due to the different radius $r_A$. 
 This difference is more relevant in small systems, because in large systems the difference between nucleus radii is much smaller than the size of the source.  
-
+Incidentally, this could be experimentally verified with high precision measurements of the production of \tritium~relative to \hethree~in pp collisions. 
 The production of objects with radius larger than the source is strongly suppressed, indicating that the process is driven by the lenght scale defined by the object radius relative to the source radius.
 
-
 \subsection{Thermal + blast-wave model} 
-Thermal-statistical models ~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC.
-In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV.
+Thermal-statistical models~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC. 
+In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV. 
+Particle yields are derived from the partition function assuming a Grand Canonical ensemble\footnote{Extensions to small systems employ a canonical ensemble partition function to account for the exact conservation of quantum numbers in a finite size system, see for instance~\cite{Vovchenko:2018fiy}.} and they depend only on the mass of the particle and the temperature of chemical freeze-out, d$N$/d$y\propto$~exp$(-m/T_{\mathrm{chem}})$.
 The thermal model cannot -- alone -- be compared to the \pt-dependent coalescence description because it provides only predictions for \pt-integrated yields. 
 A thermal particle production implies a Boltzmann distribution of the momenta only for a static source, which is not the case of the rapidly expanding system produced in heavy-ion collisions. 
-The thermal model (i.e. the GSI-Heidelberg implementation we have considered) needs to be complemented by ahydrodynamic description of the rapidly expanding source. 
-To that end, we chose to use the Blast-Wave model, which has been proven to describe reasonably well the measured momentum distributions of protons. 
+The thermal model (i.e. the GSI-Heidelberg implementation we have considered here) needs to be complemented by a hydrodynamic description of the rapidly expanding source. 
+To that end, we use the Blast-Wave model~\cite{Schnedermann:1993ws}, which has been proven to describe reasonably well the measured momentum distributions of protons~\cite{Abelev:2013vea}. 
 Our ``thermal+blast-wave'' approach results from the combination of the two models: the \pt-dependence is modelled by the blast-wave whereas the normalisation (i.e. the \pt-integrated yield) is taken from the thermal model predictions.
+
+
 
 \section{Comparison with data} \label{sec:results}
 

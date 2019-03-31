@@ -12,18 +12,6 @@ J.~I. Kapusta
   C21} (1980) 1301--1310}.
 %%CITATION = PHRVA,C21,1301;%%.
 
-\bibitem{Sato:1981ez}
-H.~Sato and K.~Yazaki
-\href{http://dx.doi.org/10.1016/0370-2693(81)90976-X}{{\em Phys. Lett.}
-  {\bfseries B98} (1981) 153--157}.
-%%CITATION = PHLTA,98B,153;%%.
-
-\bibitem{Nagle:1996vp}
-J.~L. Nagle, B.~S. Kumar, D.~Kusnezov, H.~Sorge, and R.~Mattiello
-\href{http://dx.doi.org/10.1103/PhysRevC.53.367}{{\em Phys. Rev.} {\bfseries
-  C53} (1996) 367--376}.
-%%CITATION = PHRVA,C53,367;%%.
-
 \bibitem{Scheibl:1998tk}
 R.~Scheibl and U.~W. Heinz
   \href{http://dx.doi.org/10.1103/PhysRevC.59.1585}{{\em Phys. Rev.} {\bfseries
@@ -65,16 +53,6 @@ A.~Andronic, P.~Braun-Munzinger, K.~Redlich, and J.~Stachel {\em Nature}
 \href{http://arxiv.org/abs/1506.08453}{{\ttfamily arXiv:1506.08453 [nucl-ex]}}.
 %%CITATION = ARXIV:1506.08453;%%.
 
-\bibitem{anielski-HQ14}
-{Anielski, Jonas} {\em J. Phys. Conf. Ser.} {\bfseries 612} no.~1, (2015)
-  012014.
-
-\bibitem{Puccio:2019oyd}
-{\bfseries ALICE} Collaboration, M.~Puccio
-\href{http://dx.doi.org/10.1016/j.nuclphysa.2018.10.043}{{\em Nucl. Phys.}
-  {\bfseries A982} (2019) 447--450}.
-%%CITATION = NUPHA,A982,447;%%.
-
 \bibitem{ALICE:nucleipp2017}
 {\bfseries ALICE} Collaboration, S.~Acharya {\em et~al.}
   \href{http://dx.doi.org/10.1103/PhysRevC.97.024615}{{\em Phys. Rev.}
@@ -88,6 +66,12 @@ A.~Andronic, P.~Braun-Munzinger, K.~Redlich, and J.~Stachel {\em Nature}
   {\bfseries C77} no.~10, (2017) 658},
 \href{http://arxiv.org/abs/1707.07304}{{\ttfamily arXiv:1707.07304 [nucl-ex]}}.
 %%CITATION = ARXIV:1707.07304;%%.
+
+\bibitem{Puccio:2019oyd}
+{\bfseries ALICE} Collaboration, M.~Puccio
+\href{http://dx.doi.org/10.1016/j.nuclphysa.2018.10.043}{{\em Nucl. Phys.}
+  {\bfseries A982} (2019) 447--450}.
+%%CITATION = NUPHA,A982,447;%%.
 
 \bibitem{Acharya:2019rgc}
 {\bfseries ALICE} Collaboration, S.~Acharya {\em et~al.}
@@ -185,13 +169,6 @@ M.~Korsmeier, F.~Donato, and N.~Fornengo
   [astro-ph.HE]}}.
 %%CITATION = ARXIV:1711.08465;%%.
 
-\bibitem{Adam:2015vna}
-{\bfseries ALICE} Collaboration, J.~Adam {\em et~al.}
-  \href{http://dx.doi.org/10.1103/PhysRevC.93.024905}{{\em Phys. Rev.}
-  {\bfseries C93} no.~2, (2016) 024905},
-\href{http://arxiv.org/abs/1507.06842}{{\ttfamily arXiv:1507.06842 [nucl-ex]}}.
-%%CITATION = ARXIV:1507.06842;%%.
-
 \bibitem{Nemura:1999qp}
 H.~Nemura, Y.~Suzuki, Y.~Fujiwara, and C.~Nakamoto
   \href{http://dx.doi.org/10.1143/PTP.103.929}{{\em Prog. Theor. Phys.}
@@ -236,16 +213,26 @@ I.~Angeli and K.~P. Marinova
   Tabl.} {\bfseries 99} no.~1, (2013) 69--95}.
 %%CITATION = ADNDA,99,69;%%.
 
-\bibitem{bernauer10}
-{\bfseries {A1}} Collaboration, J.~C. Bernauer {\em et~al.}
-  \href{http://dx.doi.org/10.1103/PhysRevLett.105.242001}{{\em Phys. Rev.
-  Lett.} {\bfseries 105} (Dec, 2010) 242001}.
-
 \bibitem{Vovchenko:2018fiy}
 V.~Vovchenko, B.~Doenigus, and H.~Stoecker
   \href{http://dx.doi.org/10.1016/j.physletb.2018.08.041}{{\em Phys. Lett.}
   {\bfseries B785} (2018) 171--174},
 \href{http://arxiv.org/abs/1808.05245}{{\ttfamily arXiv:1808.05245 [hep-ph]}}.
 %%CITATION = ARXIV:1808.05245;%%.
+
+\bibitem{Schnedermann:1993ws}
+E.~Schnedermann, J.~Sollfrank, and U.~W. Heinz
+  \href{http://dx.doi.org/10.1103/PhysRevC.48.2462}{{\em Phys. Rev.} {\bfseries
+  C48} (1993) 2462--2475},
+\href{http://arxiv.org/abs/nucl-th/9307020}{{\ttfamily arXiv:nucl-th/9307020
+  [nucl-th]}}.
+%%CITATION = NUCL-TH/9307020;%%.
+
+\bibitem{Abelev:2013vea}
+{\bfseries ALICE} Collaboration, B.~Abelev {\em et~al.}
+  \href{http://dx.doi.org/10.1103/PhysRevC.88.044910}{{\em Phys. Rev.}
+  {\bfseries C88} (2013) 044910},
+\href{http://arxiv.org/abs/1303.0737}{{\ttfamily arXiv:1303.0737 [hep-ex]}}.
+%%CITATION = ARXIV:1303.0737;%%.
 
 \end{thebibliography}\endgroup

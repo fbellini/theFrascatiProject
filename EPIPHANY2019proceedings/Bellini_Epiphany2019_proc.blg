@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Bellini_Epiphany2019_proc.aux
 The style file: utphysnt.bst
 Database file #1: biblio.bib
-You've used 39 entries,
+You've used 36 entries,
             2321 wiz_defined-function locations,
-            912 strings with 13523 characters,
-and the built_in function-call counts, 12424 in all, are:
-= -- 1328
-> -- 362
+            888 strings with 12853 characters,
+and the built_in function-call counts, 11516 in all, are:
+= -- 1231
+> -- 336
 < -- 0
-+ -- 136
-- -- 97
-* -- 1137
-:= -- 1420
-add.period$ -- 75
-call.type$ -- 39
-change.case$ -- 2
++ -- 126
+- -- 90
+* -- 1081
+:= -- 1319
+add.period$ -- 71
+call.type$ -- 36
+change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 39
-duplicate$ -- 669
-empty$ -- 1177
-format.name$ -- 97
-if$ -- 3286
+cite$ -- 36
+duplicate$ -- 611
+empty$ -- 1095
+format.name$ -- 90
+if$ -- 3039
 int.to.chr$ -- 0
-int.to.str$ -- 39
-missing$ -- 148
-newline$ -- 191
-num.names$ -- 39
-pop$ -- 183
+int.to.str$ -- 36
+missing$ -- 136
+newline$ -- 180
+num.names$ -- 36
+pop$ -- 166
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 516
+skip$ -- 465
 stack$ -- 0
-substring$ -- 652
-swap$ -- 356
+substring$ -- 608
+swap$ -- 321
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 92
-width$ -- 41
-write$ -- 302
+while$ -- 85
+width$ -- 38
+write$ -- 283
