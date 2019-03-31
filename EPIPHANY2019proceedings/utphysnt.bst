@@ -1011,7 +1011,6 @@ FUNCTION {inproceedings}
 { output.bibitem
   format.collaboration output
   format.authors "author" output.check
-  format.title add.doi "title" output.check
   blank.sep
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check

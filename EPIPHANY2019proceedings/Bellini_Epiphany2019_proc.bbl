@@ -155,10 +155,8 @@ J.~Schukraft \href{http://dx.doi.org/10.1016/j.nuclphysa.2017.05.036}{{\em
 %%CITATION = ARXIV:1705.02646;%%.
 
 \bibitem{Citron:2018lsq}
-Z.~Citron {\em et~al.}, ``{Future physics opportunities for high-density QCD at
-  the LHC with heavy-ion and proton beams},'' in {\em {HL/HE-LHC Workshop:
-  Workshop on the Physics of HL-LHC, and Perspectives at HE-LHC Geneva,
-  Switzerland, June 18-20, 2018}}.
+Z.~Citron {\em et~al.} in {\em {HL/HE-LHC Workshop: Workshop on the Physics of
+  HL-LHC, and Perspectives at HE-LHC Geneva, Switzerland, June 18-20, 2018}}.
 \newblock 2018.
 \newblock
 \href{http://arxiv.org/abs/1812.06772}{{\ttfamily arXiv:1812.06772 [hep-ph]}}.
@@ -186,29 +184,6 @@ M.~Korsmeier, F.~Donato, and N.~Fornengo
 \href{http://arxiv.org/abs/1711.08465}{{\ttfamily arXiv:1711.08465
   [astro-ph.HE]}}.
 %%CITATION = ARXIV:1711.08465;%%.
-
-\bibitem{Abelev:2013vea}
-{\bfseries ALICE} Collaboration, B.~Abelev {\em et~al.}
-  \href{http://dx.doi.org/10.1103/PhysRevC.88.044910}{{\em Phys. Rev.}
-  {\bfseries C88} (2013) 044910},
-\href{http://arxiv.org/abs/1303.0737}{{\ttfamily arXiv:1303.0737 [hep-ex]}}.
-%%CITATION = ARXIV:1303.0737;%%.
-
-\bibitem{Castorina:2019pnb}
-P.~Castorina and H.~Satz
-\href{http://arxiv.org/abs/1901.10407}{{\ttfamily arXiv:1901.10407 [hep-ph]}}.
-%%CITATION = ARXIV:1901.10407;%%.
-
-\bibitem{HeinzTorino}
-U.~Heinz, ``{Coalescence model involving HBT and flow}.'' {Presentation at EMMI
-  Workshop in Torino, November 2017}.
-
-\bibitem{Abelev:2014uua}
-{\bfseries ALICE} Collaboration, B.~B. Abelev {\em et~al.}
-  \href{http://dx.doi.org/10.1103/PhysRevC.91.024609}{{\em Phys. Rev.}
-  {\bfseries C91} (2015) 024609},
-\href{http://arxiv.org/abs/1404.0495}{{\ttfamily arXiv:1404.0495 [nucl-ex]}}.
-%%CITATION = ARXIV:1404.0495;%%.
 
 \bibitem{Adam:2015vna}
 {\bfseries ALICE} Collaboration, J.~Adam {\em et~al.}

@@ -42,7 +42,7 @@ While it is often argued that the coalescence and the thermal model approach giv
 
 %\PACS{PACS numbers come here}
   
-\section{Introduction: the ''anti-nuclei'' puzzle}
+\section{Introduction: the ``anti-nuclei'' puzzle}
 The formation of light anti- and hyper-nuclei in high energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions provides unique observables for the study of the system created in these reactions, and can be used to understand both the internal structure and the formation mechanisms of loosely-bound composite objects. 
 The production of (anti-)(hyper-)nuclei in high-energy collisions is commonly described by following two distinct approaches: formation by nucleon coalescence at the system (kinetic) freeze-out~\cite{Butler:1963, Kapusta:1980, Sato:1981ez, Nagle:1996vp, Scheibl:1998tk, Blum:2017qnn} or thermal-statistical production at the chemical freeze-out~\cite{Andronic:2010qu,Andronic:2017}.
 Thanks to the large data samples of pp, \pPb~and \PbPb~collisions collected during the first ten years of operations of the CERN Large Hadron Collider (LHC), A Large Ion Collider Experiment (ALICE) Collaboration 
@@ -61,15 +61,19 @@ Whereas the (anti-)deuteron production has been measured multi-differentially an
 A comprehension of (anti-)nuclei production mechanisms is not only relevant for nuclear and hadronic physics, but has applications in astrophysics and indirect Dark Matter searches~\cite{Aramaki:2015pii}. In recent years, it has been suggested that the detection of light anti-nuclei in space could provide a signature for the presence of Dark Matter in the Cosmos, see for instance~\cite{Cirelli:2014qia, Korsmeier:2017xzj}. 
 Anti-deuterons and \antihethree~might indeed be produced by coalescence of antiprotons and antineutrons coming from the annihilation of Weakly Interacting Massive Particles into Standard Model particles, for which anti-nuclei created in reactions between primary cosmic ray protons and interstellar matter (pp, pA collisions) represent a source of background.
 
-The main features of the theoretical frameworks employed for our study are briefly summarised in Sec.~\ref{sec:prod}, whereas we address the reader to~\cite{Bellini:2018epz} for the full details. Section~\ref{sec:results} presents the main results and conclusions follow.
+The main features of the theoretical frameworks employed for our study are briefly summarised in Sec.~\ref{sec:prod}, while we address the reader to~\cite{Bellini:2018epz} for the full details. Section~\ref{sec:results} presents the main results and conclusions follow.
 
-\section{Modelling Light (anti-)(hyper-)nuclei production} \label{sec:prod}
 
-Nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (pions, protons, etc.), because their size is comparable to a fraction or the whole system created in high-energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions~\cite{Adam:2015vna}.  
-Their size is typically defined as the rms of their (charge) wave-function, corresponding to about 2 fm for light (anti-)nuclei as obtained from electron scattering experiments. 
-For the hyper-triton, theoretical calculations indicate a rms of the wave-function of about 5 fm \cite{Nemura:1999qp}, significantly larger than that of non-strange nuclei with mass number $A = 3$ and driven by the average separation of the $\Lambda$ relative to the two other nucleons. 
-This difference in the wave-functions results in dramatic consequences for the production scenarios, as discussed in the following.
-The properties of the objects under study here are summarised in Tab. \ref{tab:nucleusradii}.
+\section{Modelling light (anti-)(hyper-)nuclei production} \label{sec:prod}
+
+For our study, we consider nuclei and hyper-nuclei with mass number $A = 2, 3$ and 4, whose properties are summarised in Tab. \ref{tab:nucleusradii}. Those properties are the same as for their anti-matter counterparts and we assume that the same formation mechanisms are at play for matter and anti-matter\footnote{For brevity, in the following we refer to ``nuclei'' and ``hyper-nuclei'' but we imply both matter and anti-matter.}.
+Nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (pions, protons, etc.), because their size is comparable to a fraction or the whole system created in pp, \pPb~and \PbPb~collisions.
+The size is typically defined in two ways: a) as the rms of the (charge) distribution ($\lambda_A$), typically measured in electron scattering experiments, or b) as the size parameter of the object wave-function ($r_A$), typically taken as the gaussian solution of an isotropic harmonic oscillator potential in coalescence models. 
+For light nuclei, $\lambda_A\approx$~2~fm.  For the hyper-triton, theoretical calculations indicate a charge rms radius $\lambda_A\approx$~5~fm \cite{Nemura:1999qp}, driven by the average separation of the $\Lambda$ relative to the two other nucleons. 
+Assuming a similar structure (e.g. a s-wave interaction for a bound state of a n or a $\Lambda$ with adeuteron), the hypertriton results in a much larger object than the other non-strange nuclei with $A=3$.
+A simple relation holds between $\lambda_A$ and $r_A$, see \cite{Bellini:2018epz}. 
+In Tab.~\ref{tab:nucleusradii} the binding energy ($B_E$) is also reported. The most tightly bound nucleus is \hefour, whereas the most loosely bound object is \hthreelambda, that is also the largest one. For the latter, we report the separation energy of the $\Lambda$ baryon from the deuteron ($B_\Lambda=0.13$~MeV). 
+The large size and the low binding energy of the \hthreelambda~with respect to the other (hyper-)nuclei has important consequences on its production, as discussed in what follows.
 
 \begin{table}[htb]
 \resizebox{\textwidth}{!}{%
@@ -87,14 +91,10 @@ The properties of the objects under study here are summarised in Tab. \ref{tab:n
                                    & \hefourlambda              & pp$\Lambda$n              &  2.39 $\pm$ 0.03  &    0   &    2.0 -- 3.8            & 2.4 -- 4.9  & \cite{Davis:2005mb,Nemura:1999qp}\\[0.5ex]  \hline \hline
 \end{tabularx}
 }
-\caption{Properties of nuclei and hyper-nuclei with mass number $A \leq 4$. $B_{E}$ is the binding energy in MeV. The size of the nucleus is given in terms of the (charge) rms radius of the wave-function, \rmsradius. The size parameter of the wave-function of the harmonic oscillator potential,  $r_{A}$, is chosen such that the measured/expected rms is approximately reproduced. Please note that the proton rms charge radius $\lambda_{p} = 0.879(8)$ fm \cite{bernauer10} is subtracted quadratically from the measured rms charge radius $\rmsradius^{meas}$ of the nucleus $\rmsradius = \sqrt{(\rmsradius^{meas})^2 - {\lambda_{p}^2}}$ to account for the finite extension of the constituents. Implicitly we assume here that $\lambda_{\Lambda}\approx \lambda_{n}\approx \lambda_{p}$.
- References are given in the last column. The spin of \hfourtwolambda\ is discussed in the text of~\cite{Nemura:1999qp}.}
+\caption{Properties of nuclei and hyper-nuclei with mass number $A \leq 4$. $B_{E}$ is the binding energy in MeV.   The size parameter $r_{A}$, is chosen to approximately reproduce the measured/expected rms,  \rmsradius$^{meas}$~(fm). The proton rms charge radius $\lambda_{p} = 0.879(8)$ fm \cite{bernauer10} is subtracted quadratically from the measured rms charge radius $\rmsradius^{meas}$ of the nucleus $\rmsradius = \sqrt{(\rmsradius^{meas})^2 - {\lambda_{p}^2}}$ to account for the finite extension of the constituents. Implicitly we assume here that $\lambda_{\Lambda}\approx \lambda_{n}\approx \lambda_{p}$. The spin of \hfourtwolambda\ is discussed in the text of~\cite{Nemura:1999qp}.}
 \label{tab:nucleusradii}
 \end{table}
 
-\subsection{Thermal-statistical models} 
-Thermal-statistical models ~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC.
-In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV.
 
 \subsection{The coalescence approach}
 
@@ -115,6 +115,10 @@ Figure \ref{Fig:BA} shows the source radius dependence of $B_A$ for different co
 \label{Fig:BA}
 \end{center}
 \end{figure} 
+
+\subsection{Thermal-statistical models} 
+Thermal-statistical models ~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC.
+In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV.
 
 \section{Comparison with data} \label{sec:results}
 

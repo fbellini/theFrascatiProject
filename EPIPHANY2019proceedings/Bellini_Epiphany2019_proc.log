@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  30 MAR 2019 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.6)  31 MAR 2019 01:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -509,16 +509,19 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-Overfull \hbox (6.58423pt too wide) in alignment at lines 89--89
+Overfull \hbox (6.58423pt too wide) in alignment at lines 94--94
 [][][][][][][][] 
  []
 
 
+Underfull \vbox (badness 1577) has occurred while \output is active []
+
+ [4]
+
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 104.
+(amsmath)                 on input line 105.
 
-[4]
 Package epstopdf Info: Source file: <coalescenceBA075.eps>
 (epstopdf)                    date: 2019-03-29 18:59:14
 (epstopdf)                    size: 56076 bytes
@@ -527,40 +530,42 @@ Package epstopdf Info: Source file: <coalescenceBA075.eps>
 (epstopdf)                    size: 28085 bytes
 (epstopdf)             Command: <repstopdf --outfile=coalescenceBA075-eps-conve
 rted-to.pdf coalescenceBA075.eps>
-(epstopdf)             \includegraphics on input line 113.
+(epstopdf)             \includegraphics on input line 114.
 Package epstopdf Info: Output file is already uptodate.
-<coalescenceBA075-eps-converted-to.pdf, id=148, 569.12625pt x 427.5975pt>
+<coalescenceBA075-eps-converted-to.pdf, id=150, 569.12625pt x 427.5975pt>
 File: coalescenceBA075-eps-converted-to.pdf Graphic file (type pdf)
 <use coalescenceBA075-eps-converted-to.pdf>
 Package pdftex.def Info: coalescenceBA075-eps-converted-to.pdf  used on input l
-ine 113.
+ine 114.
 (pdftex.def)             Requested size: 286.80486pt x 215.49461pt.
-<coal2Thermal2alice.png, id=151, 1001.7425pt x 1375.1375pt>
+<coal2Thermal2alice.png, id=155, 1001.7425pt x 1375.1375pt>
 File: coal2Thermal2alice.png Graphic file (type png)
 <use coal2Thermal2alice.png>
-Package pdftex.def Info: coal2Thermal2alice.png  used on input line 123.
+Package pdftex.def Info: coal2Thermal2alice.png  used on input line 128.
 (pdftex.def)             Requested size: 358.50471pt x 492.1325pt.
 
+LaTeX Warning: Float too large for page by 33.94968pt on input line 132.
 
-LaTeX Warning: Float too large for page by 33.94968pt on input line 127.
-
-<B3vsMult073.png, id=158, 1001.7425pt x 777.90625pt>
+[5]
+<B3vsMult073.png, id=180, 1001.7425pt x 777.90625pt>
 File: B3vsMult073.png Graphic file (type png)
 <use B3vsMult073.png>
-Package pdftex.def Info: B3vsMult073.png  used on input line 131.
+Package pdftex.def Info: B3vsMult073.png  used on input line 136.
 (pdftex.def)             Requested size: 286.80486pt x 222.71452pt.
-[5] (./Bellini_Epiphany2019_proc.bbl
+ [6 <./coalescenceBA075-eps-converted-to.pdf>]
+(./Bellini_Epiphany2019_proc.bbl
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 32.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [6 <./coalescenceBA075-eps-converted-to.pdf>] [7])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+) [7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
  [8] [9 <./coal2Thermal2alice.png>] [10 <./B3vsMult073.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
- (./Bellini_Epiphany2019_proc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
+
+(./Bellini_Epiphany2019_proc.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
 
 
 Package rerunfilecheck Warning: File `Bellini_Epiphany2019_proc.out' has change
@@ -569,21 +574,18 @@ d.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `Bellini_Epiphany2019_proc.out':
-(rerunfilecheck)             Before: 1B0CA4F74EADC675D03FBCBCE13E86E3;255
-(rerunfilecheck)             After:  AB44FCC01F601BD96C28F971AF9E360E;365.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 140.
+(rerunfilecheck)             Before: 739C8022EB7CBA871FE00BD9E0B70E8A;365
+(rerunfilecheck)             After:  228B2B30E20ECA41784D0A7DB3F85549;365.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 145.
  ) 
 Here is how much of TeX's memory you used:
- 7878 strings out of 492649
- 109651 string characters out of 6129623
- 212372 words of memory out of 5000000
- 11553 multiletter control sequences out of 15000+600000
+ 7872 strings out of 492649
+ 109538 string characters out of 6129623
+ 214050 words of memory out of 5000000
+ 11550 multiletter control sequences out of 15000+600000
  26627 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,19n,28p,1159b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,19n,28p,970b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -613,10 +615,10 @@ pe1/public/cm-super/sfss0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
 1/public/cm-super/sfti1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
 public/cm-super/sfti1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
 blic/cm-super/sftt1000.pfb>
-Output written on Bellini_Epiphany2019_proc.pdf (10 pages, 584439 bytes).
+Output written on Bellini_Epiphany2019_proc.pdf (10 pages, 585518 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 345 compressed objects within 4 object streams
- 65 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 342 compressed objects within 4 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
