@@ -153,9 +153,11 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
   {Bazak}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Mrowczynski}},\ }\href@noop {} {\  (\bibinfo {year} {2018})},\ \Eprint
-  {http://arxiv.org/abs/1802.08212} {arXiv:1802.08212 [nucl-th]} \BibitemShut
-  {NoStop}%
+  {Mrowczynski}},\ }\href {\doibase 10.1142/S0217732318501420} {\bibfield
+  {journal} {\bibinfo  {journal} {Mod. Phys. Lett.}\ }\textbf {\bibinfo
+  {volume} {A33}},\ \bibinfo {pages} {1850142} (\bibinfo {year} {2018})},\
+  \Eprint {http://arxiv.org/abs/1802.08212} {arXiv:1802.08212 [nucl-th]}
+  \BibitemShut {NoStop}%
 %%CITATION = ARXIV:1802.08212;%%
 \bibitem [{\citenamefont {Zhao}\ \emph {et~al.}(2018)\citenamefont {Zhao},
   \citenamefont {Zhu}, \citenamefont {Zheng}, \citenamefont {Ko},\ and\
@@ -165,9 +167,11 @@
   {Zhao}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Zhu}}, \bibinfo
   {author} {\bibfnamefont {H.}~\bibnamefont {Zheng}}, \bibinfo {author}
   {\bibfnamefont {C.~M.}\ \bibnamefont {Ko}}, \ and\ \bibinfo {author}
-  {\bibfnamefont {H.}~\bibnamefont {Song}},\ }\href@noop {} {\  (\bibinfo
-  {year} {2018})},\ \Eprint {http://arxiv.org/abs/1807.02813} {arXiv:1807.02813
-  [nucl-th]} \BibitemShut {NoStop}%
+  {\bibfnamefont {H.}~\bibnamefont {Song}},\ }\href {\doibase
+  10.1103/PhysRevC.98.054905} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev.}\ }\textbf {\bibinfo {volume} {C98}},\ \bibinfo {pages} {054905}
+  (\bibinfo {year} {2018})},\ \Eprint {http://arxiv.org/abs/1807.02813}
+  {arXiv:1807.02813 [nucl-th]} \BibitemShut {NoStop}%
 %%CITATION = ARXIV:1807.02813;%%
 \bibitem [{\citenamefont {Andronic}\ \emph {et~al.}(2011)\citenamefont
   {Andronic}, \citenamefont {Braun-Munzinger}, \citenamefont {Stachel},\ and\
@@ -443,14 +447,17 @@
   {\bibinfo  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B780}},\
   \bibinfo {pages} {191} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
 %%CITATION = PHLTA,B780,191;%%
-\bibitem [{\citenamefont {Sun}\ \emph {et~al.}(2018)\citenamefont {Sun},
+\bibitem [{\citenamefont {Sun}\ \emph {et~al.}(2019)\citenamefont {Sun},
   \citenamefont {Ko},\ and\ \citenamefont {Doenigus}}]{Sun:2018mqq}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.-J.}\ \bibnamefont
   {Sun}}, \bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont {Ko}}, \ and\
-  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Doenigus}},\ }\href@noop
-  {} {\  (\bibinfo {year} {2018})},\ \Eprint {http://arxiv.org/abs/1812.05175}
-  {arXiv:1812.05175 [nucl-th]} \BibitemShut {NoStop}%
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Doenigus}},\ }\href
+  {\doibase 10.1016/j.physletb.2019.03.033} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Lett.}\ }\textbf {\bibinfo {volume} {B792}},\ \bibinfo
+  {pages} {132} (\bibinfo {year} {2019})},\ \Eprint
+  {http://arxiv.org/abs/1812.05175} {arXiv:1812.05175 [nucl-th]} \BibitemShut
+  {NoStop}%
 %%CITATION = ARXIV:1812.05175;%%
 \bibitem [{\citenamefont {Petran}\ \emph {et~al.}(2014)\citenamefont {Petran},
   \citenamefont {Letessier}, \citenamefont {Rafelski},\ and\ \citenamefont
