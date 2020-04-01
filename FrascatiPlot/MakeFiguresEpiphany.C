@@ -1,13 +1,13 @@
 #include "./CoalescenceBA.C"
-#include "./MapMulti2R.C"
-
+//#include "./MapMulti2R.C"
+//#include "./Make3HepPbPaperFigure.Cs"
 void MakeFiguresEpiphany()
 {
     TString figPath = "../EPIPHANY2019proceedings";
 
     //Figure 1: BA from coalescence
     CoalescenceBA(0.75, figPath.Data());
-    Make3HepPbPaperFigure(figPath.Data(), 0.733, 0, Int_t 1, 1, 0, 0);
+   //Make3HepPbPaperFigure(figPath.Data(), 0.733, 0, 1, 1, 0, 0);
 
     gStyle->SetOptStat(0);
     gStyle->SetOptTitle(0);
@@ -508,7 +508,19 @@ void MakeFiguresEpiphany()
     cr4->SaveAs(Form("%s/coal2Thermal2alice.pdf", figPath.Data()));
     cr4->SaveAs(Form("%s/coal2Thermal2alice.eps", figPath.Data()));
     cr4->SaveAs(Form("%s/coal2Thermal2alice.png", figPath.Data()));
- 
+
+    TFile * fout = new TFile(Form("%s/BApredictions_Epiphany.root",figPath.Data()),"RECREATE");
+    fout->cd();
+    hframe3->Write();
+    hB3_coalescence->Write();
+    gBlastB3vsR_PbPb276TeV->SetName("gBlastB3vsR_PbPb276TeV");
+    gBlastB3vsR_PbPb276TeV->Write();
+    hframe4->Write();
+    hB4_coalescence->Write();
+    gBlastB4vsR_PbPb276TeV->SetName("gBlastB4vsR_PbPb276TeV");
+    gBlastB4vsR_PbPb276TeV->Write();
+    //cr4->Write();
+
     return;
 }
 
