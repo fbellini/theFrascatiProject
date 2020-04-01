@@ -552,7 +552,52 @@ void CoalescenceBA(Double_t pToA, TString figPath)
   masterLeg->AddEntry(hBA_coalescence[6], "^{4} _{#Lambda#Lambda}H, #it{r} = 5.5 fm", "l");
   masterLeg->AddEntry(hBA_coalescence[7], "^{4} _{#Lambda}He, #it{r} = 2.4 fm", "l");
 
+Float_t arrowsize = 0.02;
+TArrow * arrpp = new TArrow(0.7, 0.8, 1.5, 0.8, arrowsize, "<|>");
+arrpp->SetLineColor(kGreen+2);
+arrpp->SetFillColor(kGreen+2);
+arrpp->SetFillStyle(1001);
+arrpp->SetLineWidth(3);
 
+TPaveText * pavepp = new TPaveText(0.7, 0.70, 1.5, 0.75);
+  pavepp->SetFillStyle(0);
+  pavepp->SetTextFont(42);
+  pavepp->SetBorderSize(0);
+  pavepp->SetTextSize(0.04);
+  pavepp->SetTextAlign(22);
+  pavepp->SetTextColor(kGreen+2);
+  pavepp->AddText("pp 14 TeV");
+
+TArrow * arrpPb = new TArrow(0.7, 0.6, 2.0, 0.6, arrowsize, "<|>");
+arrpPb->SetLineColor(kBlue);
+arrpPb->SetFillColor(kBlue);
+arrpPb->SetFillStyle(1001);
+arrpPb->SetLineWidth(3);
+
+TPaveText * paveppb = new TPaveText(0.7, 0.48, 2.0, 0.53);
+  paveppb->SetFillStyle(0);
+  paveppb->SetTextFont(42);
+  paveppb->SetBorderSize(0);
+  paveppb->SetTextSize(0.04);
+  paveppb->SetTextAlign(22);
+  paveppb->SetTextColor(kBlue);
+  paveppb->AddText("p-Pb 8.8 TeV");
+
+TArrow * arrPbPb = new TArrow(2.0, 0.4, 6.0, 0.4, arrowsize);
+arrPbPb->SetOption("<>");
+arrPbPb->SetLineColor(kRed+1);
+arrPbPb->SetFillColor(kRed+1);
+arrPbPb->SetFillStyle(1001);
+arrPbPb->SetLineWidth(3);
+
+TPaveText * pavepbpb = new TPaveText(2.0, 0.30, 6.0, 0.35);
+  pavepbpb->SetFillStyle(0);
+  pavepbpb->SetTextFont(42);
+  pavepbpb->SetBorderSize(0);
+  pavepbpb->SetTextSize(0.04);
+  pavepbpb->SetTextAlign(22);
+  pavepbpb->SetTextColor(kRed+1);
+  pavepbpb->AddText("Pb-Pb 5.5 TeV");
 
   TCanvas * cr4 = new TCanvas("cr4", "coalescence", 900, 700);
   cr4->cd();
@@ -581,6 +626,12 @@ for(Int_t j=0; j<8; j++) {
    hBA_coalescence[j]->Draw("samel");
    if (j<3) paveA[j]->Draw();
  }
+/*arrpp->Draw("same");
+arrpPb->Draw("same");
+arrPbPb->Draw("same");
+pavepp->Draw("same");
+paveppb->Draw("same");
+pavepbpb->Draw("same");*/
  pad2->cd();
   //pavept->Draw();
  masterLeg->Draw();
