@@ -28,10 +28,10 @@
 \begin{document}
 % \eqsec  % uncomment this line to get equations numbered by (sec.num)
 \title{Testing production scenarios for (anti-)(hyper-)nuclei with multiplicity-dependent measurements at the LHC}
-\author{F. Bellini (CERN, Geneva) \footnote{Presenter. For correspondence: francesca.bellini@cern.ch} 
-	    \\and A. P. Kalweit (CERN, Geneva)}
-\thanks{XXV Cracow EPIPHANY Conference on Advances in Heavy Ion Physics}%
-\address{}
+\author{F. Bellini\footnote{Presenter.} and A. P. Kalweit 
+	\address{European Organisation for Nuclear Research, Geneva \\E-mail: francesca.bellini@cern.ch}}
+\thanks{Proceedings of the XXV Cracow EPIPHANY Conference on Advances in Heavy Ion Physics}%
+
 \maketitle
 \begin{abstract}
 The production of light anti- and hyper-nuclei provides unique observables to characterise the system created in high energy proton-proton (pp), proton-nucleus (pA) and nucleus-nucleus (AA) collisions. In particular, nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (such as pions, kaons, protons, etc.), because their size is comparable to a fraction or the whole system created in the collision. Their formation is typically described within the framework of coalescence and thermal-statistical production models. 
@@ -70,7 +70,8 @@ For our study, we consider nuclei and hyper-nuclei with mass number $A = 2, 3$ a
 Nuclei and hyper-nuclei are special objects with respect to non-composite hadrons (pions, protons, etc.), because their size is comparable to a fraction or the whole system created in pp, \pPb~and \PbPb~collisions.
 The size is typically defined in two ways: a) as the rms of the (charge) distribution ($\lambda_A$), typically measured in electron scattering experiments, or b) as the size parameter of the object wave-function ($r_A$), typically taken as the gaussian solution of an isotropic harmonic oscillator potential in coalescence calculations. 
 For light nuclei, $\lambda_A\approx$~2~fm.  For the hyper-triton, theoretical calculations indicate a charge rms radius $\lambda_A\approx$~5~fm \cite{Nemura:1999qp}, driven by the average separation of the $\Lambda$ relative to the two other nucleons. 
-Assuming a similar structure (e.g. a s-wave interaction for a bound state of a n or a $\Lambda$ with adeuteron), the hypertriton results in a much larger object than the other non-strange nuclei with $A=3$.
+Assuming a similar structure (e.g. a s-wave interaction for a bound state of a n or a $\Lambda$ with a
+deuteron), the hypertriton results in a much larger object than the other non-strange nuclei with $A=3$.
 A simple relation holds between $\lambda_A$ and $r_A$, see \cite{Bellini:2018epz}. 
 In Tab.~\ref{tab:nucleusradii} the binding energy ($B_E$) is also reported. The most tightly bound nucleus is \hefour, whereas the most loosely bound object is \hthreelambda, that is also the largest one. For the latter, we report the separation energy of the $\Lambda$ baryon from the deuteron ($B_\Lambda=0.13$~MeV). 
 The large size and the low binding energy of the \hthreelambda~with respect to the other (hyper-)nuclei has important consequences on its production, as discussed in what follows.
@@ -137,44 +138,52 @@ We observe that the coalescence probability decreases with increasing mass numbe
 For a given $A$, the larger the object radius, the lower is $B_A$, as clearly visible by comparing \hethree~and \hthreelambda. 
 For objects with same $A$, mass and spin (e.g. the isobars \tritium~and \hethree), $B_A$ differs only due to the different radius $r_A$. 
 This difference is more relevant in small systems, because in large systems the difference between nucleus radii is much smaller than the size of the source.  
-Incidentally, this could be experimentally verified with high precision measurements of the production of \tritium~relative to \hethree~in pp collisions. 
+Incidentally, this could be experimentally verified with high-precision measurements of the production of \tritium~relative to \hethree~in pp and \pPb~collisions. 
 The production of objects with radius larger than the source is strongly suppressed, indicating that the process is driven by the length scale defined by the object radius relative to the source radius.
 
 \subsection{Thermal + blast-wave model} 
 Thermal-statistical models~\cite{Andronic:2010qu, Andronic:2017} have been successful in describing the production of light \mbox{(anti-)}(hyper-)nuclei across a wide range of energies in AA collisions, including production at the LHC. 
 In this approach, particles are produced from a fireball in thermal equilibrium with temperatures of $T_{chem} \approx$ 156 MeV. 
-Particle yields are derived from the partition function assuming a Grand Canonical ensemble\footnote{Extensions to small systems employ a canonical ensemble partition function to account for the exact conservation of quantum numbers in a finite size system, see for instance~\cite{Vovchenko:2018fiy}.} and they depend only on the mass of the particle and the temperature of chemical freeze-out, d$N$/d$y\propto$~exp$(-m/T_{\mathrm{chem}})$.
+Particle yields are derived from the partition function assuming a Grand Canonical ensemble\footnote{Extensions to small systems employ a canonical ensemble partition function to account for the exact conservation of quantum numbers in a finite size system, see for instance~\cite{Vovchenko:2018fiy}.} and they depend only on the mass of the particle and the temperature of chemical freeze-out, d$N$/d$y\propto$~(2$J_A$+1)exp$(-m_{A}/T_{\mathrm{chem}})$.
 The thermal model cannot -- alone -- be compared to the \pt-dependent coalescence description because it provides only predictions for \pt-integrated yields. 
 A thermal particle production implies a Boltzmann distribution of the momenta only for a static source, which is not the case of the rapidly expanding system produced in heavy-ion collisions. 
 The thermal model (i.e. the GSI-Heidelberg implementation we have considered here) needs to be complemented by a hydrodynamic description of the rapidly expanding source. 
 To that end, we use the Blast-Wave model~\cite{Schnedermann:1993ws}, which has been proven to describe reasonably well the measured momentum distributions of protons~\cite{Abelev:2013vea}. 
 Our ``thermal+blast-wave'' approach results from the combination of the two models: the \pt-dependence is modelled by the blast-wave whereas the normalisation (i.e. the \pt-integrated yield) is taken from the thermal model predictions.
-In particular, to shape the (hyper-)nucleus transverse momentum distributions we use the blast-wave parameters obtained from the simultaneous fit to pion, kaon and proton spectra measured in \PbPb~collisions by ALICE for several centralities/multiplicities and reported in~\cite{Abelev:2013vea}. We therefore inherit the multiplicity-dependence of the radial expansion of the system from the measurements. The object size does not enter in the formulation of the blast-wave model. 
+In particular, to describe the (hyper-)nucleus transverse momentum distributions we use the blast-wave parameters obtained from the simultaneous fit to pion, kaon and proton spectra measured in \PbPb~collisions by ALICE for several centralities/multiplicities and reported in~\cite{Abelev:2013vea}. We therefore inherit the multiplicity-dependence of the radial expansion of the system from the measurements. The object size does not enter in the formulation of the blast-wave model. 
 In our thermal+blast-wave model, for each centrality/multiplicity class, the coalescence parameter is extracted according to Eq.~\ref{eq:BA} (as done for data) from the predicted (hyper-)nucleus spectrum and the proton spectrum measured by ALICE~\cite{Abelev:2013vea}.
 
 \section{Results and discussion} \label{sec:results}
 As discussed in the previous sections, the coalescence model provides an analytical expression for $B_A$ as a function of the source size $R$. 
-The thermal+blast-wave approach allows us to extract the $B_A$ as a function of the average charged particle multiplicity density, \avdNdeta. Data are also available as a function of multiplicity.
+The thermal+blast-wave approach allows us to extract the $B_A$ as a function of the average charged particle multiplicity density, \avdNdeta. Measurements are performed differentially in centrality/multiplicity.
 In order to compare models and data, we therefore need to map multiplicity into source radius or viceversa. 
-As discussed more extensively in~\cite{Bellini:2018epz}, we perform this mapping based on the parameterisation $R = 0.473 \avdNdeta^{1/3}$. 
-The value of the empirical slope parameter is obtained by tuning the parameterisation such that the measured (anti-)deuteron \btwo~in the most central \PbPb~class falls onto the coalescence prediction. In this way, we constrain the coalescence volume with the more differential (anti-)deuteron data and assume that it is the same for all anti- and hyper-nuclei. 
-In~\cite{Bellini:2018epz}, we used the parameterisation to map the \avdNdeta~into $R$. Here, we chose to apply the inverse relation and show the comparison between $B_A$ from models and data as a function of the experimentally accessible observable  \avdNdeta. The two choices are equivalent.
+As discussed more extensively in~\cite{Bellini:2018epz}, we perform this mapping based on the parameterisation $R = 0.473 \avdNdeta^{1/3}$ for \pt/$A$~=~0.75 \GeVc. The slope is smaller for larger \pt's and larger for lower \pt.
+The value of the empirical slope parameter is obtained by tuning the parameterisation such that the measured (anti-)deuteron \btwo~in the most central \PbPb~class falls onto the coalescence prediction. In other words, we constrain the coalescence volume with the more differential (anti-)deuteron data and assume that it is the same for all (hyper-)nuclei. 
+In~\cite{Bellini:2018epz}, we used the parameterisation to map the \avdNdeta~into $R$. Here, we chose to apply the inverse relation and compare $B_A$ from models with ALICE data as a function of the experimentally accessible observable~\avdNdeta. The two choices are equivalent. This comparison is reported in Fig.~\ref{Fig:comparison}. 
+%We compare $B_A$ as obtained from the coalescence  (Eq.~\ref{eq:master}) and the ther\-mal+\-blast-wa\-ve model approach in Fig.~\ref{Fig:comparison} as a function of \avdNdeta. 
+With respect to~\cite{Bellini:2018epz}, we have now extended our study up to $A=4$ \mbox{(hyper-)nuclei}. 
 
-We compare $B_A$ as obtained from the coalescence  (Eq.~\ref{eq:master}) and the ther\-mal+\-blast-wa\-ve model approach in Fig.~\ref{Fig:comparison} as a function of \avdNdeta. With respect to~\cite{Bellini:2018epz}, we have extended our study up to $A=4$ \mbox{(hyper-)nuclei}. The available data from ALICE are also reported. 
+We observe that for deuterons, the coalescence and thermal+blast-wave approaches lead to similar predictions and describe reasonably the \PbPb~data. 
+For \hethree, the models exhibit a qualitatively similar mul\-ti\-pli\-ci\-ty-dependence with the magnitude of $B_A$ differing by a factor 1.5 to 2 going from large to small systems. The currently available data for \hethree~are consistent with both models within 2$\sigma$ to 3$\sigma$, where $\sigma$ is the total uncertainty on data. 
+Both approaches show large differences (a factor 5 to 6 for central Pb--Pb collisions and a factor larger than 50 for \avdNdeta~<~100) for the \hthreelambda\ caused by the significantly larger size of \hthreelambda\ with respect to \hethree. 
+The only data point available so far in \PbPb~collisions is in agreement with the thermal+blast-wave model but differs by 6$\sigma$ from our coalescence calculation. 
+Also for \hefour~and \hefourlambda~the coalescence probability is a steeply falling function of multiplicity in both approaches, which differ in magnitude from few units at high multiplicities to O(10$^{2}$) in small systems.
+We conclude that the difference between the two approaches increases from large to small systems, which advocates for new multiplicity-differential data in all collision systems to distinguish between the two production scenarios. 
+For \hthreelambda~and \hefourlambda~we also report in Fig.~\ref{Fig:comparison} the coalescence calculations obtained assuming wider wave-functions, which result in even lower production probabilities. 
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 \begin{center}
-\includegraphics[width=\textwidth]{coal2Thermal2alice.png}
+\includegraphics[width=0.88\textwidth]{coal2Thermal2alice.png}
 \caption{(Color online) Coalescence parameter $B_A$ as a function of the average charged particle multiplicity density for various (hyper-)nuclei, up to $A = 4$. The coalescence calculations (continuous or dashed-dotted black lines) are compared to the thermal+blast-wave predictions (dashed blue line), as well as to pp (green square) and \PbPb~(red circles) collision data from ALICE~\cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015,Adam:2015yta}. }
 \label{Fig:comparison}
 \end{center}
 \end{figure} 
 
-As an example, we have also computed $B_A$ for \hethree~according to the thermal+blast-wave approach for the \pPb~system, by using yield predictions from the Canonical Statistical Model from~\cite{Vovchenko:2018fiy} and the blast-wave parameters from~\cite{Abelev:2013haa}. The result is reported in Fig. \ref{Fig:3He}.
+The Grand Canonical thermal ansatz is no longer valid when going to small collision systems, because one needs to account for the exact conservation of quantum numbers in a finite volume and thus a canonical ensemble has to be used.
+As an example, we have also computed $B_A$ for \hethree~according to the thermal+blast-wave approach for the \pPb~system, by using yield predictions from the Canonical Statistical Model from~\cite{Vovchenko:2018fiy} and the blast-wave parameters from~\cite{Abelev:2013haa}. The result is reported in Fig. \ref{Fig:3He} with the blue dashed line. 
+We notice that the thermal+blast-wave prediction in this case does not exhibit a significant dependence on multiplicity and is relatively close to the coalescence curve. As expected, in high multiplicity \pPb~collisions the CSM+blast-wave curve tends to merge with the Grand Canonical prediction. 
 
-Sigh! To be finished.
 
-\begin{figure}[htb]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{B3vsMult073.png}
 \caption{(Color online) Coalescence parameter $B_3$ for \hethree~as a function of the average charged particle multiplicity density~\avdNdeta. The coalescence calculation (continuous black line) is compared to two thermal+blast-wave predictions (dashed lines), obtained by using the Grand Canonical (GC, red)~\cite{Andronic:2017} and Canonical Statistical Model (CSM, blue) \cite{Vovchenko:2018fiy} expectations for the \hethree~yield, respectively. ALICE data from pp (green circles) and \PbPb~(red circles) collisions~\cite{ALICE:nucleipp2017,ALICE:deuteronppPbPb2015} are reported. }
@@ -183,8 +192,11 @@ Sigh! To be finished.
 \end{figure} 
 
 \section{Conclusions}
-Sic! To be finished.
-\newpage
+We have presented a direct comparison of the coalescence and ther\-mal+blast-wa\-ve production scenarios for light nuclei and hyper-nuclei as a function of multiplicity, used as a proxy for the source size. 
+To clarify the production mechanism of composite loosely-bound QCD objects, we show the importance of new and precise measurements of (hyper-)nuclei production up to $A=4$ as a function of multiplicity in different collision systems, in order to fully exploit the sensitivity of production mechanisms to the size of the object relative to the size of the source.
+Particularly sensitive to production mechanisms is the hyper-triton with its large size. 
+The increase in integrated luminosity foreseen in all collision systems during the LHC Runs 3 and 4 in years 2021-2029 should allow the ALICE Collaboration to perform these multi-differential measurements, which will provide crucial insights on the ``anti-nuclei puzzle'' and the (hyper-)nuclei formation.
+
 \bibliographystyle{utphysnt} 	
 \bibliography{biblio}
 \end{document}
