@@ -1,14 +1,16 @@
 #include "./B2vsVolume.C"
 #include "./GetB3inpToA.C"
 
-TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA = 0.733, Bool_t plotLinX = 0, Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0, Bool_t plotpPb = 0);
+TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA = 0.733, Bool_t plotLinX = 0, 
+                                Int_t RmappingParam = 1, Bool_t plotcSHM = 1, Bool_t plotPbPb5TeV = 0, 
+                                Bool_t plotpPb = 1);
 
   
 TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plotLinX, Int_t RmappingParam, Bool_t plotcSHM, Bool_t plotPbPb5TeV, Bool_t plotpPb)
 {
 
   //prepare input file
-  GetB3inpToA_pPb5TeV(pToA, "B3_Average_pPb_5TeV_15032019.root");
+  GetB3inpToA_pPb5TeV(pToA, "B3_Average_pPb_5TeV_30052019.root");
 
   Int_t ip = RmappingParam;
   Float_t textLabelSize = 0.033;
@@ -31,17 +33,25 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   for (Int_t jj = 0; jj < nParamSet; jj++){
     gB3vsR_pp7TeV[jj] = (TGraphErrors *) getB3_pp7TeVINELg0(kFALSE, 0.8, jj, kFALSE);
     gB3vsR_pp7TeV_sys[jj] = (TGraphErrors *) getB3_pp7TeVINELg0(kTRUE, 0.8, jj, kFALSE);
+    gB3vsR_pp7TeV[jj]->SetMarkerStyle(33);
+    gB3vsR_pp7TeV[jj]->SetMarkerSize(1.3);
+    gB3vsR_pp7TeV_sys[jj]->SetMarkerStyle(33);
+    gB3vsR_pp7TeV_sys[jj]->SetMarkerSize(1.3);
     gB3vsR_pp7TeV_sys[jj]->SetFillStyle(1001);    
     gB3vsR_pp7TeV_sys[jj]->SetFillColor(kGreen-10);
     // gB3vsR_pp13TeV[jj] = (TGraphErrors *) getB3_pp13TeV(kFALSE, pToA, jj, kFALSE);
     // gB3vsR_pp13TeV_sys[jj] = (TGraphErrors *) getB3_pp13TeV(kTRUE, pToA, jj, kFALSE);
     gB3vsR_pPb502TeV[jj] = (TGraphErrors *) getB3_pPb5TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_pPb502TeV_sys[jj] = (TGraphErrors *) getB3_pPb5TeV(kTRUE, pToA, jj, kFALSE);
+    gB3vsR_pPb502TeV[jj]->SetMarkerStyle(20);
+    gB3vsR_pPb502TeV_sys[jj]->SetMarkerStyle(20);
     gB3vsR_pPb502TeV_sys[jj]->SetFillStyle(1001);
     gB3vsR_pPb502TeV_sys[jj]->SetFillColor(kBlue-10);
 
     gB3vsR_PbPb276TeV[jj] = (TGraphErrors *) getB3_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
     gB3vsR_PbPb276TeV_sys[jj] = (TGraphErrors *) getB3_PbPb276TeV(kTRUE, pToA, jj, kFALSE);
+    gB3vsR_PbPb276TeV[jj]->SetMarkerStyle(21);
+    gB3vsR_PbPb276TeV_sys[jj]->SetMarkerStyle(21);
     gB3vsR_PbPb276TeV_sys[jj]->SetFillStyle(1001);
     gB3vsR_PbPb276TeV_sys[jj]->SetFillColor(kRed-10);
 
@@ -62,12 +72,12 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
     gB3blastvsR_PbPb276TeV[jj] = (TGraphErrors *) getBlastB3_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
     gB3blastvsR_PbPb276TeV[jj]->SetLineStyle(shmBlast_lineStyle);
     gB3blastvsR_PbPb276TeV[jj]->SetLineWidth(modelCurvesLineWidth);
-    gB3blastvsR_PbPb276TeV[jj]->SetLineColor(kRed+2);
+    gB3blastvsR_PbPb276TeV[jj]->SetLineColor(kRed);
 
     gB3blastvsR_pPb5TeV[jj] = (TGraphErrors *) getBlastB3_pPb5TeV(kFALSE, pToA, jj, kFALSE, plotcSHM);
     gB3blastvsR_pPb5TeV[jj]->SetLineStyle(shmBlast_lineStyle);
     gB3blastvsR_pPb5TeV[jj]->SetLineWidth(modelCurvesLineWidth);
-    gB3blastvsR_pPb5TeV[jj]->SetLineColor(kBlue+2);
+    gB3blastvsR_pPb5TeV[jj]->SetLineColor(kBlue);
   }
 //----------------------------
   //Get coalescence prediction
@@ -104,7 +114,7 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   gStyle->SetPadLeftMargin(0.17);
   gStyle->SetPadRightMargin(0.02); 
   
-  TH2D * hframe = new TH2D("hframe", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-9, 0.1);
+  TH2D * hframe = new TH2D("hframe", "B_{3} vs radius; #it{R} (fm); #it{B}_{3} (GeV^{4}/#it{c}^{6})", 1000, 0.01, 6.0, 2000, 1.e-8, 0.1);
   hframe->GetXaxis()->SetTitleSize(0.06);
   hframe->GetYaxis()->SetTitleSize(0.06);
   hframe->GetXaxis()->SetTitleOffset(0.8);
@@ -133,7 +143,7 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   //  legB3data->AddEntry(gB3vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
   legB3data->AddEntry(hB3_coalescence, "#it{B}_{3} coalesc., #it{r}(^{3}He) = 2.48 fm", "l");
 
-  TCanvas * cb2opta = new TCanvas("B3vsR", "B3 vs R", 900, 800);
+  TCanvas * cb2opta = new TCanvas("B3vsR", "B3 vs R", 800, 600);
   cb2opta->SetBottomMargin(0.17);
   cb2opta->SetTopMargin(0.05);
   cb2opta->SetLeftMargin(0.17);
@@ -141,6 +151,8 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   
   cb2opta->cd();
   gPad->SetLogy();
+  gPad->SetTickx();
+  gPad->SetTicky();
   pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
@@ -159,7 +171,7 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   
   //Alternative version -- all vs dN/deta
   //Map radius in coalescence to dN/deta
-  TH2D * hframeMult = new TH2D("hframeMult", "B_{3} vs mult; #LTd#it{N}_{ch}/d#it{#eta_{lab}}#GT; #it{B}_{3} (GeV^{4}/#it{c}^{6})", 3000, 0., 3000.0, 2000, 1.e-9, 0.1);
+  TH2D * hframeMult = new TH2D("hframeMult", "B_{3} vs mult; #LTd#it{N}_{ch}/d#it{#eta_{lab}}#GT; #it{B}_{3} (GeV^{4}/#it{c}^{6})", 3000, 0., 3000.0, 2000, 1.e-8, 0.01);
   hframeMult->GetXaxis()->SetTitleSize(0.06);
   hframeMult->GetYaxis()->SetTitleSize(0.06);
   hframeMult->GetXaxis()->SetTitleOffset(1.2);
@@ -201,6 +213,9 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
   cb2vsdNdeta->cd();
   gPad->SetLogy();
   gPad->SetLogx();
+  gPad->SetTickx();
+  gPad->SetTicky();
+  
   pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   
@@ -209,24 +224,24 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
 
   if (plotpPb) gB3vsR_pPb502TeV_sys[ip]->Draw("p3");
 
+  gB3vsR_pp7TeV_sys[ip]->Draw("2");
+  gB3vsR_pp7TeV[ip]->Draw("samep");
+
   if (plotpPb) hB3_coalescenceParam0->Draw("l");
   hB3_coalescenceParam1->Draw("l");
   if (RmappingParam==3) hB3_coalescenceParam3->Draw("l"); 
-  gB3blastvsR_PbPb276TeV[0]->Draw("lsame");
   
   if (plotPbPb5TeV) {
       gB3vsR_PbPb502TeV_sys[ip]->Draw("p3");
       gB3vsR_PbPb502TeV[ip]->Draw("samep");
   }
 
+  gB3blastvsR_PbPb276TeV[0]->Draw("lsame");
   gB3vsR_PbPb276TeV[ip]->Draw("samep");
 
   if (plotpPb) gB3vsR_pPb502TeV[ip]->Draw("samep");
   gB3blastvsR_pPb5TeV[0]->Draw("lsame");
-  
-  gB3vsR_pp7TeV_sys[ip]->Draw("p3");
-  gB3vsR_pp7TeV[ip]->Draw("samep");
-  
+    
   // gB3vsR_pp13TeV_sys[ip]->Draw("p3");
   // gB3vsR_pp13TeV[ip]->Draw("samep");
 
@@ -241,6 +256,7 @@ TCanvas * Make3HepPbPaperFigure(TString figPath = ".", Double_t pToA, Bool_t plo
     cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.eps", figPath.Data(), pToA*100));
     cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.png", figPath.Data(), pToA*100));
     cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.C", figPath.Data(), pToA*100));
+    cb2vsdNdeta->SaveAs(Form("%s/B3vsMult_pt%03.0f.root", figPath.Data(), pToA*100));
     TString foutName = Form("%s/B3vsMult_R%i.root", figPath.Data(), RmappingParam);
     TFile * fout = new TFile(foutName.Data(), "recreate");
     fout->cd();
