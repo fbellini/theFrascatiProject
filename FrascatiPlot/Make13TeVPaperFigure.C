@@ -1,8 +1,10 @@
 #include "./B2vsVolume.C"
 
+/* //the following have been moved to the macro MapMulti2R.C
 void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
 void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
 void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
+*/
 void Make13TeVPaperFigure(Bool_t plotLinX = 0, Double_t pToA = 0.75, Int_t RmappingParam = 1);
 
   
@@ -190,6 +192,7 @@ void Make13TeVPaperFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
   
 }
 
+/*
 void getMultiFromR(Double_t * multi, Double_t * radius, Int_t paramSet)
 {
   // Here is the crucial mapping between HBT radii and multi^(1/3)
@@ -259,3 +262,4 @@ void convertRadiusToMulti(TGraphAsymmErrors * graph, Int_t paramSet)
 
   return;
 }
+*/
