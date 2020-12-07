@@ -5,10 +5,10 @@ void convertRadiusToMulti(TGraphAsymmErrors * graph = 0x0, Int_t paramSet = 1);
 void convertRadiusToMulti(TGraphErrors * graph = 0x0, Int_t paramSet = 1);
 void getMultiFromR(Double_t * multi = NULL, Double_t * radius = NULL, Int_t paramSet = 1);
 */
-void Make13TeVPaperFigure(Bool_t plotRun2 = 1, Bool_t plotLinX = 0, Double_t pToA = 0.75, Int_t RmappingParam = 1);
+void MakeLDtalkFigure(Bool_t plotLinX = 0, Double_t pToA = 0.75, Int_t RmappingParam = 1);
 
   
-void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
+void MakeLDtalkFigure(Bool_t plotLinX, Double_t pToA, Int_t RmappingParam)
 {
 
   Int_t ip = RmappingParam;
@@ -25,8 +25,6 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
   TGraphErrors* gB2vsR_pPb502TeV_sys[nParamSet];
   TGraphErrors* gB2vsR_PbPb276TeV[nParamSet];
   TGraphErrors* gB2vsR_PbPb276TeV_sys[nParamSet];
-  TGraphErrors* gB2vsR_PbPb502TeV[nParamSet];
-  TGraphErrors* gB2vsR_PbPb502TeV_sys[nParamSet];
 
   for (Int_t jj = 0; jj < nParamSet; jj++){
     gB2vsR_pp7TeV[jj] = (TGraphErrors *) getB2_pp7TeV(kFALSE, pToA, jj, kFALSE);
@@ -37,29 +35,43 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
     gB2vsR_pPb502TeV_sys[jj] = (TGraphErrors *) getB2_pPb5TeV(kTRUE, pToA, jj, kFALSE);
     gB2vsR_PbPb276TeV[jj] = (TGraphErrors *) getB2_PbPb276TeV(kFALSE, pToA, jj, kFALSE);
     gB2vsR_PbPb276TeV_sys[jj] = (TGraphErrors *) getB2_PbPb276TeV(kTRUE, pToA, jj, kFALSE);
-    gB2vsR_PbPb502TeV[jj] = (TGraphErrors *) getB2_PbPb5TeV(kFALSE, pToA, jj, kFALSE);
-    gB2vsR_PbPb502TeV_sys[jj] = (TGraphErrors *) getB2_PbPb5TeV(kTRUE, pToA, jj, kFALSE);
-      }
+  }
 
-  Printf("pp 13 TeV vs multi - B2 d");
-  for (int i = 0; i<gB2vsR_pp13TeV[ip]->GetN(); i++){
-    Printf("dN/deta = %5.3f", gB2vsR_pp13TeV[ip]->GetX()[i]);
-  } 
+    gB2vsR_pp7TeV[ip]->SetLineColor(kRed);
+    gB2vsR_pp7TeV[ip]->SetMarkerColor(kRed);
+    gB2vsR_pp7TeV[ip]->SetMarkerStyle(20);
+    gB2vsR_pp7TeV[ip]->SetFillColorAlpha( kRed,0.3);
+    gB2vsR_pp7TeV_sys[ip]->SetLineColor(kRed);
+    gB2vsR_pp7TeV_sys[ip]->SetMarkerStyle(20);
+    gB2vsR_pp7TeV_sys[ip]->SetMarkerColor(kRed);
+    gB2vsR_pp7TeV_sys[ip]->SetFillColorAlpha(kRed,0.3);
 
-  Printf("pp 7 TeV  vs multi - B2 d");
-  for (int i = 0; i<gB2vsR_pp7TeV[ip]->GetN(); i++){
-    Printf("dN/deta = %5.3f", gB2vsR_pp7TeV[ip]->GetX()[i]);
-  } 
+    gB2vsR_pp13TeV[ip]->SetLineColor(kBlack);
+    gB2vsR_pp13TeV[ip]->SetMarkerColor(kBlack);
+    gB2vsR_pp13TeV[ip]->SetMarkerStyle(24);
+    gB2vsR_pp13TeV[ip]->SetFillColorAlpha(kBlack,0.3);
+    gB2vsR_pp13TeV_sys[ip]->SetLineColor(kBlack);
+    gB2vsR_pp13TeV_sys[ip]->SetMarkerColor(kBlack);
+    gB2vsR_pp13TeV_sys[ip]->SetMarkerStyle(24);
+    gB2vsR_pp13TeV_sys[ip]->SetFillColorAlpha(kGray,0.4);
 
-  Printf("pPb 5.02 TeV  vs multi - B2 d");
-  for (int i = 0; i<gB2vsR_pPb502TeV[ip]->GetN(); i++){
-    Printf("dN/deta = %5.3f", gB2vsR_pPb502TeV[ip]->GetX()[i]);
-  } 
+    gB2vsR_pPb502TeV[ip]->SetLineColor(kGray+1);
+    gB2vsR_pPb502TeV[ip]->SetMarkerColor(kGray+1);
+    gB2vsR_pPb502TeV[ip]->SetMarkerStyle(28);
+    gB2vsR_pPb502TeV[ip]->SetFillColorAlpha(kGray+1,0.3);
+    gB2vsR_pPb502TeV_sys[ip]->SetLineColor(kGray+1);
+    gB2vsR_pPb502TeV_sys[ip]->SetMarkerStyle(28);
+    gB2vsR_pPb502TeV_sys[ip]->SetMarkerColor(kGray+1);
+    gB2vsR_pPb502TeV_sys[ip]->SetFillColorAlpha(kGray,0.6);
 
-  Printf("Pb-Pb 2.76 TeV  vs multi - B2 d");
-  for (int i = 0; i<gB2vsR_PbPb276TeV[ip]->GetN(); i++){
-    Printf("dN/deta = %5.3f", gB2vsR_PbPb276TeV[ip]->GetX()[i]);
-  } 
+    gB2vsR_PbPb276TeV[ip]->SetLineColor(kBlack);
+    gB2vsR_PbPb276TeV[ip]->SetMarkerColor(kBlack);
+    gB2vsR_PbPb276TeV[ip]->SetMarkerStyle(21);
+    gB2vsR_PbPb276TeV[ip]->SetFillColorAlpha(kBlack,0.3);
+    gB2vsR_PbPb276TeV_sys[ip]->SetLineColor(kBlack);
+    gB2vsR_PbPb276TeV_sys[ip]->SetMarkerStyle(21);
+    gB2vsR_PbPb276TeV_sys[ip]->SetMarkerColor(kBlack);
+    gB2vsR_PbPb276TeV_sys[ip]->SetFillColorAlpha(kGray,0.5);
   //----------------------------
   //Get coalescence prediction
   //----------------------------
@@ -68,16 +80,27 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
   hB2_coalescence->SetMarkerStyle(20);
   hB2_coalescence->SetLineWidth(3);
   hB2_coalescence->SetLineStyle(1);
+  hB2_coalescence->SetLineColor(kBlue);
+  hB2_coalescence->SetMarkerColor(kBlue);
 
   TGraphErrors * hB2_coalescenceParam0 = (TGraphErrors*) hB2_coalescence->Clone("hB2_coalescenceParam0");
   convertRadiusToMulti(hB2_coalescenceParam0, 0);
-  hB2_coalescenceParam0->SetLineStyle(2);
-  hB2_coalescenceParam0->SetLineColor(kBlack);
-  hB2_coalescenceParam0->SetMarkerColor(kBlack);
+  hB2_coalescenceParam0->SetLineStyle(1);
+  hB2_coalescence->SetLineWidth(3);
+  hB2_coalescenceParam0->SetLineColor(kBlue);
+  hB2_coalescenceParam0->SetMarkerColor(kBlue);
 
   TGraphErrors * hB2_coalescenceParam1 = (TGraphErrors*) hB2_coalescence->Clone("hB2_coalescenceParam1");
   convertRadiusToMulti(hB2_coalescenceParam1, 1);
 
+  TGraphAsymmErrors* gBlastB2vsR_PbPb276TeV[nParamSet];
+  gBlastB2vsR_PbPb276TeV[ip] = (TGraphAsymmErrors *)  getBAthermalBlast("PbPb276TeV", "deuteron", pToA, kGreen+1, ip, 0);
+  gBlastB2vsR_PbPb276TeV[ip]->SetMarkerStyle(20);
+  gBlastB2vsR_PbPb276TeV[ip]->SetLineWidth(4);
+  gBlastB2vsR_PbPb276TeV[ip]->SetLineStyle(9);
+  gBlastB2vsR_PbPb276TeV[ip]->SetLineColor(kGreen+1);
+  gBlastB2vsR_PbPb276TeV[ip]->SetMarkerColor(kGreen+1);
+  
   //----------------------------
   //plot
   //----------------------------
@@ -109,13 +132,12 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
   Int_t nl = 6;
   TLegend * legB2data = new TLegend(0.45, 0.9-nl*0.04, 0.85, 0.9);
   legB2data->SetFillStyle(0);
-  legB2data->SetTextSize(0.035);
+  legB2data->SetTextSize(0.045);
   legB2data->SetBorderSize(0);
-  if (plotRun2) legB2data->AddEntry(gB2vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
-  else legB2data->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
+  legB2data->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
   legB2data->AddEntry(gB2vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV, prelim.", "pf");
-  if (plotRun2) legB2data->AddEntry(gB2vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV, prelim.", "pf");
-  else legB2data->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV, paper in prep.", "pf");
+  legB2data->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV", "pf");
+  legB2data->AddEntry(gB2vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV", "pf");
   legB2data->AddEntry(hB2_coalescence, "#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm", "l");
 
   TCanvas * cb2opta = new TCanvas("B2vsR", "B2 vs R", 900, 800);
@@ -129,24 +151,18 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
   pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   hframe->Draw();
-  hB2_coalescence->Draw("l");
-  
-  if (!plotRun2) {
-    gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
-    gB2vsR_PbPb276TeV[ip]->Draw("samep");
-    
-    gB2vsR_pp13TeV_sys[ip]->Draw("p3");
-    gB2vsR_pp13TeV[ip]->Draw("samep");
-  } else {
-    gB2vsR_PbPb502TeV_sys[ip]->Draw("p3");
-    gB2vsR_PbPb502TeV[ip]->Draw("samep");
-
-    gB2vsR_pp7TeV_sys[ip]->Draw("p3");
-    gB2vsR_pp7TeV[ip]->Draw("samep");
-  }
+  hB2_coalescence->Draw("l");  
+  gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb276TeV[ip]->Draw("samep");
 
   gB2vsR_pPb502TeV_sys[ip]->Draw("p3");
   gB2vsR_pPb502TeV[ip]->Draw("samep");
+
+  gB2vsR_pp13TeV_sys[ip]->Draw("p3");
+  gB2vsR_pp13TeV[ip]->Draw("samep");
+
+  gB2vsR_pp7TeV_sys[ip]->Draw("p3");
+  gB2vsR_pp7TeV[ip]->Draw("samep");
 
   pavept->Draw();
   legB2data->Draw();
@@ -160,69 +176,74 @@ void Make13TeVPaperFigure(Bool_t plotRun2, Bool_t plotLinX, Double_t pToA, Int_t
   hframeMult->GetXaxis()->SetLabelSize(0.05);
   hframeMult->GetYaxis()->SetLabelSize(0.05);
   hframeMult->GetXaxis()->SetRangeUser(1., 3.E3);
+  hframeMult->GetYaxis()->SetRangeUser(1.e-4, 3.E-2);
   
-  TCanvas * cb2vsdNdeta = new TCanvas("cb2vsdNdeta", "B2 vs R", 900, 800);
+  TCanvas * cb2vsdNdeta = new TCanvas("cb2vsdNdeta", "B2 vs R", 800, 600);
   cb2vsdNdeta->SetBottomMargin(0.15);
   cb2vsdNdeta->SetTopMargin(0.05);
   cb2vsdNdeta->SetLeftMargin(0.17);
   cb2vsdNdeta->SetRightMargin(0.05);
 
-  TLegend * legB2coal = new TLegend(0.45, 0.75, 0.65, 0.9,"#it{B}_{2} coalesc., #it{r}(d) = 3.2 fm");
+  TLegend * legB2coal = new TLegend(0.5, 0.78, 0.85, 0.85);
   legB2coal->SetFillStyle(0);
-  legB2coal->SetTextSize(0.035);
   legB2coal->SetBorderSize(0);
-  legB2coal->AddEntry(hB2_coalescenceParam0, "param. A (fit to HBT radii)", "l");
-  legB2coal->AddEntry(hB2_coalescenceParam1, "param. B (constrained to ALICE #it{B}_{2})", "l");
+  legB2coal->SetTextSize(0.045);
+  legB2coal->SetTextColor(kBlue);
+  //legB2coal->AddEntry(hB2_coalescenceParam0, "Fit to ALICE HBT radii", "l");
+  legB2coal->AddEntry(hB2_coalescenceParam1, "Coalescence, r_{d} = 3.2 fm", "l");//Constrained to ALICE #it{B}_{2}
+
+  TLegend * legB2thermal = new TLegend(0.5, 0.85, 0.85, 0.92);
+  legB2thermal->SetFillStyle(0);
+  legB2thermal->SetBorderSize(0);
+  legB2thermal->SetTextSize(0.035);
+    legB2thermal->SetTextSize(0.045);
+  legB2thermal->SetTextColor(kGreen+1);
+  legB2thermal->AddEntry(gBlastB2vsR_PbPb276TeV[ip], "Statistical hadron.", "l");
 
   TLegend * legB2dataMult = new TLegend(0.2, 0.25, 0.45, 0.25+4*0.05,"ALICE");
   legB2dataMult->SetFillStyle(0);
-  legB2dataMult->SetTextSize(0.035);
+  legB2dataMult->SetTextSize(0.045);
   legB2dataMult->SetBorderSize(0);
-    if (plotRun2) legB2dataMult->AddEntry(gB2vsR_PbPb502TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
-    else legB2dataMult->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
-  legB2dataMult->AddEntry(gB2vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV.", "pf");
-    if (!plotRun2) legB2dataMult->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV", "pf");
-  legB2dataMult->AddEntry(gB2vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV", "pf");
+  legB2dataMult->AddEntry(gB2vsR_pp7TeV_sys[ip], "pp #sqrt{#it{s}} = 7 TeV", "pf");
+  //legB2dataMult->AddEntry(gB2vsR_pp13TeV_sys[ip], "pp #sqrt{#it{s}} = 13 TeV", "pf");
+  //legB2dataMult->AddEntry(gB2vsR_pPb502TeV_sys[ip], "p-Pb #sqrt{#it{s}_{NN}} = 5.02 TeV", "pf");
+  legB2dataMult->AddEntry(gB2vsR_PbPb276TeV_sys[ip], "Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV", "pf");
 
   
   cb2vsdNdeta->cd();
   gPad->SetLogy();
   gPad->SetLogx();
+    gPad->SetTicky();
+  gPad->SetTickx();
   pavept->Draw();
   if (!plotLinX) gPad->SetLogx();
   
   hframeMult->Draw();
+
+  gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
+  gB2vsR_PbPb276TeV[ip]->Draw("samepz");
+
+  //gB2vsR_pPb502TeV_sys[ip]->Draw("p2");
+  //gB2vsR_pPb502TeV[ip]->Draw("samep");
+  
+  //gB2vsR_pp13TeV_sys[ip]->Draw("p2");
+  //gB2vsR_pp13TeV[ip]->Draw("samep");
+
+  gB2vsR_pp7TeV_sys[ip]->Draw("p3");
+  gB2vsR_pp7TeV[ip]->Draw("samepz");
+
   hB2_coalescenceParam0->Draw("l");
   hB2_coalescenceParam1->Draw("l");
- 
-   if (!plotRun2) {
-    gB2vsR_PbPb276TeV_sys[ip]->Draw("p3");
-    gB2vsR_PbPb276TeV[ip]->Draw("samep");
-
-    gB2vsR_pp7TeV_sys[ip]->Draw("p3");
-    gB2vsR_pp7TeV[ip]->Draw("samep");
-   } else {
-      gB2vsR_PbPb502TeV_sys[ip]->Draw("p3");
-     gB2vsR_PbPb502TeV[ip]->Draw("samep");
-   }  
-    gB2vsR_pPb502TeV_sys[ip]->Draw("p3");
-    gB2vsR_pPb502TeV[ip]->Draw("samep");
-
-    gB2vsR_pp13TeV_sys[ip]->Draw("p3");
-    gB2vsR_pp13TeV[ip]->Draw("samep");
-
+  gBlastB2vsR_PbPb276TeV[ip]->Draw("l");
+  
   pavept->Draw();
   legB2dataMult->Draw();
   legB2coal->Draw();
-
-   if (plotRun2) {
-    cb2vsdNdeta->SaveAs("~/Desktop/perMax.C");
-    cb2vsdNdeta->SaveAs("~/Desktop/perMax.root");
-    cb2vsdNdeta->SaveAs("~/Desktop/perMax.png");
-   } else { cb2vsdNdeta->SaveAs("paper13TeVpp/B2vsMult_w13TeV.pdf");
-   }
+  legB2thermal->Draw();
+  cb2vsdNdeta->SaveAs("LDtalkFigure/B2vsMult_w13TeV.pdf");
+  cb2vsdNdeta->SaveAs("LDtalkFigure/B2vsMult_w13TeV.png");
   //  TString foutName = Form("B2vsR_w13TeV_param%i.root", RmappingParam);
-  TString foutName = Form("paper13TeVpp/B2vsMult_w13TeV.root", RmappingParam);
+  TString foutName = Form("LDtalkFigure/B2vsMult_w13TeV.root", RmappingParam);
   TFile * fout = new TFile(foutName.Data(), "recreate");
   fout->cd();
   cb2vsdNdeta->Write();
